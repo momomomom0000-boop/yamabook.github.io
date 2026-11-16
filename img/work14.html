@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In Between Spaces リミナルスペース動画 制作過程 | YBdesign Works</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600&family=Noto+Serif+JP:wght@300;400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- ポートフォリオ共通スタイルシート -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-work">
+
+  <!-- ==========================================================================
+     01_Header (作品一覧へもどる固定ヘッダー)
+     ========================================================================== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html#works" class="work-detail__back-btn">
+        <span class="work-detail__back-arrow">←</span> つくったもの一覧へもどる
+      </a>
+      <a href="index.html" class="header__logo">
+        <img src="img/logo01.svg" alt="YBdesign" class="header__logo-img">
+      </a>
+    </div>
+  </header>
+
+  <main class="work-detail__main">
+
+    <!-- ==========================================================================
+       作品ヒーローエリア (アイボリー背景)
+       ========================================================================== -->
+    <section class="work-hero">
+      <div class="work-hero__container">
+        <!-- カテゴリバッジ -->
+        <span class="work-hero__category">VIDEO PRODUCTION / CONCEPTUAL ART / SOUND DESIGN</span>
+        
+        <!-- 作品タイトル -->
+        <h1 class="work-hero__title">In Between Spaces<br>不気味さとセンチメンタルが同居するリミナルスペース動画</h1>
+        
+        <!-- メタ情報 (ピル型タグ並び) -->
+        <ul class="work-hero__tags">
+          <li class="work-hero__tag">担当: 企画・動画編集・エフェクト加工・音響デザイン</li>
+          <li class="work-hero__tag">制作期間: 1日</li>
+          <li class="work-hero__tag">使用ツール: Adobe Premiere Pro</li>
+        </ul>
+
+        <!-- メインビジュアル / 完成動画プレビュー -->
+        <div class="work-hero__mv" style="margin-top: 24px;">
+          <div class="work-hero__slider">
+            <video src="BetweenSpaces/process-04-final-grade.mp4" controls poster="img/work15_mv.jpg" class="work-hero__mv-img" style="width: 100%; height: auto; display: block; border-radius: 12px;"></video>
+          </div>
+        </div>
+
+        <!-- 成果物リンクエリア -->
+        <div class="work-hero__action" style="margin-top: 24px; text-align: center; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="BetweenSpaces/process-04-final-grade.mp4" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 28px; font-size: 1rem; text-decoration: none;">
+            完成動画をフルスクリーンで再生 ↗
+          </a>
+        </div>
+          
+      </div>
+    </section>
+
+    <!-- 上下反転（scaleY(-1)）させた波型SVGシェイプ -->
+    <div class="hero__wave">
+      <img src="img/wave02.svg" alt="" class="hero__wave-img hero__wave-img--flipped">
+    </div>
+
+    <!-- ==========================================================================
+       ケーススタディ本文コンテンツ
+       ========================================================================== -->
+    <div class="work-body">
+      <div class="work-body__container">
+
+        <!-- 01. 概要とコンセプト (Concept & Overview) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">01.</span> 概要とコンセプト <span class="work-section__en">/ Concept & Overview</span>
+          </h2>
+          <div class="work-card">
+            <p>日常の風景の中に潜む「人の気配が消えた境界空間（Liminal Space）」をテーマに制作した、ノスタルジックかつ少し不気味なショート映像作品です。フリー動画素材の切り貼りとPremiere Proでの各種エフェクト・音響加工の重ね掛けにより、古いビデオテープの記憶を覗き見しているような独特のアナログ質感と没入感を表現しました。</p>
+            
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">制作のキーポイント</h3>
+              <ul class="work-section__list">
+                <li><strong>素材選定とカット割り：</strong> 「無人のバス停」「夜のビル影」「放置された椅子」「エレベーターの階数表示」など、静寂と余白を意識した構成。</li>
+                <li><strong>VHS質感の再現：</strong> あえて解像感を落とし、走査線・色収差（RGBディスプレイスメント）・グレインノイズを重ねてアナログな生々しさを強調。</li>
+                <li><strong>遮蔽音（ローパスフィルター）設計：</strong> 高音域を削ることで、壁越しや水中から聴いているような閉塞感と孤立感を音響面から演出。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02. 企画・構成ディレクション (Direction & Structure) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">02.</span> 企画・構成ディレクション <span class="work-section__en">/ Direction & Structure</span>
+          </h2>
+          <div class="work-card-grid">
+            
+            <div class="work-card">
+              <h3 class="work-card__title">🎞️ 異質なロケーションの厳選と空間の余白</h3>
+              <p>フリー動画素材の中から「トンネルのシルエット」「無人のバス停」「夜のビル影」「放置された2脚の椅子」「エレベーターの階数表示」「夜の森」など、現実と非現実の境目を感じさせるカットをピックアップ。空間の余白と静寂を感じさせる丁寧な切り貼り（カット割り）を行いました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">⏳ 誰かの記憶を覗き見するストーリーライン</h3>
+              <p>単なる動画素材の集積に終わらせず、観る者を静かな世界観へと引き込むテンポ感とストーリーラインを構築。不気味さとどこか懐かしいセンチメンタルな情緒が同居する映像体験を目指しました。</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 03. エフェクト加工 & サウンドデザイン (Visual & Sound Effects) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">03.</span> エフェクト加工 & サウンドデザイン <span class="work-section__en">/ Visual & Sound Effects</span>
+          </h2>
+          <div class="work-card-grid">
+            
+            <div class="work-card">
+              <h3 class="work-card__title">📺 ビジュアルテクスチャ加工</h3>
+              <ul class="work-section__list">
+                <li><strong>走査線・色収差（RGBディスプレイスメント）：</strong> 画面端に色ズレや走査線を乗せ、VHS特有の揺らぎを付与。</li>
+                <li><strong>グレインノイズ & 暗部調整：</strong> 暗部（シャドウ）を潰し気味にし、「画面の暗がりに何かが潜んでいるかもしれない」不安感を演出。</li>
+                <li><strong>質感の統一：</strong> デジタル素材の「綺麗すぎる質感」をあえて崩し、アナログな記憶の像へと昇華。</li>
+              </ul>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">🔊 ローパスフィルターによる音響効果</h3>
+              <p>オーディオエフェクトのローパスフィルターを適用し、ハイ（高音域）をカット。壁越しや閉鎖空間で聴いているような「こもった音」を作ることで、視覚表現と連動した高い没入感を生み出しています。</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+           04. 制作の裏側と試行錯誤 (1カラム縦並び構成)
+           ========================================================================== -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">04.</span> 制作の裏側と試行錯誤 <span class="work-section__en">/ Process & Trial Selection</span>
+          </h2>
+
+          <div class="process-card-list" style="display: flex; flex-direction: column; gap: 24px;">
+
+            <!-- 過程カード 1 -->
+            <article class="work-card">
+              <h3 class="work-card__title">🎬 01. 初期カット組みとテンポ感の検証</h3>
+              <p>フリー動画素材からロケーションを選定し、タイムライン上での基本的な切り貼り（カット割り）を行った段階です。空間の余白と静寂を感じさせるカットの繋がりやストーリーラインのテンポ感を検証しました。</p>
+              <div style="margin-top: 16px;">
+                <video src="BetweenSpaces/process-01-cutting.mp4" controls style="width: 100%; height: auto; border-radius: 8px; display: block;"></video>
+              </div>
+            </article>
+
+            <!-- 過程カード 2 -->
+            <article class="work-card">
+              <h3 class="work-card__title">📼 02. ビジュアルエフェクトと質感（VHS・ノイズ）の調整</h3>
+              <p>走査線や色収差（RGBディスプレイスメント）、グレインノイズを重ね、あえて解像感を落とする調整を行いました。デジタル素材特有の「綺麗すぎるクオリティ」を崩し、古いビデオテープの記憶のような不気味さと奥行きを加えています。</p>
+              <div style="margin-top: 16px;">
+                <video src="BetweenSpaces/process-02-vhs-effect.mp4" controls style="width: 100%; height: auto; border-radius: 8px; display: block;"></video>
+              </div>
+            </article>
+
+            <!-- 過程カード 3 -->
+            <article class="work-card">
+              <h3 class="work-card__title">🔊 03. ローパスフィルターによる遮蔽音と暗部表現の統合</h3>
+              <p>オーディオエフェクト（ローパスフィルター）を適用して高音域を削り、壁越しや水中で聴いているようなこもり感を構築。暗部（シャドウ）の追い込みと音響の閉塞感を組み合わせることで、リミナルスペース特有の孤立感を表現しました。</p>
+              <div style="margin-top: 16px;">
+                <video src="BetweenSpaces/process-03-sound-design.mp4" controls style="width: 100%; height: auto; border-radius: 8px; display: block;"></video>
+              </div>
+            </article>
+
+            <!-- 過程カード 4（完成決定版） -->
+            <article class="work-card">
+              <h3 class="work-card__title">✨ 04. 最終カット（In Between Spaces）の完成と世界観構築</h3>
+              <p>映像の質感・カットの間・音響効果が最も美しく調和する最終構成。1日という短い制作時間の中で、試行錯誤を重ねて「不気味さとセンチメンタルが同居する境界空間」を完成させました。</p>
+              <div style="margin-top: 16px;">
+                <video src="BetweenSpaces/process-04-final-grade.mp4" controls style="width: 100%; height: auto; border-radius: 8px; display: block;"></video>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- 05. 成果と今後の目標 (Outcome & Next Goal) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">05.</span> 成果と今後の目標 <span class="work-section__en">/ Outcome & Next Goal</span>
+          </h2>
+          <div class="work-card">
+            <ul class="work-list">
+              <li>
+                <strong>短時間での世界観構築：</strong><br>
+                1日間という限られた期間の中で、単なる素材集めにとどまらず、不気味さとセンチメンタルが両立する独自の世界観を再現・構築。
+              </li>
+              <li>
+                <strong>演出の深度化（次回の挑戦目標）：</strong><br>
+                さらに余韻を強めるため、次作では<strong>音のピッチをわずかに揺らすテープディストーション（ワウ・フラッター感）</strong>の導入や、<strong>カット切り替え時のフレーム飛ばし（ストロボ感）</strong>などの高度な演出技法に挑戦予定。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 前後作品ナビゲーション -->
+        <nav class="work-nav">
+          <a href="work13.html" class="work-nav__btn">← 前の作品</a>
+          <a href="index.html#works" class="work-nav__btn work-nav__btn--primary">一覧に戻る</a>
+          <a href="work01.html" class="work-nav__btn">次の作品 →</a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+     09_Footer (共通)
+     ========================================================================== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__logo">
+        <a href="index.html">
+          <img src="img/logo03.svg" alt="YBdesign yamabook" class="footer__logo-img">
+        </a>
+      </div>
+      <p class="footer__copyright">&copy; 2026 Yamamoto Portfolio</p>
+    </div>
+  </footer>
+
+</body>
+</html>
