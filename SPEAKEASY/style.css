@@ -1,0 +1,1016 @@
+/* ==========================================================================
+   1. 変数定義 & リセット
+   ========================================================================== */
+:root {
+    --bg-color: #0c0d10;
+    --text-color: #e5e2dd;
+    --brass-gold: #c5a059;
+    --muted-gray: #7a7a7a;
+    --charcoal-panel: #14161b;
+
+    --font-heading: 'Cinzel', 'Zen Old Mincho', serif;
+    --font-body: 'Montserrat', 'Noto Sans JP', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ★追加: ページ内リンク（#lookbook等）をスムーズにスクロールさせる */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.85;
+    letter-spacing: 0.1em;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   2. Header
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.4s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   3. Hero Section
+   ========================================================================== */
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(12, 13, 16, 0.3), rgba(12, 13, 16, 0.8)), 
+                radial-gradient(circle at center, rgba(197, 160, 89, 0.05) 0%, transparent 70%),
+                #15171c;
+    z-index: -1;
+}
+
+.hero-visual::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+}
+
+.hero-content {
+    z-index: 1;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.hero-subtitle {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--brass-gold);
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background-color: var(--text-color);
+    animation: pulseScroll 2s infinite ease-in-out;
+}
+
+@keyframes pulseScroll {
+    0% { transform: scaleY(0.3); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    50.1% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0.3); transform-origin: bottom; }
+}
+
+/* ==========================================================================
+   4. Editorial Sections (Look 01 & Look 02)
+   ========================================================================== */
+.editorial-section {
+    min-height: 100vh;
+    padding: 140px 10vw;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.editorial-section.reverse .editorial-info {
+    order: 1;
+}
+
+.editorial-section.reverse .editorial-media {
+    order: 2;
+}
+
+.editorial-media {
+    width: 100%;
+    height: 72vh;
+    background-color: #14161b;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.editorial-media-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.editorial-media-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 75%;
+    filter: grayscale(20%) contrast(105%) brightness(0.95) sepia(10%);
+    transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.editorial-media:hover img {
+    transform: scale(1.03);
+    filter: grayscale(10%) contrast(105%) brightness(1.05) sepia(5%);
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    color: var(--text-color);
+    opacity: 0.7;
+    text-transform: uppercase;
+    background: rgba(12, 13, 16, 0.65);
+    padding: 6px 12px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(197, 160, 89, 0.15);
+    z-index: 5;
+}
+
+.editorial-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.look-number {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    color: var(--brass-gold);
+    margin-bottom: 22px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.look-title {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 2.6vw, 38px);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    line-height: 1.35;
+    margin-bottom: 25px;
+}
+
+.look-desc {
+    font-size: 12px;
+    line-height: 2.3;
+    color: #b0aba3;
+    letter-spacing: 0.15em;
+    max-width: 420px;
+    margin-bottom: 35px;
+}
+
+.look-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.4s ease, gap 0.4s ease;
+    width: fit-content;
+}
+
+.look-action::after {
+    content: '→';
+    font-family: var(--font-body);
+    transition: transform 0.3s ease;
+}
+
+.look-action:hover {
+    color: var(--brass-gold);
+    gap: 1.5rem;
+}
+
+/* ==========================================================================
+   5. Detail Galleries (MEN & WOMEN)
+   ========================================================================== */
+.details-macro-section {
+    padding: 180px 10vw;
+    background-color: #0e0f13;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.macro-grid {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.macro-card-left,
+.macro-card-top-right,
+.macro-card-bottom-right,
+.macro-card-top-left-women,
+.macro-card-bottom-left-women,
+.macro-card-right-women {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(197, 160, 89, 0.15);
+}
+
+.macro-card-left {
+    width: 100%;
+    height: 65vh;
+}
+
+.macro-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.macro-card-top-right {
+    width: 100%;
+    height: 40vh;
+}
+
+.macro-card-bottom-right {
+    width: 75%;
+    height: 32vh;
+    align-self: flex-end;
+}
+
+.macro-grid-women {
+    display: grid;
+    grid-template-columns: 1fr 42%;
+    gap: 50px;
+    align-items: start;
+}
+
+.macro-col-left-women {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.macro-card-top-left-women {
+    width: 80%;
+    height: 30vh;
+}
+
+.macro-card-bottom-left-women {
+    width: 100%;
+    height: 38vh;
+}
+
+.macro-card-right-women {
+    width: 100%;
+    height: 70vh;
+}
+
+.macro-card-left img,
+.macro-card-top-right img,
+.macro-card-bottom-right img,
+.macro-card-top-left-women img,
+.macro-card-bottom-left-women img,
+.macro-card-right-women img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: grayscale(35%) contrast(115%) brightness(0.75) sepia(15%);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.macro-card-bottom-right img {
+    object-position: 40% center;
+}
+
+.macro-card-left:hover img,
+.macro-card-top-right:hover img,
+.macro-card-bottom-right:hover img,
+.macro-card-top-left-women:hover img,
+.macro-card-bottom-left-women:hover img,
+.macro-card-right-women:hover img {
+    transform: scale(1.03);
+}
+
+.macro-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 25px 20px 25px;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--text-color);
+    z-index: 10;
+    line-height: 1.8;
+    background: linear-gradient(
+        to top, 
+        rgba(12, 13, 16, 0.95) 0%, 
+        rgba(12, 13, 16, 0.6) 60%, 
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+.macro-label span {
+    display: block;
+    font-size: 9px;
+    color: var(--brass-gold);
+    margin-bottom: 6px;
+    letter-spacing: 0.35em;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   6. Mood / Atmosphere Inserts
+   ========================================================================== */
+.mood-insert-section {
+    padding: 120px 15vw;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mood-insert-section.full-width {
+    padding: 0;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-bottom: 140px;
+}
+
+.mood-insert-section.full-width .mood-image-wrap.narrow {
+    width: 100%;
+    height: 52vh;
+    max-width: 100%;
+    margin: 0;
+    border-left: none;
+    border-right: none;
+}
+
+.mood-insert-section.small-pad {
+    padding: 60px 15vw 140px 15vw;
+}
+
+.mood-image-wrap {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(197, 160, 89, 0.15);
+}
+
+.mood-image-wrap.narrow {
+    height: 32vh;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.mood-image-wrap.satin-flavor {
+    height: 45vh;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.mood-image-wrap.panorama-flavor {
+    width: 100vw;
+    height: 55vh;
+    max-width: 100%;
+    margin: 0;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.mood-image-wrap.panorama-flavor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(30%) contrast(115%) brightness(0.8) sepia(15%);
+}
+
+.mood-image-wrap.landscape-half {
+    width: 100%;
+    max-width: 780px;
+    height: auto;
+    aspect-ratio: 1266 / 300;
+    margin: 0 auto;
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    background-color: #050507;
+}
+
+.mood-image-wrap.landscape-half img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: grayscale(30%) contrast(120%) brightness(0.85) sepia(10%);
+}
+
+.mood-dual-section {
+    padding: 140px 10vw;
+    background-color: #0e0f13;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.mood-small-card {
+    width: 100%;
+    height: 38vh;
+    position: relative;
+    border: 1px solid rgba(197, 160, 89, 0.15);
+    overflow: hidden;
+}
+
+.mood-small-card.offset {
+    transform: translateY(45px);
+}
+
+.mood-small-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(35%) contrast(115%) brightness(0.75) sepia(15%);
+}
+
+.mood-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--text-color);
+    opacity: 0.7;
+    text-transform: uppercase;
+    background: rgba(12, 13, 16, 0.65);
+    padding: 6px 12px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(197, 160, 89, 0.15);
+    z-index: 5;
+}
+
+/* ==========================================================================
+   7. Full Bleed Cinematic Break
+   ========================================================================== */
+.full-bleed-section {
+    width: 100vw;
+    height: 75vh;
+    position: relative;
+    background: linear-gradient(135deg, #090a0d 0%, #12141a 50%, #0c0d10 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.full-bleed-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 20, 26, 0) 50%, 
+        rgba(0, 0, 0, 0.35) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.full-bleed-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    z-index: 2;
+    pointer-events: none;
+}
+
+.cinematic-bg {
+    display: none;
+}
+
+.full-bleed-quote {
+    position: relative;
+    z-index: 3;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(16px, 2.2vw, 26px);
+    letter-spacing: 0.2em;
+    color: rgba(229, 226, 221, 0.95);
+    max-width: 800px;
+    padding: 0 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+/* ==========================================================================
+   8. Stamp Strip Gallery
+   ========================================================================== */
+.stamp-strip-section {
+    padding: 140px 10vw;
+    background-color: var(--bg-color);
+}
+
+.stamp-strip-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        90deg, 
+        transparent 0%, 
+        rgba(197, 160, 89, 0.35) 20%, 
+        rgba(197, 160, 89, 0.35) 80%, 
+        transparent 100%
+    );
+    margin: 50px 0;
+}
+
+.stamp-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.stamp-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.stamp-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background-color: #14161b;
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    padding: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.stamp-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%) contrast(110%) brightness(0.8);
+}
+
+.stamp-num {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: var(--font-heading);
+    font-size: 8px;
+    color: var(--brass-gold);
+    letter-spacing: 0.1em;
+    background: rgba(12, 13, 16, 0.7);
+    padding: 2px 5px;
+    border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.stamp-label {
+    font-family: var(--font-heading);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--muted-gray);
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   9. Collection Archive
+   ========================================================================== */
+.catalog-section {
+    padding: 140px 10vw;
+}
+
+.catalog-section-title {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    letter-spacing: 0.2em;
+    margin-bottom: 60px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-image-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-height: 320px;
+    background-color: var(--charcoal-panel);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.product-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(35%) contrast(115%) brightness(0.75) sepia(15%);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-image-wrap:hover img {
+    transform: scale(1.025);
+}
+
+.product-image-wrap:hover {
+    border-color: rgba(197, 160, 89, 0.45);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.product-name {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+}
+
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--muted-gray);
+    letter-spacing: 0.1em;
+}
+
+.product-price {
+    font-size: 11px;
+    color: var(--brass-gold);
+    letter-spacing: 0.15em;
+}
+
+.catalog-external-link-wrap {
+    margin-top: 90px;
+    display: flex;
+    justify-content: center;
+}
+
+.catalog-pdf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 18px 40px;
+    background-color: transparent;
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.catalog-pdf-btn:hover {
+    color: var(--brass-gold);
+    border-color: var(--brass-gold);
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.1);
+}
+
+.pdf-icon {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.catalog-pdf-btn:hover .pdf-icon {
+    transform: translateY(2px) translateX(2px);
+}
+
+/* ==========================================================================
+   10. Loyalty & Footer
+   ========================================================================== */
+.loyalty-section {
+    padding: 140px 10vw;
+    background: #0e0f13;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.loyalty-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    margin-bottom: 15px;
+}
+
+.loyalty-desc {
+    font-size: 11px;
+    color: var(--muted-gray);
+    letter-spacing: 0.15em;
+    margin-bottom: 40px;
+}
+
+.loyalty-form {
+    display: inline-flex;
+    gap: 15px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.loyalty-input {
+    flex: 1;
+    background: transparent;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    padding: 14px 20px;
+    color: var(--text-color);
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    outline: none;
+}
+
+.loyalty-input::placeholder {
+    color: var(--muted-gray);
+}
+
+.loyalty-btn {
+    background: var(--brass-gold);
+    border: none;
+    padding: 14px 30px;
+    color: #0c0d10;
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.loyalty-btn:hover {
+    opacity: 0.85;
+}
+
+/* ★追加: フォーム送信後の成功メッセージアニメーション用スタイル */
+.loyalty-success-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    background: rgba(20, 22, 27, 0.8);
+    backdrop-filter: blur(8px);
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loyalty-success-msg.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.loyalty-success-title {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: var(--brass-gold);
+    text-transform: uppercase;
+}
+
+.loyalty-success-sub {
+    font-size: 10px;
+    color: var(--text-color);
+    letter-spacing: 0.15em;
+    opacity: 0.8;
+}
+
+footer {
+    padding: 60px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--muted-gray);
+}
+
+.footer-logo {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   11. Responsive Design
+   ========================================================================== */
+@media (max-width: 900px) {
+    header {
+        padding: 20px 30px;
+    }
+    .nav-links {
+        display: none;
+    }
+    .editorial-section, 
+    .macro-grid, 
+    .macro-grid-women, 
+    .mood-dual-section {
+        grid-template-columns: 1fr;
+        padding: 100px 30px;
+        gap: 40px;
+    }
+    .editorial-section.reverse .editorial-info,
+    .editorial-section.reverse .editorial-media {
+        order: unset;
+    }
+    .editorial-media, 
+    .macro-card-left, 
+    .macro-card-top-right, 
+    .macro-card-bottom-right,
+    .macro-card-top-left-women, 
+    .macro-card-bottom-left-women, 
+    .macro-card-right-women,
+    .mood-small-card {
+        height: 50vh;
+        width: 100%;
+    }
+    .stamp-strip-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .loyalty-form {
+        flex-direction: column;
+    }
+    footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}

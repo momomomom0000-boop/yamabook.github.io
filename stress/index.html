@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定時退社バトル | ストレス・コア</title>
+    <style>
+        /* 全体のスタイル */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'メイリオ';
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        /* ナビゲーションメニューバー */
+        .navbar {
+            width: 100%;
+            background-color: #1e1e1e;
+            border-bottom: 2px solid #333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            box-sizing: border-box;
+        }
+
+        .navbar-brand {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 15px;
+        }
+
+        .navbar-menu li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-menu li a:hover,
+        .navbar-menu li a.active {
+            color: #ffffff;
+            background-color: #2c2c2c;
+        }
+
+        /* メインコンテンツエリア */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* カードの外観 */
+        .character-card {
+            background-color: #1e1e1e;
+            border: 2px solid #333;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            max-width: 420px;
+            width: 100%;
+            padding: 25px;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ヘッダー周り */
+        .badge {
+            background-color: #ff3333;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 12px;
+            letter-spacing: 1px;
+        }
+
+        .character-title {
+            font-size: 2rem;
+            margin: 10px 0 5px 0;
+            color: #ffffff;
+        }
+
+        .character-sub {
+            font-size: 1rem;
+            color: #888;
+            margin: 0 0 15px 0;
+        }
+
+        /* 画像表示部分 */
+        .character-image-container {
+            background-color: #000;
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .character-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            margin: 0 auto;
+            transition: transform 0.05s ease;
+        }
+
+        /* 画面揺れ演出 */
+        .shake {
+            animation: shake 0.2s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            40% { transform: translate(1px, -1px) rotate(-1deg); }
+            60% { transform: translate(-1px, 1px) rotate(0deg); }
+            80% { transform: translate(3px, 1px) rotate(1deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        /* ゲージエリア */
+        .status-container {
+            margin-bottom: 15px;
+        }
+
+        .status-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .progress-bar-bg {
+            background-color: #333;
+            border-radius: 8px;
+            height: 16px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            height: 100%;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* セリフ・吹き出し */
+        .speech-bubble {
+            background-color: #262626;
+            border: 1px solid #444;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #ff6b6b;
+            font-weight: bold;
+            min-height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        /* 定時退社ボタン */
+        .leave-work-btn {
+            background-color: #a3b18a;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #788563;
+            transition: all 0.05s ease;
+            width: 100%;
+        }
+
+        .leave-work-btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        .btn-note {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        /* ゲームオーバー／クリアのモーダル */
+        .modal {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .restart-btn {
+            background-color: #3a86ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- メニューバー -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <span>🤯</span> ストレス・コア
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="active">ゲーム</a></li>
+                <li><a href="goods.html">グッズ</a></li>
+                <li><a href="#" onclick="alert('ストレス・コア：24時間365日無休で働く限界社会人の霊体。')">図鑑</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- メイン領域 -->
+    <div class="main-container">
+        <div class="character-card" id="card">
+            <div class="card-header">
+                <span class="badge" id="badge">DANGER</span>
+                <h1 class="character-title">ああああ🤯</h1>
+                <p class="character-sub">ストレス・コア</p>
+            </div>
+
+            <div class="character-image-container">
+                <img src="stress_core.png" alt="ストレス・コア" class="character-image" id="core-img">
+            </div>
+
+            <!-- ストレス抵抗値（進行度ゲージ） -->
+            <div class="status-container">
+                <div class="status-label">
+                    <span>退社手続き進行度</span>
+                    <span id="progress-text">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- メッセージ表示エリア -->
+            <div class="speech-bubble" id="speech">
+                「ボタンを押しても何も起きないぞ…？」
+            </div>
+
+            <!-- 操作ボタン -->
+            <div class="button-container">
+                <button class="leave-work-btn" id="action-btn" type="button">定時退社</button>
+                <p class="btn-note" id="btn-note">※押しても特に何も起きません。</p>
+            </div>
+
+            <!-- 結果表示オーバーレイ -->
+            <div class="modal" id="modal">
+                <h2 class="modal-title" id="modal-title">残業確定</h2>
+                <p class="modal-desc" id="modal-desc">ストレス・コアの「ああああ」という叫びに呑み込まれ、定時退社に失敗した…</p>
+                <button class="restart-btn" id="restart-btn">再挑戦する</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ゲーム状態の管理
+        let progress = 0;
+        let isPlaying = false;
+        let gameTimer = null;
+        let decayTimer = null;
+
+// セリフデータ（50種類）
+const coreQuotes = [
+    // --- 【1. 緊急・飛び込み作業】 ---
+    "ああああ！！（「急に仕様変更が入りました」）",
+    "あああああ！！！（「その件、今日中でお願いできる？」）",
+    "あ！あ！あ！あ！（「定時直前ですが緊急MTGです」）",
+    "ああああ（「本番環境にバグが出ました」）",
+    "あーあーあー（「至急対応が必要な案件です」）",
+    "あああ！！（「今すぐ電話できますか？」）",
+    "あ？あ？（「昨日の修正、先祖返りしてない？」）",
+    "あああああ（「クライアントから急ぎで確認が入りました」）",
+    "あー！！（「差し戻しが発生しました」）",
+    "あああ...（「これ本日中のマスト案件でした」）",
+
+    // --- 【2. コミュニケーション・指示】 ---
+    "あああああああ！！！！（「これ、昨日言ったよね？」）",
+    "あーあーあーあー（「メール送ったので確認してください」）",
+    "ああ（「言わなくても察して欲しかった」）",
+    "あ...あ...（「前回の打ち合わせで言いましたよね？」）",
+    "あああ（「よしなにやっておいて」）",
+    "あーあ（「前言撤回で、最初の案に戻して」）",
+    "あ！あ！（「チャットの返信、まだですか？」）",
+    "あああ？（「その数字の根拠って何？」）",
+    "あーあー（「認識のズレがあるみたいです」）",
+    "ああああ（「ボールはそっちにあると思ってた」）",
+
+    // --- 【3. 思考停止・脳内パンク】 ---
+    "🤯🤯🤯（「脳の処理能力が限界を迎えています」）",
+    "あ、あ、あ...（「思考回路が焼き切れました」）",
+    "あああああああ（「日本語が頭に入ってきません」）",
+    "あー...（「ゲシュタルト崩壊を起こしています」）",
+    "あ！（「何をしにこの部屋に来たか忘れました」）",
+    "ああー（「考えるのをやめました」）",
+    "あ...（「意識が遠のいています」）",
+    "ああああ（「画面の文字がすべて呪文に見えます」）",
+    "あーあーあー（「現実逃避を開始します」）",
+    "あああ！！（「もう何もかも嫌になりました」）",
+
+    // --- 【4. 残業・休日出勤】 ---
+    "あ...あ...（「終電の時間が近づいています」）",
+    "あああああ（「今日って何曜日だっけ...？」）",
+    "あーあ（「土日の予定、キャンセルで」）",
+    "あ！あ！（「会社に泊まった方が早いのでは？」）",
+    "あああ（「朝日が眩しいです」）",
+    "あ...（「タクシー代って経費でおちますか？」）",
+    "ああああ（「夢の中でも仕事をしていました」）",
+    "あーあー（「休日のSlack通知音が幻聴で聞こえます」）",
+    "あ！（「気がつけばデスクで朝を迎えていました」）",
+    "あああ...（「有休申請が消滅しました」）",
+
+    // --- 【5. 身体的限界・叫び】 ---
+    "あああああ！！（「肩こりと腰痛が限界です」）",
+    "あー（「目が霞んで画面が見えません」）",
+    "あ！あ！（「カフェインが効かなくなりました」）",
+    "ああああ（「エナジードリンク3本目です」）",
+    "あ...あ...（「キーボードを打つ指が動きません」）",
+    "あーあー（「声の出し方を忘れました」）",
+    "あああ！（「胃が痛いです」）",
+    "あ（「ため息しか出ません」）",
+    "ああああああ（「帰りたい帰りたい帰りたい」）",
+    "🤯🤯（「定時退社は幻想でした」）"
+];
+
+        // DOM要素
+        const btn = document.getElementById('action-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const speech = document.getElementById('speech');
+        const coreImg = document.getElementById('core-img');
+        const card = document.getElementById('card');
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const restartBtn = document.getElementById('restart-btn');
+        const btnNote = document.getElementById('btn-note');
+
+        // ボタンクリック時の挙動
+        btn.addEventListener('click', () => {
+            if (!isPlaying) {
+                startGame();
+            }
+
+            // クリックごとに進行度アップ
+            progress += 5.5;
+            if (progress > 100) progress = 100;
+
+            // 画像のプチアニメーション
+            coreImg.style.transform = `scale(${1 + progress / 200})`;
+
+            // ランダムに「叫び」を更新
+            if (Math.random() < 0.3) {
+                const randomQuote = coreQuotes[Math.floor(Math.random() * coreQuotes.length)];
+                speech.textContent = randomQuote;
+            }
+
+            updateUI();
+
+            // 100%に達したら勝利
+            if (progress >= 100) {
+                winGame();
+            }
+        });
+
+        function startGame() {
+            isPlaying = true;
+            btnNote.textContent = "※連打してストレス抵抗を打ち破れ！";
+            card.classList.add('shake');
+
+            // 進行度の自動減少（ストレス・コアの抵抗）
+            decayTimer = setInterval(() => {
+                if (progress > 0) {
+                    progress -= 2.2;
+                    if (progress < 0) progress = 0;
+                    updateUI();
+                }
+            }, 100);
+
+            // 10秒間のタイムリミット
+            gameTimer = setTimeout(() => {
+                if (progress < 100) {
+                    loseGame();
+                }
+            }, 10000);
+        }
+
+        function updateUI() {
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `${Math.floor(progress)}%`;
+        }
+
+        function stopGame() {
+            isPlaying = false;
+            clearInterval(decayTimer);
+            clearTimeout(gameTimer);
+            card.classList.remove('shake');
+            coreImg.style.transform = 'scale(1)';
+        }
+
+        function winGame() {
+            stopGame();
+            modalTitle.textContent = "🎉 定時退社成功！";
+            modalTitle.style.color = "#4ea8de";
+            modalDesc.textContent = "「ああああ」の叫びをねじ伏せ、無事にPCを閉じることに成功した！お疲れ様でした！";
+            modal.style.display = "flex";
+        }
+
+        function loseGame() {
+            stopGame();
+            modalTitle.textContent = "💀 残業確定（定時退社失敗）";
+            modalTitle.style.color = "#ff4d4d";
+            modalDesc.textContent = "ストレス・コアの圧倒的な「ああああ」にかき消され、時計は18時を回ってしまった…";
+            modal.style.display = "flex";
+        }
+
+        // リセット機能
+        restartBtn.addEventListener('click', () => {
+            progress = 0;
+            updateUI();
+            speech.textContent = "「ボタンを押しても何も起きないぞ…？」";
+            btnNote.textContent = "※押しても特に何も起きません。";
+            modal.style.display = "none";
+        });
+    </script>
+</body>
+</html>

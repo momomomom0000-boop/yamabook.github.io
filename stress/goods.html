@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公式グッズ | ストレス・コア</title>
+    <style>
+        /* 全体のスタイル */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'メイリオ';
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ナビゲーションメニューバー */
+        .navbar {
+            width: 100%;
+            background-color: #1e1e1e;
+            border-bottom: 2px solid #333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            box-sizing: border-box;
+        }
+
+        .navbar-brand {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 15px;
+        }
+
+        .navbar-menu li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .navbar-menu li a:hover,
+        .navbar-menu li a.active {
+            color: #ffffff;
+            background-color: #2c2c2c;
+        }
+
+        /* メインコンテンツエリア */
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 30px 20px;
+            box-sizing: border-box;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            color: #ffffff;
+            margin: 0 0 10px 0;
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            color: #888;
+            margin: 0;
+        }
+
+        /* グッズグリッド構造 */
+        .goods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        /* グッズカード */
+        .goods-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .goods-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            border-color: #555;
+        }
+
+        .goods-image-box {
+            background-color: #000;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            position: relative;
+        }
+
+        .goods-image {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .goods-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff3333;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .goods-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .goods-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 0 0 8px 0;
+        }
+
+        .goods-desc {
+            font-size: 0.85rem;
+            color: #aaa;
+            line-height: 1.4;
+            margin: 0 0 15px 0;
+            flex-grow: 1;
+        }
+
+        .goods-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #2a2a2a;
+            padding-top: 12px;
+        }
+
+        .goods-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .buy-btn {
+            background-color: #3a86ff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .buy-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .buy-btn:disabled {
+            background-color: #444;
+            color: #888;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- メニューバー -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <span>🤯</span> ストレス・コア
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html">ゲーム</a></li>
+                <li><a href="goods.html" class="active">グッズ</a></li>
+                <li><a href="#" onclick="alert('ストレス・コア：24時間365日無休で働く限界社会人の霊体。')">図鑑</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- グッズ一覧エリア -->
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">OFFICIAL GOODS</h1>
+            <p class="page-subtitle">限界社会人に捧ぐ、ストレス・コア公式ストア</p>
+        </div>
+
+        <div class="goods-grid">
+
+            <!-- 商品1 -->
+            <div class="goods-card">
+                <div class="goods-image-box">
+                    <span class="goods-badge">人気No.1</span>
+                    <img src="cushion.png" alt="ストレス・コア クッション" class="goods-image">
+                </div>
+                <div class="goods-info">
+                    <h2 class="goods-title">ストレス・コア 抱き枕クッション</h2>
+                    <p class="goods-desc">デスクワークの背もたれに最適。サイボーグアーム部分に腕を通して寝落ちできます。</p>
+                    <div class="goods-bottom">
+                        <span class="goods-price">¥38,900</span>
+                        <button class="buy-btn" onclick="buyItem('ストレス・コア 抱き枕クッション')">購入する</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品2 -->
+<div class="goods-card">
+    <div class="goods-image-box">
+        <span class="goods-badge">NEW</span>
+        <!-- SVGによるキーホルダーのリアルな描画 -->
+        <svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <!-- キーチェーンリング -->
+            <circle cx="100" cy="25" r="12" fill="none" stroke="#c0c0c0" stroke-width="4" />
+            <circle cx="100" cy="25" r="12" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6" />
+            
+            <!-- チェーン部分 -->
+            <path d="M 100,37 L 100,55" stroke="#a0a0a0" stroke-width="4" stroke-dasharray="2 3" />
+            
+            <!-- アクリル本体（透明感のあるプレート） -->
+            <rect x="35" y="55" width="130" height="110" rx="16" fill="rgba(255, 255, 255, 0.08)" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+            <!-- アクリルの厚み・光沢の演出 -->
+            <rect x="37" y="57" width="126" height="106" rx="14" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1" />
+            
+            <!-- アクリル内のパーツ：定時退社ボタン（緑色） -->
+            <rect x="50" y="75" width="100" height="50" rx="10" fill="#a3b18a" stroke="#788563" stroke-width="3" />
+            <rect x="53" y="78" width="94" height="20" rx="6" fill="rgba(255, 255, 255, 0.2)" />
+            <text x="100" y="106" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">定時退社</text>
+            
+            <!-- アクリル内のパーツ：ストレス・コアアイコン -->
+            <g transform="translate(100, 142) scale(0.7)">
+                <circle cx="0" cy="0" r="12" fill="#000000" />
+                <ellipse cx="-4" cy="-3" rx="2.5" ry="1.5" fill="#ffffff" />
+                <circle cx="-4" cy="-3" r="1" fill="#5c3a21" />
+                <ellipse cx="4" cy="-3" rx="2.5" ry="1.5" fill="#ffffff" />
+                <circle cx="4" cy="-3" r="1" fill="#5c3a21" />
+                <path d="M -4,3 Q 0,7 4,3 Q 0,4 -4,3" fill="#ff4d6d" />
+            </g>
+
+            <!-- アクリル表面の斜めハイライト（光の反射） -->
+            <path d="M 45,55 L 120,55 L 60,165 L 35,165 Z" fill="rgba(255, 255, 255, 0.12)" />
+        </svg>
+    </div>
+    <div class="goods-info">
+        <h2 class="goods-title">「定時退社」アクリルキーホルダー</h2>
+        <p class="goods-desc">押しても特に何も起きないボタンのキーホルダー。持ち歩くだけで定時退社欲が高まります。</p>
+        <div class="goods-bottom">
+            <span class="goods-price">¥880</span>
+            <button class="buy-btn" onclick="buyItem('定時退社アクリルキーホルダー')">購入する</button>
+        </div>
+    </div>
+</div>
+
+            <!-- 商品3 -->
+<!-- 商品3 -->
+<div class="goods-card">
+    <div class="goods-image-box">
+        <!-- SVGによるTシャツのリアルな描画 -->
+        <svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <!-- Tシャツ本体 -->
+            <path d="M 50,40 L 75,30 Q 100,45 125,30 L 150,40 L 180,75 L 155,95 L 145,80 L 145,170 Q 100,175 55,170 L 55,80 L 45,95 L 20,75 Z" fill="#222222" stroke="#444444" stroke-width="2" />
+            <!-- 襟元 -->
+            <path d="M 75,30 Q 100,50 125,30" fill="none" stroke="#444444" stroke-width="3" />
+            
+            <!-- 胸ポケット -->
+            <rect x="115" y="80" width="22" height="25" rx="2" fill="#1a1a1a" stroke="#333333" stroke-width="1.5" />
+            
+            <!-- ポケットから覗くストレス・コア（黒い丸＋目＋唇） -->
+            <g transform="translate(126, 76) scale(0.6)">
+                <!-- 本体 -->
+                <circle cx="0" cy="0" r="12" fill="#000000" />
+                <!-- 目 -->
+                <ellipse cx="-4" cy="-3" rx="2.5" ry="1.5" fill="#ffffff" />
+                <circle cx="-4" cy="-3" r="1" fill="#5c3a21" />
+                <ellipse cx="4" cy="-3" rx="2.5" ry="1.5" fill="#ffffff" />
+                <circle cx="4" cy="-3" r="1" fill="#5c3a21" />
+                <!-- 唇 -->
+                <path d="M -4,3 Q 0,7 4,3 Q 0,4 -4,3" fill="#ff4d6d" />
+            </g>
+            
+            <!-- プリントテキスト「ああああ」 -->
+            <text x="126" y="118" font-family="'Segoe UI', sans-serif" font-size="6" font-weight="bold" fill="#ff4d4d" text-anchor="middle">ああああ</text>
+        </svg>
+    </div>
+    <div class="goods-info">
+        <h2 class="goods-title">「ああああ」胸ポケットTシャツ</h2>
+        <p class="goods-desc">胸ポケットからストレス・コアが覗くデザイン。会議で言葉を失った時に指をさしてアピールできます。</p>
+        <div class="goods-bottom">
+            <span class="goods-price">¥2,980</span>
+            <button class="buy-btn" onclick="buyItem('「ああああ」胸ポケットTシャツ')">購入する</button>
+        </div>
+    </div>
+</div>
+
+            <!-- 商品4 -->
+            <div class="goods-card">
+                <div class="goods-image-box">
+                    <span class="goods-badge" style="background-color: #888;">売り切れ</span>
+                    <img src="drink.jpg" alt="エナジードリンク" class="goods-image" style="opacity: 0.5;">
+                </div>
+                <div class="goods-info">
+                    <h2 class="goods-title">ストレス・コア 24時間稼働エナジー</h2>
+                    <p class="goods-desc">脳が爆発しそうな時に飲む過酷労働専用ドリンク。（※好評につき完売しました）</p>
+                    <div class="goods-bottom">
+                        <span class="goods-price">¥2,000</span>
+                        <button class="buy-btn" disabled>SOLD OUT</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function buyItem(itemName) {
+            alert(`「${itemName}」をカートに追加しました！\n（※ストレス・コアが24時間体制で出荷準備を開始します）`);
+        }
+    </script>
+</body>
+</html>

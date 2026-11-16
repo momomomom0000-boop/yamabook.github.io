@@ -1,0 +1,136 @@
+/* 全体のスタイル設定 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'メイリオ';
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* カードの外観 */
+.character-card {
+    background-color: #1e1e1e;
+    border: 2px solid #333;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    max-width: 420px;
+    width: 100%;
+    padding: 25px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* ヘッダー周り */
+.badge {
+    background-color: #ff3333;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 12px;
+    letter-spacing: 1px;
+}
+
+.character-title {
+    font-size: 2rem;
+    margin: 10px 0 5px 0;
+    color: #ffffff;
+}
+
+.character-sub {
+    font-size: 1rem;
+    color: #888;
+    margin: 0 0 20px 0;
+}
+
+/* 画像表示部分 */
+.character-image-container {
+    background-color: #000;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+}
+
+.character-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* ステータス・説明文 */
+.character-info {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 0.95rem;
+}
+
+.label {
+    color: #888;
+    font-weight: bold;
+}
+
+.value {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.description-box {
+    margin-top: 15px;
+    background-color: #262626;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.description-box p {
+    margin: 0 0 10px 0;
+}
+
+.description-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* 定時退社ボタン */
+.button-container {
+    margin-top: 20px;
+}
+
+.leave-work-btn {
+    background-color: #a3b18a;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #788563;
+    transition: all 0.1s ease;
+    width: 100%;
+}
+
+.leave-work-btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+.btn-note {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 8px;
+}
