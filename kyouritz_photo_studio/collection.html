@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F2EDE3">
+  <meta name="description" content="kyouritz photo studioの衣裳コレクション詳細。ウェディングドレス、和装、タキシードの各3種ラインナップと素材へのこだわり、無料試着会の流れをご紹介します。">
+  <title>Collection &amp; Fitting | kyouritz photo studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/collection.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="kyouritz photo studio トップ">
+      <img src="img/logo-b.svg" alt="kyouritz photo studio">
+    </a>
+    <nav class="header-nav" aria-label="メインナビゲーション">
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="stories.html">お客様の声</a>
+      <a href="plans.html">プラン・アクセス</a>
+    </nav>
+    <a class="header-cta" href="reserve.html">試着会予約</a>
+    
+    <!-- ハンバーガーボタン -->
+    <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-menu">
+      <svg class="menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <line class="bar bar-1" x1="3" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-2" x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-3" x1="3" y1="17" x2="21" y2="17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </header>
+
+  <nav class="site-menu" id="site-menu" aria-label="サイトメニュー" hidden>
+    <button class="menu-close" type="button" aria-label="メニューを閉じる">×</button>
+    <span class="eyebrow">MENU</span>
+    <a href="index.html#top">トップページ</a>
+    <a href="index.html#intro">私たちの想い</a>
+    <a href="gallery.html">ギャラリー・ロケーション</a>
+    <a href="collection.html">衣裳コレクション</a>
+    <a href="photographers.html">カメラマン紹介</a>
+    <a href="stories.html">お客様の声・撮影レポート</a>
+    <a href="plans.html">プラン・料金詳細</a>
+    <a class="menu-reserve" href="reserve.html">無料試着会を予約する ↗</a>
+  </nav>
+  <button class="menu-scrim" type="button" aria-label="メニューを閉じる" hidden></button>
+  <main id="top">
+    <!-- パンくずリスト -->
+    <nav class="breadcrumbs" aria-label="パンくずリスト">
+      <div class="breadcrumbs-inner">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="index.html">
+              <span itemprop="name">HOME</span>
+            </a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">衣裳コレクション</span>
+            <meta itemprop="position" content="2">
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- 下層ページ用ヘッダーセクション -->
+    <section class="hero" style="min-height: 420px; height: 50svh;" aria-label="衣裳コレクションヘッダー">
+      <div class="hero-slides">
+        <figure class="hero-slide is-active">
+          <img src="img/clothes-dress.jpg" alt="ウェディングドレスのコレクション" fetchpriority="high">
+        </figure>
+      </div>
+      <div class="hero-shade"></div>
+      <div class="hero-content" style="transform: translateY(-38%);">
+        <span class="eyebrow">DRESS &amp; KIMONO COLLECTION</span>
+        <h1 style="font-size: clamp(24px, 3.5vw, 38px);">ふたりの物語を彩る、<br>運命の一着。</h1>
+        <p>纏った瞬間、心がときめくドレス、和装、タキシード。各テイスト3つのスタイルから、お気に入りの一着を見つけてください。</p>
+      </div>
+    </section>
+
+    <!-- 衣裳コレクション本編（ココアブラウン背景 #3E312D） -->
+    <section class="clothes" id="collection-main" style="padding: 110px 0;">
+      <div class="clothes-inner" style="max-width: 1100px;">
+        <div class="clothes-heading">
+          <img class="clothes-logo" src="img/logo-a.svg" alt="kyouritz photo studio">
+          <span class="eyebrow">LINEUP</span>
+          <h2>衣裳ラインナップ（各3スタイル）</h2>
+          <p>タブを切り替えて、テイストごとの詳細サンプルをご覧ください。</p>
+        </div>
+        
+        <!-- タブ切り替え -->
+        <div class="clothes-tabs" role="tablist" aria-label="衣裳の種類">
+          <button class="clothes-tab is-active" type="button" role="tab" id="tab-dress" aria-selected="true" aria-controls="panel-dress">Dress</button>
+          <button class="clothes-tab" type="button" role="tab" id="tab-kimono" aria-selected="false" aria-controls="panel-kimono" tabindex="-1">Kimono</button>
+          <button class="clothes-tab" type="button" role="tab" id="tab-tuxedo" aria-selected="false" aria-controls="panel-tuxedo" tabindex="-1">Tuxedo</button>
+        </div>
+        
+        <!-- パネル群（各3カラム横一列グリッド） -->
+        <div class="clothes-panels-wrap">
+          
+  <!-- 1. Dress パネル -->
+          <div class="clothes-panel is-active" role="tabpanel" id="panel-dress" aria-labelledby="tab-dress">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch;" class="clothes-grid-3col">
+              
+              <!-- 1着目：クラシック・Aライン -->
+              <button class="clothes-photo" type="button" data-lightbox data-src="img/dress-01.jpg" data-alt="クラシック・Aラインドレス" data-photographer="Style: Classic A-Line" style="text-align: left; background: #55443e; padding: 0; border: 0; cursor: zoom-in; display: flex; flex-direction: column;">
+                <img src="img/dress-01.jpg" alt="クラシック・Aラインドレス" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+                <div style="padding: 18px; color: var(--bone); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="eyebrow" style="color: var(--banana); font-size: 10px;">01 / DRESS</span>
+                    <h4 style="font-family: var(--serif); font-size: 16px; margin: 6px 0 4px;">クラシック・Aライン</h4>
+                    <p style="font-size: 11px; margin: 0; opacity: 0.85; line-height: 1.6;">繊細なリバーレースが織りなす王道の気品。チャペルや歴史ある建築物に最適。</p>
+                  </div>
+                  <span style="display: inline-block; margin-top: 12px; font-family: var(--english); font-size: 10px; letter-spacing: 0.12em; color: var(--banana);">VIEW ↗</span>
+                </div>
+              </button>
+
+              <!-- 2着目：ナチュラル・スレンダー -->
+              <button class="clothes-photo" type="button" data-lightbox data-src="img/dress-02.jpg" data-alt="ナチュラル・スレンダー" data-photographer="Style: Natural Slender" style="text-align: left; background: #55443e; padding: 0; border: 0; cursor: zoom-in; display: flex; flex-direction: column;">
+                <img src="img/dress-02.jpg" alt="ナチュラル・スレンダー" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+                <div style="padding: 18px; color: var(--bone); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="eyebrow" style="color: var(--banana); font-size: 10px;">02 / DRESS</span>
+                    <h4 style="font-family: var(--serif); font-size: 16px; margin: 6px 0 4px;">ナチュラル・スレンダー</h4>
+                    <p style="font-size: 11px; margin: 0; opacity: 0.85; line-height: 1.6;">風を孕むエアリーなチュール素材。ビーチや自然豊かなロケーションに。</p>
+                  </div>
+                  <span style="display: inline-block; margin-top: 12px; font-family: var(--english); font-size: 10px; letter-spacing: 0.12em; color: var(--banana);">VIEW ↗</span>
+                </div>
+              </button>
+
+              <!-- 3着目：ミニマル・モダン -->
+              <button class="clothes-photo" type="button" data-lightbox data-src="img/dress-03.jpg" data-alt="ミニマル・モダン" data-photographer="Style: Minimal Modern" style="text-align: left; background: #55443e; padding: 0; border: 0; cursor: zoom-in; display: flex; flex-direction: column;">
+                <img src="img/dress-03.jpg" alt="ミニマル・モダン" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+                <div style="padding: 18px; color: var(--bone); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="eyebrow" style="color: var(--banana); font-size: 10px;">03 / DRESS</span>
+                    <h4 style="font-family: var(--serif); font-size: 16px; margin: 6px 0 4px;">ミニマル・モダン</h4>
+                    <p style="font-size: 11px; margin: 0; opacity: 0.85; line-height: 1.6;">マットサテンが映える都会的シルエット。大人の洗練された美しさを演出。</p>
+                  </div>
+                  <span style="display: inline-block; margin-top: 12px; font-family: var(--english); font-size: 10px; letter-spacing: 0.12em; color: var(--banana);">VIEW ↗</span>
+                </div>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- 2. Kimono パネル -->
+          <div class="clothes-panel" role="tabpanel" id="panel-kimono" aria-labelledby="tab-kimono">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch;" class="clothes-grid-3col">
+              
+              <!-- 1着目：伝統の金彩・色打掛 -->
+              <button class="clothes-photo" type="button" data-lightbox data-src="img/clothes-kimono.jpg" data-alt="伝統の金彩・色打掛" data-photographer="Style: Classical Iro-uchikake" style="text-align: left; background: #55443e; padding: 0; border: 0; cursor: zoom-in; display: flex; flex-direction: column;">
+                <img src="img/clothes-kimono.jpg" alt="伝統の金彩・色打掛" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+                <div style="padding: 18px; color: var(--bone); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="eyebrow" style="color: var(--banana); font-size: 10px;">01 / KIMONO</span>
+                    <h4 style="font-family: var(--serif); font-size: 16px; margin: 6px 0 4px;">伝統の金彩・色打掛</h4>
+                    <p style="font-size: 11px; margin: 0; opacity: 0.85; line-height: 1.6;">日本の伝統文様を贅沢な金彩と鮮やかな色糸で。重厚感と気品に満ちた一着。</p>
+                  </div>
+                  <span style="display: inline-block; margin-top: 12px; font-family: var(--english); font-size: 10px; letter-spacing: 0.12em; color: var(--banana);">VIEW ↗</span>
+                </div>
+              </button>
+
+              <!-- 2着目：くすみカラーのモダン引き振袖 -->
+              <button class="clothes-photo" type="button" data-lightbox data-src="img/kimono-01.jpg" data-alt="ニュアンスカラーの引き振袖" data-photographer="Style: Nuance Modern Hikizuri" style="text-align: left; background: #55443e; padding: 0; border: 0; cursor: zoom-in; display: flex; flex-direction: column;">
+                <img src="img/kimono-01.jpg" alt="ニュアンスカラーの引き振袖" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+                <div style="padding: 18px; color: var(--bone); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="eyebrow" style="color: var(--banana); font-size: 10px;">02 / KIMONO</span>
+                    <h4 style="font-family: var(--serif); font-size: 16px; margin: 6px 0 4px;">くすみカラーのモダン引き振袖</h4>
+                    <p style="font-size: 11px; margin: 0; opacity: 0.85; line-height: 1.6;">トレンドのニュアンスカラーを採用。アンティークな雰囲気を纏う今どきスタイル。</p>
+                  </div>
+                  <span style="display: inline-block; margin-top: 12px; font-family: var(--english); font-size: 10px; letter-spacing: 0.12em; color: var(--banana);">VIEW ↗</span>
+                </div>
+              </button>
+
+              <!-- 3着目：洗練の白無垢 -->
+              <button class="clothes-photo" type="button" data-lightbox data-src="img/story-04.jpg" data-alt="洗練の白無垢" data-photographer="Style: Pure Shiromuku" style="text-align: left; background: #55443e; padding: 0; border: 0; cursor: zoom-in; display: flex; flex-direction: column;">
+                <img src="img/story-04.jpg" alt="洗練の白無垢" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+                <div style="padding: 18px; color: var(--bone); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="eyebrow" style="color: var(--banana); font-size: 10px;">03 / KIMONO</span>
+                    <h4 style="font-family: var(--serif); font-size: 16px; margin: 6px 0 4px;">洗練の白無垢×洋髪スタイル</h4>
+                    <p style="font-size: 11px; margin: 0; opacity: 0.85; line-height: 1.6;">純白のなかに織模様が浮かぶ白無垢。あえてルーズな洋髪でモダンに昇華。</p>
+                  </div>
+                  <span style="display: inline-block; margin-top: 12px; font-family: var(--english); font-size: 10px; letter-spacing: 0.12em; color: var(--banana);">VIEW ↗</span>
+                </div>
+              </button>
+
+            </div>
+          </div>
+
+<!-- 3. Tuxedo パネル -->
+          <div class="clothes-panel" role="tabpanel" id="panel-tuxedo" aria-labelledby="tab-tuxedo">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch;" class="clothes-grid-3col">
+              
+              <!-- 1着目：アーバン・チャコールグレー -->
+              <button class="clothes-photo" type="button" data-lightbox data-src="img/clothes-tuxedo.jpg" data-alt="アーバン・チャコールグレー" data-photographer="Style: Urban Charcoal Gray" style="text-align: left; background: #55443e; padding: 0; border: 0; cursor: zoom-in; display: flex; flex-direction: column;">
+                <img src="img/clothes-tuxedo.jpg" alt="アーバン・チャコールグレー" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+                <div style="padding: 18px; color: var(--bone); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="eyebrow" style="color: var(--banana); font-size: 10px;">01 / TUXEDO</span>
+                    <h4 style="font-family: var(--serif); font-size: 16px; margin: 6px 0 4px;">アーバン・チャコールグレー</h4>
+                    <p style="font-size: 11px; margin: 0; opacity: 0.85; line-height: 1.6;">深みのあるチャコールグレー。どんなドレスや背景にもスマートに溶け込む一着。</p>
+                  </div>
+                  <span style="display: inline-block; margin-top: 12px; font-family: var(--english); font-size: 10px; letter-spacing: 0.12em; color: var(--banana);">VIEW ↗</span>
+                </div>
+              </button>
+
+              <!-- 2着目：ニュアンス・ブラウン（今回加工した画像に差し替え） -->
+              <button class="clothes-photo" type="button" data-lightbox data-src="img/tuxedo-01.jpg" data-alt="ニュアンス・ブラウン" data-photographer="Style: Nuance Brown" style="text-align: left; background: #55443e; padding: 0; border: 0; cursor: zoom-in; display: flex; flex-direction: column;">
+                <img src="img/tuxedo-01.jpg" alt="ニュアンス・ブラウン" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+                <div style="padding: 18px; color: var(--bone); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="eyebrow" style="color: var(--banana); font-size: 10px;">02 / TUXEDO</span>
+                    <h4 style="font-family: var(--serif); font-size: 16px; margin: 6px 0 4px;">ニュアンス・ブラウン</h4>
+                    <p style="font-size: 11px; margin: 0; opacity: 0.85; line-height: 1.6;">自然光やビーチに美しく映えるアースカラー。おしゃれ感度の高いカップルに。</p>
+                  </div>
+                  <span style="display: inline-block; margin-top: 12px; font-family: var(--english); font-size: 10px; letter-spacing: 0.12em; color: var(--banana);">VIEW ↗</span>
+                </div>
+              </button>
+
+              <!-- 3着目：クラシック・ブラック -->
+              <button class="clothes-photo" type="button" data-lightbox data-src="img/gallery-01.jpg" data-alt="クラシック・ブラック" data-photographer="Style: Classic Black Tuxedo" style="text-align: left; background: #55443e; padding: 0; border: 0; cursor: zoom-in; display: flex; flex-direction: column;">
+                <img src="img/gallery-01.jpg" alt="クラシック・ブラック" loading="lazy" style="aspect-ratio: 4/3; object-fit: cover; width: 100%;">
+                <div style="padding: 18px; color: var(--bone); flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span class="eyebrow" style="color: var(--banana); font-size: 10px;">03 / TUXEDO</span>
+                    <h4 style="font-family: var(--serif); font-size: 16px; margin: 6px 0 4px;">クラシック・ブラック</h4>
+                    <p style="font-size: 11px; margin: 0; opacity: 0.85; line-height: 1.6;">拝絹地の艶が引き立つ正統派ブラック。ラグジュアリーな空間で圧倒的な存在感。</p>
+                  </div>
+                  <span style="display: inline-block; margin-top: 12px; font-family: var(--english); font-size: 10px; letter-spacing: 0.12em; color: var(--banana);">VIEW ↗</span>
+                </div>
+              </button>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 写真にない衣装も取り揃えている旨の注釈 -->
+        <p style="text-align: center; margin-top: 36px; color: rgb(242 237 227 / 75%); font-size: 11px; letter-spacing: 0.05em;">
+          ※写真に掲載している衣装のほかにも、多彩なラインナップを取り揃えております。試着会にてぜひ実際にご覧ください。
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ブランドと素材へのこだわり ＆ スタイリストメッセージ -->
+    <section class="section-paper" style="padding: 110px 0; border-top: 1px solid var(--sand);">
+      <div class="section-wrap">
+        <div class="section-heading" style="text-align: center; margin-bottom: 50px;">
+          <span class="eyebrow">STYLING PHILOSOPHY</span>
+          <h2>素材と仕立てに宿る、<br>妥協のない美しさ。</h2>
+          <p>スタイリストからのメッセージとお衣裳選びのこだわり</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+          <div style="background: rgb(255 253 249 / 60%); padding: 36px; border: 1px solid var(--sand);">
+            <span class="eyebrow" style="color: #8f7772; margin-bottom: 8px;">01. TEXTURE &amp; LIGHT</span>
+            <h3 style="font-family: var(--serif); font-size: 18px; margin-bottom: 14px;">光を透かす、繊細なファブリック</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0; opacity: 0.85;">写真に映ったときに最も立体感が出るよう、生地の厚みや透け感にこだわっています。自然光が差し込むチャペルやビーチで、ドレスのレースやドレープが一番美しく映える瞬間を計算して買い付けています。</p>
+          </div>
+
+          <div style="background: rgb(255 253 249 / 60%); padding: 36px; border: 1px solid var(--sand);">
+            <span class="eyebrow" style="color: #8f7772; margin-bottom: 8px;">02. STYLIST MESSAGE</span>
+            <h3 style="font-family: var(--serif); font-size: 18px; margin-bottom: 14px;">「これが着たい」の直感を大切に</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0; opacity: 0.85;">「試着室のカーテンを開けたとき、思わずふたりで笑い合ってしまうような一着に出会ってほしい」。私たちはただ衣装をお貸しするだけでなく、おふたりの雰囲気や個性を引き出すスタイリングを一緒に見つけます。（Lead Stylist / 鈴木）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 無料試着会の流れ（フィッティング体験） -->
+    <section class="gallery section-wrap" style="padding-top: 100px; padding-bottom: 90px;" id="trial-flow">
+      <div class="section-heading" style="text-align: center; margin-bottom: 40px;">
+        <span class="eyebrow">FITTING EXPERIENCE</span>
+        <h2>無料試着会の流れ</h2>
+        <p>初めての方でも安心。ご予約から当日のフィッティング体験までのステップをご紹介します。</p>
+      </div>
+
+      <div style="max-width: 760px; margin: 0 auto; background: rgb(255 253 249 / 45%); border: 1px solid var(--sand); padding: 40px clamp(20px, 5vw, 50px);">
+        <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px;">
+          <li style="display: flex; gap: 20px; align-items: flex-start;">
+            <span style="flex: 0 0 45px; height: 45px; display: grid; place-items: center; background: var(--banana); border: 1px solid rgb(62 49 45 / 15%); font-family: var(--english); font-size: 14px; font-weight: 600;">01</span>
+            <div>
+              <strong style="display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 4px;">WEBから簡単ご予約</strong>
+              <p style="font-size: 11px; margin: 0; opacity: 0.8; line-height: 1.8;">ご希望の日時を選んでフォームまたはメールよりお申込みください。おひとりでも、パートナーやご家族と一緒でも大歓迎です。</p>
+            </div>
+          </li>
+
+          <li style="display: flex; gap: 20px; align-items: flex-start;">
+            <span style="flex: 0 0 45px; height: 45px; display: grid; place-items: center; background: var(--banana); border: 1px solid rgb(62 49 45 / 15%); font-family: var(--english); font-size: 14px; font-weight: 600;">02</span>
+            <div>
+              <strong style="display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 4px;">カウンセリング ＆ ドレス選び</strong>
+              <p style="font-size: 11px; margin: 0; opacity: 0.8; line-height: 1.8;">「どんな雰囲気が好きか」「こんな写真が撮りたい」など、スタイリストが丁寧にヒアリングしながらお好みの衣裳をピックアップします。</p>
+            </div>
+          </li>
+
+          <li style="display: flex; gap: 20px; align-items: flex-start;">
+            <span style="flex: 0 0 45px; height: 45px; display: grid; place-items: center; background: var(--banana); border: 1px solid rgb(62 49 45 / 15%); font-family: var(--english); font-size: 14px; font-weight: 600;">03</span>
+            <div>
+              <strong style="display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 4px;">ご試着体験 ＆ 撮影イメージの膨らませ</strong>
+              <p style="font-size: 11px; margin: 0; opacity: 0.8; line-height: 1.8;">実際にドレスや和装をフィッティング。鏡に映った姿を見て、特別な日のイメージを楽しくふくらませていただけます。</p>
+            </div>
+          </li>
+
+          <li style="display: flex; gap: 20px; align-items: flex-start;">
+            <span style="flex: 0 0 45px; height: 45px; display: grid; place-items: center; background: var(--banana); border: 1px solid rgb(62 49 45 / 15%); font-family: var(--english); font-size: 14px; font-weight: 600;">04</span>
+            <div>
+              <strong style="display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 4px;">プランのご案内・ご相談</strong>
+              <p style="font-size: 11px; margin: 0; opacity: 0.8; line-height: 1.8;">撮影プランやご予算についてご不明な点を何でもご相談いただけます（強引な勧誘等は一切ございませんのでご安心ください）。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- 試着会特設バナー -->
+      <aside class="trial-banner" id="trial" style="margin-top: 60px;">
+        <div>
+          <span class="eyebrow">SPECIAL EVENT / 2026</span>
+          <h3>【7/1〜開催】<br>ウェディングドレス無料試着会</h3>
+          <p>気になるドレスを試着して、特別な一日のイメージをふくらませて。</p>
+        </div>
+        <a class="button button-light" href="reserve.html">無料試着会を予約する <span>↗</span></a>
+      </aside>
+    </section>
+
+    <!-- ライトボックスモーダル -->
+    <dialog class="lightbox" aria-label="衣裳画像の拡大表示">
+      <button class="lightbox-close" type="button" aria-label="閉じる">×</button>
+      <button class="lightbox-prev" type="button" aria-label="前の画像">‹</button>
+      <img class="lightbox-image" src="" alt="">
+      <button class="lightbox-next" type="button" aria-label="次の画像">›</button>
+      <p class="lightbox-caption" aria-live="polite"></p>
+    </dialog>
+  </main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="footer-brand" href="index.html"><img src="img/logo-a.svg" alt="kyouritz photo studio"></a>
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳コレクション</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="plans.html">プラン・料金</a>
+      <a href="stories.html">お客様の声</a>
+    </nav>
+    <a class="footer-reserve" href="reserve.html">無料試着会・お見積りを予約する ↗</a>
+    <small>© <span id="copyright-year">2026</span> kyouritz photo studio Inc. All Rights Reserved.</small>
+  </div>
+</footer>
+  <!-- 右下固定バナー -->
+  <aside class="floating-cta" aria-label="無料試着会予約">
+    <div class="floating-bg" style="background-image: url('img/clothes-dress.jpg');"></div>
+    <div class="floating-overlay"></div>
+    <div class="floating-content">
+      <span class="floating-eyebrow">7/1 START ／ FREE TRIAL</span>
+      <strong class="floating-title">運命の一着に出会う、無料試着会。</strong>
+    </div>
+    <a class="floating-btn" href="reserve.html">
+      <span>予約はこちらから</span> <i>↗</i>
+    </a>
+    <button class="floating-close" type="button" aria-label="予約案内を閉じる">×</button>
+  </aside>
+
+  <!-- レスポンシブ用補助CSS（スマホ時は1カラムに切り替え） -->
+  <style>
+    @media (max-width: 860px) {
+      .clothes-grid-3col {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</body>
+</html>

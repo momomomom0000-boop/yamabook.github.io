@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F2EDE3">
+  <meta name="description" content="kyouritz photo studioのギャラリー・ロケーション詳細。海辺、チャペル、和装、街角のシネマティックなウェディングフォトと撮影のこだわりをご紹介します。">
+  <title>Gallery &amp; Location | kyouritz photo studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="kyouritz photo studio トップ">
+      <img src="img/logo-b.svg" alt="kyouritz photo studio">
+    </a>
+    <nav class="header-nav" aria-label="メインナビゲーション">
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="stories.html">お客様の声</a>
+      <a href="plans.html">プラン・アクセス</a>
+    </nav>
+    <a class="header-cta" href="reserve.html">試着会予約</a>
+    
+    <!-- ハンバーガーボタン -->
+    <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-menu">
+      <svg class="menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <line class="bar bar-1" x1="3" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-2" x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-3" x1="3" y1="17" x2="21" y2="17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </header>
+
+  <nav class="site-menu" id="site-menu" aria-label="サイトメニュー" hidden>
+    <button class="menu-close" type="button" aria-label="メニューを閉じる">×</button>
+    <span class="eyebrow">MENU</span>
+    <a href="index.html#top">トップページ</a>
+    <a href="index.html#intro">私たちの想い</a>
+    <a href="gallery.html">ギャラリー・ロケーション</a>
+    <a href="collection.html">衣裳コレクション</a>
+    <a href="photographers.html">カメラマン紹介</a>
+    <a href="stories.html">お客様の声・撮影レポート</a>
+    <a href="plans.html">プラン・料金詳細</a>
+    <a class="menu-reserve" href="reserve.html">無料試着会を予約する ↗</a>
+  </nav>
+  <button class="menu-scrim" type="button" aria-label="メニューを閉じる" hidden></button>
+
+  <main id="top">
+    <!-- パンくずリスト -->
+    <nav class="breadcrumbs" aria-label="パンくずリスト">
+      <div class="breadcrumbs-inner">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="index.html">
+              <span itemprop="name">HOME</span>
+            </a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">ギャラリー・ロケーション</span>
+            <meta itemprop="position" content="2">
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- 下層ページ用ヘッダーセクション -->
+    <section class="hero" style="min-height: 420px; height: 50svh;" aria-label="ギャラリーヘッダー">
+      <div class="hero-slides">
+        <figure class="hero-slide is-active">
+          <img src="img/photo-beach.jpg" alt="ロケーション撮影のイメージ" fetchpriority="high">
+        </figure>
+      </div>
+      <div class="hero-shade"></div>
+      <div class="hero-content" style="transform: translateY(-38%);">
+        <span class="eyebrow">GALLERY &amp; LOCATION</span>
+        <h1 style="font-size: clamp(24px, 3.5vw, 38px);">光と空気を纏う、<br>シネマティックな記録。</h1>
+        <p>ふたりらしさが自然に映える、お気に入りのロケーションと撮影カット、そして私たちが大切にしている光の物語をご紹介します。</p>
+      </div>
+    </section>
+
+    <!-- ギャラリー本体セクション（Kimonoタブを追加） -->
+    <section class="gallery section-wrap" id="gallery-grid" style="padding-top: 80px;">
+      <div class="section-heading" style="text-align: center; margin-bottom: 40px;">
+        <span class="eyebrow">PORTFOLIO</span>
+        <h2>ロケーション別ギャラリー</h2>
+        <p>タブを切り替えて、各スポットの美しい瞬間をご覧いただけます。</p>
+      </div>
+
+      <!-- フィルタータブ -->
+      <div class="gallery-filter-tabs" role="group" aria-label="ギャラリーカテゴリー">
+        <button class="gallery-filter-tab is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="gallery-filter-tab" type="button" data-filter="beach" aria-pressed="false">Beach</button>
+        <button class="gallery-filter-tab" type="button" data-filter="chapel" aria-pressed="false">Chapel</button>
+        <button class="gallery-filter-tab" type="button" data-filter="location" aria-pressed="false">Location</button>
+        <button class="gallery-filter-tab" type="button" data-filter="kimono" aria-pressed="false">Kimono</button>
+      </div>
+
+      <!-- フォトグリッド -->
+      <div class="gallery-photo-grid">
+        <div class="gallery-item" data-category="chapel">
+          <button class="gallery-thumb" type="button" data-lightbox data-src="img/gallery-01.jpg" data-alt="チャペルでの誓いのひとコマ" data-photographer="Photo by Taro Tanaka">
+            <img src="img/gallery-01.jpg" alt="チャペルでの誓いのひとコマ" loading="lazy">
+            <span class="gallery-overlay">VIEW ↗</span>
+          </button>
+          <div class="gallery-meta">
+            <span class="gallery-place">CHAPEL</span>
+            <span class="gallery-photographer">Photo by Taro Tanaka</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="beach">
+          <button class="gallery-thumb" type="button" data-lightbox data-src="img/gallery-02.jpg" data-alt="白砂のビーチを歩くふたり" data-photographer="Photo by Ryuichi Sato">
+            <img src="img/gallery-02.jpg" alt="白砂のビーチを歩くふたり" loading="lazy">
+            <span class="gallery-overlay">VIEW ↗</span>
+          </button>
+          <div class="gallery-meta">
+            <span class="gallery-place">BEACH</span>
+            <span class="gallery-photographer">Photo by Ryuichi Sato</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="location">
+          <button class="gallery-thumb" type="button" data-lightbox data-src="img/mainimage2.jpg" data-alt="ワーゲンバスとウェディングフォト" data-photographer="Photo by Takumi Takahashi">
+            <img src="img/mainimage2.jpg" alt="ワーゲンバスとウェディングフォト" loading="lazy">
+            <span class="gallery-overlay">VIEW ↗</span>
+          </button>
+          <div class="gallery-meta">
+            <span class="gallery-place">LOCATION</span>
+            <span class="gallery-photographer">Photo by Takumi Takahashi</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="kimono">
+          <button class="gallery-thumb" type="button" data-lightbox data-src="img/clothes-kimono.jpg" data-alt="伝統的な和装で佇むふたり" data-photographer="Photo by Ayaka Nakamura">
+            <img src="img/clothes-kimono.jpg" alt="伝統的な和装で佇むふたり" loading="lazy">
+            <span class="gallery-overlay">VIEW ↗</span>
+          </button>
+          <div class="gallery-meta">
+            <span class="gallery-place">KIMONO</span>
+            <span class="gallery-photographer">Photo by Ayaka Nakamura</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="chapel">
+          <button class="gallery-thumb" type="button" data-lightbox data-src="img/gallery-03.jpg" data-alt="光に満ちたチャペルでのバックショット" data-photographer="Photo by Madoka Ito">
+            <img src="img/gallery-03.jpg" alt="光イングとバックショット" loading="lazy">
+            <span class="gallery-overlay">VIEW ↗</span>
+          </button>
+          <div class="gallery-meta">
+            <span class="gallery-place">CHAPEL</span>
+            <span class="gallery-photographer">Photo by Madoka Ito</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="beach">
+          <button class="gallery-thumb" type="button" data-lightbox data-src="img/gallery-04.jpg" data-alt="夕暮れの湖畔で手をつなぐふたり" data-photographer="Photo by Sakura Takayama">
+            <img src="img/gallery-04.jpg" alt="夕暮れの湖畔で手をつなぐふたり" loading="lazy">
+            <span class="gallery-overlay">VIEW ↗</span>
+          </button>
+          <div class="gallery-meta">
+            <span class="gallery-place">BEACH</span>
+            <span class="gallery-photographer">Photo by Sakura Takayama</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 各ロケーションのこだわりストーリー（新規追加） -->
+    <section class="section-paper" style="padding: 100px 0; border-top: 1px solid var(--sand);">
+      <div class="section-wrap">
+        <div class="section-heading" style="text-align: center; margin-bottom: 50px;">
+          <span class="eyebrow">BEHIND THE LENS</span>
+          <h2>ロケーションに込めた、<br>カメラマンのこだわりストーリー。</h2>
+          <p>私たちがその場所を選び、シャッターを切る理由。</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+          <div style="background: rgb(255 253 249 / 60%); padding: 32px; border: 1px solid var(--sand);">
+            <span class="eyebrow" style="color: #8f7772; margin-bottom: 8px;">01. BEACH</span>
+            <h3 style="font-family: var(--serif); font-size: 18px; margin-bottom: 12px;">波音と潮風が、ふたりの緊張をほどく。</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0; opacity: 0.85;">「作り込んだポーズよりも、歩きながら交わす何気ない会話を大切にしています。水平線に沈む直前のサンセットの光は、ふたりの輪郭をやわらかく包み込み、まるで映画の一幕のようなドラマを生み出します。」（Photo by Ryuichi Sato）</p>
+          </div>
+
+          <div style="background: rgb(255 253 249 / 60%); padding: 32px; border: 1px solid var(--sand);">
+            <span class="eyebrow" style="color: #8f7772; margin-bottom: 8px;">02. CHAPEL</span>
+            <h3 style="font-family: var(--serif); font-size: 18px; margin-bottom: 12px;">静謐な光の中で、誓いの原点を思い出す。</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0; opacity: 0.85;">「チャペルでの撮影で意識するのは、光のグラデーションとドレスの繊細なレースの質感です。静けさの中に響く足音と、ふと見つめ合った瞬間の温度感を、そのまま純度の高いポートレートに仕立てます。」（Photo by Taro Tanaka）</p>
+          </div>
+
+          <div style="background: rgb(255 253 249 / 60%); padding: 32px; border: 1px solid var(--sand);">
+            <span class="eyebrow" style="color: #8f7772; margin-bottom: 8px;">03. LOCATION / KIMONO</span>
+            <h3 style="font-family: var(--serif); font-size: 18px; margin-bottom: 12px;">歴史ある街並みや伝統の装いに、現代の空気を重ねて。</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0; opacity: 0.85;">「東京のクラシックな建造物や、日本庭園での和装撮影。重厚感のある背景にあえて現代的なリラックスした表情を掛け合わせることで、古びない『ふたらしいモダン』を表現しています。」（Photo by Ayaka Nakamura）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 撮影当日のタイムスケジュール例（新規追加） -->
+    <section class="gallery section-wrap" style="padding-top: 90px; padding-bottom: 90px;">
+      <div class="section-heading" style="text-align: center; margin-bottom: 40px;">
+        <span class="eyebrow">SCHEDULE FLOW</span>
+        <h2>撮影当日のタイムスケジュール例</h2>
+        <p>リラックスして特別な一日を楽しんでいただくための、標準的な流れをご紹介します。</p>
+      </div>
+
+      <div style="max-width: 760px; margin: 0 auto; background: rgb(255 253 249 / 45%); border: 1px solid var(--sand); padding: 40px clamp(20px, 5vw, 50px);">
+        <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px; position: relative;">
+          <!-- タイムラインの縦線 -->
+          <li style="display: flex; gap: 20px; align-items: flex-start; position: relative;">
+            <span style="flex: 0 0 75px; font-family: var(--english); font-size: 13px; font-weight: 600; color: var(--cocoa); letter-spacing: 0.1em; padding-top: 2px;">09:00</span>
+            <div>
+              <strong style="display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 4px;">スタジオご来店 ＆ ヘアメイク</strong>
+              <p style="font-size: 11px; margin: 0; opacity: 0.8; line-height: 1.8;">専属スタイリストがふたりの魅力を引き出すヘアメイクと、運命のドレスのフィッティングを行います。</p>
+            </div>
+          </li>
+
+          <li style="display: flex; gap: 20px; align-items: flex-start;">
+            <span style="flex: 0 0 75px; font-family: var(--english); font-size: 13px; font-weight: 600; color: var(--cocoa); letter-spacing: 0.1em; padding-top: 2px;">10:30</span>
+            <div>
+              <strong style="display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 4px;">カメラマンとのミーティング ＆ 出発</strong>
+              <p style="font-size: 11px; margin: 0; opacity: 0.8; line-height: 1.8;">「どんな雰囲気が好きか」「緊張していないか」など、担当カメラマンと楽しくおしゃべりしながらロケーションへ移動します。</p>
+            </div>
+          </li>
+
+          <li style="display: flex; gap: 20px; align-items: flex-start;">
+            <span style="flex: 0 0 75px; font-family: var(--english); font-size: 13px; font-weight: 600; color: var(--cocoa); letter-spacing: 0.1em; padding-top: 2px;">11:30</span>
+            <div>
+              <strong style="display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 4px;">ロケーション撮影スタート（約2時間）</strong>
+              <p style="font-size: 11px; margin: 0; opacity: 0.8; line-height: 1.8;">自然光を浴びながら、歩いたり笑い合ったり。リラックスした空気感の中でシネマティックな瞬間を切り取ります。</p>
+            </div>
+          </li>
+
+          <li style="display: flex; gap: 20px; align-items: flex-start;">
+            <span style="flex: 0 0 75px; font-family: var(--english); font-size: 13px; font-weight: 600; color: var(--cocoa); letter-spacing: 0.1em; padding-top: 2px;">14:00</span>
+            <div>
+              <strong style="display: block; font-family: var(--serif); font-size: 15px; margin-bottom: 4px;">スタジオ帰着 ＆ お着替え・ごほうびティー</strong>
+              <p style="font-size: 11px; margin: 0; opacity: 0.8; line-height: 1.8;">スタジオに戻りお着替え。温かいお飲み物を飲みながら、撮影終わりの余韻をゆったりとお楽しみください。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ライトボックスモーダル -->
+    <dialog class="lightbox" aria-label="画像の拡大表示">
+      <button class="lightbox-close" type="button" aria-label="閉じる">×</button>
+      <button class="lightbox-prev" type="button" aria-label="前の画像">‹</button>
+      <img class="lightbox-image" src="" alt="">
+      <button class="lightbox-next" type="button" aria-label="次の画像">›</button>
+      <p class="lightbox-caption" aria-live="polite"></p>
+    </dialog>
+
+    <!-- 試着会バナー案内 -->
+    <section class="section-wrap" style="padding-bottom: 100px;">
+      <aside class="trial-banner" id="trial">
+        <div>
+          <span class="eyebrow">SPECIAL EVENT / 2026</span>
+          <h3>【7/1〜開催】<br>ウェディングドレス無料試着会</h3>
+          <p>気になるドレスを試着して、特別な一日のイメージをふくらませて。</p>
+        </div>
+        <a class="button button-light" href="reserve.html">無料試着会を予約する <span>↗</span></a>
+      </aside>
+    </section>
+  </main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="footer-brand" href="index.html"><img src="img/logo-a.svg" alt="kyouritz photo studio"></a>
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳コレクション</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="plans.html">プラン・料金</a>
+      <a href="stories.html">お客様の声</a>
+    </nav>
+    <a class="footer-reserve" href="reserve.html">無料試着会・お見積りを予約する ↗</a>
+    <small>© <span id="copyright-year">2026</span> kyouritz photo studio Inc. All Rights Reserved.</small>
+  </div>
+</footer>
+
+  <!-- 右下固定バナー -->
+  <aside class="floating-cta" aria-label="無料試着会予約">
+    <div class="floating-bg" style="background-image: url('img/clothes-dress.jpg');"></div>
+    <div class="floating-overlay"></div>
+    <div class="floating-content">
+      <span class="floating-eyebrow">7/1 START ／ FREE TRIAL</span>
+      <strong class="floating-title">運命の一着に出会う、無料試着会。</strong>
+    </div>
+    <a class="floating-btn" href="reserve.html">
+      <span>予約はこちらから</span> <i>↗</i>
+    </a>
+    <button class="floating-close" type="button" aria-label="予約案内を閉じる">×</button>
+  </aside>
+</body>
+</html>

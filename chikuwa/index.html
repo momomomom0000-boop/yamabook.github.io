@@ -1,0 +1,3089 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHIKUWA WORLD - 職人オヤジと歩むちくわ道</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #1a1614;
+            --panel-bg: rgba(42, 34, 30, 0.85);
+            --border-color: #6b4f3f;
+            --accent-color: #d97736;
+            --accent-hover: #f28b47;
+            --text-main: #f5f0eb;
+            --text-sub: #b8a89e;
+            --rare-color: #e67e22;
+            --epic-color: #9b59b6;
+            --lock-color: #523b30;
+            --success-color: #27ae60;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Kiwi Maru', serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 画面全体の揺れアニメーション（源さん連打用） */
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            60% { transform: translate(-1px, 2px) rotate(0deg); }
+            80% { transform: translate(3px, 1px) rotate(-1deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        .shake {
+            animation: shake 0.4s ease;
+        }
+
+        /* 背景CRTスキャンライン風 */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 15, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            background: linear-gradient(to bottom, #2b211c, var(--bg-color));
+            border-bottom: 2px dashed var(--border-color);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-top: 0.5rem;
+        }
+
+        .tutorial-open-btn {
+            position: fixed;
+            top: 14px;
+            right: 16px;
+            z-index: 1001;
+            padding: 0.55rem 0.9rem;
+            color: var(--text-main);
+            font: 500 0.8rem 'Kiwi Maru', serif;
+            background: rgba(42, 34, 30, 0.94);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+        }
+
+        .tutorial-open-btn:hover {
+            border-color: var(--accent-color);
+            background: #3e2d25;
+        }
+
+        .tutorial-dialog {
+            position: fixed;
+            inset: 0;
+            width: min(520px, calc(100% - 32px));
+            max-width: none;
+            max-height: min(90vh, 620px);
+            margin: auto;
+            padding: 0;
+            overflow: auto;
+            color: var(--text-main);
+            background: linear-gradient(145deg, #33251f, #1d1714 78%);
+            border: 2px solid var(--border-color);
+            border-radius: 18px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.72);
+        }
+
+        .tutorial-dialog::backdrop {
+            background: rgba(8, 6, 5, 0.78);
+            backdrop-filter: blur(5px);
+        }
+
+        .tutorial-content {
+            padding: clamp(1.25rem, 5vw, 2rem);
+        }
+
+        .tutorial-kicker {
+            color: var(--accent-color);
+            font: 700 0.7rem 'Space Grotesk', sans-serif;
+            letter-spacing: 0.16em;
+        }
+
+        .tutorial-heading-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 0.55rem 0 0.8rem;
+        }
+
+        .tutorial-heading-row h2 {
+            font-size: clamp(1.2rem, 5vw, 1.55rem);
+            line-height: 1.5;
+        }
+
+        .tutorial-close-btn {
+            flex: 0 0 auto;
+            width: 36px;
+            height: 36px;
+            color: var(--text-sub);
+            font-size: 1.35rem;
+            line-height: 1;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .tutorial-close-btn:hover {
+            color: var(--text-main);
+            border-color: var(--accent-color);
+        }
+
+        .tutorial-description {
+            min-height: 5.5em;
+            color: var(--text-sub);
+            font-size: 0.92rem;
+            line-height: 1.9;
+        }
+
+        .tutorial-progress {
+            margin-top: 1.1rem;
+            color: #d9a77c;
+            font: 500 0.72rem 'Space Grotesk', sans-serif;
+        }
+
+        .tutorial-progress-track {
+            height: 5px;
+            margin-top: 0.45rem;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+        }
+
+        .tutorial-progress-bar {
+            width: 20%;
+            height: 100%;
+            background: linear-gradient(90deg, #b85214, var(--accent-hover));
+            border-radius: inherit;
+            transition: width 0.2s ease;
+        }
+
+        .tutorial-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin-top: 1.4rem;
+        }
+
+        .tutorial-actions button {
+            min-height: 42px;
+            padding: 0.55rem 0.9rem;
+            color: var(--text-main);
+            font: 500 0.82rem 'Kiwi Maru', serif;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .tutorial-skip-btn,
+        .tutorial-prev-btn {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .tutorial-next-btn {
+            margin-left: auto;
+            background: linear-gradient(135deg, var(--accent-color), #b85214);
+            border-color: transparent !important;
+        }
+
+        .tutorial-actions button:hover:not(:disabled) {
+            filter: brightness(1.15);
+        }
+
+        .tutorial-actions button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 600px) {
+            .tutorial-open-btn {
+                top: 10px;
+                right: 10px;
+                padding: 0.45rem 0.7rem;
+                font-size: 0.72rem;
+            }
+            .tutorial-actions {
+                flex-wrap: wrap;
+            }
+            .tutorial-actions button {
+                padding-inline: 0.7rem;
+            }
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        @media (min-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* カード共通 */
+        .card {
+            min-width: 0;
+            background: var(--panel-bg);
+            border: 3px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        #canvas-container {
+            width: 100%;
+            height: 320px;
+            position: relative;
+            background: radial-gradient(circle, #332621 0%, #15110f 100%);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        #canvas-container:active {
+            cursor: grabbing;
+        }
+
+        .canvas-tip {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-top: 0.5rem;
+        }
+
+        /* ステータス・製造パネル */
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .level-badge {
+            background: var(--accent-color);
+            color: #fff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-box {
+            background: rgba(0,0,0,0.3);
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid rgba(107, 79, 63, 0.4);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-main);
+        }
+
+        /* レアドロップ専用表示ボックス */
+        .rare-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .rare-stat-box {
+            background: rgba(0,0,0,0.4);
+            padding: 0.7rem;
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .rare-stat-label {
+            font-size: 0.7rem;
+        }
+        .rare-stat-label.crystal { color: var(--rare-color); }
+        .rare-stat-label.teaka { color: var(--epic-color); }
+
+        .rare-stat-value {
+            font-size: 1.1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-main);
+        }
+
+        .action-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-color), #b85214);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            font-size: 1.1rem;
+            font-family: 'Kiwi Maru', serif;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(217, 119, 54, 0.4);
+            margin-bottom: 1rem;
+        }
+
+        .action-btn:hover {
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(242, 139, 71, 0.6);
+        }
+
+        .action-btn:active {
+            transform: translateY(0);
+        }
+
+        /* 頑固なおやじセクション（アバター連打可能） */
+        .oyaji-container {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 998;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            width: min(380px, calc(100vw - 40px));
+            background: rgba(25, 18, 15, 0.7);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.52);
+            backdrop-filter: blur(12px);
+        }
+
+        #oyaji-canvas-container {
+            width: 72px;
+            height: 72px;
+            background: radial-gradient(circle at 50% 35%, #684634, #241a17 76%);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            cursor: pointer;
+            overflow: hidden;
+            touch-action: manipulation;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
+        #oyaji-canvas-container canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        #oyaji-canvas-container:active {
+            transform: scale(0.94);
+            box-shadow: 0 0 16px rgba(217, 119, 54, 0.55);
+        }
+        #oyaji-canvas-container:focus-visible {
+            outline: 2px solid var(--accent-hover);
+            outline-offset: 3px;
+        }
+
+        .oyaji-speech {
+            flex-grow: 1;
+        }
+
+        .oyaji-name {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+        }
+
+        .oyaji-text {
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: var(--text-main);
+            max-height: 100px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        /* 工房の道具インタラクティブエリア */
+        .workshop-tools {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            background: rgba(0,0,0,0.25);
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid rgba(107, 79, 63, 0.4);
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .workshop-tools > span:first-child {
+            flex: 0 0 100%;
+        }
+
+        .tool-icon-btn {
+            position: relative;
+            display: flex;
+            flex: 1 1 42%;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.18rem;
+            background: #3e2723;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'Kiwi Maru', serif;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .tool-count {
+            color: #c8aa97;
+            font: 500 0.62rem 'Space Grotesk', sans-serif;
+        }
+
+        .tool-icon-btn:hover {
+            background: var(--accent-color);
+        }
+        .tool-icon-btn:active {
+            transform: scale(0.95);
+        }
+
+        #hibachi-btn.overheated {
+            color: #fff1df;
+            border-color: #ff5038;
+            background: linear-gradient(145deg, #a72d1f, #592016);
+            box-shadow: 0 0 18px rgba(255, 66, 39, 0.55), inset 0 0 12px rgba(255, 157, 57, 0.22);
+            animation: hibachi-overheat 0.72s ease-in-out infinite alternate;
+        }
+
+        #hibachi-btn.overheated .tool-count {
+            color: #ffd0a2;
+        }
+
+        .fire-spark {
+            position: absolute;
+            z-index: 3;
+            left: 50%;
+            top: 12%;
+            width: 7px;
+            height: 10px;
+            border-radius: 70% 20% 65% 35%;
+            background: linear-gradient(160deg, #fff2a6 5%, #ffae36 48%, #e84620 100%);
+            box-shadow: 0 0 8px rgba(255, 126, 35, 0.78);
+            pointer-events: none;
+            animation: fire-spark-rise 0.72s ease-out forwards;
+        }
+
+        #mill-whisper {
+            display: none;
+            flex: 0 0 100%;
+            padding: 0.35rem 0.55rem;
+            color: #c8b8a9;
+            font-size: 0.72rem;
+            font-style: italic;
+            text-align: center;
+            border-top: 1px dashed rgba(184, 168, 158, 0.22);
+        }
+
+        #mill-whisper.visible {
+            display: block;
+            animation: whisper-appear 0.35s ease both;
+        }
+
+        #stone-mill-btn.striking {
+            border-color: #aa8977;
+            background: #29211e;
+            color: #c2b5ad;
+            cursor: not-allowed;
+            animation: mill-rattle 0.12s linear infinite;
+        }
+
+        #stone-mill-btn:disabled {
+            opacity: 0.82;
+        }
+
+        @keyframes hibachi-overheat {
+            from { filter: brightness(0.92); }
+            to { filter: brightness(1.22); }
+        }
+
+        @keyframes fire-spark-rise {
+            0% { opacity: 0; transform: translate(-50%, 4px) scale(0.55) rotate(-12deg); }
+            18% { opacity: 1; }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--spark-x)), calc(-42px + var(--spark-y))) scale(0.08) rotate(35deg); }
+        }
+
+        @keyframes whisper-appear {
+            from { opacity: 0; transform: translateY(3px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes mill-rattle {
+            0%, 100% { transform: translateX(0) rotate(0); }
+            25% { transform: translateX(-2px) rotate(-0.5deg); }
+            75% { transform: translateX(2px) rotate(0.5deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #hibachi-btn.overheated,
+            #stone-mill-btn.striking,
+            .fire-spark {
+                animation-duration: 2s;
+            }
+        }
+
+        /* 設備・アップグレードリスト */
+        .upgrade-title {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .upgrade-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.2);
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(107, 79, 63, 0.3);
+        }
+
+        .upgrade-info div:first-child {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .upgrade-info div:last-child {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+        }
+
+        .upgrade-btn {
+            background: #523b30;
+            color: white;
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Kiwi Maru', serif;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .upgrade-btn:hover:not(:disabled) {
+            background: var(--accent-color);
+        }
+
+        .upgrade-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* 図鑑・豆知識セクション */
+        .full-width-card {
+            grid-column: 1 / -1;
+        }
+
+        .knowledge-navigation {
+            margin-bottom: 1.25rem;
+        }
+
+        .category-tabs,
+        .utility-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .category-tabs {
+            min-width: 0;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid rgba(217, 119, 54, 0.28);
+        }
+
+        .category-tab {
+            min-width: 0;
+        }
+
+        .category-tab,
+        .tab-btn {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            color: var(--text-sub);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Kiwi Maru', serif;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .category-tab {
+            flex: 1 1 180px;
+            min-height: 46px;
+            color: #d8c5b6;
+        }
+
+        .category-tab:hover,
+        .tab-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--text-main);
+            background: rgba(217, 119, 54, 0.12);
+        }
+
+        .category-tab.active {
+            background: linear-gradient(135deg, rgba(217, 119, 54, 0.28), rgba(91, 50, 34, 0.58));
+            color: #fff4e9;
+            border-color: var(--accent-color);
+            box-shadow: inset 0 -2px 0 var(--accent-color), 0 5px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .utility-tabs {
+            min-width: 0;
+            margin-top: 0.8rem;
+        }
+
+        .utility-tabs .tab-btn {
+            padding: 0.38rem 0.75rem;
+            font-size: 0.78rem;
+        }
+
+        .knowledge-shelf-wrap {
+            margin-top: 0.9rem;
+            padding: 0.85rem 0.9rem 1rem;
+            border: 1px solid rgba(150, 111, 83, 0.42);
+            border-radius: 12px;
+            background:
+                linear-gradient(180deg, rgba(63, 43, 33, 0.56), rgba(24, 19, 17, 0.75)),
+                repeating-linear-gradient(90deg, transparent 0 38px, rgba(255,255,255,0.018) 39px 40px);
+            box-shadow: inset 0 1px rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.18);
+        }
+
+        .knowledge-shelf-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .knowledge-shelf-heading h4 {
+            color: #d9a77c;
+            font: 700 0.72rem 'Space Grotesk', sans-serif;
+            letter-spacing: 0.15em;
+        }
+
+        .knowledge-shelf-heading span {
+            color: var(--text-sub);
+            font-size: 0.72rem;
+        }
+
+        .knowledge-shelf {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+            gap: 0.5rem;
+            align-items: stretch;
+        }
+
+        .shelf-book {
+            position: relative;
+            min-height: 66px;
+            padding: 0.55rem 0.65rem 0.55rem 0.8rem;
+            overflow: hidden;
+            text-align: left;
+            color: var(--text-main);
+            font: inherit;
+            background: linear-gradient(115deg, rgba(97, 62, 43, 0.62), rgba(37, 28, 24, 0.84));
+            border: 1px solid rgba(191, 139, 97, 0.28);
+            border-left: 4px solid #8a6044;
+            border-radius: 4px 9px 9px 4px;
+            cursor: pointer;
+            transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+        }
+
+        .shelf-book::after {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 4px;
+            width: 1px;
+            background: rgba(255,255,255,0.08);
+            pointer-events: none;
+        }
+
+        .shelf-book:hover,
+        .shelf-book.active {
+            transform: translateY(-2px);
+            border-color: rgba(224, 149, 87, 0.8);
+            border-left-color: var(--accent-color);
+            background: linear-gradient(115deg, rgba(130, 77, 45, 0.78), rgba(50, 34, 27, 0.94));
+        }
+
+        .shelf-book-title {
+            display: block;
+            font-size: 0.76rem;
+            line-height: 1.4;
+        }
+
+        .shelf-book-meta {
+            display: block;
+            margin-top: 0.25rem;
+            color: #c4a894;
+            font: 500 0.62rem 'Space Grotesk', sans-serif;
+        }
+
+        .knowledge-library-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            min-width: 0;
+            margin: 0.1rem 0 0.8rem;
+        }
+
+        .knowledge-library-heading h3 {
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        .knowledge-library-heading p {
+            color: var(--text-sub);
+            font-size: 0.72rem;
+        }
+
+        .tab-content {
+            display: none;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-sub);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .knowledge-card {
+            position: relative;
+            padding: 1.1rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid var(--accent-color);
+            border-radius: 10px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.018));
+            box-shadow: inset 0 1px rgba(255,255,255,0.04), 0 8px 20px rgba(0,0,0,0.16);
+            backdrop-filter: blur(8px);
+            animation: knowledge-card-enter 0.28s ease both;
+        }
+
+        .knowledge-card.locked {
+            border-left-color: var(--lock-color);
+            background: linear-gradient(145deg, rgba(55, 43, 37, 0.65), rgba(20, 17, 16, 0.66));
+        }
+
+        .knowledge-card.unlocked-treasure {
+            border-left-color: var(--epic-color);
+            background: rgba(50, 30, 60, 0.3);
+        }
+
+        .knowledge-card h4 {
+            color: var(--text-main);
+            margin-bottom: 0.45rem;
+            font-size: 0.95rem;
+        }
+
+        .knowledge-card p {
+            line-height: 1.75;
+        }
+
+        .knowledge-card.locked p {
+            color: #b8a89e;
+        }
+
+        .knowledge-card-topline {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.7rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .knowledge-card-topline h4 {
+            margin-bottom: 0;
+        }
+
+        .new-badge {
+            flex: 0 0 auto;
+            padding: 0.14rem 0.42rem;
+            color: #fff4ce;
+            font: 700 0.62rem 'Space Grotesk', sans-serif;
+            letter-spacing: 0.06em;
+            border: 1px solid rgba(255, 213, 108, 0.55);
+            border-radius: 999px;
+            background: linear-gradient(135deg, #b9682e, #77502d);
+            box-shadow: 0 0 12px rgba(236, 168, 73, 0.22);
+        }
+
+        .knowledge-read-btn {
+            margin-top: 0.75rem;
+            padding: 0.32rem 0.58rem;
+            color: #e8c6a3;
+            font: 500 0.68rem 'Kiwi Maru', serif;
+            border: 1px solid rgba(217, 119, 54, 0.38);
+            border-radius: 6px;
+            background: rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .knowledge-read-btn:hover {
+            color: #fff;
+            border-color: var(--accent-color);
+            background: rgba(217, 119, 54, 0.16);
+        }
+
+        @keyframes knowledge-card-enter {
+            from { opacity: 0; transform: translateY(7px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gallery-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(240px, 0.75fr);
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .gallery-stage {
+            min-height: 330px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(217, 119, 54, 0.28);
+            border-radius: 14px;
+            background: radial-gradient(ellipse at 50% 38%, #594037 0%, #30231f 45%, #171312 100%);
+            box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.45);
+            touch-action: none;
+            cursor: grab;
+        }
+
+        .gallery-stage:active { cursor: grabbing; }
+        .gallery-stage canvas { display: block; width: 100%; height: 100%; }
+
+        .gallery-stage::after {
+            content: "CHIKUWA / OBJECT ARCHIVE";
+            position: absolute;
+            left: 1rem;
+            bottom: 0.85rem;
+            color: rgba(245, 240, 235, 0.5);
+            font: 500 0.62rem 'Space Grotesk', sans-serif;
+            letter-spacing: 0.16em;
+            pointer-events: none;
+        }
+
+        .gallery-detail {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 14px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.015));
+            backdrop-filter: blur(12px);
+        }
+
+        .gallery-kicker {
+            color: var(--accent-color);
+            font: 500 0.7rem 'Space Grotesk', sans-serif;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .gallery-detail h3 {
+            margin: 0.65rem 0 0.75rem;
+            font-size: clamp(1.2rem, 2vw, 1.65rem);
+            line-height: 1.4;
+            color: var(--text-main);
+        }
+
+        .gallery-description {
+            color: var(--text-sub);
+            font-size: 0.88rem;
+            line-height: 1.8;
+        }
+
+        .gallery-meta {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1.3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-meta-label {
+            display: block;
+            margin-bottom: 0.2rem;
+            color: rgba(245, 240, 235, 0.48);
+            font: 500 0.65rem 'Space Grotesk', sans-serif;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .rarity-badge {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            padding: 0.3rem 0.65rem;
+            border: 1px solid currentColor;
+            border-radius: 999px;
+            color: #d9c8a6;
+            font: 700 0.7rem 'Space Grotesk', sans-serif;
+            letter-spacing: 0.08em;
+        }
+
+        .rarity-badge.rare { color: #e6aa57; }
+        .rarity-badge.epic { color: #c38ce0; }
+        .rarity-badge.legendary { color: #f2cf66; }
+
+        .gallery-list-title {
+            margin: 0 0 0.7rem;
+            color: var(--text-sub);
+            font: 500 0.72rem 'Space Grotesk', sans-serif;
+            letter-spacing: 0.15em;
+        }
+
+        .gallery-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 0.65rem;
+        }
+
+        .gallery-item-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            min-height: 68px;
+            padding: 0.75rem 0.9rem;
+            text-align: left;
+            color: var(--text-main);
+            font: inherit;
+            background: rgba(0, 0, 0, 0.23);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
+        }
+
+        .gallery-item-btn:hover:not(:disabled),
+        .gallery-item-btn.selected {
+            border-color: var(--accent-color);
+            background: rgba(217, 119, 54, 0.12);
+            transform: translateY(-1px);
+        }
+
+        .gallery-item-btn:disabled {
+            color: rgba(245, 240, 235, 0.48);
+            cursor: not-allowed;
+        }
+
+        .gallery-item-icon { font-size: 1.3rem; }
+        .gallery-item-name { display: block; font-size: 0.82rem; font-weight: 500; }
+        .gallery-item-state { display: block; margin-top: 0.18rem; color: var(--text-sub); font-size: 0.68rem; }
+        .gallery-item-btn:disabled .gallery-item-state { color: #a77d68; }
+
+        .secret-archive {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .secret-page {
+            position: relative;
+            min-height: 220px;
+            overflow: hidden;
+            padding: 1.25rem;
+            border: 1px solid rgba(217, 119, 54, 0.3);
+            border-radius: 12px;
+            background:
+                linear-gradient(135deg, rgba(197, 159, 113, 0.12), transparent 58%),
+                repeating-linear-gradient(165deg, rgba(34, 26, 22, 0.94) 0 7px, rgba(50, 37, 31, 0.95) 8px 11px);
+            box-shadow: inset 0 0 32px rgba(0, 0, 0, 0.48);
+        }
+
+        .secret-page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.75;
+            background: linear-gradient(120deg, transparent 12%, rgba(17, 14, 13, 0.6) 25%, transparent 39%),
+                        linear-gradient(15deg, transparent 64%, rgba(12, 10, 9, 0.8) 78%, transparent 88%);
+            clip-path: polygon(0 0, 100% 0, 100% 91%, 92% 89%, 86% 95%, 78% 90%, 67% 97%, 53% 92%, 44% 100%, 32% 93%, 20% 97%, 12% 90%, 0 94%);
+        }
+
+        .secret-page h4 {
+            position: relative;
+            margin-bottom: 0.65rem;
+            color: #e6c79e;
+            font-size: 1rem;
+        }
+
+        .secret-page-kicker {
+            position: relative;
+            margin-bottom: 0.4rem;
+            color: var(--accent-color);
+            font: 500 0.65rem 'Space Grotesk', sans-serif;
+            letter-spacing: 0.14em;
+        }
+
+        .secret-page-copy {
+            position: relative;
+            min-height: 70px;
+            color: #d7c6b4;
+            font-size: 0.84rem;
+            line-height: 1.8;
+            transition: filter 0.8s ease, opacity 0.8s ease;
+        }
+
+        .secret-page.damaged .secret-page-copy {
+            filter: blur(5px);
+            opacity: 0.24;
+            user-select: none;
+        }
+
+        .secret-page.restored {
+            border-color: rgba(224, 171, 102, 0.62);
+            background:
+                radial-gradient(ellipse at 50% 10%, rgba(215, 161, 91, 0.14), transparent 70%),
+                linear-gradient(135deg, #33251d, #201916);
+        }
+
+        .secret-page.restored::before { opacity: 0.1; }
+        .secret-page.restored .secret-page-copy { filter: none; opacity: 1; user-select: text; }
+        .secret-page.sealed .secret-page-copy { filter: blur(7px); opacity: 0.15; }
+
+        .archive-cost {
+            position: relative;
+            margin-top: 0.65rem;
+            color: #d9a77c;
+            font-size: 0.75rem;
+        }
+
+        .archive-repair-btn {
+            position: relative;
+            margin-top: 0.8rem;
+            padding: 0.55rem 0.8rem;
+            color: var(--text-main);
+            font: 500 0.78rem 'Kiwi Maru', serif;
+            background: rgba(132, 75, 48, 0.78);
+            border: 1px solid rgba(224, 171, 102, 0.48);
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .archive-repair-btn:hover:not(:disabled) { background: var(--accent-color); }
+        .archive-repair-btn:disabled { opacity: 0.42; cursor: not-allowed; }
+
+        .lock-notice {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .treasure-btn {
+            margin-top: 0.8rem;
+            background: var(--rare-color);
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Kiwi Maru', serif;
+            font-size: 0.8rem;
+        }
+
+        .treasure-btn:hover {
+            background: #d35400;
+        }
+
+        .treasure-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .unlocked-badge {
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* 通知トースト */
+        #notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            font-family: 'Space Grotesk', sans-serif;
+            transform: translateY(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        #notification.show {
+            transform: translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-sub);
+            font-size: 0.8rem;
+            border-top: 1px dashed var(--border-color);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .gallery-layout { grid-template-columns: 1fr; }
+            .gallery-stage { min-height: 280px; }
+            .gallery-detail { min-height: 220px; }
+        }
+
+        @media (max-width: 600px) {
+            .knowledge-library-heading,
+            .knowledge-shelf-heading {
+                flex-wrap: wrap;
+            }
+            .knowledge-library-heading p {
+                margin-top: 0.2rem;
+            }
+            .oyaji-container {
+                left: 12px;
+                bottom: 12px;
+                width: calc(100vw - 24px);
+                gap: 0.75rem;
+                padding: 0.75rem;
+            }
+            #oyaji-canvas-container {
+                width: 64px;
+                height: 64px;
+            }
+            .oyaji-text {
+                max-height: 76px;
+                font-size: 0.8rem;
+            }
+            #notification {
+                right: 12px;
+                bottom: 150px;
+                left: 12px;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .gallery-item-btn { transition: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CHIKUWA WORLD</h1>
+        <p class="subtitle">頑固オヤジの説教を聞きながら、直火焼きの奥義と幾何学的立体ちくわの極意を究める記録</p>
+    </header>
+
+    <button class="tutorial-open-btn" id="tutorial-open-btn" type="button" aria-haspopup="dialog">？ 遊び方</button>
+    <dialog class="tutorial-dialog" id="tutorial-dialog" aria-labelledby="tutorial-title" aria-describedby="tutorial-description">
+        <div class="tutorial-content">
+            <p class="tutorial-kicker">CHIKUWA WORLD / HOW TO PLAY</p>
+            <div class="tutorial-heading-row">
+                <h2 id="tutorial-title"></h2>
+                <button class="tutorial-close-btn" id="tutorial-close-btn" type="button" aria-label="チュートリアルを閉じる">×</button>
+            </div>
+            <p class="tutorial-description" id="tutorial-description"></p>
+            <div class="tutorial-progress" aria-live="polite">
+                <span id="tutorial-step-count"></span>
+                <div class="tutorial-progress-track" aria-hidden="true">
+                    <div class="tutorial-progress-bar" id="tutorial-progress-bar"></div>
+                </div>
+            </div>
+            <div class="tutorial-actions">
+                <button class="tutorial-skip-btn" id="tutorial-skip-btn" type="button">あとで見る</button>
+                <button class="tutorial-prev-btn" id="tutorial-prev-btn" type="button">戻る</button>
+                <button class="tutorial-next-btn" id="tutorial-next-btn" type="button">次へ</button>
+            </div>
+        </div>
+    </dialog>
+
+    <div class="main-container">
+        <!-- 左側：3D幾何学的ちくわビューア -->
+        <div class="card">
+            <div class="status-header">
+                <h3 id="chikuwa-title">生・幾何学的ちくわ</h3>
+                <span class="level-badge" id="level-display">習熟度: 1</span>
+            </div>
+            <div id="canvas-container"></div>
+            <p class="canvas-tip">※3Dちくわをクリックするか、マウスドラッグで回転できます</p>
+        </div>
+
+        <!-- 右側：製造・工房ナビゲーション -->
+        <div class="card">
+            <div class="status-header">
+                <h3>工房の製造・育成記録</h3>
+                <span id="称号" style="font-size: 0.85rem; color: var(--accent-color);">称号：見習い職人</span>
+            </div>
+
+            <!-- 2. 工房の背景にある「道具」をクリックするエリア -->
+            <div class="workshop-tools">
+                <span style="font-size: 0.75rem; color: var(--text-sub);">工房の道具：</span>
+                <button class="tool-icon-btn" id="hibachi-btn" type="button" onclick="clickHibachi()">
+                    <span>🔥 火鉢をあおる</span>
+                    <span class="tool-count" id="hibachi-status">0回 · 火の粉</span>
+                </button>
+                <button class="tool-icon-btn" id="stone-mill-btn" type="button" onclick="clickStoneMill()">
+                    <span>🌾 石臼を回す</span>
+                    <span class="tool-count" id="mill-status">0回 · ゴロゴロ…</span>
+                </button>
+                <div id="mill-whisper" aria-live="polite">「……きょうは、よく回る日だな……」</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">あつめたすり身の微塵</div>
+                    <div class="stat-value" id="surimi-count">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">けいけんち (EXP)</div>
+                    <div class="stat-value" id="exp-display">0 / 50</div>
+                </div>
+            </div>
+
+            <!-- レアドロップ表示欄 -->
+            <div class="rare-stats-grid">
+                <div class="rare-stat-box">
+                    <div class="rare-stat-label crystal">💎 旨味の結晶</div>
+                    <div class="rare-stat-value" id="crystal-count">0</div>
+                </div>
+                <div class="rare-stat-box">
+                    <div class="rare-stat-label teaka">✋ 職人の手垢</div>
+                    <div class="rare-stat-value" id="teaka-count">0</div>
+                </div>
+            </div>
+
+            <button class="action-btn" id="pat-btn">✨ ちくわを丹念に磨く（微塵 +1）</button>
+
+            <div class="upgrade-title">🛠️ 工房設備・道具の調達</div>
+            <div id="upgrade-list">
+                <!-- 動的生成 -->
+            </div>
+        </div>
+
+        <!-- 下部：二階層の習熟度解放式図鑑と特別アーカイブ -->
+        <div class="card full-width-card">
+            <div class="knowledge-navigation" aria-label="図鑑ナビゲーション">
+                <div class="category-tabs" role="tablist" aria-label="図鑑の大カテゴリ">
+                    <button class="category-tab active" type="button" role="tab" aria-selected="true" data-knowledge-category="foundation" onclick="selectKnowledgeCategory('foundation', this)">① 基礎・科学</button>
+                    <button class="category-tab" type="button" role="tab" aria-selected="false" data-knowledge-category="culture" onclick="selectKnowledgeCategory('culture', this)">② 歴史・文化</button>
+                    <button class="category-tab" type="button" role="tab" aria-selected="false" data-knowledge-category="secrets" onclick="selectKnowledgeCategory('secrets', this)">③ 秘話・伝説</button>
+                    <button class="category-tab" type="button" role="tab" aria-selected="false" data-knowledge-category="cosmos" onclick="selectKnowledgeCategory('cosmos', this)">④ 宇宙的真理</button>
+                </div>
+                <div class="knowledge-shelf-wrap">
+                    <div class="knowledge-shelf-heading">
+                        <h4>CHIKUWA KNOWLEDGE / BOOKSHELF</h4>
+                        <span>棚を選ぶと記録を絞り込めます</span>
+                    </div>
+                    <div class="knowledge-shelf" id="knowledge-shelf" role="group" aria-label="選択中カテゴリの本棚"></div>
+                </div>
+                <div class="utility-tabs" aria-label="特別収蔵庫">
+                    <button class="tab-btn" type="button" data-special-tab="treasures" onclick="switchTab('treasures', this)">✨ 工房の秘宝・破損ページ</button>
+                    <button class="tab-btn" type="button" data-special-tab="gallery" onclick="switchTab('gallery', this)">🖼️ 収集品ギャラリー</button>
+                </div>
+            </div>
+
+            <div id="tab-knowledge" class="tab-content active" role="tabpanel">
+                <div class="knowledge-library-heading">
+                    <h3 id="knowledge-category-title">① 基礎・科学</h3>
+                    <p id="knowledge-result-count" aria-live="polite"></p>
+                </div>
+                <div class="knowledge-grid" id="knowledge-grid"></div>
+            </div>
+
+            <div id="tab-gallery" class="tab-content">
+                <div class="gallery-layout">
+                    <div class="gallery-stage" id="gallery-stage" aria-label="選択中のアイテムをドラッグして回転"></div>
+                    <section class="gallery-detail" aria-live="polite">
+                        <p class="gallery-kicker">Selected object / 01</p>
+                        <h3 id="gallery-name">まだ記録されていない道具</h3>
+                        <p class="gallery-description" id="gallery-description">設備や秘宝を解放すると、ここでその姿を360度から鑑賞できます。</p>
+                        <div class="gallery-meta">
+                            <div>
+                                <span class="gallery-meta-label">解放条件</span>
+                                <p class="gallery-description" id="gallery-unlock">設備を調達、または工房の秘宝を解放</p>
+                            </div>
+                            <div>
+                                <span class="gallery-meta-label">レアリティ</span>
+                                <span class="rarity-badge" id="gallery-rarity">未発見</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <h4 class="gallery-list-title">ARCHIVE / COLLECTION</h4>
+                <div class="gallery-items" id="gallery-items"></div>
+                <p class="canvas-tip">ドラッグ／スワイプで回転 ・ 手を離すとゆっくり自動回転</p>
+            </div>
+
+            <!-- 特別アイテム解放タブ -->
+            <div id="tab-treasures" class="tab-content">
+                <div class="knowledge-grid" id="content-treasures"></div>
+                <h4 class="gallery-list-title" style="margin-top: 1.5rem;">THE FORBIDDEN PAGES / 極意書の破損ページ</h4>
+                <div class="secret-archive" id="secret-archive">
+                    <article class="secret-page damaged" id="archive-page-youth">
+                        <p class="secret-page-kicker">PAGE 07 / SMOKE-STAINED</p>
+                        <h4>破られたページ — 若き日の源さん</h4>
+                        <p class="secret-page-copy" id="archive-youth-copy">若い頃の源さんは、ちくわ職人ではなく、リーゼントをなびかせるロックスターを夢見ていた。初舞台では緊張のあまり、自己紹介の代わりに焼き時間を叫んだという。</p>
+                        <p class="archive-cost" id="archive-youth-cost">修復費用: 💎 旨味の結晶 ×5 / ✋ 職人の手垢 ×1</p>
+                        <button class="archive-repair-btn" id="repair-youth-btn" type="button" onclick="restoreArchivePage('youth')">ページを修復する</button>
+                    </article>
+                    <article class="secret-page damaged sealed" id="archive-page-failure">
+                        <p class="secret-page-kicker">FINAL PAGE / CHARRED RECIPE</p>
+                        <h4>最終ページ — 大失敗作の墓場</h4>
+                        <p class="secret-page-copy" id="archive-failure-copy">炭になるまで焼きすぎた、歪な試作品の記録。あの日、源さんは「これは新しい宇宙の形だ」と言い張り、弟子たちは全員うなずいた。</p>
+                        <p class="archive-cost" id="archive-failure-cost">先に若き日のページを復元してください。修復費用: 💎 ×8 / ✋ ×2</p>
+                        <button class="archive-repair-btn" id="repair-failure-btn" type="button" onclick="restoreArchivePage('failure')" disabled>最終ページを修復する</button>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 画面固定の源さん会話ウィンドウ -->
+    <aside class="oyaji-container" aria-label="源さんのメッセージ">
+        <div id="oyaji-canvas-container" role="button" tabindex="0" aria-label="源さんをつつく" title="クリックしてオヤジをつつく"></div>
+        <div class="oyaji-speech">
+            <div class="oyaji-name">頑固職人・源さん（72歳）</div>
+            <div class="oyaji-text" id="oyaji-message" aria-live="polite">「……フッ。来たか、ひよっこ。ちくわを焼くってのはな、そんな生半可なもんじゃねえんだ。勝手にしろい。」</div>
+        </div>
+    </aside>
+
+    <!-- 通知トースト -->
+    <div id="notification">🎉 通知メッセージ</div>
+
+    <footer>
+        <p>CHIKUWA WORLD — 伝統の練り物技術と幾何学的3Dアートの融合</p>
+    </footer>
+
+    <script>
+        // --- Web Audio API サウンド生成 ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playPopSound() {
+            if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(700, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.1);
+        }
+
+        function playStoneSound() {
+            if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.3);
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.3);
+        }
+
+        // --- 状態管理 ---
+        let gameState = {
+            surimi: 0,
+            crystal: 0,
+            teaka: 0,
+            exp: 0,
+            level: 1,
+            expToNext: 50,
+            clickPower: 1,
+            autoPower: 0,
+            clickMultiplier: 1,
+            autoMultiplier: 1,
+            archivePages: {
+                youth: { restored: false, costCrystal: 5, costTeaka: 1 },
+                failure: { restored: false, costCrystal: 8, costTeaka: 2 }
+            },
+            treasures: {
+                goldenRod: { name: "黄金の直火竹串", costCrystal: 5, costTeaka: 1, unlocked: false, desc: "クリック生産量が大幅に上昇します（+10）、芯棒が黄金に輝きます", effect: () => { gameState.clickPower += 10; updateVisuals(); } },
+                secretScroll: { name: "源さんの極意書（禁断の過去）", costCrystal: 12, costTeaka: 3, unlocked: false, desc: "おやじの秘密が明かされ、自動生産が強力になります（+5）", effect: () => { gameState.autoPower += 5; updateVisuals(); } },
+                abyssBamboo: { name: "深淵の黒竹串", costCrystal: 30, costTeaka: 10, unlocked: false, desc: "深淵の熱を宿す黒竹串。磨くたびに芯の奥から静かな力が湧き、手入れの生産効率を恒久的に1.5倍にする。", effect: () => { gameState.clickMultiplier *= 1.5; } },
+                ancientStone: { name: "古代一品石", costCrystal: 50, costTeaka: 15, unlocked: false, desc: "石臼の底から発見された、名もなき古代職人の一品石。工房の自動生産を恒久的に2倍へ引き上げる。", effect: () => { gameState.autoMultiplier *= 2; } },
+                goldenChar: { name: "天啓の黄金焦げ", costCrystal: 80, costTeaka: 25, unlocked: false, desc: "焦げの一片に宇宙の焼き加減が刻まれた黄金の遺物。手入れの生産効率をさらに2倍に高める。", effect: () => { gameState.clickMultiplier *= 2; } },
+                sealedBox: { name: "源さんの封印された木箱", costCrystal: 120, costTeaka: 40, unlocked: false, desc: "源さんが決して開けさせなかった桐箱。中から聞こえる石臼の音が、クリックと自動生産をそれぞれ1.5倍に導く。", effect: () => { gameState.clickMultiplier *= 1.5; gameState.autoMultiplier *= 1.5; } },
+                spacetimeRing: { name: "時空を貫く竹の輪", costCrystal: 200, costTeaka: 70, unlocked: false, desc: "竹輪の穴が時空の彼方へ通じた究極の秘宝。手入れと自動生産の力をともに3倍へ昇華させる。", effect: () => { gameState.clickMultiplier *= 3; gameState.autoMultiplier *= 3; } }
+            },
+            upgrades: {
+                autoMachine: { name: "自動回転焼き器", cost: 15, power: 1, count: 0, desc: "毎秒自動ですり身の微塵を生成します" },
+                stainlessRod: { name: "ステンレス芯棒", cost: 50, power: 3, count: 0, desc: "手入れ時の生産効率がアップし、芯棒がメタルシルバーに変化します" },
+                secretSpice: { name: "秘伝の白身魚ブレンド", cost: 200, power: 10, count: 0, desc: "製造効率が大幅に上昇し、ちくわの質感が向上します" }
+            }
+        };
+
+        const titles = ["見習い職人", "ちくわ職人", "直火焼きの匠", "幾何学ちくわマスター", "ちくわ神"];
+
+        // --- 1. 頑固オヤジ「源さん」連打リアクションのロジック ---
+        let oyajiClickCount = 0;
+        const oyajiMessages = {
+            1: "👤(……フッ。来たか、ひよっこ。ちくわを焼くってのはな、そんな生半可なもんじゃねえんだ。勝手にしろい。)",
+            2: "👤(ほう、習熟度2か。魚のすり身と塩の機微、少しは分かってきたようだな。)",
+            4: "👤(習熟度4だな！道具や焼き器の構造にも目を向ける頃合いだ、しっかり勉強しやがれ！)",
+            7: "👤(おっ、習熟度7か！『おいしい食べ方』が気になり始める頃だな。炙る一手間を忘れるなよ！)",
+            8: "👤(習熟度8か。おでんの出汁は急かすな。ちくわの穴にも、職人の待つ心にも、じわりと染みるんだ。)",
+            11: "👤(おっ、習熟度11だな！いよいよ平安・江戸からの歴史のロマンに触れる資格ができたぞ。)",
+            16: "👤(習熟度16か…全国各地の名産ちくわを知ると、日本の広さと奥深さに圧倒されるはずだ！)",
+            18: "👤(習熟度18、世界の円筒文化か。柱も樽も煙突も、形には理由がある。だが、食える円筒はちくわだけだ！)",
+            22: "👤(習熟度22！石臼のすり身科学を理解できれば、お前も立派な中堅職人だ。)",
+            26: "👤(習熟度26か。面の角度ひとつで焼き色も影も変わる。ちくわは食べられる建築物ってわけだ。)",
+            30: "👤(まさか習熟度30まで到達するとはな……！幾何学的立体ちくわと宇宙の真理を極めし者よ、恐れ入った！)",
+            34: "👤(習熟度34……昔の話まで掘り返すたぁ物好きだな。リーゼントのことは忘れろ！レシピの話だけ聞け！)",
+            40: "👤(ふははは！ついにここまで登り詰めたか！ちくわ道に終わりはない、宇宙の果てまでちくわを響かせるのだ！)",
+            48: "👤(習熟度48か。弱火を守るのも立派な腕だ。泡を数えるより、鍋から目を離すなよ……俺みたいにな。)",
+            56: "👤(習熟度56……世界の円筒文化まで学んだか。樽も柱も立派だが、穴まで味わえるのはちくわの特権よ。)",
+            64: "👤(習熟度64！焼き目の一筋にも歴史がある。焦げと香ばしさの境目を見極めるんだ、黒くしすぎるなよ。)",
+            72: "👤(習熟度72か。若い頃の失敗まで極意に変えたな。リーゼントの写真だけは、図鑑に載せるんじゃねえぞ。)",
+            80: "👤(習熟度80……出汁の巡りも石臼の唸りも聞き分けるとはな。工房の音が、お前には旋律に聞こえるだろう。)",
+            88: "👤(習熟度88！形も火も極めてきたな。だが最後のひと手間を惜しむな。串を抜くまでが職人仕事だ。)",
+            96: "👤(習熟度96か……ここまで来りゃ、ちくわの穴の向こうに何があるか分かるはずだ。答えは次の一口だ！)",
+            100: "👤(習熟度100、ついに極みに届いたな！だが職人の道に終点はねえ。次の一本も、心を込めて焼き上げろ！)"
+        };
+        const finalOyajiMessage = "👤(すべての秘宝を集めたか……！お前こそ、ちくわ神の境地に至りし真の職人よ。穴の向こうに広がる宇宙まで、ちくわの道を響かせようぞ！)";
+
+        const oyajiClickDialogues = [
+            [
+                "👤(いてっ！ なんだお前、急に顔をつつきやがって！)",
+                "👤(おい、そこばかり突くな！ 暇ならすり身を練れ！)",
+                "👤(指先に力を入れすぎだ。ちくわを巻く手つきは、もっと優しくしろい。)",
+                "👤(おっ、いい音だな。……いや、今のは俺の頬の音だ！)"
+            ],
+            [
+                "👤(また来たか。火加減と同じで、何事も頃合いってもんがあるぞ。)",
+                "👤(焼き目は一日にしてならず。つつくのは一瞬、修業は一生だ。)",
+                "👤(その熱心さ、石臼にも向けてみな。回し続けりゃ、いつか旨味が出る。)",
+                "👤(ちくわの穴を覗くなよ。向こうに見えるのは未来じゃなくて、だいたい串だ。)",
+                "👤(出汁はゆっくり染みる。説教もゆっくり聞け。……寝るんじゃねえぞ。)"
+            ],
+            [
+                "👤(いててっ！ 顔は焼き台じゃねえ、何度も叩くんじゃない！)",
+                "👤(若い頃の俺はリーゼントでステージに立ってな……おい、笑うんじゃねえ！)",
+                "👤(歌のアンコールを焼き串の追加注文と勘違いした話は、極意書にも書くなよ。)",
+                "👤(焦げた試作品を『新しい幾何学』と言い張った？ ……誰から聞いた！)",
+                "👤(白身魚八に塩〇・二。比率は秘密だ。いや、今しゃべったか？)"
+            ],
+            [
+                "👤(もう許らん！ 特訓だ！ まずは石臼を回しながら俺の説教を三周聞け！)",
+                "👤(工房の全財産を賭けて……いや、串一本分だけ賭けてやる！覚悟しろ！)",
+                "👤(お前の連打、回転焼き器より速えぞ。ちくわまで目を回してらあ！)",
+                "👤(これだけつつかれてもハチマキはずれん。職人の意地ってやつよ！)",
+                "👤(分かった、分かった！次は俺がつつく番……って、弟子に手は出さん！)"
+            ]
+        ];
+
+        const oyajiAvatar = document.getElementById('oyaji-canvas-container');
+        const oyajiScene = new THREE.Scene();
+        const oyajiCamera = new THREE.PerspectiveCamera(32, 1, 0.1, 20);
+        oyajiCamera.position.set(0, 0.05, 3.25);
+        const oyajiRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        oyajiRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        oyajiRenderer.setSize(72, 72);
+        oyajiAvatar.appendChild(oyajiRenderer.domElement);
+
+        oyajiScene.add(new THREE.AmbientLight(0xffe6d1, 1.15));
+        const oyajiKeyLight = new THREE.DirectionalLight(0xffd2a5, 2.2);
+        oyajiKeyLight.position.set(-2, 3, 4);
+        oyajiScene.add(oyajiKeyLight);
+        const oyajiFillLight = new THREE.DirectionalLight(0x9d9bd2, 0.75);
+        oyajiFillLight.position.set(2, 0, -3);
+        oyajiScene.add(oyajiFillLight);
+
+        const oyajiRoot = new THREE.Group();
+        const oyajiModel = new THREE.Group();
+        oyajiRoot.add(oyajiModel);
+        oyajiScene.add(oyajiRoot);
+
+        function oyajiMesh(geometry, color, position, scale, rotation) {
+            const mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({
+                color,
+                roughness: 0.82,
+                flatShading: true
+            }));
+            mesh.position.set(position.x, position.y, position.z);
+            if (scale) mesh.scale.set(scale.x, scale.y, scale.z);
+            if (rotation) mesh.rotation.set(rotation.x, rotation.y, rotation.z);
+            oyajiModel.add(mesh);
+            return mesh;
+        }
+
+        oyajiMesh(new THREE.CylinderGeometry(0.46, 0.68, 0.85, 6, 1), 0x55413a, { x: 0, y: -0.48, z: 0 });
+
+        const oyajiApronShape = new THREE.Shape();
+        oyajiApronShape.moveTo(-0.29, -0.82);
+        oyajiApronShape.lineTo(-0.35, -0.2);
+        oyajiApronShape.lineTo(0.35, -0.2);
+        oyajiApronShape.lineTo(0.29, -0.82);
+        oyajiApronShape.closePath();
+        const apron = new THREE.Mesh(
+            new THREE.ShapeGeometry(oyajiApronShape),
+            new THREE.MeshStandardMaterial({ color: 0x293c3b, roughness: 0.88, flatShading: true })
+        );
+        apron.position.z = 0.49;
+        oyajiModel.add(apron);
+        oyajiMesh(new THREE.BoxGeometry(0.12, 0.4, 0.055), 0xb88952, { x: -0.2, y: -0.38, z: 0.475 }, null, { x: 0, y: 0, z: -0.35 });
+        oyajiMesh(new THREE.BoxGeometry(0.12, 0.4, 0.055), 0xb88952, { x: 0.2, y: -0.38, z: 0.475 }, null, { x: 0, y: 0, z: 0.35 });
+
+        oyajiMesh(new THREE.SphereGeometry(0.53, 8, 6), 0xd9aa7e, { x: 0, y: 0.2, z: 0 }, { x: 1, y: 0.94, z: 0.9 });
+        oyajiMesh(new THREE.DodecahedronGeometry(0.12, 0), 0xe2e1d8, { x: -0.46, y: 0.14, z: 0 });
+        oyajiMesh(new THREE.DodecahedronGeometry(0.12, 0), 0xe2e1d8, { x: 0.46, y: 0.14, z: 0 });
+
+        const hachimaki = oyajiMesh(
+            new THREE.CylinderGeometry(0.49, 0.49, 0.14, 12, 1, true),
+            0xb63f32,
+            { x: 0, y: 0.39, z: 0 }
+        );
+        const hachimakiKnot = oyajiMesh(new THREE.BoxGeometry(0.2, 0.14, 0.09), 0xd4513d, { x: 0, y: 0.39, z: 0.47 });
+        hachimakiKnot.rotation.z = -0.12;
+        oyajiMesh(new THREE.ConeGeometry(0.1, 0.27, 4), 0xb63f32, { x: -0.1, y: 0.22, z: 0.48 }, { x: 0.62, y: 1, z: 0.38 }, { x: 0, y: 0, z: -0.3 });
+        oyajiMesh(new THREE.ConeGeometry(0.1, 0.27, 4), 0xb63f32, { x: 0.1, y: 0.22, z: 0.48 }, { x: 0.62, y: 1, z: 0.38 }, { x: 0, y: 0, z: 0.3 });
+
+        oyajiMesh(new THREE.BoxGeometry(0.075, 0.09, 0.07), 0x332722, { x: -0.2, y: 0.23, z: 0.48 });
+        oyajiMesh(new THREE.BoxGeometry(0.075, 0.09, 0.07), 0x332722, { x: 0.2, y: 0.23, z: 0.48 });
+        oyajiMesh(new THREE.ConeGeometry(0.1, 0.22, 5), 0xc68f68, { x: 0, y: 0.06, z: 0.48 });
+
+        oyajiMesh(new THREE.BoxGeometry(0.26, 0.09, 0.1), 0x43312b, { x: -0.2, y: 0.39, z: 0.48 }, null, { x: 0, y: 0, z: 0.22 });
+        oyajiMesh(new THREE.BoxGeometry(0.26, 0.09, 0.1), 0x43312b, { x: 0.2, y: 0.39, z: 0.48 }, null, { x: 0, y: 0, z: -0.22 });
+
+        oyajiMesh(new THREE.ConeGeometry(0.3, 0.42, 5), 0xe7dfcf, { x: -0.2, y: -0.02, z: 0.55 }, { x: 1, y: 0.72, z: 0.48 }, { x: 0, y: 0, z: -1.1 });
+        oyajiMesh(new THREE.ConeGeometry(0.3, 0.42, 5), 0xe7dfcf, { x: 0.2, y: -0.02, z: 0.55 }, { x: 1, y: 0.72, z: 0.48 }, { x: 0, y: 0, z: 1.1 });
+        oyajiMesh(new THREE.ConeGeometry(0.28, 0.48, 5), 0xd9d3c6, { x: 0, y: -0.22, z: 0.53 }, { x: 1, y: 0.85, z: 0.55 }, { x: 0, y: 0, z: Math.PI });
+
+        const chikuwaBadge = oyajiMesh(new THREE.TorusGeometry(0.105, 0.036, 5, 10), 0xd7a16c, { x: 0, y: -0.42, z: 0.52 });
+        chikuwaBadge.scale.set(1, 0.78, 1);
+        oyajiMesh(new THREE.TorusGeometry(0.038, 0.009, 4, 8), 0xe7c18b, { x: 0, y: -0.42, z: 0.525 });
+
+        oyajiMesh(new THREE.BoxGeometry(0.34, 0.14, 0.025), 0x192725, { x: 0, y: -0.65, z: 0.525 });
+        const apronLabelCanvas = document.createElement('canvas');
+        apronLabelCanvas.width = 256;
+        apronLabelCanvas.height = 96;
+        const apronLabelContext = apronLabelCanvas.getContext('2d');
+        apronLabelContext.fillStyle = '#e8d7b6';
+        apronLabelContext.font = 'bold 58px sans-serif';
+        apronLabelContext.textAlign = 'center';
+        apronLabelContext.textBaseline = 'middle';
+        apronLabelContext.fillText('竹輪', 128, 49);
+        const apronLabelTexture = new THREE.CanvasTexture(apronLabelCanvas);
+        apronLabelTexture.encoding = THREE.sRGBEncoding;
+        const apronLabel = new THREE.Mesh(
+            new THREE.PlaneGeometry(0.31, 0.115),
+            new THREE.MeshBasicMaterial({ map: apronLabelTexture, transparent: true, depthWrite: false })
+        );
+        apronLabel.position.set(0, -0.65, 0.541);
+        oyajiModel.add(apronLabel);
+
+        let oyajiReactionUntil = 0;
+        let oyajiReactionStrength = 0;
+        const oyajiClock = new THREE.Clock();
+        function animateOyaji() {
+            requestAnimationFrame(animateOyaji);
+            const elapsed = oyajiClock.getElapsedTime();
+            const remaining = Math.max(0, oyajiReactionUntil - elapsed);
+            const reaction = remaining > 0 ? Math.sin((1 - remaining / 0.42) * Math.PI * 7) * oyajiReactionStrength * (remaining / 0.42) : 0;
+            oyajiRoot.position.y = Math.sin(elapsed * 1.7) * 0.035;
+            oyajiRoot.rotation.y = Math.sin(elapsed * 0.8) * 0.06 + reaction * 0.12;
+            oyajiRoot.rotation.z = reaction * 0.07;
+            const pop = remaining > 0 ? 1 + Math.sin((1 - remaining / 0.42) * Math.PI) * oyajiReactionStrength * 0.12 : 1;
+            oyajiRoot.scale.set(pop, pop, pop);
+            oyajiRenderer.render(oyajiScene, oyajiCamera);
+        }
+        animateOyaji();
+
+        function reactOyaji() {
+            oyajiReactionUntil = oyajiClock.getElapsedTime() + 0.42;
+            oyajiReactionStrength = Math.min(1, oyajiReactionStrength + 0.28);
+            setTimeout(() => { oyajiReactionStrength = Math.max(0.35, oyajiReactionStrength - 0.28); }, 420);
+        }
+
+        oyajiAvatar.addEventListener('click', () => {
+            reactOyaji();
+            oyajiClickCount++;
+            playPopSound();
+            let dialogueTier = 0;
+            if (oyajiClickCount >= 20) {
+                dialogueTier = 3;
+                // 画面全体を揺らす
+                document.body.classList.add('shake');
+                setTimeout(() => document.body.classList.remove('shake'), 400);
+            } else if (oyajiClickCount >= 10) {
+                dialogueTier = 2;
+            } else if (oyajiClickCount >= 5) {
+                dialogueTier = 1;
+            }
+            const dialogueTierStart = [1, 5, 10, 20][dialogueTier];
+            document.getElementById('oyaji-message').textContent =
+                Object.values(gameState.treasures).every((treasure) => treasure.unlocked)
+                    ? finalOyajiMessage
+                    : oyajiClickDialogues[dialogueTier][(oyajiClickCount - dialogueTierStart) % oyajiClickDialogues[dialogueTier].length];
+        });
+        oyajiAvatar.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                oyajiAvatar.click();
+            }
+        });
+
+        function updateOyajiMessage() {
+            if (Object.values(gameState.treasures).every((treasure) => treasure.unlocked)) return;
+            let keys = Object.keys(oyajiMessages).map(Number).sort((a,b) => b - a);
+            let selectedKey = keys.find(k => gameState.level >= k) || 1;
+            document.getElementById('oyaji-message').textContent = oyajiMessages[selectedKey];
+        }
+
+        // --- 2. 工房の道具をクリックするアクション ---
+        let hibachiCount = 0;
+        let millCount = 0;
+        let nextHibachiOverheatAt = 30;
+        let nextMillStrikeAt = 50;
+        let hibachiOverheatUntil = 0;
+        let millCooldownUntil = 0;
+        let millStrikeActive = false;
+        const hibachiButton = document.getElementById('hibachi-btn');
+        const stoneMillButton = document.getElementById('stone-mill-btn');
+        const hibachiStatus = document.getElementById('hibachi-status');
+        const millStatus = document.getElementById('mill-status');
+        const millWhisper = document.getElementById('mill-whisper');
+        const hibachiOverheatDuration = 20000;
+        const millCooldownDuration = 4000;
+
+        function isHibachiOverheated() {
+            return Date.now() < hibachiOverheatUntil;
+        }
+
+        function setToolOyajiMessage(message) {
+            if (Object.values(gameState.treasures).every((treasure) => treasure.unlocked)) return;
+            document.getElementById('oyaji-message').textContent = message;
+        }
+
+        function createFireSparks() {
+            const sparkCount = isHibachiOverheated() ? 7 : 3;
+            for (let index = 0; index < sparkCount; index++) {
+                const spark = document.createElement('span');
+                spark.className = 'fire-spark';
+                spark.style.setProperty('--spark-x', `${Math.round(Math.random() * 56 - 28)}px`);
+                spark.style.setProperty('--spark-y', `${Math.round(Math.random() * 20 - 10)}px`);
+                spark.style.left = `${30 + Math.random() * 40}%`;
+                spark.addEventListener('animationend', () => spark.remove(), { once: true });
+                hibachiButton.appendChild(spark);
+            }
+        }
+
+        function updateWorkshopToolStates() {
+            const now = Date.now();
+            const overheatRemaining = Math.max(0, hibachiOverheatUntil - now);
+            const cooldownRemaining = Math.max(0, millCooldownUntil - now);
+
+            hibachiButton.classList.toggle('overheated', overheatRemaining > 0);
+            hibachiStatus.textContent = overheatRemaining > 0
+                ? `${hibachiCount}回 · 黄金焦げ ${Math.ceil(overheatRemaining / 1000)}秒`
+                : hibachiCount >= 30
+                    ? `${hibachiCount}回 · 次の暴走まで ${Math.max(0, nextHibachiOverheatAt - hibachiCount)}回`
+                    : `${hibachiCount}回 · 火の粉`;
+
+            stoneMillButton.disabled = millStrikeActive;
+            stoneMillButton.classList.toggle('striking', millStrikeActive);
+            millStatus.textContent = millStrikeActive
+                ? `${millCount}回 · ストライキ ${Math.ceil(cooldownRemaining / 1000)}秒`
+                : `${millCount}回 · ゴロゴロ…`;
+
+            if (millStrikeActive) {
+                millWhisper.textContent = '「……もう許してくれ、すり身の粒子が迷子になる……」';
+                millWhisper.classList.add('visible');
+            } else if (millCount >= 10 && millCount < 30) {
+                millWhisper.textContent = '「……きょうは、よく回る日だな……」';
+                millWhisper.classList.add('visible');
+            } else {
+                millWhisper.classList.remove('visible');
+            }
+        }
+
+        function startMillStrike() {
+            millStrikeActive = true;
+            millCooldownUntil = Date.now() + millCooldownDuration;
+            nextMillStrikeAt += 50;
+            setToolOyajiMessage('👤(……もう許してくれ、すり身の粒子が迷子になる……だとよ。石臼がストライキだ、四秒待ってやれ。)');
+            updateWorkshopToolStates();
+            showNotification('🌾 石臼がめまいでストライキ！解除後にすり身の微塵を大放出！');
+
+            setTimeout(() => {
+                millStrikeActive = false;
+                millCooldownUntil = 0;
+                addProduction(30);
+                updateWorkshopToolStates();
+                showNotification('🌾 石臼が復帰！すり身の微塵 +30！');
+            }, millCooldownDuration);
+        }
+
+        function clickHibachi() {
+            if (hibachiButton.disabled) return;
+            hibachiCount++;
+            playPopSound();
+            createFireSparks();
+            addProduction(2, { rareBoost: isHibachiOverheated() });
+
+            if (hibachiCount >= nextHibachiOverheatAt) {
+                nextHibachiOverheatAt += 30;
+                hibachiOverheatUntil = Math.max(hibachiOverheatUntil, Date.now() + hibachiOverheatDuration);
+                setToolOyajiMessage('👤(暑苦しい！ あおぎすぎるな！そんなに必死にあおぐと、ウナギじゃなくてオレの頭が焼き焦げるだろ！)');
+                showNotification('🔥 火力暴走！20秒間、火鉢と手入れのレアドロップ率アップ！');
+            } else if (hibachiCount >= 10) {
+                setToolOyajiMessage('👤(暑苦しい！ あおぎすぎるな！そんなに必死にあおぐと、ウナギじゃなくてオレの頭が焼き焦げるだろ！)');
+            } else {
+                showNotification('🔥 ボッ！ 火の粉が舞った。すり身の微塵 +2');
+            }
+            updateWorkshopToolStates();
+        }
+
+        function clickStoneMill() {
+            if (millStrikeActive) return;
+            millCount++;
+            playStoneSound();
+            gameState.exp += 3;
+            if (gameState.exp >= gameState.expToNext) checkLevelUp();
+            updateUI();
+            if (millCount >= nextMillStrikeAt) {
+                startMillStrike();
+                return;
+            }
+            if (millCount >= 10 && millCount < 30) {
+                setToolOyajiMessage('👤(石臼の隙間から何か聞こえるぞ……「……きょうは、よく回る日だな……」だと？)');
+                showNotification('🌾 ゴロゴロ……石臼の隙間から謎のつぶやきが聞こえた。EXP +3');
+            } else {
+                showNotification('🌾 ゴロゴロ……石臼を回した！EXP +3');
+            }
+            updateWorkshopToolStates();
+        }
+
+        updateWorkshopToolStates();
+        setInterval(updateWorkshopToolStates, 250);
+
+
+        // --- Three.js 3D幾何学的ちくわ描画 & 3. Raycaster（3Dちくわクリック判定） ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffeedd, 0.95);
+        directionalLight.position.set(5, 10, 7);
+        scene.add(directionalLight);
+
+        const chikuwaMaterials = [
+            new THREE.MeshStandardMaterial({ color: 0xe7d6b7, roughness: 0.84, metalness: 0, flatShading: true }),
+            new THREE.MeshStandardMaterial({ color: 0xa95632, roughness: 0.86, metalness: 0, flatShading: true }),
+            new THREE.MeshStandardMaterial({ color: 0xc47a47, roughness: 0.84, metalness: 0, flatShading: true }),
+            new THREE.MeshStandardMaterial({ color: 0x80432e, roughness: 0.9, metalness: 0, flatShading: true }),
+            new THREE.MeshStandardMaterial({ color: 0xf0e2c9, roughness: 0.86, metalness: 0, flatShading: true }),
+            new THREE.MeshStandardMaterial({ color: 0x35251d, roughness: 0.98, metalness: 0, side: THREE.DoubleSide, flatShading: true })
+        ];
+        const material = chikuwaMaterials[0];
+
+        function createChikuwaGeometry() {
+            const geometry = new THREE.BufferGeometry();
+            const positions = [];
+            const groups = [];
+            const radialSegments = 9;
+            const profile = [
+                { y: -1.72, radius: 0.5 },
+                { y: -1.62, radius: 0.61 },
+                { y: -1.46, radius: 0.69 },
+                { y: -1.27, radius: 0.74 },
+                { y: -1.12, radius: 0.78 },
+                { y: -0.82, radius: 0.85 },
+                { y: -0.43, radius: 0.91 },
+                { y: 0, radius: 0.94 },
+                { y: 0.43, radius: 0.91 },
+                { y: 0.82, radius: 0.85 },
+                { y: 1.12, radius: 0.78 },
+                { y: 1.27, radius: 0.74 },
+                { y: 1.46, radius: 0.69 },
+                { y: 1.62, radius: 0.61 },
+                { y: 1.72, radius: 0.5 }
+            ];
+            const innerRadius = 0.32;
+            let currentMaterial = -1;
+            let groupStart = 0;
+
+            function addTriangle(a, b, c, materialIndex) {
+                if (currentMaterial !== materialIndex) {
+                    if (currentMaterial !== -1) {
+                        geometry.addGroup(groupStart, positions.length / 3 - groupStart, currentMaterial);
+                    }
+                    currentMaterial = materialIndex;
+                    groupStart = positions.length / 3;
+                }
+                positions.push(a.x, a.y, a.z, b.x, b.y, b.z, c.x, c.y, c.z);
+            }
+
+            function addQuad(a, b, c, d, materialIndex) {
+                addTriangle(a, b, d, materialIndex);
+                addTriangle(b, c, d, materialIndex);
+            }
+
+            function point(radius, y, angle) {
+                return new THREE.Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
+            }
+
+            function faceMaterial(row, segment) {
+                if (row <= 2 || row >= 11) {
+                    return (segment === 2 || segment === 6) ? 4 : 0;
+                }
+
+                const grillStripe = segment % 5;
+                if (grillStripe === 0 || grillStripe === 4) return 3;
+                if (grillStripe === 1 || grillStripe === 3) return 1;
+                if ((row === 5 || row === 8) && segment === 2) return 1;
+                return 2;
+            }
+
+            for (let row = 0; row < profile.length - 1; row++) {
+                const current = profile[row];
+                const next = profile[row + 1];
+                for (let segment = 0; segment < radialSegments; segment++) {
+                    const angleA = (segment / radialSegments) * Math.PI * 2;
+                    const angleB = ((segment + 1) / radialSegments) * Math.PI * 2;
+                    addQuad(
+                        point(current.radius, current.y, angleA),
+                        point(next.radius, next.y, angleA),
+                        point(next.radius, next.y, angleB),
+                        point(current.radius, current.y, angleB),
+                        faceMaterial(row, segment)
+                    );
+                }
+            }
+
+            for (const end of [-1, 1]) {
+                const edge = end < 0 ? profile[0] : profile[profile.length - 1];
+                const innerY = edge.y - end * 0.045;
+                for (let segment = 0; segment < radialSegments; segment++) {
+                    const angleA = (segment / radialSegments) * Math.PI * 2;
+                    const angleB = ((segment + 1) / radialSegments) * Math.PI * 2;
+                    const outerA = point(edge.radius, edge.y, angleA);
+                    const outerB = point(edge.radius, edge.y, angleB);
+                    const innerA = point(innerRadius, innerY, angleA);
+                    const innerB = point(innerRadius, innerY, angleB);
+                    if (end > 0) addQuad(outerA, innerA, innerB, outerB, 0);
+                    else addQuad(outerA, outerB, innerB, innerA, 0);
+                }
+            }
+
+            for (let segment = 0; segment < radialSegments; segment++) {
+                const angleA = (segment / radialSegments) * Math.PI * 2;
+                const angleB = ((segment + 1) / radialSegments) * Math.PI * 2;
+                const lowerA = point(innerRadius, profile[0].y + 0.045, angleA);
+                const lowerB = point(innerRadius, profile[0].y + 0.045, angleB);
+                const upperA = point(innerRadius, profile[profile.length - 1].y - 0.045, angleA);
+                const upperB = point(innerRadius, profile[profile.length - 1].y - 0.045, angleB);
+                addQuad(lowerA, lowerB, upperB, upperA, 5);
+            }
+
+            if (currentMaterial !== -1) {
+                geometry.addGroup(groupStart, positions.length / 3 - groupStart, currentMaterial);
+            }
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            geometry.computeVertexNormals();
+            return geometry;
+        }
+
+        const chikuwaGroup = new THREE.Group();
+        const chikuwaMesh = new THREE.Mesh(createChikuwaGeometry(), chikuwaMaterials);
+        chikuwaMesh.rotation.z = Math.PI / 2;
+        chikuwaMesh.scale.y = 1.35;
+        chikuwaGroup.add(chikuwaMesh);
+
+        const rodMat = new THREE.MeshStandardMaterial({ color: 0x8b5a2b, metalness: 0.12, roughness: 0.72, flatShading: true });
+        const rodGeo = new THREE.CylinderGeometry(0.16, 0.16, 4.25, 6);
+        const rodMesh = new THREE.Mesh(rodGeo, rodMat);
+        rodMesh.rotation.z = Math.PI / 2;
+        chikuwaGroup.add(rodMesh);
+
+        scene.add(chikuwaGroup);
+        chikuwaGroup.rotation.y = 0.72;
+        camera.position.z = 6;
+
+        // Three.js Raycasterによる3Dちくわ直接クリック判定
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        container.addEventListener('click', (e) => {
+            const rect = container.getBoundingClientRect();
+            mouse.x = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
+            mouse.y = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(chikuwaGroup.children);
+
+            if (intersects.length > 0) {
+                // 3Dちくわの穴の奥や角が直接クリックされた！
+                playPopSound();
+                addProduction(gameState.clickPower * gameState.clickMultiplier * 3, { rareBoost: isHibachiOverheated() }); // 3倍のボーナス生産
+                showNotification("✨ 3Dちくわの急所を突いた！生産ボーナス（3倍）！");
+
+                // クリック時にビュッと拡大して縮む演出
+                chikuwaGroup.scale.set(1.2, 1.2, 1.2);
+                setTimeout(() => { chikuwaGroup.scale.set(1, 1, 1); }, 150);
+            }
+        });
+
+        function updateVisuals() {
+            if (gameState.treasures.goldenRod.unlocked) {
+                rodMat.color.setHex(0xffd700);
+                rodMat.metalness = 0.9;
+                rodMat.roughness = 0.2;
+            } else if (gameState.upgrades.stainlessRod.count > 0) {
+                rodMat.color.setHex(0xd0d0d0);
+                rodMat.metalness = 0.8;
+                rodMat.roughness = 0.3;
+            }
+
+            const seasoned = gameState.upgrades.secretSpice.count > 0;
+            chikuwaMaterials.forEach((chikuwaMaterial) => {
+                chikuwaMaterial.roughness = seasoned ? 0.62 : 0.84;
+            });
+        }
+
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+
+        container.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            previousMousePosition = { x: e.clientX, y: e.clientY };
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const deltaX = e.clientX - previousMousePosition.x;
+            const deltaY = e.clientY - previousMousePosition.y;
+            chikuwaGroup.rotation.y += deltaX * 0.01;
+            chikuwaGroup.rotation.x += deltaY * 0.01;
+            previousMousePosition = { x: e.clientX, y: e.clientY };
+        });
+
+        window.addEventListener('mouseup', () => { isDragging = false; });
+
+        container.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const deltaX = e.touches[0].clientX - previousMousePosition.x;
+            const deltaY = e.touches[0].clientY - previousMousePosition.y;
+            chikuwaGroup.rotation.y += deltaX * 0.01;
+            chikuwaGroup.rotation.x += deltaY * 0.01;
+            previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        });
+
+        window.addEventListener('touchend', () => { isDragging = false; });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if (!isDragging) {
+                chikuwaGroup.rotation.y += 0.008;
+                chikuwaGroup.rotation.x += 0.003;
+            }
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // --- 二階層図鑑データ：カテゴリ > 本棚（テーマ） > 項目 ---
+        const knowledgeCategories = [
+            {
+                id: 'foundation',
+                label: '① 基礎・科学',
+                topics: [
+                    { id: 'why', title: '📌 穴の理由', items: [
+                        { id: 'why-heat', title: '均一に火を通すため（熱効率）', requiredLevel: 1, desc: '太い棒状のかたまりだと外側が焦げて中心が生焼けになります。芯材を通して筒状にすることで、外と中の両方から効率よく熱が伝わりムラなく加熱できます。' },
+                        { id: 'why-shape', title: '綺麗に巻きつけて焼き上げるため', requiredLevel: 1, desc: '棒をクルクル回しながら直火で焼き上げ、あとに棒をスッと引き抜くことで、真ん中に美しい穴が残る仕組みになっています。歴史的には「蒲の穂」が名前の由来です。' }
+                    ] },
+                    { id: 'materials', title: '🐟 原材料', items: [
+                        { id: 'material-fish', title: '魚のすり身（主原料）', requiredLevel: 2, desc: 'スケトウダラ、グチ、エソなどクセのない白身魚をブレンド。旨味と食感を支えます。' },
+                        { id: 'material-salt', title: '食塩の魔法', requiredLevel: 3, desc: '塩を加えることでタンパク質が溶け出し、ちくわ特有のプリッとした強い弾力（ゲル構造）が生み出されます。' },
+                        { id: 'material-binder', title: '卵白・でん粉・調味料', requiredLevel: 5, desc: '保水性を高め、加熱時のしっかりした結着性とほんのりとした甘み・コクをプラスします。' }
+                    ] },
+                    { id: 'tools', title: '🥢 製造道具', items: [
+                        { id: 'tool-skewer', title: '芯棒（しんぼう）／巻き棒', requiredLevel: 4, desc: '昔は本物の竹、現在は衛生面と熱効率に優れたステンレスなどの金属製パイプが主流です。' },
+                        { id: 'tool-roaster', title: '回転式の焼き器', requiredLevel: 6, desc: 'すり身を巻きつけた棒を直火や遠赤外線でクルクルと回転させ、美しい虎柄の焼き色をつけます。' }
+                    ] },
+                    { id: 'delicious', title: '😋 食べ方', items: [
+                        { id: 'eat-char', title: '軽く炙ると香ばしさ倍増', requiredLevel: 7, desc: 'そのまま食べるよりも、魚焼きグリルやトースター、直火で軽く表面を炙ることで、香ばしい香りが立ち上がり格別の美味しさになります。' },
+                        { id: 'eat-stuff', title: '穴に詰める無限のポテンシャル', requiredLevel: 9, desc: 'きゅうり、プロセスチーズ、明太子、ツナマヨなどを穴にギュッと詰め込むことで、食感のコントラストとリッチな味わいが楽しめます。' }
+                    ] },
+                    { id: 'odenThermo', title: '🍢 おでんの熱力学', items: [
+                        { id: 'oden-convection', title: '出汁が穴へ向かう熱対流', requiredLevel: 8, desc: '温められた出汁は鍋の中をゆっくり巡り、ちくわの表面や切り口に触れる。筒の内側にも出汁が入り込むため、外側だけでなく穴の内壁からも香りが届く。源さん曰く「穴は出汁の通用口だ。通行料は取らねえ」。' },
+                        { id: 'oden-absorption', title: '吸うのは魔法か、しみこみか', requiredLevel: 12, desc: '加熱でできた細かな隙間や切り口から、出汁の水分と旨味が内部へ移っていく。煮立てすぎると食感が損なわれるので、静かな火で待つのが肝心。鍋を見張り続けた源さんは、いつしか自分の腹まで鳴る熱力学的事故を起こした。' },
+                        { id: 'oden-simmer', title: '弱火という名の忍耐', requiredLevel: 48, desc: '出汁をぐらぐら沸かさず、静かな温度を保つと具材が崩れにくく、味も穏やかにまとまる。源さんは鍋の泡を数えていたが、三つ目で居眠りし、目覚めた時には弟子が鍋奉行になっていた。' }
+                    ] },
+                    { id: 'factory', title: '🏭 石臼の科学', items: [
+                        { id: 'factory-mill', title: '石臼すり潰しの物理学', requiredLevel: 22, desc: '高速回転する現代のチョッパーではなく、重厚な石臼でじっくり練ることで、タンパク質の繊維が壊れず最高の粘りと弾力が生まれます。' },
+                        { id: 'factory-heat', title: '遠赤外線と直火の二刀流', requiredLevel: 24, desc: '表面を一瞬で香ばしく焼き上げる直火の力と、中心まで均一に熱を通す遠赤外線の波長を組み合わせることで完璧な焼き上がりに。' }
+                    ] },
+                    { id: 'geometricBeauty', title: '📐 幾何学的建築美', items: [
+                        { id: 'geometry-order', title: '断面に宿る建築の秩序', requiredLevel: 26, desc: '円筒の断面はどの方向から見ても均整が取れ、柱や塔のように視線を上へ導く。ローポリのちくわでは円を少ない面で組み、光と影の境界をあえて見せることで、焼き目まで建築のファサードのように立ち上がる。源さんは焼き網を「最小の都市計画」と呼ぶ。' },
+                        { id: 'geometry-chamfer', title: '面取りは影の設計図', requiredLevel: 28, desc: '端をわずかに細くしたり角を落としたりすると、切り口に光が集まり、穴の奥行きが読み取りやすくなる。源さんの試作品は面取りしすぎて、転がす前からおでん鍋へ滑り込んだ。' }
+                    ] }
+                ]
+            },
+            {
+                id: 'culture',
+                label: '② 歴史・文化',
+                topics: [
+                    { id: 'history', title: '📜 ちくわの歴史', items: [
+                        { id: 'history-record', title: '平安時代の文献に登場', requiredLevel: 11, desc: '『類聚雑要抄』（1159年）の宴会料理の図に、現在のちくわの原型である「蒲鉾（現在のちくわの形）」が描かれています。' },
+                        { id: 'history-name', title: '名前の変遷（もとは蒲鉾だった）', requiredLevel: 13, desc: 'もともとは切り口が植物の「ガマの穂」に似ていたため「蒲鉾」と呼ばれていましたが、板に付けたものが主流になってから「ちくわ」と呼ばれるようになりました。' }
+                    ] },
+                    { id: 'regions', title: '🗾 名産地', items: [
+                        { id: 'region-tofu', title: 'とうふちくわ（鳥取県）', requiredLevel: 16, desc: '豆腐と白身魚のすり身を混ぜ合わせて蒸し上げる、ふんわりとした食感が特徴の珍しいご当地ちくわ。' },
+                        { id: 'region-hita', title: '日田の特産ちくわ（大分県）', requiredLevel: 17, desc: '豊かな清流で育まれた魚介を使い、香ばしい焼き目と深い旨味が凝縮された職人技が息づく名産品。' }
+                    ] },
+                    { id: 'cylinderCulture', title: '🌍 世界の円筒文化', items: [
+                        { id: 'culture-cylinder', title: '世界を支える円筒形', requiredLevel: 18, desc: '竹、丸太、柱、樽、煙突——円筒は転がしやすく、同じ断面を長く保てる実用的な形として、土地ごとの素材と暮らしに根づいてきた。ちくわもまた、竹の棒にすり身を巻いた知恵の末裔。源さんは世界の柱を見上げるたび「いつか全部、焼き台に並べてみてえ」とつぶやく。' },
+                        { id: 'culture-hollow', title: '穴があるから文化が通る', requiredLevel: 20, desc: '中空の形は軽さを保ちながら、棒を通す、風を通す、音を響かせるなどの役目を果たす。ちくわの穴も、串を抜いた跡であると同時に、出汁と想像力がすれ違う回廊だ。源さんの「穴に世界地図を描く計画」は、紙が出汁を吸って白紙に戻った。' },
+                        { id: 'culture-bridge', title: '円筒がつなぐ暮らしの道具', requiredLevel: 56, desc: '筒状の器や管は、液体を運び、音を響かせ、建物を支える。地域ごとに素材も用途も違うが、「中を通す」形の発想は驚くほど普遍的だ。源さんは各地の管楽器を聞き比べ、「どれも腹が減る音だ」と評した。' }
+                    ] }
+                ]
+            },
+            {
+                id: 'secrets',
+                label: '③ 秘話・伝説',
+                topics: [
+                    { id: 'gensanPast', title: '🎸 源さんの黒歴史', items: [
+                        { id: 'gensan-rock', title: 'リーゼントと焼き時間の二重奏', requiredLevel: 34, desc: '若き源さんはロックスターを夢見て上京し、初舞台で歌う代わりに「片面三十秒！」と焼き時間を絶叫。観客は新しい前衛音楽だと拍手し、本人だけがアンコールを焼き網の追加注文だと思い込んだ。' },
+                        { id: 'gensan-recipe', title: '幻の配合比率・八対〇・二', requiredLevel: 36, desc: '極意書に残る禁断の配合は、白身魚八に対して塩〇・二。正確さを求めるあまり、源さんは小数点の位置を焼き台にチョークで記し、翌朝、弟子たちはその上に串を整列させていた。失敗作は炭になったが、レシピだけは今も妙に役に立つ。' },
+                        { id: 'gensan-charcoal', title: '宇宙の形と呼ばれた炭', requiredLevel: 64, desc: '焼き台から発掘された真っ黒な試作品を、源さんは「未知の多面体」と命名。弟子が窓を開けると「換気ではない、宇宙への風穴だ」と言い張った。今では工房の展示品だが、誰も食べようとはしない。' }
+                    ] }
+                ]
+            },
+            {
+                id: 'cosmos',
+                label: '④ 宇宙的真理',
+                topics: [
+                    { id: 'cosmos', title: '🌌 宇宙的真理', items: [
+                        { id: 'cosmos-geometry', title: '幾何学的立体と宇宙の秩序', requiredLevel: 30, desc: '円筒という美しい幾何学形状は、宇宙のエネルギーを均等に循環させる究極の形であると、一部の数奇な職人の間で語り継がれています。' },
+                        { id: 'cosmos-way', title: '究極のちくわ道', requiredLevel: 40, desc: 'すべてのすり身の微塵を極め、すべての焼き目を極めた者だけが到達できる、全宇宙の調和を象徴する境地。' },
+                        { id: 'cosmos-horizon', title: '穴の向こうの観測者', requiredLevel: 80, desc: '穴を覗けば、向こう側にある景色とこちら側の景色が一本の軸で結ばれる。源さんはそれを宇宙の観測窓と呼ぶが、弟子たちは「串を通す時のぞき込むな」とだけ教わった。' },
+                        { id: 'cosmos-zenith', title: 'ちくわ神の最終定理', requiredLevel: 100, desc: '始まりは魚、終わりは穴。だが穴は欠けた場所ではなく、次の旨味を迎え入れる余白である——源さんが百年かけて解いたと主張する定理だ。なお本人はまだ72歳である。' }
+                    ] }
+                ]
+            }
+        ];
+
+        const knowledgeById = new Map(
+            knowledgeCategories.flatMap((category) =>
+                category.topics.flatMap((topic) =>
+                    topic.items.map((item) => [item.id, { ...item, topicId: topic.id, topicTitle: topic.title, categoryId: category.id }])
+                )
+            )
+        );
+        const newKnowledgeIds = new Set();
+        let selectedKnowledgeCategory = 'foundation';
+        let selectedKnowledgeTopic = 'all';
+        let knowledgeRenderSignature = '';
+
+        const galleryCatalog = [
+            {
+                key: 'autoMachine',
+                name: '自動回転焼き器',
+                description: 'すり身を巻いた串を一定のリズムで回し、均一な焼き目をつける工房の小型焼き器。',
+                unlock: '設備「自動回転焼き器」を1台調達',
+                rarity: 'COMMON',
+                rarityClass: '',
+                icon: '⚙️',
+                isUnlocked: () => gameState.upgrades.autoMachine.count > 0,
+                model: 'machine'
+            },
+            {
+                key: 'stainlessRod',
+                name: 'ステンレス芯棒',
+                description: '熱を伝えながら形を支える、磨き上げられた六角の芯棒。工房の基礎を支える道具。',
+                unlock: '設備「ステンレス芯棒」を1本調達',
+                rarity: 'RARE',
+                rarityClass: 'rare',
+                icon: '🥢',
+                isUnlocked: () => gameState.upgrades.stainlessRod.count > 0,
+                model: 'steelRod'
+            },
+            {
+                key: 'secretSpice',
+                name: '秘伝の白身魚',
+                description: '数種の白身魚を絶妙に合わせた秘伝のブレンド。透き通る旨味を、幾何学的な魚の姿に。',
+                unlock: '設備「秘伝の白身魚ブレンド」を1回調達',
+                rarity: 'EPIC',
+                rarityClass: 'epic',
+                icon: '🐟',
+                isUnlocked: () => gameState.upgrades.secretSpice.count > 0,
+                model: 'whitefish'
+            },
+            {
+                key: 'goldenRod',
+                name: '黄金の直火竹串',
+                description: '直火の熱を受けて黄金に輝く伝説の串。焼き上がったちくわとともに、工房の至宝として展示される。',
+                unlock: '秘宝「黄金の直火竹串」を解放',
+                rarity: 'LEGENDARY',
+                rarityClass: 'legendary',
+                icon: '✨',
+                isUnlocked: () => gameState.treasures.goldenRod.unlocked,
+                model: 'goldenSkewer'
+            },
+            {
+                key: 'secretScroll',
+                name: '源さんの極意書',
+                description: '源さんが長年の経験を綴った、禁断の製法書。巻物の奥には、工房の秘密が眠る。',
+                unlock: '秘宝「源さんの極意書」を解放',
+                rarity: 'EPIC',
+                rarityClass: 'epic',
+                icon: '📜',
+                isUnlocked: () => gameState.treasures.secretScroll.unlocked,
+                model: 'scroll'
+            },
+            {
+                key: 'abyssBamboo',
+                name: '深淵の黒竹串',
+                description: '深い漆黒をまとった竹串。表面に走る赤銅の筋は、消えない火の記憶を映している。',
+                unlock: '秘宝「深淵の黒竹串」を解放',
+                rarity: 'MYTHIC',
+                rarityClass: 'epic',
+                icon: '🎋',
+                isUnlocked: () => gameState.treasures.abyssBamboo.unlocked,
+                model: 'abyssBamboo'
+            },
+            {
+                key: 'ancientStone',
+                name: '古代一品石',
+                description: '石臼の底で眠り続けた古代の一品石。刻まれた幾何学模様が、時を超えた職人の手仕事を伝える。',
+                unlock: '秘宝「古代一品石」を解放',
+                rarity: 'MYTHIC',
+                rarityClass: 'epic',
+                icon: '🪨',
+                isUnlocked: () => gameState.treasures.ancientStone.unlocked,
+                model: 'ancientStone'
+            },
+            {
+                key: 'goldenChar',
+                name: '天啓の黄金焦げ',
+                description: '焼きすぎの果てに生まれた黄金の焦げ。失敗と悟りの境目を照らす、小さな火の結晶。',
+                unlock: '秘宝「天啓の黄金焦げ」を解放',
+                rarity: 'LEGENDARY',
+                rarityClass: 'legendary',
+                icon: '🔥',
+                isUnlocked: () => gameState.treasures.goldenChar.unlocked,
+                model: 'goldenChar'
+            },
+            {
+                key: 'sealedBox',
+                name: '源さんの封印された木箱',
+                description: '何重もの封印が施された木箱。中に何があるかは、源さん本人も「忘れた」と言い張る。',
+                unlock: '秘宝「源さんの封印された木箱」を解放',
+                rarity: 'MYTHIC',
+                rarityClass: 'legendary',
+                icon: '📦',
+                isUnlocked: () => gameState.treasures.sealedBox.unlocked,
+                model: 'sealedBox'
+            },
+            {
+                key: 'spacetimeRing',
+                name: '時空を貫く竹の輪',
+                description: '穴の向こうに別の時代の工房が見えるという、ちくわ道の最終到達点。回すたび時空の境界が揺らぐ。',
+                unlock: '秘宝「時空を貫く竹の輪」を解放',
+                rarity: 'TRANSCENDENT',
+                rarityClass: 'legendary',
+                icon: '🌀',
+                isUnlocked: () => gameState.treasures.spacetimeRing.unlocked,
+                model: 'spacetimeRing'
+            },
+            {
+                key: 'youngOyaji',
+                name: '幻のポートレート — 若き源さん',
+                description: '修復された破り跡から現れた若き日の源さん。リーゼントをなびかせ、職人ではなくロックスターを夢見ていた頃の姿。',
+                unlock: '秘宝「源さんの極意書」を解放し、破られたページを復元',
+                rarity: 'SECRET',
+                rarityClass: 'epic',
+                icon: '🎸',
+                isUnlocked: () => gameState.treasures.secretScroll.unlocked && gameState.archivePages.youth.restored,
+                model: 'youngOyaji'
+            },
+            {
+                key: 'burntFailure',
+                name: '大失敗作の墓場 — 炭化ちくわ',
+                description: '焼き加減を見誤り、完全に炭と化した試作品。源さんは「宇宙の新形状だ」と主張したが、弟子たちは黙って窓を開けた。',
+                unlock: '極意書の破られたページを復元し、最終ページを修復',
+                rarity: 'SECRET',
+                rarityClass: 'legendary',
+                icon: '🪨',
+                isUnlocked: () => gameState.treasures.secretScroll.unlocked && gameState.archivePages.failure.restored,
+                model: 'burntFailure'
+            }
+        ];
+
+        const galleryStage = document.getElementById('gallery-stage');
+        const galleryRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        galleryRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        galleryRenderer.setSize(galleryStage.clientWidth || 600, galleryStage.clientHeight || 330);
+        galleryStage.appendChild(galleryRenderer.domElement);
+
+        const galleryScene = new THREE.Scene();
+        const galleryCamera = new THREE.PerspectiveCamera(35, (galleryStage.clientWidth || 600) / (galleryStage.clientHeight || 330), 0.1, 100);
+        galleryCamera.position.set(0, 0.15, 5.2);
+        galleryScene.add(new THREE.AmbientLight(0xffeadb, 1.25));
+        const galleryKeyLight = new THREE.DirectionalLight(0xffe2bd, 2.2);
+        galleryKeyLight.position.set(4, 5, 6);
+        galleryScene.add(galleryKeyLight);
+        const galleryFillLight = new THREE.DirectionalLight(0x9c9ee8, 0.8);
+        galleryFillLight.position.set(-4, -2, -3);
+        galleryScene.add(galleryFillLight);
+
+        let galleryModel = null;
+        let renderedGalleryKey = null;
+        let selectedGalleryKey = null;
+        let gallerySignature = '';
+        let galleryDragging = false;
+        let galleryPreviousPointer = { x: 0, y: 0 };
+
+        function galleryMaterial(color, metalness) {
+            return new THREE.MeshStandardMaterial({
+                color,
+                roughness: metalness > 0.5 ? 0.28 : 0.62,
+                metalness,
+                flatShading: true
+            });
+        }
+
+        function galleryMesh(geometry, color, metalness, parent, position, scale, rotation) {
+            const mesh = new THREE.Mesh(geometry, galleryMaterial(color, metalness || 0));
+            if (position) mesh.position.set(position.x || 0, position.y || 0, position.z || 0);
+            if (scale) mesh.scale.set(scale.x, scale.y, scale.z);
+            if (rotation) mesh.rotation.set(rotation.x || 0, rotation.y || 0, rotation.z || 0);
+            parent.add(mesh);
+            return mesh;
+        }
+
+        function galleryTube(group, color) {
+            const tube = galleryMesh(new THREE.CylinderGeometry(0.64, 0.64, 2.55, 9, 1, true), color, 0.08, group);
+            tube.rotation.z = Math.PI / 2;
+            return tube;
+        }
+
+        function buildGalleryModel(type) {
+            const group = new THREE.Group();
+            if (type === 'goldenSkewer') {
+                galleryTube(group, 0xc9793e);
+                const skewer = galleryMesh(new THREE.CylinderGeometry(0.075, 0.075, 3.55, 6), 0xf4c842, 0.88, group);
+                skewer.rotation.z = Math.PI / 2;
+                const tip = galleryMesh(new THREE.ConeGeometry(0.12, 0.38, 5), 0xffdf66, 0.72, group, { x: 1.95 });
+                tip.rotation.z = -Math.PI / 2;
+            } else if (type === 'machine') {
+                galleryMesh(new THREE.BoxGeometry(2.7, 0.25, 1.25), 0x594137, 0.18, group, { y: -0.95 });
+                galleryMesh(new THREE.BoxGeometry(2.45, 0.18, 0.95), 0xb66d3d, 0.35, group, { y: -0.72 });
+                [-0.9, 0.9].forEach((x) => {
+                    const post = galleryMesh(new THREE.BoxGeometry(0.18, 1.45, 0.22), 0xb8a18a, 0.72, group, { x, y: -0.05 });
+                    post.rotation.z = x < 0 ? -0.12 : 0.12;
+                });
+                const roller = galleryMesh(new THREE.CylinderGeometry(0.48, 0.48, 1.75, 8, 1, true), 0xc87942, 0.08, group, { y: 0.35 });
+                roller.rotation.z = Math.PI / 2;
+                const axle = galleryMesh(new THREE.CylinderGeometry(0.07, 0.07, 2.3, 6), 0xd2c2a6, 0.78, group, { y: 0.35 });
+                axle.rotation.z = Math.PI / 2;
+                [-1.25, 1.25].forEach((x) => {
+                    const wheel = galleryMesh(new THREE.DodecahedronGeometry(0.23, 0), 0xe3a451, 0.45, group, { x, y: 0.35 });
+                    wheel.rotation.x = Math.PI / 2;
+                });
+            } else if (type === 'whitefish') {
+                const body = galleryMesh(new THREE.DodecahedronGeometry(0.88, 0), 0xd8e5db, 0.12, group);
+                body.scale.set(1.35, 0.72, 0.65);
+                const tail = galleryMesh(new THREE.DodecahedronGeometry(0.43, 0), 0x85b5ae, 0.18, group, { x: -1.25 });
+                tail.scale.set(0.45, 1, 0.35);
+                const fin = galleryMesh(new THREE.DodecahedronGeometry(0.34, 0), 0xf0a56b, 0.08, group, { y: 0.58 });
+                fin.scale.set(0.55, 0.38, 0.25);
+                galleryMesh(new THREE.SphereGeometry(0.07, 6, 5), 0x332621, 0, group, { x: 0.72, y: 0.12, z: 0.39 });
+                galleryMesh(new THREE.SphereGeometry(0.07, 6, 5), 0x332621, 0, group, { x: 0.72, y: 0.12, z: -0.39 });
+            } else if (type === 'steelRod') {
+                const shaft = galleryMesh(new THREE.CylinderGeometry(0.15, 0.15, 3.35, 6), 0xc9d4d6, 0.84, group);
+                shaft.rotation.z = Math.PI / 2;
+                const endA = galleryMesh(new THREE.ConeGeometry(0.16, 0.34, 6), 0xe6eeee, 0.82, group, { x: -1.82 });
+                endA.rotation.z = Math.PI / 2;
+                const endB = galleryMesh(new THREE.ConeGeometry(0.16, 0.34, 6), 0xe6eeee, 0.82, group, { x: 1.82 });
+                endB.rotation.z = -Math.PI / 2;
+            } else if (type === 'scroll') {
+                galleryMesh(new THREE.BoxGeometry(1.8, 1.25, 0.12), 0xd9bc8d, 0.02, group);
+                [-0.95, 0.95].forEach((x) => {
+                    const roll = galleryMesh(new THREE.CylinderGeometry(0.16, 0.16, 1.45, 8), 0xb47747, 0.22, group, { x });
+                    roll.rotation.z = Math.PI / 2;
+                });
+                [-0.35, 0, 0.35].forEach((y) => {
+                    galleryMesh(new THREE.BoxGeometry(0.9, 0.035, 0.035), 0x76533b, 0, group, { y });
+                });
+            } else if (type === 'abyssBamboo') {
+                const shaft = galleryMesh(new THREE.CylinderGeometry(0.105, 0.105, 3.4, 6), 0x171514, 0.38, group);
+                shaft.rotation.z = Math.PI / 2;
+                const tip = galleryMesh(new THREE.ConeGeometry(0.14, 0.42, 5), 0x39221c, 0.28, group, { x: 1.9 });
+                tip.rotation.z = -Math.PI / 2;
+                [-0.92, 0, 0.92].forEach((x) => {
+                    const ferrule = galleryMesh(new THREE.CylinderGeometry(0.13, 0.13, 0.08, 6), 0xb75e37, 0.72, group, { x });
+                    ferrule.rotation.z = Math.PI / 2;
+                });
+            } else if (type === 'ancientStone') {
+                galleryMesh(new THREE.DodecahedronGeometry(0.88, 0), 0x8b7863, 0.22, group, null, { x: 1, y: 0.9, z: 0.72 }, { x: 0.3, y: 0.2, z: 0.1 });
+                const seal = galleryMesh(new THREE.TorusGeometry(0.54, 0.055, 5, 8), 0xd2aa68, 0.68, group, { z: 0.59 });
+                seal.scale.set(1, 0.84, 1);
+                galleryMesh(new THREE.DodecahedronGeometry(0.16, 0), 0x3b3027, 0.12, group, { z: 0.68 });
+            } else if (type === 'goldenChar') {
+                const charGeometry = new THREE.DodecahedronGeometry(0.78, 1);
+                const charPositions = charGeometry.attributes.position;
+                for (let index = 0; index < charPositions.count; index++) {
+                    const x = charPositions.getX(index);
+                    const y = charPositions.getY(index);
+                    const z = charPositions.getZ(index);
+                    const distortion = 1 + 0.12 * Math.sin(x * 11 + z * 9) * Math.cos(y * 13);
+                    charPositions.setXYZ(index, x * distortion, y * distortion * 0.72, z * distortion);
+                }
+                charGeometry.computeVertexNormals();
+                galleryMesh(charGeometry, 0xd5a52d, 0.58, group, null, null, { x: 0.22, y: -0.3, z: 0.14 });
+                [0, 1, 2].forEach((index) => {
+                    galleryMesh(new THREE.TetrahedronGeometry(0.12, 0), 0xffdc72, 0.35, group, {
+                        x: Math.cos(index * Math.PI * 2 / 3) * 0.75,
+                        y: Math.sin(index * Math.PI * 2 / 3) * 0.58,
+                        z: 0.08
+                    });
+                });
+            } else if (type === 'sealedBox') {
+                galleryMesh(new THREE.BoxGeometry(1.55, 1.22, 1.05), 0x634329, 0.18, group);
+                galleryMesh(new THREE.BoxGeometry(1.63, 0.24, 1.12), 0x8c6238, 0.25, group, { y: 0.43 });
+                [-0.53, 0.53].forEach((x) => {
+                    galleryMesh(new THREE.BoxGeometry(0.15, 1.28, 1.13), 0xb38a50, 0.62, group, { x });
+                });
+                galleryMesh(new THREE.BoxGeometry(0.2, 0.33, 0.12), 0xd5b76c, 0.72, group, { y: -0.08, z: 0.57 });
+                galleryMesh(new THREE.DodecahedronGeometry(0.13, 0), 0x30251d, 0.2, group, { y: -0.12, z: 0.66 });
+            } else if (type === 'spacetimeRing') {
+                const bambooRing = galleryMesh(new THREE.TorusGeometry(0.86, 0.19, 6, 12), 0x83a660, 0.12, group);
+                bambooRing.rotation.x = 0.16;
+                galleryMesh(new THREE.TorusGeometry(0.58, 0.045, 5, 10), 0xd5bd83, 0.68, group, { z: 0.08 });
+                galleryMesh(new THREE.TorusGeometry(1.13, 0.025, 4, 12), 0x8b9bda, 0.48, group, { z: -0.08 }, null, { x: 0.52, y: 0.2, z: 0.35 });
+            } else if (type === 'youngOyaji') {
+                galleryMesh(new THREE.CylinderGeometry(0.45, 0.68, 1.25, 7), 0x344d4c, 0.05, group, { y: -0.95 });
+                galleryMesh(new THREE.SphereGeometry(0.67, 8, 6), 0xd7a47e, 0, group, { y: 0.18 }, { x: 0.95, y: 1, z: 0.86 });
+                galleryMesh(new THREE.DodecahedronGeometry(0.56, 0), 0x241d1b, 0, group, { x: -0.15, y: 0.72, z: -0.03 }, { x: 0.65, y: 1.2, z: 0.85 });
+                galleryMesh(new THREE.ConeGeometry(0.38, 0.82, 5), 0x30201d, 0, group, { x: 0.23, y: 0.82, z: 0.02 }, { x: 0.72, y: 0.7, z: 0.5 }, { z: -0.32 });
+                galleryMesh(new THREE.BoxGeometry(0.25, 0.08, 0.1), 0x30201d, 0, group, { x: -0.25, y: 0.22, z: 0.57 }, null, { z: 0.16 });
+                galleryMesh(new THREE.BoxGeometry(0.25, 0.08, 0.1), 0x30201d, 0, group, { x: 0.25, y: 0.22, z: 0.57 }, null, { z: -0.16 });
+                galleryMesh(new THREE.BoxGeometry(0.07, 0.09, 0.06), 0x32251f, 0, group, { x: -0.22, y: 0.04, z: 0.59 });
+                galleryMesh(new THREE.BoxGeometry(0.07, 0.09, 0.06), 0x32251f, 0, group, { x: 0.22, y: 0.04, z: 0.59 });
+                galleryMesh(new THREE.ConeGeometry(0.23, 0.34, 5), 0xe2d8c9, 0, group, { x: -0.16, y: -0.23, z: 0.57 }, { x: 1, y: 0.7, z: 0.5 }, { z: -1.1 });
+                galleryMesh(new THREE.ConeGeometry(0.23, 0.34, 5), 0xe2d8c9, 0, group, { x: 0.16, y: -0.23, z: 0.57 }, { x: 1, y: 0.7, z: 0.5 }, { z: 1.1 });
+                galleryMesh(new THREE.ConeGeometry(0.2, 0.42, 5), 0xd8d0c4, 0, group, { y: -0.42, z: 0.54 }, { x: 1, y: 0.8, z: 0.5 }, { z: Math.PI });
+            } else if (type === 'burntFailure') {
+                const geometry = new THREE.DodecahedronGeometry(0.83, 1);
+                const positions = geometry.attributes.position;
+                for (let index = 0; index < positions.count; index++) {
+                    const x = positions.getX(index);
+                    const y = positions.getY(index);
+                    const z = positions.getZ(index);
+                    const distortion = 1 + 0.2 * Math.sin(x * 13 + y * 7) * Math.cos(z * 11 - y * 5);
+                    positions.setXYZ(index, x * distortion + 0.12 * Math.sin(y * 9), y * distortion * 0.82, z * distortion + 0.09 * Math.cos(x * 8));
+                }
+                geometry.computeVertexNormals();
+                galleryMesh(geometry, 0x211c1a, 0, group);
+                galleryMesh(new THREE.DodecahedronGeometry(0.34, 0), 0x100e0d, 0, group, { x: -0.57, y: 0.43, z: 0.34 }, { x: 0.8, y: 0.7, z: 0.5 });
+                [
+                    { x: 0.82, y: -0.3, z: 0.25, s: 0.14 },
+                    { x: -0.44, y: -0.79, z: -0.16, s: 0.18 },
+                    { x: 0.26, y: 0.78, z: -0.14, s: 0.12 }
+                ].forEach((ember) => {
+                    galleryMesh(new THREE.TetrahedronGeometry(ember.s, 0), 0x9b4827, 0, group, { x: ember.x, y: ember.y, z: ember.z });
+                });
+            }
+            return group;
+        }
+
+        function showGalleryItem(item) {
+            if (renderedGalleryKey === item.key) return;
+            if (galleryModel) {
+                galleryScene.remove(galleryModel);
+                galleryModel.traverse((object) => {
+                    if (object.geometry) object.geometry.dispose();
+                    if (object.material) object.material.dispose();
+                });
+            }
+            galleryModel = buildGalleryModel(item.model);
+            galleryScene.add(galleryModel);
+            renderedGalleryKey = item.key;
+            document.getElementById('gallery-name').textContent = item.name;
+            document.getElementById('gallery-description').textContent = item.description;
+            document.getElementById('gallery-unlock').textContent = item.unlock;
+            const badge = document.getElementById('gallery-rarity');
+            badge.textContent = item.rarity;
+            badge.className = `rarity-badge ${item.rarityClass}`;
+        }
+
+        function renderGallery() {
+            const unlockedItems = galleryCatalog.filter((item) => item.isUnlocked());
+            const signature = galleryCatalog.map((item) => `${item.key}:${item.isUnlocked()}`).join('|');
+            if (signature !== gallerySignature) {
+                const list = document.getElementById('gallery-items');
+                list.replaceChildren();
+                galleryCatalog.forEach((item) => {
+                    const unlocked = item.isUnlocked();
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'gallery-item-btn';
+                    button.dataset.galleryItem = item.key;
+                    button.disabled = !unlocked;
+
+                    const icon = document.createElement('span');
+                    icon.className = 'gallery-item-icon';
+                    icon.textContent = unlocked ? item.icon : '🔒';
+                    const text = document.createElement('span');
+                    const name = document.createElement('span');
+                    name.className = 'gallery-item-name';
+                    name.textContent = unlocked ? item.name : '未解放の収集品';
+                    const state = document.createElement('span');
+                    state.className = 'gallery-item-state';
+                    state.textContent = unlocked ? `${item.rarity} / VIEW OBJECT` : item.unlock;
+                    text.append(name, state);
+                    button.append(icon, text);
+                    list.appendChild(button);
+                });
+                gallerySignature = signature;
+            }
+
+            if (!unlockedItems.some((item) => item.key === selectedGalleryKey)) {
+                selectedGalleryKey = unlockedItems.length ? unlockedItems[0].key : null;
+            }
+            document.querySelectorAll('.gallery-item-btn').forEach((button) => {
+                button.classList.toggle('selected', button.dataset.galleryItem === selectedGalleryKey);
+            });
+
+            const selectedItem = galleryCatalog.find((item) => item.key === selectedGalleryKey);
+            if (selectedItem) {
+                showGalleryItem(selectedItem);
+            } else {
+                document.getElementById('gallery-name').textContent = 'まだ記録されていない道具';
+                document.getElementById('gallery-description').textContent = '設備や秘宝を解放すると、ここでその姿を360度から鑑賞できます。';
+                document.getElementById('gallery-unlock').textContent = '設備を調達、または工房の秘宝を解放';
+                const badge = document.getElementById('gallery-rarity');
+                badge.textContent = '未発見';
+                badge.className = 'rarity-badge';
+                if (galleryModel) {
+                    galleryScene.remove(galleryModel);
+                    galleryModel.traverse((object) => {
+                        if (object.geometry) object.geometry.dispose();
+                        if (object.material) object.material.dispose();
+                    });
+                    galleryModel = null;
+                    renderedGalleryKey = null;
+                }
+            }
+        }
+
+        document.getElementById('gallery-items').addEventListener('click', (event) => {
+            const button = event.target.closest('[data-gallery-item]');
+            if (!button || button.disabled) return;
+            const item = galleryCatalog.find((entry) => entry.key === button.dataset.galleryItem);
+            if (!item || !item.isUnlocked()) return;
+            selectedGalleryKey = item.key;
+            renderGallery();
+        });
+
+        galleryStage.addEventListener('pointerdown', (event) => {
+            galleryDragging = true;
+            galleryPreviousPointer = { x: event.clientX, y: event.clientY };
+            galleryStage.setPointerCapture(event.pointerId);
+        });
+        galleryStage.addEventListener('pointermove', (event) => {
+            if (!galleryDragging || !galleryModel) return;
+            const deltaX = event.clientX - galleryPreviousPointer.x;
+            const deltaY = event.clientY - galleryPreviousPointer.y;
+            galleryModel.rotation.y += deltaX * 0.012;
+            galleryModel.rotation.x = Math.max(-1.2, Math.min(1.2, galleryModel.rotation.x + deltaY * 0.012));
+            galleryPreviousPointer = { x: event.clientX, y: event.clientY };
+        });
+        galleryStage.addEventListener('pointerup', () => { galleryDragging = false; });
+        galleryStage.addEventListener('pointercancel', () => { galleryDragging = false; });
+
+        function animateGallery() {
+            requestAnimationFrame(animateGallery);
+            if (galleryModel && !galleryDragging) galleryModel.rotation.y += 0.003;
+            galleryRenderer.render(galleryScene, galleryCamera);
+        }
+        animateGallery();
+
+        function resizeGallery() {
+            const width = galleryStage.clientWidth;
+            const height = galleryStage.clientHeight;
+            if (!width || !height) return;
+            galleryCamera.aspect = width / height;
+            galleryCamera.updateProjectionMatrix();
+            galleryRenderer.setSize(width, height);
+        }
+
+        const surimiCountEl = document.getElementById('surimi-count');
+        const crystalCountEl = document.getElementById('crystal-count');
+        const teakaCountEl = document.getElementById('teaka-count');
+        const expDisplayEl = document.getElementById('exp-display');
+        const levelDisplayEl = document.getElementById('level-display');
+        const chikuwaTitleEl = document.getElementById('chikuwa-title');
+        const upgradeListEl = document.getElementById('upgrade-list');
+        const patBtn = document.getElementById('pat-btn');
+        const notificationEl = document.getElementById('notification');
+
+        function renderKnowledgeLibrary(force = false) {
+            const category = knowledgeCategories.find((entry) => entry.id === selectedKnowledgeCategory) || knowledgeCategories[0];
+            const signature = `${gameState.level}:${category.id}:${selectedKnowledgeTopic}:${[...newKnowledgeIds].sort().join(',')}`;
+            if (!force && signature === knowledgeRenderSignature) return;
+            knowledgeRenderSignature = signature;
+            const shelf = document.getElementById('knowledge-shelf');
+            const shelfTopics = category.topics
+                .map((topic) => ({ ...topic, minLevel: Math.min(...topic.items.map((item) => item.requiredLevel)) }))
+                .sort((a, b) => a.minLevel - b.minLevel);
+
+            document.querySelectorAll('[data-knowledge-category]').forEach((button) => {
+                const active = button.dataset.knowledgeCategory === category.id;
+                button.classList.toggle('active', active);
+                button.setAttribute('aria-selected', String(active));
+            });
+
+            const allItems = shelfTopics.flatMap((topic) => topic.items);
+            const allUnread = allItems.filter((item) => gameState.level >= item.requiredLevel && newKnowledgeIds.has(item.id)).length;
+            const allBook = document.createElement('button');
+            allBook.type = 'button';
+            allBook.className = `shelf-book${selectedKnowledgeTopic === 'all' ? ' active' : ''}`;
+            allBook.setAttribute('aria-pressed', String(selectedKnowledgeTopic === 'all'));
+            const allTitle = document.createElement('span');
+            allTitle.className = 'shelf-book-title';
+            allTitle.textContent = '📚 この棚をすべて見る';
+            const allMeta = document.createElement('span');
+            allMeta.className = 'shelf-book-meta';
+            allMeta.textContent = `${allItems.filter((item) => gameState.level >= item.requiredLevel).length}/${allItems.length} 記録を解放${allUnread ? ` · ✨NEW ${allUnread}` : ''}`;
+            allBook.append(allTitle, allMeta);
+            allBook.addEventListener('click', () => {
+                selectedKnowledgeTopic = 'all';
+                renderKnowledgeLibrary();
+            });
+            shelf.replaceChildren(allBook);
+
+            shelfTopics.forEach((topic) => {
+                const available = topic.items.filter((item) => gameState.level >= item.requiredLevel).length;
+                const unread = topic.items.filter((item) => gameState.level >= item.requiredLevel && newKnowledgeIds.has(item.id)).length;
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = `shelf-book${selectedKnowledgeTopic === topic.id ? ' active' : ''}`;
+                button.setAttribute('aria-pressed', String(selectedKnowledgeTopic === topic.id));
+                const title = document.createElement('span');
+                title.className = 'shelf-book-title';
+                title.textContent = topic.title;
+                const meta = document.createElement('span');
+                meta.className = 'shelf-book-meta';
+                meta.textContent = `${available}/${topic.items.length} · Lv.${topic.minLevel}${unread ? ` · ✨NEW ${unread}` : ''}`;
+                button.append(title, meta);
+                button.addEventListener('click', () => {
+                    selectedKnowledgeTopic = topic.id;
+                    renderKnowledgeLibrary();
+                });
+                shelf.appendChild(button);
+            });
+
+            const topic = shelfTopics.find((entry) => entry.id === selectedKnowledgeTopic);
+            let items = topic ? topic.items : allItems;
+            items = [...items].sort((a, b) => a.requiredLevel - b.requiredLevel);
+            const grid = document.getElementById('knowledge-grid');
+            const unlockedCount = items.filter((item) => gameState.level >= item.requiredLevel).length;
+            document.getElementById('knowledge-category-title').textContent = topic ? topic.title : category.label;
+            document.getElementById('knowledge-result-count').textContent =
+                `${unlockedCount} / ${items.length} 記録解放 · 現在 Lv.${gameState.level}`;
+
+            grid.innerHTML = items.map((item) => {
+                const unlocked = gameState.level >= item.requiredLevel;
+                if (!unlocked) {
+                    return `
+                        <article class="knowledge-card locked">
+                            <div class="knowledge-card-topline"><h4>🔒 ${item.title}</h4></div>
+                            <p class="lock-notice">未解放 — 習熟度 Lv.${item.requiredLevel} で解放</p>
+                        </article>
+                    `;
+                }
+                const isNew = newKnowledgeIds.has(item.id);
+                return `
+                    <article class="knowledge-card">
+                        <div class="knowledge-card-topline">
+                            <h4>${item.title}</h4>
+                            ${isNew ? '<span class="new-badge">✨ NEW</span>' : ''}
+                        </div>
+                        <p>${item.desc}</p>
+                        ${isNew ? `<button class="knowledge-read-btn" type="button" data-mark-knowledge-seen="${item.id}">読了してNEWを消す</button>` : ''}
+                    </article>
+                `;
+            }).join('');
+        }
+
+        window.selectKnowledgeCategory = function(categoryId) {
+            if (!knowledgeCategories.some((category) => category.id === categoryId)) return;
+            selectedKnowledgeCategory = categoryId;
+            selectedKnowledgeTopic = 'all';
+            document.querySelectorAll('.tab-content').forEach((content) => content.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach((button) => button.classList.remove('active'));
+            document.getElementById('tab-knowledge').classList.add('active');
+            renderKnowledgeLibrary(true);
+        };
+
+        window.markKnowledgeSeen = function(itemId) {
+            newKnowledgeIds.delete(itemId);
+            renderKnowledgeLibrary();
+        };
+
+        function markNewKnowledgeUnlocks(previousLevel, currentLevel) {
+            knowledgeById.forEach((item) => {
+                if (item.requiredLevel > previousLevel && item.requiredLevel <= currentLevel) {
+                    newKnowledgeIds.add(item.id);
+                }
+            });
+        }
+
+        document.getElementById('knowledge-grid').addEventListener('click', (event) => {
+            const readButton = event.target.closest('[data-mark-knowledge-seen]');
+            if (readButton) window.markKnowledgeSeen(readButton.dataset.markKnowledgeSeen);
+        });
+
+        let treasureRenderSignature = '';
+
+        function renderKnowledgeTabs() {
+            renderKnowledgeLibrary();
+
+            const treasureSignature = `${gameState.crystal}:${gameState.teaka}:${Object.entries(gameState.treasures).map(([key, treasure]) => `${key}:${treasure.unlocked}`).join('|')}`;
+            if (treasureSignature === treasureRenderSignature) return;
+
+            let treasureContainer = document.getElementById('content-treasures');
+            let treasureHtml = '';
+            for (let key in gameState.treasures) {
+                let t = gameState.treasures[key];
+                let canBuy = gameState.crystal >= t.costCrystal && gameState.teaka >= t.costTeaka;
+                
+                if (t.unlocked) {
+                    treasureHtml += `
+                        <div class="knowledge-card unlocked-treasure">
+                            <h4>✨ ${t.name} <span class="unlocked-badge">【解放済み】</span></h4>
+                            <p>${t.desc}</p>
+                        </div>
+                    `;
+                } else {
+                    treasureHtml += `
+                        <div class="knowledge-card locked">
+                            <h4>🔒 ${t.name}</h4>
+                            <p>${t.desc}</p>
+                            <p style="margin-top: 0.5rem; color: var(--rare-color);">必要コスト: 💎 旨味の結晶 ×${t.costCrystal} | ✋ 職人の手垢 ×${t.costTeaka}</p>
+                            <button class="treasure-btn" ${!canBuy ? 'disabled' : ''} onclick="unlockTreasure('${key}')">秘宝を解放する</button>
+                        </div>
+                    `;
+                }
+            }
+            treasureContainer.innerHTML = treasureHtml;
+            treasureRenderSignature = treasureSignature;
+        }
+
+        function renderSecretArchive() {
+            const hasScroll = gameState.treasures.secretScroll.unlocked;
+            const youthPage = gameState.archivePages.youth;
+            const failurePage = gameState.archivePages.failure;
+            const youthCard = document.getElementById('archive-page-youth');
+            const failureCard = document.getElementById('archive-page-failure');
+            const youthButton = document.getElementById('repair-youth-btn');
+            const failureButton = document.getElementById('repair-failure-btn');
+
+            youthCard.classList.toggle('damaged', !youthPage.restored);
+            youthCard.classList.toggle('restored', youthPage.restored);
+            failureCard.classList.toggle('damaged', !failurePage.restored);
+            failureCard.classList.toggle('restored', failurePage.restored);
+            failureCard.classList.toggle('sealed', !youthPage.restored);
+
+            document.getElementById('archive-youth-copy').textContent = hasScroll
+                ? '若い頃の源さんは、ちくわ職人ではなく、リーゼントをなびかせるロックスターを夢見ていた。初舞台では緊張のあまり、自己紹介の代わりに焼き時間を叫んだという。禁断の配合比率は、白身魚8に対し塩0.2。焦らず練るのが秘訣だ。'
+                : '極意書を手に入れると、この焦げ跡の下に若き日の秘密が現れる。';
+            document.getElementById('archive-failure-copy').textContent = hasScroll
+                ? '炭になるまで焼きすぎた、歪な試作品の記録。あの日、源さんは「これは新しい宇宙の形だ」と言い張り、弟子たちは全員うなずいた。焦げた匂いを隠すため、工房中で炭火を焚いたのは秘密である。'
+                : '極意書の最後には、職人人生で最初にして最大の焼きすぎ事件が封じられている。';
+
+            document.getElementById('archive-youth-cost').textContent = youthPage.restored
+                ? '復元済み — 幻のポートレートをギャラリーに登録しました'
+                : `修復費用: 💎 旨味の結晶 ×${youthPage.costCrystal} / ✋ 職人の手垢 ×${youthPage.costTeaka}`;
+            document.getElementById('archive-failure-cost').textContent = failurePage.restored
+                ? '復元済み — 炭化ちくわを墓場アーカイブに登録しました'
+                : youthPage.restored
+                    ? `修復費用: 💎 旨味の結晶 ×${failurePage.costCrystal} / ✋ 職人の手垢 ×${failurePage.costTeaka}`
+                    : '先に若き日のページを復元してください。';
+
+            youthButton.disabled = !hasScroll || youthPage.restored;
+            youthButton.textContent = !hasScroll ? '極意書が必要' : youthPage.restored ? '修復済み' : 'ページを修復する';
+            failureButton.disabled = !hasScroll || !youthPage.restored || failurePage.restored;
+            failureButton.textContent = !hasScroll || !youthPage.restored
+                ? '前のページを復元してください'
+                : failurePage.restored ? '修復済み' : '最終ページを修復する';
+        }
+
+        window.restoreArchivePage = function(pageKey) {
+            const page = gameState.archivePages[pageKey];
+            if (!page || !gameState.treasures.secretScroll.unlocked || page.restored) return;
+            if (pageKey === 'failure' && !gameState.archivePages.youth.restored) {
+                showNotification('📜 先に破られたページを復元してください。');
+                return;
+            }
+            if (gameState.crystal < page.costCrystal || gameState.teaka < page.costTeaka) {
+                showNotification(`修復には 💎×${page.costCrystal} と ✋×${page.costTeaka} が必要です。`);
+                return;
+            }
+
+            gameState.crystal -= page.costCrystal;
+            gameState.teaka -= page.costTeaka;
+            page.restored = true;
+            updateUI();
+            showNotification(pageKey === 'youth'
+                ? '📜 破られたページが蘇り、若き源さんの肖像がギャラリーに現れました！'
+                : '🔥 最終ページを復元！大失敗作の墓場がギャラリーに解放されました。');
+        };
+
+        function showNotification(text) {
+            notificationEl.textContent = text;
+            notificationEl.classList.add('show');
+            setTimeout(() => {
+                notificationEl.classList.remove('show');
+            }, 3000);
+        }
+
+        function checkRareDrops(rareBoost = false) {
+            const crystalChance = rareBoost ? 0.45 : 0.15;
+            const teakaChance = rareBoost ? 0.12 : 0.03;
+            if (Math.random() < crystalChance) {
+                gameState.crystal++;
+                showNotification("💎 稀少な「旨味の結晶」を見つけました！");
+            }
+            if (Math.random() < teakaChance) {
+                gameState.teaka++;
+                showNotification("✋ 伝説の「職人の手垢」が付着しました…！");
+            }
+        }
+
+        window.unlockTreasure = function(key) {
+            let t = gameState.treasures[key];
+            if (t && !t.unlocked && gameState.crystal >= t.costCrystal && gameState.teaka >= t.costTeaka) {
+                gameState.crystal -= t.costCrystal;
+                gameState.teaka -= t.costTeaka;
+                t.unlocked = true;
+                t.effect();
+                const allTreasuresUnlocked = Object.values(gameState.treasures).every((treasure) => treasure.unlocked);
+                if (allTreasuresUnlocked) {
+                    document.getElementById('oyaji-message').textContent = finalOyajiMessage;
+                }
+                showNotification(allTreasuresUnlocked
+                    ? `🌌 全秘宝を収集！${t.name}が最後の鍵となり、ちくわ神の境地が開かれた！`
+                    : `✨ 工房の秘宝「${t.name}」を解放しました！`);
+                updateUI();
+            }
+        };
+
+        function checkLevelUp() {
+            if (gameState.exp >= gameState.expToNext) {
+                const previousLevel = gameState.level;
+                gameState.level++;
+                gameState.exp -= gameState.expToNext;
+                gameState.expToNext = Math.floor(gameState.expToNext * 1.4);
+                
+                chikuwaTitleEl.textContent = `習熟度 ${gameState.level} 匠のちくわ`;
+                updateVisuals();
+                updateOyajiMessage();
+                markNewKnowledgeUnlocks(previousLevel, gameState.level);
+                
+                showNotification("🎉 習熟度が上がりました！新しい図鑑が解放され、おやじの説教が変化しました！");
+            }
+        }
+
+        function updateUI() {
+            surimiCountEl.textContent = Math.floor(gameState.surimi);
+            crystalCountEl.textContent = gameState.crystal;
+            teakaCountEl.textContent = gameState.teaka;
+            expDisplayEl.textContent = `${gameState.exp} / ${gameState.expToNext}`;
+            levelDisplayEl.textContent = `習熟度: ${gameState.level}`;
+            
+            let titleIndex = Math.min(Math.floor((gameState.level - 1) / 5), titles.length - 1);
+            document.getElementById('称号').textContent = `称号：${titles[titleIndex]}`;
+
+            upgradeListEl.innerHTML = '';
+            for (let key in gameState.upgrades) {
+                let up = gameState.upgrades[key];
+                let div = document.createElement('div');
+                div.className = 'upgrade-item';
+                div.innerHTML = `
+                    <div class="upgrade-info">
+                        <div>${up.name} (所持: ${up.count})</div>
+                        <div>コスト: ${up.cost} すり身の微塵 | ${up.desc}</div>
+                    </div>
+                    <button class="upgrade-btn" ${gameState.surimi < up.cost ? 'disabled' : ''} onclick="buyUpgrade('${key}')">調達</button>
+                `;
+                upgradeListEl.appendChild(div);
+            }
+
+            renderKnowledgeTabs();
+            renderSecretArchive();
+            renderGallery();
+            updateVisuals();
+        }
+
+        function addProduction(amount, { rareBoost = false } = {}) {
+            gameState.surimi += amount;
+            gameState.exp += amount;
+
+            checkRareDrops(rareBoost);
+            checkLevelUp();
+            updateUI();
+        }
+
+        patBtn.addEventListener('click', () => {
+            playPopSound();
+            addProduction(gameState.clickPower * gameState.clickMultiplier, { rareBoost: isHibachiOverheated() });
+        });
+
+        window.buyUpgrade = function(key) {
+            let up = gameState.upgrades[key];
+            if (gameState.surimi >= up.cost) {
+                gameState.surimi -= up.cost;
+                up.count++;
+                up.cost = Math.floor(up.cost * 1.5);
+
+                if (key === 'autoMachine') {
+                    gameState.autoPower += 1;
+                } else if (key === 'stainlessRod') {
+                    gameState.clickPower += 2;
+                } else if (key === 'secretSpice') {
+                    gameState.clickPower += 5;
+                    gameState.autoPower += 3;
+                }
+                updateUI();
+            }
+        };
+
+        // 自動生産ループ
+        setInterval(() => {
+            if (gameState.autoPower > 0) {
+                addProduction(gameState.autoPower * gameState.autoMultiplier * 0.2);
+            }
+        }, 200);
+
+        // --- タブ切り替え ---
+        window.switchTab = function(tabName, button) {
+            document.querySelectorAll('.tab-btn, .category-tab').forEach((btn) => {
+                btn.classList.remove('active');
+                if (btn.matches('.category-tab')) btn.setAttribute('aria-selected', 'false');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            if (button) button.classList.add('active');
+            let targetTab = document.getElementById(`tab-${tabName}`);
+            if (targetTab) targetTab.classList.add('active');
+            if (tabName === 'gallery') resizeGallery();
+        };
+
+        // 初期化
+        updateUI();
+
+        const tutorialSteps = [
+            {
+                title: '源さんの工房へようこそ！',
+                description: 'ちくわを手入れして「すり身の微塵」を集め、習熟度を上げていきましょう。源さんをクリックすると、修業の様子に応じた言葉を聞けます。'
+            },
+            {
+                title: '3Dちくわを観察しよう',
+                description: 'ちくわをドラッグすると好きな向きに回転できます。ちくわ本体をクリックすると、通常の手入れより多くの微塵を獲得できます。'
+            },
+            {
+                title: '手入れと工房の道具',
+                description: '「ちくわを丹念に磨く」で微塵を獲得。火鉢をあおると追加生産、石臼を回すとまとまった微塵が手に入ります。道具は使いすぎると一時的に休むこともあります。'
+            },
+            {
+                title: '設備を調達して自動生産',
+                description: '集めた微塵で工房設備を購入しましょう。自動回転焼き器は時間ごとに微塵を生み、ほかの設備は手入れの生産力を高めます。'
+            },
+            {
+                title: '図鑑を読み、工房を極めよう',
+                description: '習熟度が上がると図鑑の記録が解放されます。希少な結晶や手垢を集めて秘宝を解放し、ギャラリーの収集品も増やしていきましょう。'
+            }
+        ];
+        const tutorialDialog = document.getElementById('tutorial-dialog');
+        const tutorialOpenButton = document.getElementById('tutorial-open-btn');
+        const tutorialTitle = document.getElementById('tutorial-title');
+        const tutorialDescription = document.getElementById('tutorial-description');
+        const tutorialStepCount = document.getElementById('tutorial-step-count');
+        const tutorialProgressBar = document.getElementById('tutorial-progress-bar');
+        const tutorialPrevButton = document.getElementById('tutorial-prev-btn');
+        const tutorialNextButton = document.getElementById('tutorial-next-btn');
+        let currentTutorialStep = 0;
+
+        function renderTutorialStep() {
+            const step = tutorialSteps[currentTutorialStep];
+            tutorialTitle.textContent = step.title;
+            tutorialDescription.textContent = step.description;
+            tutorialStepCount.textContent = `STEP ${currentTutorialStep + 1} / ${tutorialSteps.length}`;
+            tutorialProgressBar.style.width = `${((currentTutorialStep + 1) / tutorialSteps.length) * 100}%`;
+            tutorialPrevButton.disabled = currentTutorialStep === 0;
+            tutorialNextButton.textContent = currentTutorialStep === tutorialSteps.length - 1 ? 'はじめる' : '次へ';
+        }
+
+        function openTutorial() {
+            currentTutorialStep = 0;
+            renderTutorialStep();
+            tutorialDialog.showModal();
+            tutorialNextButton.focus();
+        }
+
+        function markTutorialSeen() {
+            try {
+                localStorage.setItem('chikuwaWorldTutorialSeen', 'true');
+            } catch (error) {
+                console.error('チュートリアルの閲覧状態を保存できませんでした。', error);
+                showNotification('チュートリアルの閲覧状態を保存できませんでした。');
+            }
+            tutorialOpenButton.focus();
+        }
+
+        tutorialOpenButton.addEventListener('click', openTutorial);
+        document.getElementById('tutorial-close-btn').addEventListener('click', () => tutorialDialog.close());
+        document.getElementById('tutorial-skip-btn').addEventListener('click', () => tutorialDialog.close());
+        tutorialPrevButton.addEventListener('click', () => {
+            if (currentTutorialStep === 0) return;
+            currentTutorialStep--;
+            renderTutorialStep();
+        });
+        tutorialNextButton.addEventListener('click', () => {
+            if (currentTutorialStep === tutorialSteps.length - 1) {
+                tutorialDialog.close();
+                return;
+            }
+            currentTutorialStep++;
+            renderTutorialStep();
+        });
+        tutorialDialog.addEventListener('click', (event) => {
+            if (event.target === tutorialDialog) tutorialDialog.close();
+        });
+        tutorialDialog.addEventListener('close', markTutorialSeen);
+        document.addEventListener('keydown', (event) => {
+            if (!tutorialDialog.open || (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight')) return;
+            event.preventDefault();
+            if (event.key === 'ArrowLeft') tutorialPrevButton.click();
+            else tutorialNextButton.click();
+        });
+
+        renderTutorialStep();
+        try {
+            if (localStorage.getItem('chikuwaWorldTutorialSeen') !== 'true') openTutorial();
+        } catch (error) {
+            console.error('チュートリアルの閲覧状態を読み込めませんでした。', error);
+            showNotification('チュートリアルを自動表示できませんでした。「遊び方」から開けます。');
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            resizeGallery();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 241.48 127.89">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-2 {
+        letter-spacing: .08em;
+      }
+
+      .cls-3 {
+        letter-spacing: .1em;
+      }
+
+      .cls-4 {
+        fill: #94a3b8;
+        font-family: Inter-Light, Inter;
+        font-size: 8.93px;
+        font-variation-settings: 'opsz' 14, 'wght' 300;
+        font-weight: 300;
+      }
+
+      .cls-4, .cls-5, .cls-6 {
+        isolation: isolate;
+      }
+
+      .cls-7 {
+        letter-spacing: .11em;
+      }
+
+      .cls-8 {
+        letter-spacing: .11em;
+      }
+
+      .cls-9 {
+        letter-spacing: .1em;
+      }
+
+      .cls-10, .cls-6 {
+        fill: #fff;
+      }
+
+      .cls-11 {
+        stroke-dasharray: 2.38 2.38;
+        stroke-width: 2.38px;
+      }
+
+      .cls-11, .cls-12 {
+        stroke: #00f2fe;
+        stroke-miterlimit: 2.38;
+      }
+
+      .cls-11, .cls-13 {
+        fill: none;
+      }
+
+      .cls-5 {
+        opacity: .8;
+      }
+
+      .cls-5, .cls-14 {
+        fill: #00f2fe;
+      }
+
+      .cls-15 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-16 {
+        letter-spacing: .11em;
+      }
+
+      .cls-17 {
+        letter-spacing: .1em;
+      }
+
+      .cls-18 {
+        letter-spacing: .08em;
+      }
+
+      .cls-19 {
+        letter-spacing: 0em;
+      }
+
+      .cls-20 {
+        letter-spacing: .09em;
+      }
+
+      .cls-21 {
+        letter-spacing: .08em;
+      }
+
+      .cls-6 {
+        font-family: Inter-Bold, Inter;
+        font-size: 22.62px;
+        font-variation-settings: 'opsz' 14, 'wght' 700;
+        font-weight: 700;
+      }
+
+      .cls-22 {
+        letter-spacing: .08em;
+      }
+
+      .cls-23 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-12 {
+        fill: #0a192f;
+        stroke-width: 1.79px;
+      }
+
+      .cls-24 {
+        letter-spacing: .02em;
+      }
+
+      .cls-25 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-13 {
+        stroke: url(#_名称未設定グラデーション_3);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3.57px;
+      }
+    </style>
+    <linearGradient id="_名称未設定グラデーション_3" data-name="名称未設定グラデーション 3" x1="-181.77" y1="266.18" x2="-180.77" y2="265.18" gradientTransform="translate(7140.5182 11106.1337) scale(38.6929 -41.6693)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00f2fe"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <g id="_レイヤー_1-2" data-name="レイヤー 1">
+    <g>
+      <g>
+        <path class="cls-10" d="M86.09,0h20.83v56.55h38.69v20.83h-59.53V0Z"/>
+        <path class="cls-13" d="M106.93,14.88l23.81,23.81h14.88l-14.88,17.86"/>
+        <path class="cls-11" d="M106.93,38.69h23.81"/>
+        <circle class="cls-14" cx="106.93" cy="14.88" r="2.98"/>
+        <circle class="cls-14" cx="130.74" cy="38.69" r="3.57"/>
+        <circle class="cls-12" cx="145.62" cy="38.69" r="2.38"/>
+        <circle class="cls-14" cx="106.93" cy="38.69" r="2.38"/>
+        <circle class="cls-14" cx="130.74" cy="56.55" r="2.98"/>
+        <polygon class="cls-5" points="106.93 0 118.83 0 106.93 11.91 106.93 0"/>
+        <polygon class="cls-5" points="145.62 65.48 145.62 77.39 133.72 77.39 145.62 65.48"/>
+      </g>
+      <text class="cls-6" transform="translate(20.06 104.17)"><tspan class="cls-1" x="0" y="0">L</tspan><tspan class="cls-19" x="12.5" y="0">e</tspan><tspan class="cls-25" x="25.9" y="0">ading Com</tspan><tspan class="cls-19" x="141.75" y="0">p</tspan><tspan class="cls-23" x="155.94" y="0">a</tspan><tspan class="cls-15" x="168.78" y="0">n</tspan><tspan class="cls-23" x="182.18" y="0">y</tspan></text>
+      <text class="cls-4" transform="translate(0 125.01)"><tspan class="cls-17" x="0" y="0">D</tspan><tspan class="cls-8" x="7.31" y="0">r</tspan><tspan class="cls-3" x="11.47" y="0">iving </tspan><tspan class="cls-24" x="39.11" y="0">T</tspan><tspan class="cls-17" x="44.98" y="0">omo</tspan><tspan class="cls-7" x="66.04" y="0">r</tspan><tspan class="cls-18" x="70.23" y="0">r</tspan><tspan class="cls-2" x="74.19" y="0">o</tspan><tspan class="cls-3" x="80.21" y="0">w&apos;s S</tspan><tspan class="cls-16" x="107.32" y="0">t</tspan><tspan class="cls-9" x="110.93" y="0">anda</tspan><tspan class="cls-18" x="134.94" y="0">r</tspan><tspan class="cls-17" x="138.89" y="0">d th</tspan><tspan class="cls-21" x="158.27" y="0">r</tspan><tspan class="cls-17" x="162.23" y="0">ough Inn</tspan><tspan class="cls-22" x="205.92" y="0">o</tspan><tspan class="cls-20" x="211.93" y="0">v</tspan><tspan class="cls-17" x="217.71" y="0">ation</tspan></text>
+    </g>
+  </g>
+</svg>

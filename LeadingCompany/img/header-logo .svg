@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 357.2 85.12">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 2.62 2.62;
+        stroke-width: 2.62px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #00f2fe;
+        stroke-miterlimit: 2.62;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-3 {
+        stroke-width: 1.96px;
+      }
+
+      .cls-3, .cls-5, .cls-6 {
+        fill: #0a192f;
+      }
+
+      .cls-7 {
+        opacity: .8;
+      }
+
+      .cls-7, .cls-8, .cls-5 {
+        isolation: isolate;
+      }
+
+      .cls-7, .cls-9 {
+        fill: #00f2fe;
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-5 {
+        font-family: Inter-Bold, Inter;
+        font-size: 30.95px;
+        font-variation-settings: 'opsz' 14, 'wght' 700;
+        font-weight: 700;
+      }
+
+      .cls-11 {
+        letter-spacing: 0em;
+      }
+
+      .cls-12 {
+        letter-spacing: 0em;
+      }
+
+      .cls-13 {
+        letter-spacing: 0em;
+      }
+
+      .cls-4 {
+        stroke: url(#_名称未設定グラデーション);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3.93px;
+      }
+    </style>
+    <linearGradient id="_名称未設定グラデーション" data-name="名称未設定グラデーション" x1="-125.59" y1="643.59" x2="-124.59" y2="642.59" gradientTransform="translate(5368.865 29515.551) scale(42.5622 -45.8362)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00f2fe"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <g id="_レイヤー_1-2" data-name="レイヤー 1">
+    <g>
+      <g>
+        <path class="cls-6" d="M0,0h22.92v62.21h42.56v22.92H0V0Z"/>
+        <path class="cls-4" d="M22.92,16.37l26.19,26.19h16.37l-16.37,19.64"/>
+        <path class="cls-2" d="M22.92,42.56h26.19"/>
+        <circle class="cls-9" cx="22.92" cy="16.37" r="3.27"/>
+        <circle class="cls-9" cx="49.11" cy="42.56" r="3.93"/>
+        <circle class="cls-3" cx="65.48" cy="42.56" r="2.62"/>
+        <circle class="cls-9" cx="22.92" cy="42.56" r="2.62"/>
+        <circle class="cls-9" cx="49.11" cy="62.21" r="3.27"/>
+        <polygon class="cls-7" points="22.92 0 36.01 0 22.92 13.1 22.92 0"/>
+        <polygon class="cls-7" points="65.48 72.03 65.48 85.12 52.38 85.12 65.48 72.03"/>
+      </g>
+      <g class="cls-8">
+        <text class="cls-5" transform="translate(88.7 50)"><tspan class="cls-10" x="0" y="0">L</tspan><tspan class="cls-11" x="17.22" y="0">e</tspan><tspan class="cls-12" x="35.69" y="0">ading </tspan></text>
+        <text class="cls-5" transform="translate(213.58 50)"><tspan class="cls-10" x="0" y="0">Com</tspan><tspan class="cls-11" x="69.29" y="0">p</tspan><tspan class="cls-13" x="88.83" y="0">a</tspan><tspan class="cls-1" x="106.52" y="0">n</tspan><tspan class="cls-10" x="124.99" y="0">y</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

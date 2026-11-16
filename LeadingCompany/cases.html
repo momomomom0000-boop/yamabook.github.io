@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leading Companyのエンジニアリング支援事例をご紹介します。">
+    <title>導入事例 - Leading Company株式会社</title>
+    <link rel="icon" href="img/logo-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cases-page">
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="img/logo-mark.svg" alt="" class="logo-img">
+                <span>Leading Company</span>
+            </a>
+            <nav class="nav-links" id="navLinks" aria-label="メインナビゲーション">
+                <a href="index.html" data-nav="home" data-i18n="home">ホーム</a>
+                <a href="company.html" data-nav="company" data-i18n="company">企業情報</a>
+                <a href="members.html" data-nav="members" data-i18n="members">社員紹介</a>
+                <a href="cases.html" class="active" aria-current="page" data-nav="cases" data-i18n="cases">導入事例</a>
+                <a href="company.html#contact" class="btn-primary" data-nav="contact" data-i18n="contact">お問い合わせ</a>
+                <label class="language-option">
+                    <span class="sr-only" data-i18n="language">言語</span>
+                    <select class="language-select" data-language-select aria-label="Language Selector">
+                        <option value="ja">JA</option>
+                        <option value="en">EN</option>
+                    </select>
+                </label>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <main aria-label="導入事例">
+        <section class="hero compact" style="padding: 220px 0 120px;" aria-labelledby="cases-title">
+            <div class="container">
+                <span class="hero-tag">Selected Work</span>
+                <h1 id="cases-title" style="font-size: clamp(2.8rem, 5vw, 4rem); font-weight: 800; line-height: 1.15; margin-bottom: 24px;" data-i18n="caseTitle">導入事例</h1>
+                <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 680px; line-height: 1.8;" data-i18n="caseIntro">事業課題の本質を捉え、運用まで見据えたエンジニアリングで実現した取り組みをご紹介します。</p>
+            </div>
+        </section>
+        
+        <section class="case-studies-section" aria-label="導入事例一覧">
+            <div class="container">
+                <!-- 1カラムのコンパクトサムネイル型リスト -->
+                <div class="case-list-1col" role="list">
+                    
+                    <article class="case-item" role="listitem" aria-labelledby="case-iot-title">
+                        <div class="case-thumb">
+                            <img src="img/IMG-02.jpg" alt="製造現場の設備データを収集・可視化するIoT基盤の導入イメージ" loading="lazy">
+                        </div>
+                        <div class="case-body">
+                            <span class="section-tag">IoT / Manufacturing</span>
+                            <h2 id="case-iot-title">製造設備の稼働を可視化するIoT基盤</h2>
+                            <p class="case-desc">
+                                拠点ごとに分散していた設備データの把握に多大な工数が割かれていた課題に対し、現場からクラウドへデータを安全に集約するスケーラブルな基盤を設計。一元的な可視化とデータ連携により、属人化していた保守判断から脱却し、プラントの安定稼働と継続的なデータ駆動運用を確立しました。
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="case-item" role="listitem" aria-labelledby="case-cloud-title">
+                        <div class="case-thumb">
+                            <img src="img/IMG-03.jpg" alt="クラウドへ段階的に移行する基幹業務システムのイメージ" loading="lazy">
+                        </div>
+                        <div class="case-body">
+                            <span class="section-tag">Cloud / Modernization</span>
+                            <h2 id="case-cloud-title">基幹業務システムのクラウド移行</h2>
+                            <p class="case-desc">
+                                老朽化した基盤における拡張性の限界と運用負荷の増大を解消するため、既存業務への影響を最小限に抑える段階的モダナイゼーション計画を策定。堅牢なクラウドアーキテクチャへの移行を通じて、事業継続性を完全に担保しながら可用性と運用性を飛躍的に高めました。
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="case-item" role="listitem" aria-labelledby="case-product-title">
+                        <div class="case-thumb">
+                            <img src="img/IMG-04.jpg" alt="業務プロセスを支援するWebサービスの画面設計イメージ" loading="lazy">
+                        </div>
+                        <div class="case-body">
+                            <span class="section-tag">Product / UX</span>
+                            <h2 id="case-product-title">業務プロセスを支えるWebサービス刷新</h2>
+                            <p class="case-desc">
+                                複雑化した業務フローによるユーザビリティの低下に対し、利用者の行動心理と必要な情報を緻密に再設計。情報アーキテクチャの整理からフロントエンド実装まで一貫して伴走し、日々の業務効率化と今後の機能拡張に対応する柔軟なプロダクトへ刷新しました。
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="case-item" role="listitem" aria-labelledby="case-engineering-title">
+                        <div class="case-thumb">
+                            <img src="img/IMG-12.jpg" alt="設計レビューと自動化に取り組む開発チームの協働イメージ" loading="lazy">
+                        </div>
+                        <div class="case-body">
+                            <span class="section-tag">Engineering / Partnership</span>
+                            <h2 id="case-engineering-title">技術チームの開発プロセス高度化</h2>
+                            <p class="case-desc">
+                                レビューの属人化と手動による品質検証のボトルネックを打破すべく、組織体制に最適化された設計レビューの基準策定と自動化の仕組みを整備。内製開発チームと深く協働し、品質の安定性とデリバリー速度の高速化を両立するエンジニアリング文化を醸成しました。
+                            </p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 中央寄せされたCTAセクション -->
+        <section class="cases-cta" aria-labelledby="cases-cta-title">
+            <div class="container cta-container">
+                <h2 class="section-title" id="cases-cta-title">次の課題を、ともに解決しませんか。</h2>
+                <a class="btn-primary" href="company.html#contact">プロジェクトを相談する</a>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="img/footer-logo.svg" alt="Leading Company" class="footer-logo-img">
+                    </a>
+                    <p>技術の力で100年先のスタンダードを創る。私たちは本質的な価値を追求し続けるエンジニアリングパートナーです。</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="navigation">Navigation</h4>
+                    <ul>
+                        <li><a href="index.html" data-i18n="home">ホーム</a></li>
+                        <li><a href="company.html" data-i18n="company">企業情報</a></li>
+                        <li><a href="members.html" data-i18n="members">社員紹介</a></li>
+                        <li><a href="cases.html" data-i18n="cases">導入事例</a></li>
+                        <li><a href="company.html#recruit" data-i18n="careers">採用情報</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="support">Support & Contact</h4>
+                    <ul>
+                        <li><a href="company.html#contact" data-i18n="contact">お問い合わせ</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-address">本社：〒164-8787 東京都中野区東中野4-2-3</p>
+                <p class="copyright">Copyright &copy; Leading Company KK. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

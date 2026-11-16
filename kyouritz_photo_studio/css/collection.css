@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Collection & Clothes (衣裳コレクションページ専用スタイル)
+   ========================================================================== */
+
+.clothes {
+  padding: 120px 0;
+  color: var(--bone);
+  background: var(--cocoa);
+  width: 100%;
+}
+
+/* セクション全体の幅（赤枠いっぱいに広がるよう調整） */
+.clothes-inner {
+  width: min(1200px, 92vw) !important;
+  margin: 0 auto;
+}
+
+.clothes-heading {
+  max-width: 800px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.clothes-logo {
+  width: 148px;
+  max-height: 45px;
+  margin: 0 auto 35px;
+  object-fit: contain;
+}
+
+.clothes-heading .eyebrow {
+  color: var(--sand);
+}
+
+/* 黄色部分：（各3スタイル）などのカッコが途中で改行されないようにする設定 */
+.clothes h2,
+.clothes-heading h2 {
+  margin: 12px 0;
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: .05em;
+  white-space: nowrap !important;
+}
+
+.clothes-heading p {
+  margin: 0;
+  color: rgb(242 237 227 / 76%);
+  font-size: 12.5px;
+}
+
+/* タブ切り替えエリア（ボーダーが画面端に伸びないよう max-width を設定） */
+.clothes-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  max-width: 1200px; /* カードグリッドの最大幅と完全に一致させる */
+  margin: 40px auto 36px;
+  border-bottom: 1px solid rgb(227 206 205 / 45%);
+  width: 100%;
+}
+
+.clothes-tab {
+  position: relative;
+  padding: 0 12px 14px;
+  color: rgb(242 237 227 / 62%);
+  background: transparent;
+  border: 0;
+  font-family: var(--english);
+  font-size: 18px;
+  letter-spacing: .09em;
+  cursor: pointer;
+}
+
+.clothes-tab.is-active {
+  color: var(--banana);
+}
+
+.clothes-tab.is-active::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--banana);
+  content: "";
+}
+
+.clothes-panels-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.clothes-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.98);
+  filter: blur(4px);
+  pointer-events: none;
+  transition: 
+    opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    filter 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 0.8s;
+}
+
+.clothes-panel.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+  pointer-events: auto;
+}
+
+/* 赤部分：PC表示時に赤枠の幅いっぱいに広げ、カードサイズもダイナミックに拡大 */
+.clothes-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.clothes-card-item,
+.clothes-photo {
+  width: 100%;
+  text-align: left;
+  background: #55443e;
+  padding: 0;
+  border: 0;
+  cursor: zoom-in;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.clothes-card-item:hover,
+.clothes-photo:hover {
+  background: #5f4c45;
+  transform: translateY(-4px);
+}
+
+/* 写真のサイズを大きくし、迫力が出るアスペクト比に変更 */
+.clothes-thumb-wrap,
+.clothes-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3.3; 
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.clothes-card-item:hover img,
+.clothes-photo:hover img {
+  transform: scale(1.04);
+}
+
+/* カード下のテキストエリアの余白と文字サイズを拡大して存在感を出す */
+.clothes-card-content {
+  padding: 28px 22px;
+  color: var(--bone);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.clothes-card-content h4 {
+  font-family: var(--serif);
+  font-size: 18px;
+  margin: 6px 0 6px;
+}
+
+.clothes-card-content p {
+  font-size: 11.5px;
+  margin: 0;
+  opacity: 0.85;
+  line-height: 1.75;
+}
+
+.clothes-overlay-view {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 6px 12px;
+  color: var(--cocoa);
+  background: rgb(242 237 227 / 92%);
+  font-family: var(--english);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+/* ==========================================================================
+   Responsive: Mobile Adjustments (モバイル版はそのまま維持)
+   ========================================================================== */
+
+@media (max-width: 760px) {
+  .clothes-grid-3col {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .clothes-card-content {
+    padding: 16px 14px !important;
+  }
+
+  .clothes-card-content h4 {
+    font-size: 15px !important;
+    margin: 4px 0 2px !important;
+  }
+
+  .clothes-card-content p {
+    font-size: 10.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .clothes-thumb-wrap,
+  .clothes-photo img {
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  .clothes-heading h2,
+  .clothes h2 {
+    white-space: normal !important;
+  }
+
+  .clothes-tabs {
+    max-width: 100% !important;
+  }
+}
