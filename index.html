@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>やまもとの秘密基地 | WEB / DESIGN PORTFOLIO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+     Figma「自由帳」フロートバナー
+     ========================================================================== -->
+  <div class="float-banner" id="floatBanner">
+    <a href="https://www.figma.com/board/dTVlmfPKStBZZJZLpoC5ex/%E3%81%98%E3%82%86%E3%81%86%E3%81%A1%E3%82%87%E3%81%86?node-id=0-1&t=aETSgzNig6uq9Abn-1" target="_blank" rel="noopener noreferrer" class="float-banner__link">
+      <span class="float-banner__badge">FREE</span>
+      <div class="float-banner__text-wrap">
+        <p class="float-banner__title">みんなで遊べる Figma 自由帳 📓</p>
+        <p class="float-banner__sub">閲覧・編集自由！ボードを開く ↗</p>
+      </div>
+    </a>
+    <button type="button" class="float-banner__close" id="floatClose" aria-label="閉じる">×</button>
+  </div>
+
+  <!-- ==========================================================================
+     01_Header (固定ヘッダー)
+     ========================================================================== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="#" class="header__logo">やまもとの秘密基地</a>
+
+      <!-- ナビゲーションエリア -->
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li><a href="#about" class="header__nav-link">やまもとのこと</a></li>
+          <li><a href="#works" class="header__nav-link">つくったもの</a></li>
+          <li><a href="#services" class="header__nav-link">できること</a></li>
+          <li><a href="#contact" class="header__nav-link">おたより</a></li>
+        </ul>
+
+        <!-- お手紙アイコン（丸型アクセントボタン） -->
+        <a href="https://forms.gle/bYWoeMiPJEwAyQKH7" target="_blank" rel="noopener noreferrer" class="header__action-btn" aria-label="おたよりを送る（Googleフォーム）">
+          <svg class="header__action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+      </nav>
+
+      <!-- スマホ用ハンバーガーボタン -->
+      <button type="button" class="header__toggle" aria-label="メニューを開く" aria-expanded="false">
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+     02_Hero-FV (ファーストビュー)
+     ========================================================================== -->
+  <section class="hero">
+    <div class="container hero__container">
+      <!-- 左側：キャッチコピー ＆ サブテキスト -->
+      <div class="hero__left">
+        <p class="hero__main-copy">
+          『つくる』をあそぶ、<br>
+          ちいさな秘密基地。
+        </p>
+        <p class="hero__sub-en">WEB / DESIGN PORTFOLIO</p>
+      </div>
+
+      <!-- 右側：メインロゴ（YBdesign） -->
+      <div class="hero__right">
+        <h1 class="hero__logo">
+          <img src="img/logo01.svg" alt="YBdesign" class="hero__logo-img">
+        </h1>
+      </div>
+    </div>
+
+    <!-- 下部境界：とろり波型SVGシェイプ -->
+    <div class="hero__wave">
+      <img src="img/wave02.svg" alt="" class="hero__wave-img">
+    </div>
+  </section>
+
+<!-- ==========================================================================
+     03_News セクション
+     ========================================================================== -->
+  <section class="news" id="news">
+    <div class="news__container">
+
+      <!-- お知らせ 白角丸カード -->
+      <div class="news__card">
+
+        <!-- タイトル -->
+        <h2 class="news__title">
+          お知らせ<span class="news__title-en">/ News</span>
+        </h2>
+
+        <!-- お知らせリスト -->
+        <ul class="news__list" id="newsList">
+			<li class="news__item">
+            <time class="news__date" datetime="2026-11-12">2026.11.12</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（1999年8月32日）を追加しました</a>
+          </li>
+			<!-- 新着お知らせ: In Between Spaces 追加 -->
+          <li class="news__item">
+            <time class="news__date" datetime="2026-11-06">2026.11.06</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（In Between Spaces（リミナルスペース動画））を追加しました</a>
+          </li>
+          <!-- 新着お知らせ: SPEAKEASY & CO. 追加 -->
+          <li class="news__item">
+            <time class="news__date" datetime="2026-11-02">2026.11.02</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（SPEAKEASY &amp; CO. (A/W Lookbook)）を追加しました</a>
+          </li>
+          <!-- 従来の新着お知らせ -->
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-10-31">2026.10.31</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（ECHOES OF NEON インディーズフェス特設LP）を追加しました</a>
+          </li>
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-10-29">2026.10.29</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（Leading Company株式会社 コーポレート・採用統合Webサイト）を追加しました</a>
+          </li>
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-10-25">2026.10.25</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（北青山・轟内科医院）を追加しました</a>
+          </li>
+          <!-- 2件目以降 (隠し表示) -->
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-10-21">2026.10.21</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（quiet days）を追加しました</a>
+          </li>
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-10-20">2026.10.20</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（kyouritz photo studio）を追加しました</a>
+          </li>
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-10-13">2026.10.13</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（YB COFFEE）を追加しました</a>
+          </li>
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-10-05">2026.10.05</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（ペットショップ テラ）を追加しました</a>
+          </li>
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-09-30">2026.09.30</time>
+            <span class="news__category">お知らせ</span>
+            <span class="news__text">ポートフォリオサイトを公開しました</span>
+          </li>
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-09-29">2026.09.29</time>
+            <span class="news__category">制作成果</span>
+            <a href="#works" class="news__link">新しく作品（おやこピクルス）を追加しました</a>
+          </li>
+          <li class="news__item is-hidden">
+            <time class="news__date" datetime="2026-09-01">2026.09.01</time>
+            <span class="news__category">お知らせ</span>
+            <span class="news__text">サイト制作を開始しました</span>
+          </li>
+        </ul>
+
+        <!-- もっとみるボタン -->
+        <div class="news__btn-wrapper">
+          <button type="button" class="news__more-btn" id="newsMoreBtn">
+            もっとみる <span class="news__arrow">→</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- ==========================================================================
+     04_About (やまものとのことセクション)
+     ========================================================================== -->
+  <section class="about" id="about">
+    <div class="about__container">
+
+      <!-- 左側：プロフィールテキスト -->
+      <div class="about__content">
+        <h2 class="about__title">
+          やまもとのこと<span class="about__title-en">/ About</span>
+        </h2>
+
+        <p class="about__lead">
+          大学でデザインコースを専攻し、現在はWebデザイナーとして修行・実践中です！
+        </p>
+
+        <p class="about__text">
+          ただおしゃれやかわいいだけではなく、<br>
+          「情報がすんなり届く、ストレスなくちゃんと見れるサイトづくり」を大切に、Webサイトやバナー、ロゴ、キャラクター制作に取り組んでいます。
+        </p>
+
+        <!-- 好きなもの・インスピレーション -->
+        <div class="about__favorite">
+          <p class="about__favorite-title">【好きなもの・インスピレーション】</p>
+          <ul class="about__favorite-list">
+            <li>海外のお菓子のパッケージ</li>
+            <li>かわいくて、どこか変で愛おしいもの</li>
+            <li>読書（村田沙也加、村上春樹、瀬尾まい子）</li>
+          </ul>
+        </div>
+
+        <!-- スキルタグリスト -->
+        <ul class="about__skills">
+          <li class="about__skill-tag">#HTML5</li>
+          <li class="about__skill-tag">#CSS3</li>
+          <li class="about__skill-tag">#JavaScript</li>
+          <li class="about__skill-tag">#Photoshop</li>
+          <li class="about__skill-tag">#Illustrator</li>
+          <li class="about__skill-tag">#Figma</li>
+        </ul>
+
+        <!-- SNSリンク (Aboutセクション内) -->
+        <div class="about__sns">
+          <p class="about__sns-title">【SNS / Web】</p>
+          <ul class="about__sns-list">
+            <!-- Instagram -->
+            <li class="about__sns-item">
+              <a href="https://www.instagram.com/yamabook_design/" target="_blank" rel="noopener noreferrer" class="about__sns-link" aria-label="Instagram">
+                <svg class="about__sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Instagram</span>
+              </a>
+            </li>
+
+            <!-- note -->
+            <li class="about__sns-item">
+              <a href="https://note.com/yamabook_design" target="_blank" rel="noopener noreferrer" class="about__sns-link" aria-label="note">
+                <svg class="about__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.8 3H5.2C4 3 3 4 3 5.2v13.6C3 20 4 21 5.2 21h13.6c1.2 0 2.2-1 2.2-2.2V5.2C21 4 20 3 18.8 3zm-2.9 12.8h-2.3v-4.5c0-.8-.3-1.3-1.1-1.3-.8 0-1.2.6-1.2 1.3v4.5H9V8.8h2.3v1c.5-.7 1.2-1.1 2.2-1.1 1.7 0 2.4 1.1 2.4 2.8v4.3z"/>
+                </svg>
+                <span>note</span>
+              </a>
+            </li>
+
+            <!-- X / Twitter (準備中) -->
+            <li class="about__sns-item">
+              <span class="about__sns-link is-disabled" aria-label="X（準備中）">
+                <svg class="about__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                <span>X（準備中）</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- 右側：キャラクター画像（境界線またぎ演出） -->
+      <div class="about__character">
+        <img src="img/profile.svg" alt="おばけのキャラクター yb" class="about__character-img">
+      </div>
+
+    </div>
+
+    <!-- セクション下部：アイボリーへ繋がる波型SVGシェイプ -->
+    <div class="about__wave">
+      <img src="img/wave03.svg" alt="" class="about__wave-img">
+    </div>
+  </section>
+
+<!-- ==========================================================================
+       05_Works (つくったものセクション)
+       ========================================================================== -->
+  <section class="works" id="works">
+    <div class="works__container">
+
+      <h2 class="works__title">
+        つくったもの<span class="works__title-en">/ Works</span>
+      </h2>
+
+      <!-- カテゴリフィルタータブ -->
+      <ul class="works__filter">
+        <li class="works__filter-item"><button type="button" class="works__filter-btn is-active" data-filter="all">すべて</button></li>
+        <li class="works__filter-item"><button type="button" class="works__filter-btn" data-filter="web">Webサイト</button></li>
+        <li class="works__filter-item"><button type="button" class="works__filter-btn" data-filter="banner">バナー・画像</button></li>
+        <li class="works__filter-item"><button type="button" class="works__filter-btn" data-filter="logo">ロゴ・グラフィック</button></li>
+      </ul>
+
+      <!-- 作品カードグリッド -->
+      <div class="works__grid">
+
+        <!-- 01. 1999年8月32日（LOST FOOTAGE [1998]） -->
+        <article class="works__card has-new-badge" data-category="video">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="1999年8月32日（LOST FOOTAGE [1998]）"
+                  data-category="WEIRDCORE / DREAMCORE / VIDEO EDITING"
+                  data-desc="ウィアードコアとドリームコアが融合した不条理な世界観。<br>【実装】VHSノイズ、色収差、ローパスフィルターによるこもった音響、目玉のコラージュ演出によるアナログな恐怖と懐古の表現。"
+                  data-spec="担当: 企画・構成・映像編集・サウンドデザイン / 制作期間: 3日 / ツール: Adobe Premiere Pro"
+                  data-demo-url="lostfootage/lostfootage.mp4"
+                  data-images='["img/work16_mv.jpg"]'>
+            <div class="works__card-thumb">
+              <img src="img/work16_thumb.jpg" alt="1999年8月32日 プレビュー" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#映像作品</li>
+                <li class="works__card-tag">#ウィアードコア</li>
+                <li class="works__card-tag">#PremierePro</li>
+              </ul>
+              <h3 class="works__card-title">1999年8月32日</h3>
+              <p class="works__card-desc">LOST FOOTAGE [1998]</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 02. In Between Spaces -->
+        <article class="works__card has-new-badge" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="「In Between Spaces」"
+                  data-category="VIDEO PRODUCTION / CONCEPTUAL ART / SOUND DESIGN"
+                  data-desc="【概念】日常の風景の中に潜む人の気配が消えた境界空間（リミナルスペース）をテーマにしたショート映像。<br>【制作】フリー動画素材の切り貼りと、VHS質感（走査線・ノイズ）＆ローパスフィルターによる音響加工で古いビデオテープの記憶を表現。"
+                  data-spec="担当: 企画・動画編集・エフェクト加工・音響 / ツール: Adobe Premiere Pro"
+                  data-demo-url="BetweenSpaces/process-04-final-grade.mp4"
+                  data-images='["img/work15_mv.jpg"]'
+                  data-link="work14.html">
+            <div class="works__card-thumb">
+              <img src="img/work15_thumb.jpg" alt="In Between Spacesプレビュー" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#動画制作</li>
+                <li class="works__card-tag">#リミナルスペース</li>
+              </ul>
+              <h3 class="works__card-title">In Between Spaces（リミナルスペース動画）</h3>
+              <p class="works__card-desc">Video Production &amp; Sound Design</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 03. SPEAKEASY & CO. -->
+        <article class="works__card has-new-badge" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="「SPEAKEASY &amp; CO. (A/W Lookbook)」"
+                  data-category="WEB DESIGN / FRONTEND"
+                  data-desc="架空のブランドの秋冬ルックブック。ダークトーンを基調としたシックな世界観演出とレスポンシブWeb制作。"
+                  data-spec="担当: 企画・デザイン・実装 / ツール: HTML5, CSS3, JS, Photoshop"
+                  data-demo-url="SPEAKEASY/index.html"
+                  data-images='["img/work14_mv.jpg"]'>
+            <div class="works__card-thumb">
+              <img src="img/work14_thumb.jpg" alt="SPEAKEASY &amp; CO.プレビュー" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+              </ul>
+              <h3 class="works__card-title">SPEAKEASY &amp; CO. (A/W Lookbook)</h3>
+              <p class="works__card-desc">Web Design &amp; Frontend</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 04. ECHOES OF NEON -->
+        <article class="works__card has-new-badge" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="「ECHOES OF NEON インディーズフェス 特設ランディングページ」"
+                  data-category="EVENT LP / BRANDING / UIUX"
+                  data-desc="【概念】アンダーグラウンドの音楽フェスティバルの特設ランディングページ。<br>【制作】「ダーク×ネオン」の刺激的な世界観と、Vanilla JSによる動的ネオン発光タブ・格子状タイムテーブルを実装。"
+                  data-spec="担当: 企画・デザイン・UI/UX設計・実装 / ツール: HTML5, CSS3, JS, Figma"
+                  data-demo-url="echoes/index.html"
+                  data-images='["img/work13_mv.jpg"]'
+                  data-link="work13.html">
+            <div class="works__card-thumb">
+              <img src="img/work13_thumb.jpg" alt="ECHOES OF NEON プレビュー" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+                <li class="works__card-tag">#イベントLP</li>
+              </ul>
+              <h3 class="works__card-title">ECHOES OF NEON（インディーズフェス特設LP）</h3>
+              <p class="works__card-desc">Event LP, Branding &amp; UIUX Design</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 05. Leading Company株式会社 -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="「Leading Company株式会社 コーポレート・採用統合Webサイト」"
+                  data-category="ENTERPRISE / BRANDING &amp; UIUX"
+                  data-desc="【概念】コーポレートサイトと採用サイトの統合によるブランド価値の最大化とUX設計。<br>【制作】企業の信頼感を高める洗練されたトーン＆マナーと、スムーズな情報導線を構築。"
+                  data-spec="担当: ブランディング・UI/UX設計・実装 / ツール: HTML5, CSS3, JS, Figma"
+                  data-demo-url="LeadingCompany/index.html"
+                  data-images='["img/work12_mv.jpg"]'
+                  data-link="work12.html">
+            <div class="works__card-thumb">
+              <img src="img/work12_thumb.jpg" alt="Leading Company株式会社 コーポレート・採用統合Webサイトプレビュー" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+                <li class="works__card-tag">#ブランディング</li>
+              </ul>
+              <h3 class="works__card-title">Leading Company株式会社 コーポレート・採用統合Webサイト</h3>
+              <p class="works__card-desc">コーポレート・採用統合 / ブランド戦略・UIUX設計</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 06. 北青山・轟内科医院 -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="「北青山・轟内科医院」"
+                  data-category="WEB DESIGN / 90s RETRO / CLINIC BRANDING"
+                  data-desc="【概念】広告的虚構や無責任な医療情報にあふれる現代のWebに対するアンチテーゼ。<br>【制作】90sレトロWebの質感と、妥協なき硬派な臨床哲学（全20問のQ&amp;A）を融合した異色のクリニックサイト。"
+                  data-spec="担当: ブランディング・UI/UX・実装 / ツール: HTML5, CSS3, JS, Figma"
+                  data-demo-url="todoroki/index.html"
+                  data-images='["img/work11_mv.jpg"]'
+                  data-link="work11.html">
+            <div class="works__card-thumb">
+              <img src="img/work11_thumb.jpg" alt="北青山・轟内科医院" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+                <li class="works__card-tag">#ブランディング</li>
+              </ul>
+              <h3 class="works__card-title">北青山・轟内科医院（クリニック）</h3>
+              <p class="works__card-desc">Clinic Branding &amp; 90s Retro Web</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 07. quiet days -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="「quiet days」"
+                  data-category="WEB DESIGN / ESSAY &amp; GALLERY / FRONTEND"
+                  data-desc="日常の静けさや日常の断片を集めた詩的なWebサイト。<br>ゆったりとした余白と文字組、フィルム調の質感表現、音響や思考の余白を活かしたWeb演出。"
+                  data-spec="担当: 企画・デザイン・文筆・実装 / ツール: HTML5, CSS3, JavaScript"
+                  data-demo-url="quietdays/index.html"
+                  data-images='["img/work10_mv.jpg"]'>
+            <div class="works__card-thumb">
+              <img src="img/work10_thumb.jpg" alt="quiet days" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+              </ul>
+              <h3 class="works__card-title">quiet days（Webギャラリー）</h3>
+              <p class="works__card-desc">Minimal Essay &amp; Gallery Site</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 08. CHIKUWA WORLD -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="授業中の空腹から生まれた育成シミュレーション「CHIKUWA WORLD」"
+                  data-category="WEB GAME / THREE.JS / LOW-POLY"
+                  data-desc="【概念】授業中のおでんの妄想とAI対話、ローポリへのこだわりから生まれたちくわ育成ゲーム。<br>【制作】Three.jsによるローポリ3Dちくわの表現、レベルアップによる図鑑解放、頑固おやじのセリフ変化などを実装。"
+                  data-spec="担当: 企画・世界観設計・実装 / ツール: Three.js, HTML5, CSS3, JS"
+                  data-demo-url="chikuwa/index.html"
+                  data-images='["img/work09_mv.jpg"]'
+                  data-link="work10.html">
+            <div class="works__card-thumb">
+              <img src="img/work09_thumb.jpg" alt="CHIKUWA WORLD" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webゲーム</li>
+                <li class="works__card-tag">#Three.js</li>
+              </ul>
+              <h3 class="works__card-title">CHIKUWA WORLD（育成ゲーム）</h3>
+              <p class="works__card-desc">Low-Poly Chikuwa Simulation</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 09. kyouritz photo studio -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="「kyouritz photo studio」"
+                  data-category="WEB DESIGN / AI PAIR PROGRAMMING / FRONTEND"
+                  data-desc="【概念】ウェディングフォトスタジオ「kyouritz photo studio」のブランディングおよび公式サイト。<br>【制作】デザインツールを介さずAIとのテキストベースの対話でワイヤーフレームや世界観を設計し、約3日間でスピーディーに実装。"
+                  data-spec="担当: 企画・ブランディング・AI対話構築・実装 / ツール: AIツール, HTML5, CSS3, JS"
+                  data-demo-url="kyouritz_photo_studio/index.html"
+                  data-images='["img/work08_mv.jpg"]'
+                  data-link="work09.html">
+            <div class="works__card-thumb">
+              <img src="img/work08_thumb.jpg" alt="kyouritz photo studio" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+                <li class="works__card-tag">#AI活用</li>
+              </ul>
+              <h3 class="works__card-title">kyouritz photo studio（ウェディング）</h3>
+              <p class="works__card-desc">Wedding Photo Studio Website</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 10. 美容液ブランド yoroca WEBバナー (jisaku元の画像を使用) -->
+        <article class="works__card" data-category="banner">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="美容液ブランド「yoroca」WEBバナー（スクエア / 縦型）"
+                  data-category="BANNER DESIGN / BRANDING"
+                  data-desc="【概念】美容液ブランド「yoroca」のトーン＆マナーに合わせたWEBバナー制作。<br>【制作】ナチュラルな世界観（ベージュ・グリーン調）と、落ち着きのある上品な印象（ダークグリーン・大人向けトーン）の2つの世界観・サイズ展開（1:1 / 4:5）で制作・検証。"
+                  data-spec="担当: バナーデザイン / ツール: Photoshop, Illustrator"
+                  data-images='["jisaku/banner_yoroca_1x1.png", "jisaku/banner_yoroca_4x5.jpg", "jisaku/yoroca_banner_green_1-1.png", "jisaku/yoroca_banner_green_4-5.jpg"]'>
+            <div class="works__card-thumb">
+              <img src="jisaku/banner_yoroca_1x1.png" alt="美容液ブランド yoroca WEBバナー" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#バナー・画像</li>
+              </ul>
+              <h3 class="works__card-title">美容液ブランド「yoroca」WEBバナー</h3>
+              <p class="works__card-desc">Banner Design (2 Tones &amp; Sizes)</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 11. YB COFFEE -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="夜な夜なひらく本と珈琲の小さな時間「YB COFFEE」"
+                  data-category="WEB DESIGN / FIGMA / FRONTEND"
+                  data-desc="【概念】中野にある架空の夜型ブックカフェ「YB COFFEE」のWebサイト。<br>【制作】初めてFigmaを使ってオートレイアウト構造をデザインし、VS CodeのAI（Roo Code）をペアプロとして活用しながら、ライトボックスやアスペクト比保護などを実装。"
+                  data-spec="担当: 企画・Figmaデザイン・実装 / ツール: Figma, HTML5, CSS3, JS, VS Code, Roo Code"
+                  data-demo-url="ybcoffee/index.html"
+                  data-images='["img/work07_mv.jpg"]'
+                  data-link="work08.html">
+            <div class="works__card-thumb">
+              <img src="img/work07_thumb.jpg" alt="YB COFFEE" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+                <li class="works__card-tag">#Figma</li>
+              </ul>
+              <h3 class="works__card-title">YB COFFEE（ブックカフェ）</h3>
+              <p class="works__card-desc">Web Design &amp; Figma Challenge</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 12. ペットショップ・テラ（ホラーゲームスピンオフ版） -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="ペットショップ・テラ / ホラーゲーム・アレンジ"
+                  data-category="WEB DESIGN &amp; HORROR GAME"
+                  data-desc="【課題】動物を迎えるファミリー向けの安心感あるWebサイト制作。<br>【発展】制作時間が余ったため、平和なペットショップをベースに「バックルームズ」や「SCP・ネット都市伝説」をモチーフにしたブラウザホラーゲームへ独自にアレンジ・実装。"
+                  data-spec="担当: デザイン・高速コーディング・ホラー演出実装 / ツール: HTML5, CSS3, JavaScript"
+                  data-demo-url="petshop_terahorror/index.html"
+                  data-images='["img/work06_2_mv.jpg"]'
+                  data-link="work07.html">
+            <div class="works__card-thumb">
+              <img src="img/work06_2_thumb.jpg" alt="ペットショップ・テラ ホラーアレンジ" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+                <li class="works__card-tag">#インタラクティブ演出</li>
+              </ul>
+              <h3 class="works__card-title">ペットショップ・テラ（ホラーアレンジ）</h3>
+              <p class="works__card-desc">Web Design &amp; Horror Game Spinoff</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 13. ペットショップ -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="ペットショップ Webサイト"
+                  data-category="WEB DESIGN"
+                  data-desc="【課題】ペットショップの魅力や温かさを伝えるWebサイトの制作。<br>【解決】親しみやすい配色とレイアウトで、動物たちの可愛らしさが伝わるデザインに仕上げました。"
+                  data-spec="担当: デザイン・コーディング / ツール: HTML, CSS, Photoshop"
+                  data-demo-url="petshop_tera/index.html"
+                  data-images='["img/work06_mv.jpg"]'
+                  data-link="work06.html">
+            <div class="works__card-thumb">
+              <img src="img/work06_thumb.jpg" alt="ペットショップ" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags"><li class="works__card-tag">#Webサイト</li></ul>
+              <h3 class="works__card-title">ペットショップ Webサイト</h3>
+              <p class="works__card-desc">Web Design</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 14. 西洋風漬物ピックルス -->
+        <article class="works__card" data-category="web logo">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="西洋風漬物ピックルス（おやこピクルス）"
+                  data-category="WEB DESIGN / LOGO / CHARACTER"
+                  data-desc="【課題】お子様の野菜嫌い克服と親子での楽しく手軽な調理提案。<br>【解決】Pastels for Kids配色と、純CSSステッカー演出・アコーディオン対話劇による食育ストーリー。"
+                  data-spec="担当: 企画・ロゴ・キャラ・純CSS実装 / ツール: HTML5, CSS3, Illustrator"
+                  data-demo-url="pickles/index.html"
+                  data-images='["img/work03_mv.jpg"]'
+                  data-link="work03.html">
+            <div class="works__card-thumb">
+              <img src="img/work03_thumb.jpg" alt="おやこピクルス" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+                <li class="works__card-tag">#ロゴ・グラフィック</li>
+              </ul>
+              <h3 class="works__card-title">西洋風漬物ピックルス</h3>
+              <p class="works__card-desc">Food Education LP &amp; Branding</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 15. パオーンけいぞう オフィシャルサイト -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="パオーンけいぞう オフィシャルサイト"
+                  data-category="WEB DESIGN &amp; BRANDING"
+                  data-desc="【課題】アーティスト独自の世界観可視化と楽曲試聴時の外部離脱。<br>【解決】対話によるブランドボード構築と、インラインフレームでの音楽プレーヤー直接埋め込み。"
+                  data-spec="担当: ヒアリング・実装 / 期間: 約1週間 / ツール: PS, HTML, CSS, iframe"
+                  data-demo-url="paoon/index.html"
+                  data-images='["img/work02_mv.jpg"]'
+                  data-link="work02.html">
+            <div class="works__card-thumb">
+              <img src="img/work02_thumb.jpg" alt="パオーンけいぞう" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags"><li class="works__card-tag">#Webサイト</li></ul>
+              <h3 class="works__card-title">パオーンけいぞう オフィシャルサイト</h3>
+              <p class="works__card-desc">Web Design &amp; Branding</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 16. TEAM ORANGE -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="TEAM ORANGE 制作記録 &amp; 成果物ケーススタディ"
+                  data-category="TEAM PROJECT / CASE STUDY"
+                  data-desc="【課題】グループワーク成果物のアーカイブ化と、5人のメンバー個性の可視化。<br>【解決】小麦色の暖色グラデーションと白カードUIで情報を整理。Googleフォーム連携で深掘り。"
+                  data-spec="担当: サイト制作 / 期間: 約4日 / ツール: HTML, CSS, JS, AI"
+                  data-demo-url="teamorange/index.html"
+                  data-images='["img/work01_mv.jpg"]'
+                  data-link="work01.html">
+            <div class="works__card-thumb">
+              <img src="img/work01_thumb.jpg" alt="TEAM ORANGE 制作記録" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags"><li class="works__card-tag">#Webサイト</li></ul>
+              <h3 class="works__card-title">TEAM ORANGE 制作記録</h3>
+              <p class="works__card-desc">Team Project / Case Study</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 17. Coffee Shop Cozy chat -->
+        <article class="works__card" data-category="web">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="Coffee Shop Cozy chat"
+                  data-category="WEB DESIGN / CASE STUDY"
+                  data-desc="【課題】利用者の集客を目的とした「Cozy chat」トップページデザインカンプ制作。<br>【解決】海外風のゆったりした空気感と温かみのあるトーン＆マナーを追求し、ピクトグラムを活用したストレスのない導線を設計。"
+                  data-spec="担当: デザイン企画 / コンセプト立案 / カンプ制作 / 期間: 約2日 / ツール: PS, AI"
+                  data-demo-url="cozychat/index.html"
+                  data-images='["img/work05_mv.jpg"]'
+                  data-link="work05.html">
+            <div class="works__card-thumb">
+              <img src="img/work05_thumb.jpg" alt="Coffee Shop Cozy chat" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags"><li class="works__card-tag">#Webサイト</li></ul>
+              <h3 class="works__card-title">Coffee Shop「Cozy chat」</h3>
+              <p class="works__card-desc">Web Design &amp; Case Study</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 18. 定時退社バトルストレスコア -->
+        <article class="works__card" data-category="web logo">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="定時退社バトルストレスコア"
+                  data-category="INTERACTIVE WEB &amp; GAME"
+                  data-desc="【課題】1枚の授業課題イラストで終わらせず、Webならではの体験価値へと拡張。<br>【解決】AI連携による超高速実装（約2時間）と、架空ECグッズページのパッケージ併設。"
+                  data-spec="担当: 企画・イラスト・JS実装 / 時間: 約2時間 / ツール: PS, AI, HTML, JS"
+                  data-demo-url="stress/index.html"
+                  data-images='["img/work04_mv.jpg", "jisaku/stress.png"]'
+                  data-link="work04.html">
+            <div class="works__card-thumb">
+              <img src="img/work04_thumb.jpg" alt="定時退社バトル" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags">
+                <li class="works__card-tag">#Webサイト</li>
+                <li class="works__card-tag">#ロゴ・グラフィック</li>
+              </ul>
+              <h3 class="works__card-title">定時退社バトルストレスコア</h3>
+              <p class="works__card-desc">Interactive Web &amp; Game</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 19. STRESS CORE グッズ (jisaku元の画像を使用) -->
+        <article class="works__card" data-category="logo">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="STRESS CORE キャラクター＆パッケージ"
+                  data-category="CHARACTER &amp; PACKAGE DESIGN"
+                  data-desc="定時退社やストレスをテーマにした「コア」の立体化・グッズモックアップ展開。"
+                  data-spec="ツール: Photoshop, AIツール"
+                  data-images='["jisaku/stress.png", "jisaku/cushion.png", "jisaku/drink.jpg"]'>
+            <div class="works__card-thumb">
+              <img src="jisaku/stress.png" alt="STRESS CORE" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags"><li class="works__card-tag">#ロゴ・グラフィック</li></ul>
+              <h3 class="works__card-title">STRESS CORE（限界社会人）</h3>
+              <p class="works__card-desc">Character &amp; Package Design</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 20. グリーン教室 WEBバナー (jisaku元の画像を使用) -->
+        <article class="works__card" data-category="banner">
+          <button type="button" class="works__card-link works__modal-trigger"
+                  data-title="グリーンアレンジメント教室 WEBバナー（2案）"
+                  data-category="BANNER DESIGN"
+                  data-desc="同じテーマに対してターゲット別の2パターン（A:親しみやすさ / B:シック）を制作し検証。"
+                  data-spec="制作時間: 約30分 / ツール: Photoshop"
+                  data-images='["jisaku/green-banner01.png", "jisaku/green-banner02.png"]'>
+            <div class="works__card-thumb">
+              <img src="jisaku/green-banner01.png" alt="グリーン教室バナー" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags"><li class="works__card-tag">#バナー・画像</li></ul>
+              <h3 class="works__card-title">グリーン教室 WEBバナー（2案）</h3>
+              <p class="works__card-desc">Banner Design (A/B Pattern)</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 21. うたた寝 (jisaku元の画像を使用) -->
+        <article class="works__card" data-category="logo">
+          <button type="button" class="works__card-link works__modal-trigger" 
+                  data-title="うたた…寝"
+                  data-category="TYPOGRAPHY &amp; GRAPHIC"
+                  data-desc="「うたた寝」をモチーフにした繊細でやわらかいタイポグラフィ表現。月や枕のモチーフ、水彩風の静けさのある背景で眠りの心地よさと情緒を演出。"
+                  data-spec="ツール: Photoshop, Illustrator"
+                  data-images='["jisaku/utatane.jpg"]'>
+            <div class="works__card-thumb">
+              <img src="jisaku/utatane.jpg" alt="うたた寝" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags"><li class="works__card-tag">#ロゴ・グラフィック</li></ul>
+              <h3 class="works__card-title">うたた寝</h3>
+              <p class="works__card-desc">Typography &amp; Graphic</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 22. 販促シール風ロゴ (jisaku元の画像を使用) -->
+        <article class="works__card" data-category="logo">
+          <button type="button" class="works__card-link works__modal-trigger" 
+                  data-title="販促シール風ロゴ「情熱だけはある」"
+                  data-category="PROMOTION STICKER TYPOGRAPHY"
+                  data-desc="スーパーの割引・販促シールをモチーフにしたインパクトのあるタイポグラフィ表現。波打ちステッカー風と帯型の2パターンで展開し、キャッチーでユーモアのある情熱をグラフィック化。"
+                  data-spec="ツール: Photoshop, Illustrator"
+                  data-images='["jisaku/jonetsu.gif", "jisaku/jonetsu2.png"]'>
+            <div class="works__card-thumb">
+              <img src="jisaku/jonetsu.gif" alt="販促シール風ロゴ「情熱だけはある」" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags"><li class="works__card-tag">#ロゴ・グラフィック</li></ul>
+              <h3 class="works__card-title">販促シール風ロゴ</h3>
+              <p class="works__card-desc">Promotion Sticker Typography</p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 23. 自分に貼りたい注意書き (jisaku元の画像を使用) -->
+        <article class="works__card" data-category="logo">
+          <button type="button" class="works__card-link works__modal-trigger" 
+                  data-title="自分に貼りたい注意書き「説明下手」"
+                  data-category="WARNING STICKER GRAPHIC"
+                  data-desc="「説明下手 / AI推奨」というセルフ自虐とユーモアを詰めた、警告ステッカー風グラフィックデザイン。視認性の高い配色とキャラクターの表情で親しみやすさを演出。"
+                  data-spec="ツール: Illustrator"
+                  data-images='["jisaku/setumeiheta.png"]'>
+            <div class="works__card-thumb">
+              <img src="jisaku/setumeiheta.png" alt="自分に貼りたい注意書き「説明下手」" width="720" height="360" loading="lazy" class="works__card-img">
+            </div>
+            <div class="works__card-body">
+              <ul class="works__card-tags"><li class="works__card-tag">#ロゴ・グラフィック</li></ul>
+              <h3 class="works__card-title">自分に貼りたい注意書き</h3>
+              <p class="works__card-desc">Warning Sticker Graphic</p>
+            </div>
+          </button>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- MORE! ボタンエリア -->
+    <div class="works__more" style="text-align: center; margin-top: 40px;">
+      <button type="button" class="works__more-btn" id="worksMoreBtn">MORE!</button>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="services__container">
+
+      <!-- セクション見出し -->
+      <h2 class="services__title">
+        できること・おしごと<span class="services__title-en">/ Services</span>
+      </h2>
+
+      <!-- サービスカードグリッド（3カラム） -->
+      <div class="services__grid">
+
+        <!-- サービス 1: Webサイト・LP制作 -->
+        <article class="services__card">
+          <div class="services__icon-wrapper">
+            <img src="img/service_icon_web.svg" alt="" class="services__icon-img">
+          </div>
+          <h3 class="services__card-title">Webサイト・LP制作</h3>
+        </article>
+
+        <!-- サービス 2: バナー・画像制作 -->
+        <article class="services__card">
+          <div class="services__icon-wrapper">
+            <img src="img/service_icon_banner.svg" alt="" class="services__icon-img">
+          </div>
+          <h3 class="services__card-title">バナー・画像制作</h3>
+        </article>
+
+        <!-- サービス 3: ロゴ・グラフィック -->
+        <article class="services__card">
+          <div class="services__icon-wrapper">
+            <img src="img/service_icon_logo.svg" alt="" class="services__icon-img">
+          </div>
+          <h3 class="services__card-title">ロゴ・グラフィック</h3>
+        </article>
+
+      </div>
+
+      <!-- 下部あしらい：猫の連続ライン -->
+      <div class="services__cat-line">
+        <div class="services__cat-track">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+          <img src="img/line_cat.svg" alt="" class="services__cat-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     07_Contact (おたよりセクション)
+     ========================================================================== -->
+  <section class="contact" id="contact">
+    <div class="contact__container">
+
+      <!-- セクション見出し -->
+      <h2 class="contact__title">
+        基地へのおたより<span class="contact__title-en">/ Contact</span>
+      </h2>
+
+      <!-- 中央メインカードイラスト -->
+      <div class="contact__graphic">
+        <img src="img/icon_contact_letter.svg" alt="おたより・手紙のアイコン" class="contact__graphic-img">
+      </div>
+
+      <!-- メッセージテキスト -->
+      <div class="contact__message">
+        <p class="contact__text">
+          制作のご依頼はもちろん、雑談やご相談だけでも大歓迎です！<br>
+          ちいさなことでも、お気軽におたよりをお寄せください♥
+        </p>
+      </div>
+
+      <!-- Googleフォームリンクボタン -->
+      <div class="contact__action">
+        <a href="https://forms.gle/bYWoeMiPJEwAyQKH7" target="_blank" rel="noopener noreferrer" class="contact__btn">
+          <span class="contact__btn-main">おたよりを送る</span>
+          <span class="contact__btn-sub">（Googleフォームでお問い合わせする）</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     08_Footer (フッターセクション)
+     ========================================================================== -->
+  <footer class="footer">
+
+    <!-- セクション上部：白波SVGシェイプ（wave04.svg） -->
+    <div class="footer__wave">
+      <img src="img/wave04.svg" alt="" class="footer__wave-img">
+    </div>
+
+    <!-- フッターコンテンツエリア -->
+    <div class="footer__container">
+
+      <!-- 中央ロゴ（logo03.svg） -->
+      <div class="footer__logo">
+        <a href="#">
+          <img src="img/logo03.svg" alt="YBdesign yamabook" class="footer__logo-img">
+        </a>
+      </div>
+
+      <!-- SNSリンク（白枠＋SVGアイコン） -->
+      <ul class="footer__sns">
+
+        <!-- Instagram (アクティブ) -->
+        <li class="footer__sns-item">
+          <a href="https://www.instagram.com/yamabook_design/" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="Instagram">
+            <span class="footer__sns-box">
+              <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </span>
+          </a>
+        </li>
+
+        <!-- X / Twitter (準備中) -->
+        <li class="footer__sns-item">
+          <a href="#" class="footer__sns-link is-disabled" aria-label="X（準備中）">
+            <span class="footer__sns-box">
+              <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span class="footer__sns-tooltip">準備中</span>
+            </span>
+          </a>
+        </li>
+
+        <!-- note (アクティブ) -->
+        <li class="footer__sns-item">
+          <a href="https://note.com/yamabook_design" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="note">
+            <span class="footer__sns-box">
+              <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.8 3H5.2C4 3 3 4 3 5.2v13.6C3 20 4 21 5.2 21h13.6c1.2 0 2.2-1 2.2-2.2V5.2C21 4 20 3 18.8 3zm-2.9 12.8h-2.3v-4.5c0-.8-.3-1.3-1.1-1.3-.8 0-1.2.6-1.2 1.3v4.5H9V8.8h2.3v1c.5-.7 1.2-1.1 2.2-1.1 1.7 0 2.4 1.1 2.4 2.8v4.3z"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+
+      </ul>
+
+      <!-- コピーライト -->
+      <p class="footer__copyright">&copy; 2026 Yamamoto Portfolio</p>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     09_Works Modal (クイック概要モーダル構造)
+     ========================================================================== -->
+  <div class="works-modal" id="worksModal" aria-hidden="true">
+    <div class="works-modal__overlay" id="modalOverlay"></div>
+
+    <div class="works-modal__content">
+      <button type="button" class="works-modal__close" id="modalClose" aria-label="閉じる">×</button>
+
+      <!-- 画像スライダーエリア -->
+      <div class="works-modal__slider">
+        <button type="button" class="works-modal__prev" id="modalPrev" aria-label="前へ">‹</button>
+        <div class="works-modal__img-wrapper">
+          <img src="" alt="" id="modalImg" class="works-modal__img">
+        </div>
+        <button type="button" class="works-modal__next" id="modalNext" aria-label="次へ">›</button>
+      </div>
+      <div class="works-modal__counter" id="modalCounter"></div>
+
+      <!-- 概要・スペック情報エリア -->
+      <div class="works-modal__info">
+        <span class="works-modal__category" id="modalCategory"></span>
+        <h3 class="works-modal__title" id="modalTitle"></h3>
+        <p class="works-modal__desc" id="modalDesc"></p>
+        <p class="works-modal__spec" id="modalSpec"></p>
+
+        <!-- ボタンエリア (実機リンク & ケーススタディ詳細誘導) -->
+        <div class="works-modal__actions">
+          <!-- 実機・デモリンク -->
+          <div id="modalDemoArea"></div>
+          <!-- 詳細ページ案内 -->
+          <div id="modalAction"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEAM ORANGE 制作記録・ケーススタディ | YBdesign Works</title>
+
+  <!-- Google Fonts (Kiwi Maru, Lora, Zen Maru Gothic, Noto Sans JP) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS読み込み -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-work">
+
+  <!-- ==========================================================================
+     01_Header (作品一覧へもどる固定ヘッダー)
+     ========================================================================== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html#works" class="work-detail__back-btn">
+        <span class="work-detail__back-arrow">←</span> つくったもの一覧へもどる
+      </a>
+    </div>
+  </header>
+
+  <main class="work-detail__main">
+
+    <!-- ==========================================================================
+       作品ヒーローエリア (アイボリー背景)
+       ========================================================================== -->
+    <section class="work-hero">
+      <div class="work-hero__container">
+        <!-- カテゴリバッジ -->
+        <span class="work-hero__category">TEAM PROJECT / CASE STUDY</span>
+
+        <!-- 作品タイトル -->
+        <h1 class="work-hero__title">TEAM ORANGE 制作記録 &amp; 成果物ケーススタディ</h1>
+
+        <!-- メタ情報 (ピル型タグ) -->
+        <ul class="work-hero__tags">
+          <li class="work-hero__tag">担当: サイト制作（やまもと） / メインビジュアル（MEG）</li>
+          <li class="work-hero__tag">期間: 約4日間</li>
+          <li class="work-hero__tag">ツール: HTML / CSS / JavaScript / AI / Google Forms</li>
+        </ul>
+
+        <!-- メインビジュアルカード -->
+        <div class="work-hero__mv">
+          <div class="work-hero__slider">
+            <img src="img/work01_mv.jpg" alt="TEAM ORANGE メインビジュアル 1" class="work-hero__mv-img">
+          </div>
+          <!-- MEGさんのポートフォリオサイトへのリンク -->
+          <p class="work-hero__credit">
+            Credit: mainimage by <a href="http://172.20.253.18/ica704/yoshida_megumi/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">MEG</a>
+          </p>
+        </div>
+
+        <!-- 成果物Webサイトへのリンクボタン（メインビジュアル直下） -->
+        <div class="work-hero__action" style="margin-top: 24px; text-align: center;">
+          <a href="teamorange/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 32px; font-size: 1rem; text-decoration: none;">
+            成果物Webサイトを見る ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 上下反転（scaleY(-1)）させた波型SVGシェイプ -->
+    <div class="hero__wave">
+      <img src="img/wave02.svg" alt="" class="hero__wave-img hero__wave-img--flipped">
+    </div>
+
+    <!-- ==========================================================================
+       ケーススタディ本文コンテンツ (ダークブラウン背景)
+       ========================================================================== -->
+    <div class="work-body">
+      <div class="work-body__container">
+
+        <!-- 01. 概要と目的 (Overview) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">01.</span> 概要と目的 <span class="work-section__en">/ Overview</span>
+          </h2>
+          <div class="work-card">
+            <p>グループワーク制作での成果物（北海道産小麦のラスク提案Webサイト）のアーカイブ化と同時に、チームメンバー5人のパーソナリティや強みを多角的に届けるためのチーム公式Webサイト構築プロジェクトです。</p>
+
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">制作のキーポイント</h3>
+              <ul class="work-section__list">
+                <li><strong>グループワーク成果物の可視化：</strong> 単なる実績掲載にとどまらず、思考プロセス（ケーススタディ）を含めたアーカイブとして整理。</li>
+                <li><strong>メンバープロフィールの深掘り：</strong> Googleフォームで事前集計したデータをもとに、各メンバーの強みや人柄を多角的に紹介。</li>
+                <li><strong>アイキャッチなメインビジュアル：</strong> MEGさんの繊細なセンスが活きるグラフィックをファーストビューに配置し、サイト全体の印象を牽引。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02. UI/UXデザイン・配色のこだわり (Design Strategy) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">02.</span> UI/UXデザイン・配色のこだわり <span class="work-section__en">/ Design Strategy</span>
+          </h2>
+          <div class="work-card-grid">
+
+            <div class="work-card">
+              <h3 class="work-card__title">🍊 多彩な表情を見せる「さまざまなオレンジ」の配色戦略</h3>
+              <p>単一のオレンジに限定せず、トーンや鮮度の異なる複数カラーを組み合わせることで、メンバーそれぞれの多様な個性とチームの温かな雰囲気を表現しました。</p>
+
+              <!-- カラーパレット -->
+              <div class="work-colors">
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #F99978;"></span>
+                  <span class="work-color-name">#F99978</span>
+                  <span class="work-color-desc">（ソフトコーラル）</span>
+                </div>
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #F6CC7F;"></span>
+                  <span class="work-color-name">#F6CC7F</span>
+                  <span class="work-color-desc">（アプリコット）</span>
+                </div>
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #F1E481;"></span>
+                  <span class="work-color-name">#F1E481</span>
+                  <span class="work-color-desc">（シトラスイエロー）</span>
+                </div>
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #D74C4C;"></span>
+                  <span class="work-color-name">#D74C4C</span>
+                  <span class="work-color-desc">（テラコッタ）</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">👁 視線誘導と高い可読性の確保</h3>
+              <p>濃色背景上での視認性低下を防ぐため、高透過率のホワイトカードやマーカー風のハイライトを採用し、重要情報へ自然に視線が届くレイアウトに仕上げました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">📐 デザインシステムの共通化</h3>
+              <p>CSS変数（<code>:root</code>）やGoogle Fontsを活用してフォント・カラーの管理を一元化し、サイト全体でトーン＆マナーの揃ったデザインを維持しています。</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 03. フロントエンド実装・インタラクション (Development) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">03.</span> フロントエンド実装・インタラクション <span class="work-section__en">/ Development</span>
+          </h2>
+          <div class="work-card">
+            <ul class="work-list">
+              <li>
+                <strong>デザインカンプの比率計算と正確な再現：</strong><br>
+                アートボードの基準サイズから各要素の比率を細かく算出し、ブレのない緻密なレイアウトを実装しました。
+              </li>
+              <li>
+                <strong>滑らかなアコーディオン処理：</strong><br>
+                「VIEW MORE」ボタン押下時の開閉挙動にはJavaScript（<code>scrollHeight</code>）を用い、コンテンツ量に応じたスムーズな開閉アニメーションを実装しています。
+              </li>
+              <li>
+                <strong>トリミングに頼らない画像の切り抜き表示：</strong><br>
+                <code>object-fit: cover</code> を指定することで、縦横比の異なる画像素材であってもアスペクト比を崩さず枠内に綺麗にフィットさせています。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 04. 制作プロセス & スケジュール (Workflow) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">04.</span> 制作プロセス &amp; 約4日間のロードマップ <span class="work-section__en">/ Schedule &amp; Workflow</span>
+          </h2>
+
+          <div class="work-section__content">
+
+            <!-- スケジュールタイムライン -->
+            <div class="work-timeline">
+
+              <!-- Day 1 -->
+              <div class="work-timeline__item">
+                <div class="work-timeline__header">
+                  <span class="work-timeline__day">DAY 1</span>
+                  <h3 class="work-timeline__title">プロフィール収集・コンテンツ整理</h3>
+                </div>
+                <div class="work-timeline__body">
+                  <p>Googleフォームを用いてメンバー5人分の詳細情報（MBTI、イメージカラー、Q&amp;A等）を集計。収集したデータをもとにサイト構造および全体の情報設計を策定しました。</p>
+                </div>
+              </div>
+
+              <!-- Day 1-2 -->
+              <div class="work-timeline__item">
+                <div class="work-timeline__header">
+                  <span class="work-timeline__day">DAY 1 - 2</span>
+                  <h3 class="work-timeline__title">ビジュアル準備・デザイン方針策定</h3>
+                </div>
+                <div class="work-timeline__body">
+                  <p>デザインカンプを制作し、策定したカラーパレットに沿ってCSS変数をセットアップ。併せて<a href="http://172.20.253.18/ica704/yoshida_megumi/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">MEGさん</a>へメインビジュアルの制作を依頼しました。</p>
+                </div>
+              </div>
+
+              <!-- Day 3-4 -->
+              <div class="work-timeline__item">
+                <div class="work-timeline__header">
+                  <span class="work-timeline__day">DAY 3 - 4</span>
+                  <h3 class="work-timeline__title">コーディング・AI連携・内容整理</h3>
+                </div>
+                <div class="work-timeline__body">
+                  <p>HTML5/CSS3/JavaScriptによるコーディングを実施。AIでのコード生成を組み込むことで、アコーディオン（<code>scrollHeight</code>）等の動的処理を高速実装し、レスポンシブ検証・表示崩れの修正を経て完成させました。</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- 05. GW成果物：北海道産小麦のラスク 提案概要 (Works Concept) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">05.</span> GW成果物：ラスク提案企画 <span class="work-section__en">/ Works Concept</span>
+          </h2>
+          <div class="work-card">
+
+            <!-- メインコピー -->
+            <div class="work-quote-box">
+              <p class="work-quote-title">MAIN COPY</p>
+              <p class="work-quote-text">「サクッと香ばしい、北海道の恵み。」</p>
+            </div>
+
+            <!-- メインコピーの選定理由・狙い -->
+            <div class="work-section__box" style="margin-top: 20px;">
+              <h3 class="work-section__box-title">💡 メインコピーの選定理由・狙い</h3>
+              <ul class="work-section__list">
+                <li>
+                  <strong>直感的な訴求：</strong><br>
+                  オノマトペ（「サクッ」）を用いて商品の食感と香ばしさを印象付け、ユーザーの五感へダイレクトに訴えかける表現に設定。
+                </li>
+                <li>
+                  <strong>独自価値の提示：</strong><br>
+                  「北海道産小麦100%」と「専門店の食パンの耳」という高品質かつストーリー性のある独自の強みを、簡潔な一言で力強く表現。
+                </li>
+              </ul>
+            </div>
+
+            <!-- リードテキスト -->
+            <div class="work-quote-box" style="margin-top: 24px;">
+              <p class="work-quote-title">LEAD TEXT</p>
+              <p class="work-quote-text" style="font-size: 0.95rem; line-height: 1.8; text-align: left; margin-top: 8px;">
+                北海道産１００％の小麦をふんだんに使ったご褒美ラスク。<br>
+                食パンの耳ラスクはおいしく食べる国産の贅沢エコスイーツです。<br>
+                サクッとした食感と３種類の味わいが特徴。<br>
+                このたび、待望のオンライン販売を開始しました。<br>
+                日持ちもするので、ギフトとしてもおすすめです。<br>
+                地元に愛され、絶大な支持を受けているこの味を、どうぞお楽しみください！
+              </p>
+            </div>
+
+            <!-- リードテキスト設計のポイント -->
+            <div class="work-section__box" style="margin-top: 20px;">
+              <h3 class="work-section__box-title">💡 リードテキスト設計のポイント</h3>
+              <ul class="work-section__list">
+                <li>
+                  <strong>信頼獲得：</strong><br>
+                  ターゲット（20〜30代の健康志向な女性）が重視する「北海道産小麦100%」という素材のこだわりを一言目に配置。
+                </li>
+                <li>
+                  <strong>SEO対策＆共感：</strong><br>
+                  「ご褒美」「贅沢」「エコスイーツ」などトレンド感のあるワードを散りばめ、検索流入とターゲットの共感を両立。
+                </li>
+                <li>
+                  <strong>利用シーンの提示：</strong><br>
+                  「オンライン販売開始」「日持ちがする」「ギフトおすすめ」などの情報を冒頭で伝え、店舗未訪問の新規客にも購入価値を明確化。
+                </li>
+              </ul>
+            </div>
+
+            <!-- 成果物Webサイトへのリンクボタン -->
+            <div class="work-link-box" style="margin-top: 28px; text-align: center;">
+              <a href="teamorange/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 12px 28px; text-decoration: none;">
+                成果物サイトを見る ↗
+              </a>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 前後作品ナビゲーション -->
+        <nav class="work-nav">
+          <a href="work04.html" class="work-nav__btn">← 前の作品</a>
+          <a href="index.html#works" class="work-nav__btn work-nav__btn--primary">一覧に戻る</a>
+          <a href="work02.html" class="work-nav__btn">次の作品 →</a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+<!-- ==========================================================================
+   08_Footer (フッターセクション)
+   ========================================================================== -->
+<footer class="footer">
+
+  <!-- セクション上部：白波SVGシェイプ（wave04.svg） -->
+  <div class="footer__wave">
+    <img src="img/wave04.svg" alt="" class="footer__wave-img">
+  </div>
+
+  <!-- フッターコンテンツエリア -->
+  <div class="footer__container">
+
+    <!-- 中央ロゴ（logo03.svg） -->
+    <div class="footer__logo">
+      <a href="#">
+        <img src="img/logo03.svg" alt="YBdesign yamabook" class="footer__logo-img">
+      </a>
+    </div>
+
+    <!-- SNSリンク（白枠＋SVGアイコン） -->
+    <ul class="footer__sns">
+
+      <!-- Instagram (アクティブ) -->
+      <li class="footer__sns-item">
+        <a href="https://www.instagram.com/yamabook_design/" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="Instagram">
+          <span class="footer__sns-box">
+            <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </span>
+        </a>
+      </li>
+
+      <!-- X / Twitter (準備中) -->
+      <li class="footer__sns-item">
+        <a href="#" class="footer__sns-link is-disabled" aria-label="X（準備中）">
+          <span class="footer__sns-box">
+            <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span class="footer__sns-tooltip">準備中</span>
+          </span>
+        </a>
+      </li>
+
+      <!-- note (アクティブ) -->
+      <li class="footer__sns-item">
+        <a href="https://note.com/yamabook_design" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="note">
+          <span class="footer__sns-box">
+            <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.8 3H5.2C4 3 3 4 3 5.2v13.6C3 20 4 21 5.2 21h13.6c1.2 0 2.2-1 2.2-2.2V5.2C21 4 20 3 18.8 3zm-2.9 12.8h-2.3v-4.5c0-.8-.3-1.3-1.1-1.3-.8 0-1.2.6-1.2 1.3v4.5H9V8.8h2.3v1c.5-.7 1.2-1.1 2.2-1.1 1.7 0 2.4 1.1 2.4 2.8v4.3z"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- コピーライト -->
+    <p class="footer__copyright">&copy; 2026 Yamamoto Portfolio</p>
+
+  </div>
+</footer>
+</body>
+</html>

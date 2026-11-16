@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHIKUWA WORLD 制作記録・ケーススタディ | YBdesign Works</title>
+
+  <!-- Google Fonts (Kiwi Maru, Lora, Zen Maru Gothic, Noto Sans JP, Kaisei Decol, Rubik) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Kiwi+Maru:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Rubik:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- ポートフォリオ共通CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-work">
+
+  <!-- ==========================================================================
+     01_Header (作品一覧へもどる固定ヘッダー)
+     ========================================================================== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html#works" class="work-detail__back-btn">
+        <span class="work-detail__back-arrow">←</span> つくったもの一覧へもどる
+      </a>
+      <a href="index.html" class="header__logo">
+        <img src="img/logo01.svg" alt="YBdesign" class="header__logo-img">
+      </a>
+    </div>
+  </header>
+
+  <main class="work-detail__main">
+
+    <!-- ==========================================================================
+       作品ヒーローエリア (アイボリー背景)
+       ========================================================================== -->
+    <section class="work-hero">
+      <div class="work-hero__container">
+        <!-- カテゴリバッジ -->
+        <span class="work-hero__category">WEB GAME / THREE.JS / LOW-POLY / CASE STUDY</span>
+
+        <!-- 作品タイトル -->
+        <h1 class="work-hero__title">授業中の空腹とローポリの衝動から生まれた育成シミュレーション「CHIKUWA WORLD」</h1>
+
+        <!-- メタ情報 (ピル型タグ) -->
+        <ul class="work-hero__tags">
+          <li class="work-hero__tag">担当: 企画・世界観設計・AI対話・フロントエンド実装（100%個人制作）</li>
+          <li class="work-hero__tag">制作期間: 約3時間（超短期スプリント）</li>
+          <li class="work-hero__tag">ツール: Three.js / AIツール / VS Code / HTML5 / CSS3 / JavaScript</li>
+        </ul>
+
+        <!-- メインビジュアルカード -->
+        <div class="work-hero__mv">
+          <div class="work-hero__slider">
+            <img src="img/work09_mv.jpg" alt="CHIKUWA WORLD 完成画面プレビュー" class="work-hero__mv-img">
+          </div>
+        </div>
+
+        <!-- 成果物Webサイトへのリンクボタン -->
+        <div class="work-hero__action" style="margin-top: 24px; text-align: center;">
+          <a href="chikuwa/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 32px; font-size: 1rem; text-decoration: none;">
+            成果物Webサイト（ゲーム）を見る ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 上下反転（scaleY(-1)）させた波型SVGシェイプ -->
+    <div class="hero__wave">
+      <img src="img/wave02.svg" alt="" class="hero__wave-img hero__wave-img--flipped">
+    </div>
+
+    <!-- ==========================================================================
+       ケーススタディ本文コンテンツ
+       ========================================================================== -->
+    <div class="work-body">
+      <div class="work-body__container">
+
+        <!-- 01. 概要とコンセプト (Overview) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">01.</span> 概要と誕生のきっかけ <span class="work-section__en">/ Concept &amp; Story</span>
+          </h2>
+          <div class="work-card">
+            <p>
+              <strong>「CHIKUWA WORLD」</strong>は、ローポリゴン3D表現と独自の哲学・育成要素を融合させたブラウザ向け育成シミュレーションゲームです。<br>
+              ある日の授業中、隣の席の佐藤さんとお酒の話をしているうちに「おでんが食べたいな」と思い立ったことがすべての始まりでした。そこからなぜか「ちくわの穴はちくわの一部なのか？」といった疑問や製造過程、歴史についてAIと対話しながら深く思いを巡らせることに。同時期に目にした『ゼルダの伝説 時のオカリナ』のリメイクニュースから「ローポリゴンの質感が失われるのはもったいない」という思いも重なり、<strong>「ローポリゴン」と「ちくわへの探求心」を合体させて形にした作品</strong>です。
+            </p>
+
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">プロジェクトのこだわり &amp; 目指した体験</h3>
+              <ul class="work-section__list">
+                <li><strong>シュールで知的な世界観：</strong> 単なるクリックゲームに留まらず、ちくわの哲学や原材料、歴史、地方の名産品などを網羅したレベルアップ解放型の図鑑システムを実装。</li>
+                <li><strong>頑固なおやじの存在感：</strong> 熟練のちくわ職人「源さん」を登場させ、習熟度が上がるにつれて口数が多くなり、熱く語りかけてくるテキスト演出で工房のライブ感を演出。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02. 制作プロセスとこだわり (Design & Technology) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">02.</span> 制作プロセスと技術的こだわり <span class="work-section__en">/ Process &amp; Technology</span>
+          </h2>
+          <div class="work-card-grid">
+
+            <div class="work-card">
+              <h3 class="work-card__title">📐 Three.jsによるローポリ3D表現</h3>
+              <p>Three.jsを用いて、カクカクとした独特の美しさを持つローポリゴンちくわを動的に生成。マウスやタッチで360度自由に回転させることができ、所持するアイテムや育成段階によって見た目や質感が変化する仕組みを構築しました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">📖 約3時間の超短期スプリント開発</h3>
+              <p>「クリックしてすり身の微塵や経験値を貯める」というストレスコア制作時の手軽さを活かしつつ、AIとの対話から得たアイデアをわずか約3時間で一気にコーディング。レベルアップに応じた図鑑解放などのやり込み要素を凝縮しました。</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 03. 実装と工夫したポイント (Implementation & UX) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">03.</span> 実装とキャラクター演出の工夫 <span class="work-section__en">/ Implementation &amp; UX</span>
+          </h2>
+          <div class="work-card">
+            <p style="margin-bottom: 20px;">
+              プレイヤーが思わずクスリと笑い、何度も工房に足を運びたくなるようなインタラクションを盛り込みました。
+            </p>
+            <ul class="work-list">
+              <li>
+                <strong>頑固職人・源さんの育成フレーバー：</strong><br>
+                最初はぶっきらぼうな一言だったおやじが、習熟度が上がるにつれて職人としてのこだわりや熱量を爆発させ、テキストボックスからあふれんばかりに喋り出す変化を実装。
+              </li>
+              <li>
+                <strong>レトロ＆チルなトーン＆マナー：</strong><br>
+                CRT風のスキャンラインやダークトーンの色彩設計を取り入れ、深夜におでんの湯気を眺めているような落ち着いた雰囲気を演出しました。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 04. 成果・得られた学び (Achievements) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">04.</span> 成果と今後の展望 <span class="work-section__en">/ Achievements &amp; Next Step</span>
+          </h2>
+          <div class="work-card">
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">💡 制作を通じた大きな気づき</h3>
+              <p style="margin-top: 8px; line-height: 1.8;">
+                前作のクリックゲーム（ストレスコア）のシンプルさを活かしつつ、ビジュアル表現（Three.js）、トロフィー・図鑑要素、そしてキャラクター性を掛け合わせることで、コンテンツとしての深みが劇的に変わることを実感しました。ブラウザゲーム開発の奥深さを知ると同時に、「自分のふとした思いつきやシュールな疑問をAIとの対話を交えて約3時間で形にする楽しさ」を強く学ぶことができました。この経験を糧に、今後はさらに一段階レベルを上げたインタラクティブな表現やゲーム制作に挑戦していきたいと考えています。
+              </p>
+            </div>
+
+            <!-- 成果物Webサイトへのリンクボタン -->
+            <div class="work-link-box" style="margin-top: 28px; text-align: center;">
+              <a href="chikuwa/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 12px 28px; text-decoration: none;">
+                成果物Webサイト（ゲーム）を見る ↗
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 前後作品ナビゲーション -->
+        <nav class="work-nav">
+          <a href="work09.html" class="work-nav__btn">← 前の作品</a>
+          <a href="index.html#works" class="work-nav__btn work-nav__btn--primary">一覧に戻る</a>
+          <a href="work11.html" class="work-nav__btn">次の作品 →</a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+     09_Footer (フッター)
+     ========================================================================== -->
+  <footer class="footer">
+
+    <!-- セクション上部：白波SVGシェイプ -->
+    <div class="footer__wave">
+      <img src="img/wave04.svg" alt="" class="footer__wave-img">
+    </div>
+
+    <!-- フッターコンテンツエリア -->
+    <div class="footer__container">
+
+      <!-- 中央ロゴ -->
+      <div class="footer__logo">
+        <a href="index.html">
+          <img src="img/logo03.svg" alt="YBdesign yamabook" class="footer__logo-img">
+        </a>
+      </div>
+
+      <!-- SNSリンク -->
+      <ul class="footer__sns">
+        <li class="footer__sns-item">
+          <a href="https://www.instagram.com/yamabook_design/" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="Instagram">
+            <span class="footer__sns-box">
+              <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px; height:20px; display:block;">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </span>
+          </a>
+        </li>
+        <li class="footer__sns-item">
+          <a href="#" class="footer__sns-link is-disabled" aria-label="X（準備中）">
+            <span class="footer__sns-box">
+              <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px; display:block;">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span class="footer__sns-tooltip">準備中</span>
+            </span>
+          </a>
+        </li>
+        <li class="footer__sns-item">
+          <a href="https://note.com/yamabook_design" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="note">
+            <span class="footer__sns-box">
+              <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor" style="width:20px; height:20px; display:block; fill:#ffffff;">
+                <path d="M18.8 3H5.2C4 3 3 4 3 5.2v13.6C3 20 4 21 5.2 21h13.6c1.2 0 2.2-1 2.2-2.2V5.2C21 4 20 3 18.8 3zm-2.9 12.8h-2.3v-4.5c0-.8-.3-1.3-1.1-1.3-.8 0-1.2.6-1.2 1.3v4.5H9V8.8h2.3v1c.5-.7 1.2-1.1 2.2-1.1 1.7 0 2.4 1.1 2.4 2.8v4.3z"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- コピーライト -->
+      <p class="footer__copyright">&copy; 2026 Yamamoto Portfolio</p>
+
+    </div>
+  </footer>
+
+</body>
+</html>

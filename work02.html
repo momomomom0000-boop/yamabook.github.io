@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>パオーンけいぞう オフィシャルサイト 制作記録・ケーススタディ | YBdesign Works</title>
+
+  <!-- Google Fonts (Kiwi Maru, Lora, Zen Maru Gothic, Noto Sans JP, Kaisei Decol, Rubik) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Kiwi+Maru:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Rubik:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS読み込み -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-work">
+
+  <!-- ==========================================================================
+     01_Header (作品一覧へもどる固定ヘッダー)
+     ========================================================================== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html#works" class="work-detail__back-btn">
+        <span class="work-detail__back-arrow">←</span> つくったもの一覧へもどる
+      </a>
+      <a href="index2.html" class="header__logo">
+        <img src="img/logo01.svg" alt="YBdesign" class="header__logo-img">
+      </a>
+    </div>
+  </header>
+
+  <main class="work-detail__main">
+
+    <!-- ==========================================================================
+       作品ヒーローエリア (アイボリー背景)
+       ========================================================================== -->
+    <section class="work-hero">
+      <div class="work-hero__container">
+        <!-- カテゴリバッジ -->
+        <span class="work-hero__category">WEB DESIGN &amp; BRANDING</span>
+
+        <!-- 作品タイトル -->
+        <h1 class="work-hero__title">パオーンけいぞう オフィシャルサイト</h1>
+
+        <!-- メタ情報 (ピル型タグ) -->
+        <ul class="work-hero__tags">
+          <li class="work-hero__tag">担当: ヒアリング / ブランドボード / デザインカンプ / 実装</li>
+          <li class="work-hero__tag">期間: 約1週間</li>
+          <li class="work-hero__tag">ツール: Photoshop / AIツール / HTML / CSS / JS / iframe</li>
+        </ul>
+
+        <!-- メインビジュアルカード -->
+        <div class="work-hero__mv">
+          <div class="work-hero__slider">
+            <img src="img/work02_mv.jpg" alt="パオーンけいぞう オフィシャルサイト メインビジュアル" class="work-hero__mv-img">
+          </div>
+          <p class="work-hero__credit">
+            Credit: Client &amp; Artist / <a href="http://172.20.253.18/ica704/sakurai_keito/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">パオーンけいぞう（さくらいけいと）</a>
+          </p>
+        </div>
+
+        <!-- 成果物Webサイトへのリンクボタン（メインビジュアル直下） -->
+        <div class="work-hero__action" style="margin-top: 24px; text-align: center;">
+          <a href="paoon/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 32px; font-size: 1rem; text-decoration: none;">
+            成果物Webサイトを見る ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 上下反転（scaleY(-1)）させた波型SVGシェイプ -->
+    <div class="hero__wave">
+      <img src="img/wave02.svg" alt="" class="hero__wave-img hero__wave-img--flipped">
+    </div>
+
+    <!-- ==========================================================================
+       ケーススタディ本文コンテンツ (ダークブラウン背景)
+       ========================================================================== -->
+    <div class="work-body">
+      <div class="work-body__container">
+
+        <!-- 01. 概要と目的 (Overview) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">01.</span> 概要と目的 <span class="work-section__en">/ Overview</span>
+          </h2>
+          <div class="work-card">
+            <p>グループワークで一緒になった仲間との繋がりから、職業訓練校で出会ったアーティスト・パオーンけいぞう氏のオフィシャルプロフィールサイト構築プロジェクトです。個人の世界観や人柄を深くリスニングし、ブランドボードの作成からインタラクティブなWeb実装までを一貫してディレクションしました。</p>
+
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">制作のキーポイント</h3>
+              <ul class="work-section__list">
+                <li><strong>ヒアリングに基づく世界観の可視化：</strong> 一人の人物に深く向き合い、好きな色や誕生日カラー、希望トーンを細かく聞き出してデザインへ落とし込む。</li>
+                <li><strong>対話とフィードバックの重視：</strong> モデル本人と対話しながら「ブランドボード」を制作し、ブレのない強固な世界観を確立する。</li>
+                <li><strong>音楽体験のダイレクトな提供：</strong> 外部サイトへ離脱させず、ページ上で直接楽曲を試聴できるUI・UXを設計する。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02. UI/UXデザイン・配色のこだわり (Design Strategy) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">02.</span> UI/UXデザイン・配色のこだわり <span class="work-section__en">/ Design Strategy</span>
+          </h2>
+          <div class="work-card-grid">
+
+            <div class="work-card">
+              <h3 class="work-card__title">🎨 ブランドボードに基づく配色戦略</h3>
+              <p>ヒアリングで得た本人の希望やキャラクターのキャッチーさを軸に配色ルールを策定。クリームをベースに、ターコイズや深緑、アクセントの朱赤を組み合わせることで、レトロモダンかつアーティスティックな雰囲気を表現しました。</p>
+
+              <!-- カラーパレット -->
+              <div class="work-colors">
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #FCFCED; border: 1px solid #ddd;"></span>
+                  <span class="work-color-name">#FCFCED</span>
+                  <span class="work-color-desc">（BASE / クリーム）</span>
+                </div>
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #4FC9E3;"></span>
+                  <span class="work-color-name">#4FC9E3</span>
+                  <span class="work-color-desc">（MAIN / ターコイズ）</span>
+                </div>
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #004C34;"></span>
+                  <span class="work-color-name">#004C34</span>
+                  <span class="work-color-desc">（DEEP / 深緑）</span>
+                </div>
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #FF4A3D;"></span>
+                  <span class="work-color-name">#FF4A3D</span>
+                  <span class="work-color-desc">（ACCENT / 朱赤）</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">🎵 離脱を防ぐインラインプレイヤー設計</h3>
+              <p>Apple MusicやSoundCloudの公式埋め込みプレイヤーをコンポーネント内に自然に組み込むことで、ユーザーの閲覧リズムを損なわずに楽曲を体験できるUIを構築しました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">📐 フォントの選定と世界観の統一</h3>
+              <p>
+                キャラクターのポップで親しみやすい世界観を引き立てるため、丸みのある「M PLUS Rounded 1c」をベースフォントに採用。
+                視認性とデザイン性を両立させながら、テーマカラーや独自のあしらいと組み合わせることで、サイト全体で一貫したトーン＆マナーを確立しています。
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 03. フロントエンド実装・インタラクション (Development) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">03.</span> フロントエンド実装・インタラクション <span class="work-section__en">/ Development</span>
+          </h2>
+          <div class="work-card">
+            <ul class="work-list">
+              <li>
+                <strong>レスポンシブWebデザインと埋め込みUIの最適化：</strong><br>
+                デバイスサイズごとにiframeの縦横比や余白を細かく調整し、スマートフォン表示時でもプレイヤーやテキストが崩れず快適に試聴・閲覧できるよう実装しました。
+              </li>
+              <li>
+                <strong>スクロールを引き込むアニメーション実装：</strong><br>
+                CSSアニメーションおよびJavaScriptによるフェードイン演出を取り入れ、ページを読み進めるにつれてアーティストのストーリー展開に没入できる仕組みを構築しました。
+              </li>
+              <li>
+                <strong>AIツールを活用した実装プロセスの効率化：</strong><br>
+                デザインカンプ制作後、生成AIツールを活用してレイアウトコードのプロトタイピングと表示検証を高速化し、短期間での完成を実現しました。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 04. 制作プロセス & スケジュール (Workflow) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">04.</span> 制作プロセス &amp; 約1週間のロードマップ <span class="work-section__en">/ Schedule &amp; Workflow</span>
+          </h2>
+
+          <div class="work-section__content">
+
+            <!-- スケジュールタイムライン -->
+            <div class="work-timeline">
+
+              <!-- Day 1-2 -->
+              <div class="work-timeline__item">
+                <div class="work-timeline__header">
+                  <span class="work-timeline__day">DAY 1 - 2</span>
+                  <h3 class="work-timeline__title">ヒアリング・ブランドボード策定</h3>
+                </div>
+                <div class="work-timeline__body">
+                  <p>対話を通じて好きな色や世界観、ターゲット層、伝えたい想いをヒアリング。収集した情報をもとにカラーパレット・フォント・ビジュアルトーンをまとめた「ブランドボード」を制作・合意形成しました。</p>
+                </div>
+              </div>
+
+              <!-- Day 3-4 -->
+              <div class="work-timeline__item">
+                <div class="work-timeline__header">
+                  <span class="work-timeline__day">DAY 3 - 4</span>
+                  <h3 class="work-timeline__title">デザインカンプ作成・メディア検証</h3>
+                </div>
+                <div class="work-timeline__body">
+                  <p>Photoshopを用いてワイヤーフレームおよびデザインカンプを作成。併せてApple Music等の埋め込みプレイヤー（iframe）の表示検証を行い、デザインとの馴染み具合を調整しました。</p>
+                </div>
+              </div>
+
+              <!-- Day 5-7 -->
+              <div class="work-timeline__item">
+                <div class="work-timeline__header">
+                  <span class="work-timeline__day">DAY 5 - 7</span>
+                  <h3 class="work-timeline__title">コーディング・レスポンシブ対応・調整</h3>
+                </div>
+                <div class="work-timeline__body">
+                  <p>HTML5/CSS3/JavaScriptによる構築を実施。AIツールを活用して効率的にコードを組み立て、各種デバイスでの表示確認と微調整を経てリリースしました。</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- 05. 成果・得られた学び (Experience & Next Step) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">05.</span> 成果・得られた学び <span class="work-section__en">/ Experience &amp; Next Step</span>
+          </h2>
+          <div class="work-card">
+
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">💡 得られた学び</h3>
+              <p style="margin-top: 8px; line-height: 1.8;">
+                特定の対象（クライアント）と密にコミュニケーションを重ね、言葉やイメージを「ブランドボード」として可視化・言語化する重要性を学びました。ダイレクトなフィードバックを受けながらデザインを洗練させていくプロセスは、クライアントワークの基礎となる大きな経験となりました。
+              </p>
+            </div>
+
+            <div class="work-section__box" style="margin-top: 20px;">
+              <h3 class="work-section__box-title">🚀 今後の展望</h3>
+              <p style="margin-top: 8px; line-height: 1.8;">
+                新曲リリースやライブ情報、SNSアカウントとのスムーズな連動など、ファンが継続して楽しめるような拡張・インタラクションの実装を目指します。また、さらに世界観や彼のプロファイルに深く迫るべく、本人へのインタビューも予定しています。
+              </p>
+            </div>
+
+            <!-- 成果物Webサイトへのリンクボタン -->
+            <div class="work-link-box" style="margin-top: 28px; text-align: center;">
+              <a href="paoon/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 12px 28px; text-decoration: none;">
+                成果物サイトを見る ↗
+              </a>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 前後作品ナビゲーション -->
+        <nav class="work-nav">
+          <a href="work01.html" class="work-nav__btn">← 前の作品</a>
+          <a href="index.html#works" class="work-nav__btn work-nav__btn--primary">一覧に戻る</a>
+          <a href="work03.html" class="work-nav__btn">次の作品 →</a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+     09_Footer (個別ページ用フッター)
+     ========================================================================== -->
+<footer class="footer">
+
+  <!-- セクション上部：白波SVGシェイプ（wave04.svg） -->
+  <div class="footer__wave">
+    <img src="img/wave04.svg" alt="" class="footer__wave-img">
+  </div>
+
+  <!-- フッターコンテンツエリア -->
+  <div class="footer__container">
+
+    <!-- 中央ロゴ（logo03.svg） -->
+    <div class="footer__logo">
+      <a href="#">
+        <img src="img/logo03.svg" alt="YBdesign yamabook" class="footer__logo-img">
+      </a>
+    </div>
+
+    <!-- SNSリンク（白枠＋SVGアイコン） -->
+    <ul class="footer__sns">
+
+      <!-- Instagram (アクティブ) -->
+      <li class="footer__sns-item">
+        <a href="https://www.instagram.com/yamabook_design/" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="Instagram">
+          <span class="footer__sns-box">
+            <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </span>
+        </a>
+      </li>
+
+      <!-- X / Twitter (準備中) -->
+      <li class="footer__sns-item">
+        <a href="#" class="footer__sns-link is-disabled" aria-label="X（準備中）">
+          <span class="footer__sns-box">
+            <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span class="footer__sns-tooltip">準備中</span>
+          </span>
+        </a>
+      </li>
+
+      <!-- note (アクティブ) -->
+      <li class="footer__sns-item">
+        <a href="https://note.com/yamabook_design" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="note">
+          <span class="footer__sns-box">
+            <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.8 3H5.2C4 3 3 4 3 5.2v13.6C3 20 4 21 5.2 21h13.6c1.2 0 2.2-1 2.2-2.2V5.2C21 4 20 3 18.8 3zm-2.9 12.8h-2.3v-4.5c0-.8-.3-1.3-1.1-1.3-.8 0-1.2.6-1.2 1.3v4.5H9V8.8h2.3v1c.5-.7 1.2-1.1 2.2-1.1 1.7 0 2.4 1.1 2.4 2.8v4.3z"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- コピーライト -->
+    <p class="footer__copyright">&copy; 2026 Yamamoto Portfolio</p>
+
+  </div>
+</footer>
+
+</body>
+</html>

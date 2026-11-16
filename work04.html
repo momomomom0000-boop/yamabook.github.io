@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定時退社バトルストレスコア 制作記録・ケーススタディ | YBdesign Works</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Kiwi+Maru:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Rubik:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@400;900&display=swap" rel="stylesheet">
+
+  <!-- CSS読み込み -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-work">
+
+  <!-- ==========================================================================
+     01_Header (作品一覧へもどる固定ヘッダー)
+     ========================================================================== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html#works" class="work-detail__back-btn">
+        <span class="work-detail__back-arrow">←</span> つくったもの一覧へもどる
+      </a>
+      <a href="index2.html" class="header__logo">
+        <img src="img/logo01.svg" alt="YBdesign" class="header__logo-img">
+      </a>
+    </div>
+  </header>
+
+  <main class="work-detail__main">
+
+    <!-- ==========================================================================
+       作品ヒーローエリア (アイボリー背景)
+       ========================================================================== -->
+    <section class="work-hero">
+      <div class="work-hero__container">
+        <!-- カテゴリバッジ -->
+        <span class="work-hero__category">INTERACTIVE WEB &amp; GAME</span>
+
+        <!-- 作品タイトル -->
+        <h1 class="work-hero__title">定時退社バトルストレスコア</h1>
+
+        <!-- メタ情報 (ピル型タグ) -->
+        <ul class="work-hero__tags">
+          <li class="work-hero__tag">担当: 企画 / キャラクターデザイン / 実装 / グッズページ制作（AI活用）</li>
+          <li class="work-hero__tag">制作時間: 約2時間</li>
+          <li class="work-hero__tag">ツール: Photoshop / AIツール / HTML / CSS / JavaScript</li>
+        </ul>
+
+        <!-- メインビジュアルカード -->
+        <div class="work-hero__mv">
+          <div class="work-hero__slider">
+            <img src="img/work04_mv.jpg" alt="定時退社バトルストレスコア メインビジュアル" class="work-hero__mv-img">
+          </div>
+        </div>
+
+        <!-- 成果物Webサイトへのリンクボタン -->
+        <div class="work-hero__action" style="margin-top: 24px; text-align: center;">
+          <a href="stress/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 32px; font-size: 1rem; text-decoration: none;">
+            実機デモサイトで遊ぶ ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 上下反転（scaleY(-1)）させた波型SVGシェイプ -->
+    <div class="hero__wave">
+      <img src="img/wave02.svg" alt="" class="hero__wave-img hero__wave-img--flipped">
+    </div>
+
+    <!-- ==========================================================================
+       ケーススタディ本文コンテンツ (ダークブラウン背景)
+       ========================================================================== -->
+    <div class="work-body">
+      <div class="work-body__container">
+
+        <!-- 01. 概要と目的 (Overview) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">01.</span> 概要と目的 <span class="work-section__en">/ Overview</span>
+          </h2>
+          <div class="work-card">
+            <p>Photoshopの授業で制作したオリジナルキャラクター「コア」をベースに、Web上で実際に遊べるクリックゲームおよびその世界観を補完するWebサイトを制作しました。</p>
+            <p style="margin-top: 12px;">単なる1枚のキャラクターイラストで終わらせず、ストーリーや世界観を体験型のWebコンテンツとして拡張。プログラミング未経験に近い状態から、AIツールを活用してアイデアをハイスピードで実装・プロトタイピングする実験的なプロジェクトです。</p>
+
+            <div class="work-section__box" style="margin-top: 20px;">
+              <h3 class="work-section__box-title">制作のねらいとアプローチ</h3>
+              <ul class="work-section__list">
+                <li><strong>キャラクターの世界観展開：</strong> 「定時退社」をテーマにしたユーモアのある設定を構築し、インタラクティブなゲーム表現へと落とし込む。</li>
+                <li><strong>AIを活用した高速Web開発：</strong> コード記述のハードルを下げ、AIツールとの対話を通して約2時間という短時間でゲームロジック・画面実装を完結させる。</li>
+                <li><strong>世界観のパッケージ化：</strong> ゲーム本体に留まらず、架空の「グッズ紹介ページ」を併設することでコンテンツ全体の完成度を高める。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02. 制作プロセスと取り組み (Implementation) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">02.</span> 制作プロセスと取り組み <span class="work-section__en">/ Process &amp; Implementation</span>
+          </h2>
+          <div class="work-card-grid">
+
+            <div class="work-card">
+              <h3 class="work-card__title">🎨 キャラクター制作と世界観設定</h3>
+              <p>Photoshopの基本機能を駆使してオリジナルキャラクター「コア」をデザイン。「定時退社」をテーマにしたユーモア溢れる世界観とビジュアルを構築しました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">🤖 AIを活用したロジック＆サイト実装</h3>
+              <p>プログラミングの複雑な記述にとらわれず、AIツールとの対話を通してゲームロジックやレスポンシブな画面構成を短時間で構築しました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">🛍 グッズページの併設によるパッケージング</h3>
+              <p>ゲーム単体で終わらせず、架空の「グッズ紹介ページ」まで制作。作品全体の世界観に深みを持たせ、ひとつの独立したWebコンテンツとしてパッケージ化しました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">⚡ 2時間での超高速プロトタイピング</h3>
+              <p>企画構想からビジュアル・コード生成・調整・検証までを約2時間で完結。アイデアをすばやく形にする即効性を検証しました。</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 03. キャラクター・グラフィック (Character & Assets) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">03.</span> キャラクター・グラフィック <span class="work-section__en">/ Character &amp; Assets</span>
+          </h2>
+          <div class="work-card">
+            <p>Photoshopの授業課題で作成した「コア」の元イラストおよび世界観を形づくるグラフィックパーツです。</p>
+            <div class="work-section__img-wrapper" style="margin-top: 16px;">
+              <img src="jisaku/stress.png" alt="コア キャラクターデザイン" class="work-section__img" style="width: 100%; border-radius: 8px;">
+            </div>
+          </div>
+        </section>
+
+        <!-- 04. 課題と今後の展望 (Challenge & Next Step) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">04.</span> 課題と今後の展望 <span class="work-section__en">/ Challenge &amp; Next Step</span>
+          </h2>
+          <div class="work-card-grid">
+
+            <div class="work-card">
+              <h3 class="work-card__title">💡 直面した課題</h3>
+              <p>短時間かつコーディング知識なしで完成させることを優先したため、ゲーム性が「クリックするだけ」のシンプルな仕組みにとどまり、ゲーム体験の深さに課題が残りました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">✨ 次のステップ</h3>
+              <p>開発体験で得たAI活用の知見とJavaScriptの基礎知識をベースに、今後はスコア保存機能やストーリー分岐、アニメーション演出を強化した高度なコンテンツ制作に挑戦します。</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 05. 実機デモサイトへのリンク (Demo Link) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">05.</span> 実機デモ <span class="work-section__en">/ Play Demo</span>
+          </h2>
+          <div class="work-card" style="text-align: center; padding: 36px 24px;">
+            <h3 class="work-card__title" style="margin-bottom: 12px; font-size: 1.25rem;">🎮 実際に遊んでみる</h3>
+            <p style="margin-bottom: 24px;">公開中の「定時退社バトルストレスコア」Webサイトおよびグッズページをご覧いただけます。</p>
+            <a href="stress/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 36px; text-decoration: none;">
+              実機デモサイトで遊ぶ ↗
+            </a>
+          </div>
+        </section>
+
+        <!-- 前後作品ナビゲーション -->
+        <nav class="work-nav">
+          <a href="work03.html" class="work-nav__btn">← 前の作品</a>
+
+          <a href="index.html#works" class="work-nav__btn work-nav__btn--primary">一覧に戻る</a>
+          <a href="work05.html" class="work-nav__btn">次の作品 →</a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+     09_Footer (個別ページ用フッター)
+     ========================================================================== -->
+<footer class="footer">
+
+  <!-- セクション上部：白波SVGシェイプ（wave04.svg） -->
+  <div class="footer__wave">
+    <img src="img/wave04.svg" alt="" class="footer__wave-img">
+  </div>
+
+  <!-- フッターコンテンツエリア -->
+  <div class="footer__container">
+
+    <!-- 中央ロゴ（logo03.svg） -->
+    <div class="footer__logo">
+      <a href="#">
+        <img src="img/logo03.svg" alt="YBdesign yamabook" class="footer__logo-img">
+      </a>
+    </div>
+
+    <!-- SNSリンク（白枠＋SVGアイコン） -->
+    <ul class="footer__sns">
+
+      <!-- Instagram (アクティブ) -->
+      <li class="footer__sns-item">
+        <a href="https://www.instagram.com/yamabook_design/" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="Instagram">
+          <span class="footer__sns-box">
+            <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </span>
+        </a>
+      </li>
+
+      <!-- X / Twitter (準備中) -->
+      <li class="footer__sns-item">
+        <a href="#" class="footer__sns-link is-disabled" aria-label="X（準備中）">
+          <span class="footer__sns-box">
+            <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span class="footer__sns-tooltip">準備中</span>
+          </span>
+        </a>
+      </li>
+
+      <!-- note (アクティブ) -->
+      <li class="footer__sns-item">
+        <a href="https://note.com/yamabook_design" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="note">
+          <span class="footer__sns-box">
+            <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.8 3H5.2C4 3 3 4 3 5.2v13.6C3 20 4 21 5.2 21h13.6c1.2 0 2.2-1 2.2-2.2V5.2C21 4 20 3 18.8 3zm-2.9 12.8h-2.3v-4.5c0-.8-.3-1.3-1.1-1.3-.8 0-1.2.6-1.2 1.3v4.5H9V8.8h2.3v1c.5-.7 1.2-1.1 2.2-1.1 1.7 0 2.4 1.1 2.4 2.8v4.3z"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- コピーライト -->
+    <p class="footer__copyright">&copy; 2026 Yamamoto Portfolio</p>
+
+  </div>
+</footer>
+
+</body>
+</html>

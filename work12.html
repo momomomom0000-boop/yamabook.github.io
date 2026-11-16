@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leading Company株式会社 コーポレート・採用統合Webサイト | YBdesign Works</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- ポートフォリオ共通スタイルシート -->
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* カラーパレットのスウォッチ形状固定 */
+    .work-color-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .work-color-swatch {
+      display: inline-block;
+      width: 32px !important;
+      height: 32px !important;
+      min-width: 32px !important;
+      min-height: 32px !important;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    /* 話題ごとに点線を入れるための共通スタイル */
+    .work-list-dotted li {
+      padding: 16px 0;
+      border-bottom: 1px dotted #E0D8D0;
+    }
+    .work-list-dotted li:first-child {
+      padding-top: 0;
+    }
+    .work-list-dotted li:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body class="page-work">
+
+  <!-- ==========================================================================
+     01_Header (作品一覧へもどる固定ヘッダー)
+     ========================================================================== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html#works" class="work-detail__back-btn">
+        <span class="work-detail__back-arrow">←</span> つくったもの一覧へもどる
+      </a>
+      <a href="index.html" class="header__logo">
+        <img src="img/logo01.svg" alt="YBdesign" class="header__logo-img">
+      </a>
+    </div>
+  </header>
+
+  <main class="work-detail__main">
+
+    <!-- ==========================================================================
+       作品ヒーローエリア
+       ========================================================================== -->
+    <section class="work-hero">
+      <div class="work-hero__container">
+        <span class="work-hero__category">ENTERPRISE ARCHITECTURE / BRANDING / UIUX</span>
+        
+        <h1 class="work-hero__title">Leading Company株式会社<br>コーポレート・採用統合Webサイト</h1>
+        
+        <ul class="work-hero__tags">
+          <li class="work-hero__tag">担当: ブランド戦略・情報設計・VI策定・UI/UXデザイン・フロントエンド実装</li>
+          <li class="work-hero__tag">制作期間: 約3日間</li>
+          <li class="work-hero__tag">技術: HTML5 / CSS3 / Vanilla JS / スムーズスクロール / Figma</li>
+        </ul>
+
+        <!-- メインビジュアルカード（work11と順序を統一） -->
+        <div class="work-hero__mv" style="margin-top: 24px;">
+          <div class="work-hero__slider">
+            <img src="img/work12_mv.jpg" alt="Leading Company株式会社 Webサイトメインビジュアル" class="work-hero__mv-img">
+          </div>
+        </div>
+
+        <!-- 成果物Webサイトへの直リンクボタン（中央寄せ） -->
+        <div class="work-hero__action" style="margin-top: 24px; text-align: center;">
+          <a href="LeadingCompany/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 32px; font-size: 1rem; text-decoration: none;">
+            成果物Webサイト（デモ）を見る ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="hero__wave">
+      <img src="img/wave02.svg" alt="" class="hero__wave-img hero__wave-img--flipped">
+    </div>
+
+    <!-- ==========================================================================
+       ケーススタディ本文コンテンツ
+       ========================================================================== -->
+    <div class="work-body">
+      <div class="work-body__container">
+
+        <!-- 01. 概要とブランド戦略 -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">01.</span> 概要とブランド戦略 <span class="work-section__en">/ Strategy & Position</span>
+          </h2>
+          <div class="work-card">
+            <p>2001年設立の技術支援企業・Leading Company株式会社のコーポレートおよび採用統合Webサイトのリニューアルプロジェクトです。「単なる受託作業者（Web制作請負）」という従来の誤ったイメージから脱却し、ミッションクリティカルなクラウドアーキテクチャやインダストリアル・エンジニアリングを完遂する「真のエンジニアリングパートナー」としての解像度へ引き上げました。</p>
+            
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">💡 ブランディング戦略の核（引き算の美学）</h3>
+              <ul class="work-section__list">
+                <li><strong>「静かなる確信」の表現：</strong> 派手なネオン発光や過剰な演出を削ぎ落とし、贅沢な余白と端正なタイポグラフィで高い専門性と品格を演出しています。</li>
+                <li><strong>B2B意思決定者への信頼訴求：</strong> CTOや経営層に対し、2001年以来の安定した事業基盤と高度な技術水準をストレートに提示しています。</li>
+                <li><strong>採用リンクの最適化：</strong> 人手不足感・焦燥感を完全に排除し、選び抜かれた知性が集う組織としての余裕と誇りを醸成しています。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02. 課題と解決のアプローチ -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">02.</span> 課題と解決のアプローチ <span class="work-section__en">/ Challenge & Solution</span>
+          </h2>
+          <div class="work-card-grid">
+            <div class="work-card">
+              <h3 class="work-card__title">💡 課題の定義とアプローチ</h3>
+              <p>具体的な指定仕様書が存在しない中（<a href="LeadingCompany/LeadingCompany_制作指示書.pdf" target="_blank" rel="noopener noreferrer" style="color: var(--color-copy); text-decoration: underline;">依頼書PDF</a>）、提供された企業情報、背景コメント、およびB2Bのターゲット層（CTOや経営層）の心理を徹底的に分析。そこから「企業が本当に伝えるべき本質的な価値とトーン＆マナー」をゼロベースで自ら定義・構築しました。</p>
+            </div>
+            <div class="work-card">
+              <h3 class="work-card__title">✨ 解決のディレクション</h3>
+              <p>表面的な装飾に頼らず、企業のルーツや技術的バックボーンから導き出した「静かな知性」という世界観を立案。マルチページ構成と一貫したデザインシステムによって、圧倒的な説得力を持つブランド体験へと昇華させました。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03. 視覚的アイデンティティ & カラーパレット -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">03.</span> 視覚的アイデンティティ & カラーパレット <span class="work-section__en">/ Design System</span>
+          </h2>
+          <div class="work-card-grid">
+            
+            <div class="work-card">
+              <h3 class="work-card__title">🌌 静かな知性を宿すカラーパレットと理由</h3>
+              <p>堅牢な事業基盤を示すディープネイビー（#0A192F）を軸に、先進性を示すブルーやシアンをポイントとして配置しました。</p>
+
+              <div class="work-colors" style="margin-top: 16px;">
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #0A192F;"></span>
+                  <span class="work-color-name">#0A192F</span>
+                  <span class="work-color-desc">（ディープネイビー：堅牢さと安心感）</span>
+                </div>
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #1E293B;"></span>
+                  <span class="work-color-name">#1E293B</span>
+                  <span class="work-color-desc">（ディープスレート：深みと落ち着き）</span>
+                </div>
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #0284C7;"></span>
+                  <span class="work-color-name">#0284C7</span>
+                  <span class="work-color-desc">（プレシジョンブルー：先進的な技術力）</span>
+                </div>
+                <div class="work-color-item">
+                  <span class="work-color-swatch" style="background-color: #00F2FE;"></span>
+                  <span class="work-color-name">#00F2FE</span>
+                  <span class="work-color-desc">（インテリジェンスシアン：未来へのアクセント）</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">📐 精密構造ルール（デザインの根拠）</h3>
+              <ul class="work-section__list">
+                <li><strong>角丸2px設計：</strong> コンポーネントの角丸を極限まで引き締め、一般的な丸みのあるデザインを排除して知的なシャープさを確立しています。</li>
+                <li><strong>1px インナーハイライト：</strong> カード上部に細い発光ライン（反射光）を効かせ、精密な機械や研究所のような引き締まった質感を生み出しています。</li>
+                <li><strong>タイトな字間設定：</strong> 欧文・和文見出しの字間を引き締め、学術誌のような緊張感を表現しています。</li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 04. フロントエンド実装 & 物理法則UI -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">04.</span> フロントエンド実装 & 物理法則UI <span class="work-section__en">/ Development & Interaction</span>
+          </h2>
+          <div class="work-card">
+            <ul class="work-list">
+              <li>
+                <strong>油圧ダンパーのような滑らかな減速（イージング）：</strong><br>
+                物理法則に基づいた減速イージングを取り入れ、スクロール時の軽率な浮つき感を排し、重みと品格のある上質なインタラクションを実現しています。
+              </li>
+              <li>
+                <strong>空間的連続スクロール：</strong><br>
+                スムーズスクロールライブラリを組み込み、上質な誌面を指先で送るような滑らかな画面遷移を再現しました。
+              </li>
+              <li>
+                <strong>表示速度・安全性の極大化：</strong><br>
+                過剰なCMSを排したPure HTML/CSS/Vanilla JS構成により、圧倒的な表示速度と堅牢なセキュリティを完備しています。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 05. サイト全体の情報設計とマルチページ構成 -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">05.</span> サイト全体の情報設計とマルチページ構成 <span class="work-section__en">/ Site Architecture</span>
+          </h2>
+          <div class="work-card">
+            <p>企業の信頼性訴求と、採用や問い合わせへのスムーズな導線を両立するため、以下のマルチページ構成で設計しています。</p>
+            <ul class="work-section__list" style="margin-top: 16px;">
+              <li><strong>TOPページ（index.html）：</strong> 企業のビジョンと主要ソリューション（IoT、クラウド構築、Webデザイン）を直感的に伝えるファーストビュー。</li>
+              <li><strong>企業情報ページ（company.html）：</strong> 2001年設立からの歴史、中野区東中野の本社情報、信頼を示す会社概要と中途採用要項。</li>
+              <li><strong>社員紹介ページ（members.html）：</strong> 代表、CEO、CTO、PM、デザイナーなど各メンバーの「現場の哲学」や個人の美学を深く伝える独立ページ。</li>
+              <li><strong>導入事例ページ（cases.html）：</strong> 製造業向けIoT基盤や基幹システム移行など、課題解決のストーリーをビジュアル付きで解説。</li>
+              <li><strong>新卒採用特設ページ（newgrad.html）：</strong> 「群れない、しかし孤立しない」という独自の組織観を掲げ、自立した若手知性を募る特設コーナー。</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 06. 採用ページ（新卒・中途）の思想とメッセージング -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">06.</span> 採用ページ（新卒・中途）の思想とメッセージング <span class="work-section__en">/ Recruitment Philosophy</span>
+          </h2>
+          <div class="work-card">
+            <p style="margin-bottom: 20px;">単なる「人手不足のための求人」ではなく、企業の思想に共鳴するプロフェッショナルを引きつけるためのメッセージングを徹底しています。</p>
+            <hr style="border: none; border-top: 1px dotted #E0D8D0; margin: 16px 0;">
+            <ul class="work-list work-list-dotted">
+              <li>
+                <strong>固定ヘッダーからの採用導線のあえての排除：</strong><br>
+                あえて固定ヘッダーには採用情報のリンクを載せず、焦燥感や人手不足感を一切出さない設計に。選び抜かれた知性が集う組織としての余裕と圧倒的な誇りを醸成しています。
+              </li>
+              <li>
+                <strong>甘さを排したスタンス：</strong><br>
+                新卒採用サイトでは「手取り足取り教えるアットホームな場ではありません」と明言し、自律的な思考を重視する姿勢を提示。
+              </li>
+              <li>
+                <strong>透明性の高いフォームとポリシー：</strong><br>
+                GitHubやポートフォリオの提出欄を設け、プライバシーポリシーの明文化や分かりやすいエントリーフローを構築。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 07. 制作を終えて・今後に生かしたいこと -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">07.</span> 制作を終えて・今後に生かしたいこと <span class="work-section__en">/ Reflection & Next Step</span>
+          </h2>
+          <div class="work-card">
+            <div class="work-section__box" style="margin-top: 0;">
+              <h3 class="work-section__box-title">💡 プロジェクトからの学びとツールの検証</h3>
+              <ul class="work-list work-list-dotted" style="margin-top: 12px;">
+                <li>
+                  <strong>デザインツールの検証とワイヤーフレーム手法の最適化：</strong><br>
+                  さまざまなFigmaプラグインを試したものの、結局は手書きのワイヤーフレームを書いてAIに読み込ませながらコードに落とし込んでいく手法が最もスピーディーで効率的だと実感しました。
+                </li>
+                <li>
+                  <strong>Photoshop経験者視点でのFigmaの考察：</strong><br>
+                  リアルタイム共有が必要なチーム制作や、大胆な写真レイアウト、独自のビジュアル見せ方にこだわらない案件であれば、過剰にFigmaの必要性を感じることはありませんでした（むしろオートレイアウトの挙動に独自の癖があり、Photoshopに慣れ親しんだ人間にとっては使いづらく感じる側面もありました）。
+                </li>
+                <li>
+                  <strong>今後の展望：</strong><br>
+                  Figmaの特性を最大限に活かせる別アプローチのサイト題材についても、今後改めて挑戦していきたいと考えています。
+                </li>
+                <li>
+                  <strong>ビジュアルと使いやすさ（UX）の調和：</strong><br>
+                  海外の洗練されたアカデミック・テックのトーンを取り入れつつも、訪問ユーザーが迷わずに欲しい情報やエントリーに辿り着けるアクセシビリティの大切さを実感しました。
+                </li>
+                <li>
+                  <strong>ディテールが持つ説得力：</strong><br>
+                  フォントの字間設定、余白の持たせ方、1pxのハイライトといった細部への徹底的なこだわりが、B2B企業としての信頼感を何倍にも高めることを学びました。
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 08. 成果物リンクエリア -->
+        <section class="work-section">
+          <div class="work-card" style="text-align: center;">
+            <h3 class="work-card__title" style="text-align: center;">🏢 実際の成果物Webサイトを見る</h3>
+            <p style="text-align: center;">Leading Company株式会社のデモWebサイトを直接ご覧いただけます。</p>
+            <div class="work-hero__action" style="margin-top: 20px; text-align: center;">
+              <a href="LeadingCompany/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 12px 32px; font-size: 1rem; text-decoration: none;">
+                成果物Webサイト（デモ）を開く ↗
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 前後作品ナビゲーション -->
+        <nav class="work-nav">
+          <a href="work11.html" class="work-nav__btn">← 前の作品</a>
+          <a href="index.html#works" class="work-nav__btn work-nav__btn--primary">一覧に戻る</a>
+          <a href="work13.html" class="work-nav__btn">次の作品 →</a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__logo">
+        <a href="index.html">
+          <img src="img/logo03.svg" alt="YBdesign yamabook" class="footer__logo-img">
+        </a>
+      </div>
+      <p class="footer__copyright">&copy; 2026 Yamamoto Portfolio</p>
+    </div>
+  </footer>
+
+</body>
+</html>

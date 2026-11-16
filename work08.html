@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YB COFFEE 制作記録・ケーススタディ | YBdesign Works</title>
+
+  <!-- Google Fonts (Kiwi Maru, Lora, Zen Maru Gothic, Noto Sans JP, Kaisei Decol, Rubik) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Kiwi+Maru:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Rubik:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS読み込み -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-work">
+
+  <!-- ==========================================================================
+     01_Header (作品一覧へもどる固定ヘッダー)
+     ========================================================================== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html#works" class="work-detail__back-btn">
+        <span class="work-detail__back-arrow">←</span> つくったもの一覧へもどる
+      </a>
+      <a href="index.html" class="header__logo">
+        <img src="img/logo01.svg" alt="YBdesign" class="header__logo-img">
+      </a>
+    </div>
+  </header>
+
+  <main class="work-detail__main">
+
+    <!-- ==========================================================================
+       作品ヒーローエリア (アイボリー背景)
+       ========================================================================== -->
+    <section class="work-hero">
+      <div class="work-hero__container">
+        <!-- カテゴリバッジ -->
+        <span class="work-hero__category">WEB DESIGN / FIGMA / FRONTEND / AI PAIR PROGRAMMING</span>
+
+        <!-- 作品タイトル -->
+        <h1 class="work-hero__title">夜な夜なひらく本と珈琲の小さな時間「YB COFFEE」Webサイト制作</h1>
+
+        <!-- メタ情報 (ピル型タグ) -->
+        <ul class="work-hero__tags">
+          <li class="work-hero__tag">担当: 企画・コンセプト設計・Figmaデザイン・フロントエンド実装（100%個人制作）</li>
+          <li class="work-hero__tag">制作期間: 約1週間</li>
+          <li class="work-hero__tag">ツール: Figma / VS Code / Roo Code (AI) / HTML5 / CSS3 / JavaScript</li>
+        </ul>
+
+        <!-- メインビジュアルカード -->
+        <div class="work-hero__mv">
+          <div class="work-hero__slider">
+            <img src="img/work07_mv.jpg" alt="YB COFFEE 完成画面プレビュー" class="work-hero__mv-img">
+          </div>
+        </div>
+
+        <!-- 成果物Webサイトへのリンクボタン -->
+        <div class="work-hero__action" style="margin-top: 24px; text-align: center;">
+          <a href="ybcoffee/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 32px; font-size: 1rem; text-decoration: none;">
+            成果物Webサイトを見る ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 上下反転（scaleY(-1)）させた波型SVGシェイプ -->
+    <div class="hero__wave">
+      <img src="img/wave02.svg" alt="" class="hero__wave-img hero__wave-img--flipped">
+    </div>
+
+    <!-- ==========================================================================
+       ケーススタディ本文コンテンツ
+       ========================================================================== -->
+    <div class="work-body">
+      <div class="work-body__container">
+
+        <!-- 01. 概要とコンセプト (Overview) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">01.</span> 概要とコンセプト <span class="work-section__en">/ Concept & Overview</span>
+          </h2>
+          <div class="work-card">
+            <p>
+              架空の夜型ブックカフェ<strong>「YB COFFEE」</strong>のブランディングおよびWebサイト制作プロジェクトです。<br>
+              「忙しい日常を少しだけ離れ、自分だけの時間に浸れる場所」をコンセプトに、静かで温かみのある世界観をデジタル上で表現しました。本プロジェクトでは、これまでの制作フローを見直し、<strong>Figmaを用いたデザインへの初挑戦</strong>と、<strong>VS CodeのAI（Roo Code）を活用したモダンな開発ワークフロー</strong>を実践しています。
+            </p>
+
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">プロジェクトのターゲット &amp; 目的</h3>
+              <ul class="work-section__list">
+                <li><strong>ターゲット層：</strong> 夜の時間帯に読書や深煎り珈琲を楽しみたい人、おひとりさまで隠れ家的な空間を求める層。</li>
+                <li><strong>デザインの目的：</strong> 静謐な夜のカフェにいるような没入感を与えつつ、メニューやグッズ情報をストレスなく直感的に伝えるUI/UXの構築。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02. デザインプロセス：PhotoshopからFigmaへの挑戦 (Design Process) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">02.</span> デザインプロセス（Figmaへの移行） <span class="work-section__en">/ Design Process</span>
+          </h2>
+          <div class="work-card-grid">
+
+            <div class="work-card">
+              <h3 class="work-card__title">🎨 PhotoshopからFigmaへの移行と気づき</h3>
+              <p>これまでデザインカンプの制作にはAdobe Photoshopをメインに使用していましたが、本制作からFigmaを導入。オートレイアウトやフレーム構造の概念が実際のCSS（Flexbox/Grid）と非常に近く、<strong>「コードの組み方を意識しながらレイアウトを構築する」</strong>という新鮮な体験を得ました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">💡 コーディング親和性の高い設計</h3>
+              <p>コンポーネント管理やレスポンシブを想定した構造づくりがスムーズで、デザインからコーディングへの移行が驚くほどスムーズに行える点を実感。今後はさらに応用的なFigmaの機能を習得し、制作の幅を広げていきたいです。</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 03. 開発とAIの活用 (Development & AI) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">03.</span> 実装とAI（Roo Code）の活用 <span class="work-section__en">/ Development & AI</span>
+          </h2>
+          <div class="work-card">
+            <p style="margin-bottom: 20px;">
+              Visual Studio Codeを用いたコーディングにおいて、AIエージェント拡張機能「Roo Code」をペアプログラミングのパートナーとして導入しました。
+            </p>
+            <ul class="work-list">
+              <li>
+                <strong>細部へのこだわり（画像の縦横比保護）：</strong><br>
+                フッターやヒーローセクションのロゴ画像において、レスポンシブ表示時にアスペクト比が歪まないよう <code>object-fit: contain;</code> や <code>height: auto;</code> を徹底し、堅牢なレイアウトを実現。
+              </li>
+              <li>
+                <strong>AIペアプロによる効率化：</strong><br>
+                Googleマップのレスポンシブ埋め込みや、JavaScriptによるカスタムライトボックス機能の実装など、AIとの対話を通じてコード品質と開発スピードを高度に両立させました。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 04. 制作プロセス & 開発ロードマップ (Workflow) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">04.</span> 制作プロセス（開発タイムライン） <span class="work-section__en">/ Development Timeline</span>
+          </h2>
+
+          <div class="work-section__content">
+            <div class="work-timeline">
+
+              <div class="work-timeline__item">
+                <div class="work-timeline__header">
+                  <span class="work-timeline__day">DAY 1 - 2</span>
+                  <h3 class="work-timeline__title">コンセプト設計 &amp; Figma UIデザイン</h3>
+                </div>
+                <div class="work-timeline__body">
+                  <p>「夜・本・ミステリー」の世界観を定義し、Figmaのオートレイアウトを活用して各セクション（Concept, Menu, Access, Merchandise）のデザインカンプを作成。</p>
+                </div>
+              </div>
+
+              <div class="work-timeline__item">
+                <div class="work-timeline__header">
+                  <span class="work-timeline__day">DAY 3 - 5</span>
+                  <h3 class="work-timeline__title">HTML / CSS マークアップ &amp; レスポンシブ構築</h3>
+                </div>
+                <div class="work-timeline__body">
+                  <p>セマンティックなHTML構造とCSS変数によるデザインシステムの構築。VS CodeとRoo Code（AI）を活用し、レイアウトやアスペクト比の調整を効率的に進行。</p>
+                </div>
+              </div>
+
+              <div class="work-timeline__item">
+                <div class="work-timeline__header">
+                  <span class="work-timeline__day">DAY 6 - 7</span>
+                  <h3 class="work-timeline__title">JavaScript実装・マップ埋め込み &amp; 最終調整</h3>
+                </div>
+                <div class="work-timeline__body">
+                  <p>カスタムライトボックス（モーダル）のJS処理、Googleマップのレスポンシブ埋め込み、アクセシビリティの最終検証を行って完了。</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- 05. 成果・得られた学び (Achievements) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">05.</span> 成果と今後の展望 <span class="work-section__en">/ Achievements & Next Step</span>
+          </h2>
+          <div class="work-card">
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">💡 制作を通じた大きな成長</h3>
+              <p style="margin-top: 8px; line-height: 1.8;">
+                PhotoshopからFigmaへの完全移行により、コーディングを意識したデザイン構築の重要性を深く学ぶことができました。また、AIを開発プロセスに組み込むことで、短期間でありながら妥協のない高品質なWebサイトを形にすることができました。この経験を糧に、今後も新しいツールや手法に挑戦し、より洗練されたWeb制作を追求していきたいと考えています。
+              </p>
+            </div>
+
+            <!-- 成果物Webサイトへのリンクボタン -->
+            <div class="work-link-box" style="margin-top: 28px; text-align: center;">
+              <a href="ybcoffee/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 12px 28px; text-decoration: none;">
+                成果物Webサイトを見る ↗
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 前後作品ナビゲーション -->
+        <nav class="work-nav">
+          <a href="work07.html" class="work-nav__btn">← 前の作品</a>
+          <a href="index.html#works" class="work-nav__btn work-nav__btn--primary">一覧に戻る</a>
+          <a href="work09.html" class="work-nav__btn">次の作品 →</a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+     09_Footer (フッター)
+     ========================================================================== -->
+  <footer class="footer">
+
+    <!-- セクション上部：白波SVGシェイプ -->
+    <div class="footer__wave">
+      <img src="img/wave04.svg" alt="" class="footer__wave-img">
+    </div>
+
+    <!-- フッターコンテンツエリア -->
+    <div class="footer__container">
+
+      <!-- 中央ロゴ -->
+      <div class="footer__logo">
+        <a href="index.html">
+          <img src="img/logo03.svg" alt="YBdesign yamabook" class="footer__logo-img">
+        </a>
+      </div>
+
+      <!-- SNSリンク -->
+      <ul class="footer__sns">
+        <li class="footer__sns-item">
+          <a href="https://www.instagram.com/yamabook_design/" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="Instagram">
+            <span class="footer__sns-box">
+              <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px; height:20px; display:block;">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </span>
+          </a>
+        </li>
+        <li class="footer__sns-item">
+          <a href="#" class="footer__sns-link is-disabled" aria-label="X（準備中）">
+            <span class="footer__sns-box">
+              <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor" style="width:18px; height:18px; display:block;">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span class="footer__sns-tooltip">準備中</span>
+            </span>
+          </a>
+        </li>
+        <li class="footer__sns-item">
+          <a href="https://note.com/yamabook_design" target="_blank" rel="noopener noreferrer" class="footer__sns-link" aria-label="note">
+            <span class="footer__sns-box">
+              <svg class="footer__sns-icon" viewBox="0 0 24 24" fill="currentColor" style="width:20px; height:20px; display:block; fill:#ffffff;">
+                <path d="M18.8 3H5.2C4 3 3 4 3 5.2v13.6C3 20 4 21 5.2 21h13.6c1.2 0 2.2-1 2.2-2.2V5.2C21 4 20 3 18.8 3zm-2.9 12.8h-2.3v-4.5c0-.8-.3-1.3-1.1-1.3-.8 0-1.2.6-1.2 1.3v4.5H9V8.8h2.3v1c.5-.7 1.2-1.1 2.2-1.1 1.7 0 2.4 1.1 2.4 2.8v4.3z"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- コピーライト -->
+      <p class="footer__copyright">&copy; 2026 Yamamoto Portfolio</p>
+
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECHOES OF NEON インディーズフェス特設LP | YBdesign Works</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- ポートフォリオ共通スタイルシート -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-work">
+
+  <!-- ==========================================================================
+     01_Header (作品一覧へもどる固定ヘッダー)
+     ========================================================================== -->
+  <header class="header">
+    <div class="header__container">
+      <a href="index.html#works" class="work-detail__back-btn">
+        <span class="work-detail__back-arrow">←</span> つくったもの一覧へもどる
+      </a>
+      <a href="index.html" class="header__logo">
+        <img src="img/logo01.svg" alt="YBdesign" class="header__logo-img">
+      </a>
+    </div>
+  </header>
+
+  <main class="work-detail__main">
+
+<!-- ==========================================================================
+       作品ヒーローエリア (アイボリー背景)
+       ========================================================================== -->
+    <section class="work-hero">
+      <div class="work-hero__container">
+        <!-- カテゴリバッジ -->
+        <span class="work-hero__category">EVENT LP / BRANDING / UIUX</span>
+        
+        <!-- 作品タイトル -->
+        <h1 class="work-hero__title">ECHOES OF NEON<br>インディーズフェス 特設ランディングページ</h1>
+        
+        <!-- メタ情報 (ピル型タグ並び) -->
+        <ul class="work-hero__tags">
+          <li class="work-hero__tag">担当: 企画・デザインコンセプト・UI/UX設計・フロントエンドコーディング</li>
+          <li class="work-hero__tag">制作期間: 約1週間</li>
+          <li class="work-hero__tag">技術: HTML5 / CSS3 (Vanilla CSS / BEM) / Vanilla JS / Google Fonts</li>
+        </ul>
+
+        <!-- メインビジュアルカード -->
+        <div class="work-hero__mv" style="margin-top: 24px;">
+          <div class="work-hero__slider">
+            <img src="img/work13_mv.jpg" alt="ECHOES OF NEON Webサイトメインビジュアル" class="work-hero__mv-img">
+          </div>
+        </div>
+
+        <!-- 成果物Webサイト＆Figmaデータへのリンクボタン（メインビジュアル直下・同色で横並び） -->
+        <div class="work-hero__action" style="margin-top: 24px; text-align: center; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="echoes/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 28px; font-size: 1rem; text-decoration: none;">
+            成果物Webサイト（デモ）を見る ↗
+          </a>
+          <a href="https://www.figma.com/design/InYFqFHvHMsK6nmyBrq5AT/Indie_Music_Fes_Web?t=raE6XvWHhaCruBti-1 target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 14px 28px; font-size: 1rem; text-decoration: none;">
+            Figmaデザインデータを見る ↗
+          </a>
+        </div>
+          
+      </div>
+    </section>
+
+    <!-- 上下反転（scaleY(-1)）させた波型SVGシェイプ -->
+    <div class="hero__wave">
+      <img src="img/wave02.svg" alt="" class="hero__wave-img hero__wave-img--flipped">
+    </div>
+
+    <!-- ==========================================================================
+       ケーススタディ本文コンテンツ
+       ========================================================================== -->
+    <div class="work-body">
+      <div class="work-body__container">
+
+        <!-- 01. 概要とコンセプト (Concept & Overview) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">01.</span> 概要とコンセプト <span class="work-section__en">/ Concept & Overview</span>
+          </h2>
+          <div class="work-card">
+            <p>アンダーグラウンドの音楽フェスティバル「ECHOES OF NEON (2026.10.31 @ CLUB X SHIBUYA)」の特設ランディングページです。単なる日時や出演者の告知にとどまらず、「アクセスした瞬間からクラブやフェスの重低音とネオンの熱量が伝わってくる体験型Webサイト」をコンセプトに構築しました。</p>
+            
+            <div class="work-section__box">
+              <h3 class="work-section__box-title">制作のキーポイント</h3>
+              <ul class="work-section__list">
+                <li><strong>「ダーク×ネオン」の刺激的な世界観：</strong> 深い闇（#0b0b0b）に鮮烈なネオンピンクとライムグリーンを効かせ、クラブカルチャーの狂宴を体現。</li>
+                <li><strong>高精度なタイポグラフィ階層：</strong> 重厚なAnton、字間を広げたMontserrat、読みやすいZen Maru Gothicを計算して配置。</li>
+                <li><strong>Vanilla JSによる動的タイムテーブル：</strong> 外部ライブラリに頼らず、ステージ切り替えと連動するネオンシャドウ（box-shadow）発光効果を実装。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02. 世界観設計とUI/UXの工夫 (Worldview & UI/UX Strategy) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">02.</span> 世界観設計とUI/UXの工夫 <span class="work-section__en">/ Worldview & UI/UX Strategy</span>
+          </h2>
+          <div class="work-card-grid">
+            
+            <div class="work-card">
+              <h3 class="work-card__title">🌌 「ダーク×ネオン」の世界観演出と空気感の両立</h3>
+              <p>極低明度ブラック（#0b0b0b）とカード用サーフェス（#111111 / #121212）で夜のクラブハウス特有の密室感を演出。背景写真に半透明オーバーレイ（rgba(11, 11, 11, 0.75)）を重ね、現場の空気感を残したままテキストの可読性を高めました。</p>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">⚡ 動的ネオン発光タブと格子状タイムテーブル</h3>
+              <p>Vanilla JSによりステージ切替と連動するネオンシャドウ（box-shadow）発光効果を完全自作。時間・アーティスト・ジャンルの3カラム構成とアーティスト名の「左寄せ」に統一することで、インダストリアルで硬質な美しさと視認性を両立しました。</p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 03. 視覚的アイデンティティ & カラーパレット (Design System) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">03.</span> 視覚的アイデンティティ & カラーパレット <span class="work-section__en">/ Design System</span>
+          </h2>
+          <div class="work-card-grid">
+            
+            <div class="work-card">
+              <h3 class="work-card__title">🌌 「ダーク×ネオン」のカラーパレット</h3>
+              <p>ベースに極低明度のブラック（#0b0b0b）とサーフェス用ブラック（#111111）を敷き、ネオンピンク（#ff2a75）とライムグリーン（#a3ff12）で視線を誘導します。</p>
+
+              <!-- カラーパレット -->
+              <div class="work-colors" style="margin-top: 16px;">
+                <div class="work-color-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span class="work-color-swatch" style="display: inline-block; width: 32px; height: 32px; background-color: #0b0b0b; border-radius: 4px; flex-shrink: 0;"></span>
+                  <span><strong>#0b0b0b</strong>（ディープブラック / ベース背景）</span>
+                </div>
+                <div class="work-color-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span class="work-color-swatch" style="display: inline-block; width: 32px; height: 32px; background-color: #111111; border-radius: 4px; flex-shrink: 0;"></span>
+                  <span><strong>#111111</strong>（サーフェスブラック / カード背景）</span>
+                </div>
+                <div class="work-color-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span class="work-color-swatch" style="display: inline-block; width: 32px; height: 32px; background-color: #ff2a75; border-radius: 4px; flex-shrink: 0;"></span>
+                  <span><strong>#ff2a75</strong>（ネオンピンク / 前売・主要CTA）</span>
+                </div>
+                <div class="work-color-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span class="work-color-swatch" style="display: inline-block; width: 32px; height: 32px; background-color: #a3ff12; border-radius: 4px; flex-shrink: 0;"></span>
+                  <span><strong>#a3ff12</strong>（ライムグリーン / 当日・サブタグ）</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-card">
+              <h3 class="work-card__title">📐 タイポグラフィとグリッド指定</h3>
+              <ul class="work-section__list">
+                <li><strong>Anton（ロゴ・大見出し）：</strong> 高密度でインダストリアルなインパクトを演出。</li>
+                <li><strong>Montserrat（メタ情報）：</strong> 字間（letter-spacing: 1.5px）を広げ、先進的なUI美を確保。</li>
+                <li><strong>Zen Maru Gothic（本文）：</strong>インダストリアルで力強い英字見出し（Anton）に対し、あえて柔らかな和文を掛け合わせることで、アンダーグラウンドな空気感の中に映画の字幕のようなレトロな情緒を忍ばせています。</li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 04. フロントエンド実装 & レスポンシブ最適化 (Development) -->
+        <section class="work-section">
+          <h2 class="work-section__title">
+            <span class="work-section__num">04.</span> フロントエンド実装 & レスポンシブ最適化 <span class="work-section__en">/ Development</span>
+          </h2>
+          <div class="work-card">
+            <ul class="work-list">
+              <li>
+                <strong>Vanilla JSによる超軽量インタラクション：</strong><br>
+                外部ライブラリを排除し、ステージタブ切り替えとシームレスなネオン発光効果（<code>box-shadow</code>）を完全自作。
+              </li>
+              <li>
+                <strong>スマホ表示における「引き算」のUI：</strong><br>
+                画面幅768px以下のモバイル閲覧時にはタイムテーブルの「ジャンル列」を自動で非表示（<code>display: none</code>）にし、ノイズを削減。
+              </li>
+              <li>
+                <strong>アスペクト比固定による崩れ防止：</strong><br>
+                LINEUPカードには <code>aspect-ratio: 1/1</code>（正方形）、Google Mapsエリアには <code>aspect-ratio: 16/9</code> を指定し、縦横比が崩れない堅牢なレイアウトを実現。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 05. 成果物リンクエリア -->
+        <section class="work-section">
+          <div class="work-card" style="text-align: center;">
+            <h3 class="work-card__title" style="text-align: center;">🏢 実際の成果物Webサイトを見る</h3>
+            <p style="text-align: center;">ECHOES OF NEON 特設Webサイトのデモページ（echoes/index.html）を直接ご覧いただけます。</p>
+            <div class="work-hero__action" style="margin-top: 20px; text-align: center;">
+              <a href="echoes/index.html" target="_blank" rel="noopener noreferrer" class="work-nav__btn work-nav__btn--primary" style="display: inline-block; padding: 12px 32px; font-size: 1rem; text-decoration: none;">
+                成果物Webサイト（デモ）を開く ↗
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 前後作品ナビゲーション -->
+        <nav class="work-nav">
+          <a href="work12.html" class="work-nav__btn">← 前の作品</a>
+          <a href="index.html#works" class="work-nav__btn work-nav__btn--primary">一覧に戻る</a>
+          <a href="work14.html" class="work-nav__btn">次の作品 →</a>
+        </nav>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+     09_Footer (個別ページ用フッター)
+     ========================================================================== -->
+  <footer class="footer">
+    <div class="footer__container">
+
+      <!-- 中央ロゴ -->
+      <div class="footer__logo">
+        <a href="index.html">
+          <img src="img/logo03.svg" alt="YBdesign yamabook" class="footer__logo-img">
+        </a>
+      </div>
+
+      <!-- コピーライト -->
+      <p class="footer__copyright">&copy; 2026 Yamamoto Portfolio</p>
+
+    </div>
+  </footer>
+
+</body>
+</html>
