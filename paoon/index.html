@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAOON KEIZO | パオーンけいぞう Official Site</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FFFDE7',
+                        creamDark: '#FCFCD4',
+                        accentRed: '#FF4B4B',
+                        accentRedDark: '#E53935',
+                        turquoise: '#49C9E3',
+                        turquoiseDark: '#3BB0C9',
+                        deepGreen: '#004C34',
+                        deepGreenLight: '#0D5C3A',
+                        appleMusic: '#FA243C',
+                    },
+                    fontFamily: {
+                        rounded: ['"M PLUS Rounded 1c"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'pop-sm': '3px 3px 0px #000000',
+                        'pop': '5px 5px 0px #000000',
+                        'pop-lg': '8px 8px 0px #000000',
+                        'pop-green': '5px 5px 0px #004C34',
+                        'pop-red': '5px 5px 0px #FF4B4B',
+                        'pop-white': '5px 5px 0px #FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- カスタムスタイル定義 -->
+    <style>
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: #FFFDE7;
+            color: #1A1A1A;
+            overflow-x: hidden;
+        }
+
+        /* 水玉模様背景 */
+        .green-polka-dot {
+            background-color: #004C34;
+            background-image: radial-gradient(#0D5C3A 20%, transparent 20%), radial-gradient(#0D5C3A 20%, transparent 20%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        /* ヒーローエリアオーバーレイ背景 */
+        .hero-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.25) 15%, transparent 15%);
+            background-size: 16px 16px;
+        }
+
+        /* 吹き出しの三角部分 */
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50px;
+            border-width: 20px 20px 0 0;
+            border-style: solid;
+            border-color: #FFFFFF transparent;
+            display: block;
+            width: 0;
+        }
+
+        /* 3D立体テキスト効果 */
+        .pop-text-3d {
+            text-shadow: 
+                3px 3px 0px #FF4B4B,
+                6px 6px 0px #004C34,
+                9px 9px 0px #000000;
+        }
+
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDE7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF4B4B;
+            border-radius: 5px;
+            border: 2px solid #000;
+        }
+
+        /* カードのホバーアニメーション */
+        .card-hover-pop {
+            transition: all 0.2s ease-in-out;
+        }
+        .card-hover-pop:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 8px 8px 0px #000000;
+        }
+
+        /* 🐘 ステッカー用の白フチ＋立体黒影（ネオブロータリズム風シャドウ） */
+        .sticker-shadow {
+            filter: 
+                drop-shadow(2px 0 0 #fff) 
+                drop-shadow(-2px 0 0 #fff) 
+                drop-shadow(0 2px 0 #fff) 
+                drop-shadow(0 -2px 0 #fff)
+                drop-shadow(3px 5px 0px #000);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        /* ---------------------------------------
+       署名（sign.png）のスタイル
+    --------------------------------------- */
+    .signature {
+      text-align: right;
+      margin-top: 15px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      z-index: 2; /* テキストや枠線より前面に表示 */
+    }
+
+    .sign-image {
+      /* 画像の表示サイズ調整 */
+      max-width: 260px;
+      height: auto;
+      
+      /* ちょっと傾けて手書き・ステッカー感を演出 */
+      transform: rotate(-3deg);
+      
+      /* 位置の微調整（必要に応じて少し下や右にはみ出させる場合） */
+      margin-right: -10px;
+      margin-bottom: -10px;
+      
+      /* 背景が白画像の場合は透過処理風に見せるドロップシャドウや調整 */
+      filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1));
+    }
+    </style>
+</head>
+<body class="bg-cream text-gray-900 antialiased selection:bg-accentRed selection:text-white">
+
+    <!-- ============================================
+         固定ヘッダー (HEADER)
+         ============================================ -->
+    <header id="site-header" class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-md border-b-4 border-black px-4 py-3">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <!-- ロゴ -->
+            <a href="#" class="header-logo flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-accentRed rounded-full border-2 border-black flex items-center justify-center text-white shadow-pop-sm group-hover:rotate-12 transition-transform">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path d="M19 8c-1.1 0-2 .9-2 2 0 1.6-1.4 3-3 3h-1c0-1.7-1.3-3-3-3s-3 1.3-3 3v2c0 2.8 2.2 5 5 5h1c2.8 0 5-2.2 5-5 0-.6.4-1 1-1s1 .4 1 1c0 1.7-1.3 3-3 3h-1c-3.9 0-7-3.1-7-7v-2c0-2.8 2.2-5 5-5s5 2.2 5 5c1.7 0 3 1.3 3 3 0 .6-.4 1-1 1z"/>
+                        <circle cx="9" cy="9" r="1.5"/>
+                    </svg>
+                </div>
+                <span class="font-black text-xl md:text-2xl tracking-wider text-black group-hover:text-accentRed transition-colors">
+                    PAOON KEIZO
+                </span>
+            </a>
+
+            <!-- デスクトップ用ナビゲーション & モバイルメニューボタン -->
+            <div class="header-nav flex items-center gap-4">
+                <nav class="hidden md:flex items-center gap-6 font-bold text-base">
+                    <a href="#news" class="hover:text-accentRed transition-colors">LIVE / NEWS</a>
+                    <a href="#about" class="hover:text-accentRed transition-colors">ABOUT</a>
+                    <a href="#music" class="hover:text-accentRed transition-colors">MUSIC</a>
+                    <a href="#more" class="hover:text-accentRed transition-colors">ONE MORE</a>
+                    <a href="#contact" class="hover:text-accentRed transition-colors">CONTACT</a>
+                </nav>
+
+                <button id="btn-open-menu" class="bg-accentRed hover:bg-accentRedDark text-white font-extrabold px-4 py-2 rounded-full border-2 border-black shadow-pop-sm flex items-center gap-2 transition-transform active:translate-y-1">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                    <span>MENU</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ============================================
+         モバイル用 ナビゲーションドロワー
+         ============================================ -->
+    <div id="mobileMenu" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex justify-end">
+        <div id="mobileMenuContent" class="w-4/5 max-w-sm bg-cream h-full border-l-4 border-black p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b-2 border-black">
+                    <span class="font-extrabold text-xl text-accentRed">NAVIGATION</span>
+                    <button id="btn-close-menu" class="w-10 h-10 bg-accentRed text-white rounded-full border-2 border-black flex items-center justify-center font-bold shadow-pop-sm hover:scale-105">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <ul class="flex flex-col gap-4 mt-8 font-black text-xl">
+                    <li><a href="#news" class="mobile-link block p-3 rounded-xl hover:bg-turquoise hover:text-white border-2 border-transparent hover:border-black transition-all">01. LIVE & NEWS</a></li>
+                    <li><a href="#about" class="mobile-link block p-3 rounded-xl hover:bg-turquoise hover:text-white border-2 border-transparent hover:border-black transition-all">02. ABOUT & PROFILE</a></li>
+                    <li><a href="#music" class="mobile-link block p-3 rounded-xl hover:bg-turquoise hover:text-white border-2 border-transparent hover:border-black transition-all">03. MUSIC & PROJECTS</a></li>
+                    <li><a href="#more" class="mobile-link block p-3 rounded-xl hover:bg-turquoise hover:text-white border-2 border-transparent hover:border-black transition-all">04. ONE MORE (SNS)</a></li>
+                    <li><a href="#contact" class="mobile-link block p-3 rounded-xl hover:bg-turquoise hover:text-white border-2 border-transparent hover:border-black transition-all">05. CONTACT</a></li>
+                </ul>
+            </div>
+
+            <div class="pt-6 border-t-2 border-black text-center">
+                <p class="font-bold text-sm text-gray-700 mb-3">FOLLOW PAOON KEIZO</p>
+                <div class="flex justify-center gap-4">
+                    <a href="https://www.instagram.com/paon_keizou/" target="_blank" class="w-10 h-10 bg-white border-2 border-black rounded-full flex items-center justify-center text-xl shadow-pop-sm hover:bg-accentRed hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://on.soundcloud.com/Uo6oO6vZeMWH9hdohA" target="_blank" class="w-10 h-10 bg-white border-2 border-black rounded-full flex items-center justify-center text-xl shadow-pop-sm hover:bg-accentRed hover:text-white transition-all"><i class="fa-brands fa-soundcloud"></i></a>
+                    <a href="https://music.apple.com/jp/artist/%E3%83%91%E3%82%AA%E3%83%BC%E3%83%B3%E3%81%91%E3%81%84%E3%81%9E%E3%81%86/1787007370" target="_blank" class="w-10 h-10 bg-white border-2 border-black rounded-full flex items-center justify-center text-xl shadow-pop-sm hover:bg-appleMusic hover:text-white transition-all"><i class="fa-brands fa-apple"></i></a>
+                    <a href="https://note.com/lush_tern5889" target="_blank" class="w-10 h-10 bg-white border-2 border-black rounded-full flex items-center justify-center text-xl shadow-pop-sm hover:bg-accentRed hover:text-white transition-all"><i class="fa-solid fa-book-open"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- メインコンテンツ -->
+    <main class="pt-20 md:pt-24 pb-16">
+
+        <!-- ============================================
+             メインビジュアル / HERO SECTION
+             ============================================ -->
+        <section id="hero" class="hero-section max-w-6xl mx-auto px-4 my-6">
+            <div class="bg-turquoise border-4 border-black rounded-3xl p-6 md:p-12 shadow-pop-lg relative overflow-visible hero-pattern">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-accentRed rounded-full border-4 border-black opacity-30 pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-cream rounded-full border-4 border-black opacity-40 pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <!-- 左側イラストグラフィック（ステッカー配置①） -->
+                    <div class="lg:col-span-5 flex justify-center relative">
+
+                        <!-- 🐘 ステッカー 1-A: 青アフロ象 (左上に傾けてはみ出し) -->
+                        <img src="images/zou04.png" alt="天然アフロ象" 
+                             class="sticker-shadow absolute -top-8 -left-6 md:-top-10 md:-left-8 w-24 md:w-32 z-30 -rotate-12 hover:rotate-0 hover:scale-110 cursor-pointer">
+
+                        <!-- 🐘 ステッカー 1-B: ギター緑象 (右下に傾けて重ねる) -->
+                        <img src="images/zou02.png" alt="ギター緑象" 
+                             class="sticker-shadow absolute -bottom-6 -right-4 md:-bottom-8 md:-right-6 w-28 md:w-36 z-30 rotate-12 hover:rotate-0 hover:scale-110 cursor-pointer">
+
+                        <div class="relative w-64 h-64 md:w-80 md:h-80 bg-cream rounded-full border-4 border-black shadow-pop flex items-center justify-center overflow-hidden group">
+                            <svg class="w-full h-full p-2 group-hover:scale-105 transition-transform duration-300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="150" cy="150" r="130" fill="#FCFCD4" />
+                                <circle cx="150" cy="110" r="70" fill="#1A1A1A" stroke="#000" stroke-width="4"/>
+                                <circle cx="105" cy="100" r="40" fill="#1A1A1A" />
+                                <circle cx="195" cy="100" r="40" fill="#1A1A1A" />
+                                <circle cx="120" cy="65" r="35" fill="#1A1A1A" />
+                                <circle cx="180" cy="65" r="35" fill="#1A1A1A" />
+                                <circle cx="150" cy="55" r="35" fill="#1A1A1A" />
+                                
+                                <circle cx="150" cy="135" r="42" fill="#E0A96D" stroke="#000" stroke-width="4"/>
+                                <rect x="122" y="122" width="24" height="18" rx="4" fill="#000" />
+                                <rect x="154" y="122" width="24" height="18" rx="4" fill="#000" />
+                                <line x1="146" y1="130" x2="154" y2="130" stroke="#000" stroke-width="4" />
+                                <path d="M 135 152 Q 150 168 165 152" stroke="#000" stroke-width="4" fill="white" stroke-linecap="round"/>
+                                <path d="M 90 260 L 110 180 L 190 180 L 210 260 Z" fill="#FF4B4B" stroke="#000" stroke-width="4"/>
+
+                                <g transform="rotate(-25 150 200)">
+                                    <path d="M 110 210 C 90 190 90 160 120 150 C 90 140 100 120 130 130 L 170 130 C 200 120 210 140 180 150 C 210 160 210 190 190 210 Z" fill="#D97706" stroke="#000" stroke-width="4"/>
+                                    <circle cx="150" cy="165" r="14" fill="#1A1A1A" stroke="#000" stroke-width="3"/>
+                                    <rect x="143" y="70" width="14" height="60" fill="#78350F" stroke="#000" stroke-width="3"/>
+                                    <rect x="140" y="52" width="20" height="20" fill="#D97706" stroke="#000" stroke-width="3"/>
+                                </g>
+                                <path d="M 60 70 L 65 80 L 75 85 L 65 90 L 60 100 L 55 90 L 45 85 L 55 80 Z" fill="#FF4B4B" stroke="#000" stroke-width="2"/>
+                                <path d="M 230 180 L 233 188 L 241 191 L 233 194 L 230 202 L 227 194 L 219 191 L 227 188 Z" fill="#004C34" stroke="#000" stroke-width="2"/>
+                            </svg>
+
+                            <div class="absolute bottom-2 bg-accentRed text-white font-extrabold text-xs px-3 py-1 rounded-full border-2 border-black shadow-pop-sm">
+                                FUNKY AFRO GUY
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右側 キャッチコピー & リンク -->
+                    <div class="lg:col-span-7 text-center lg:text-left">
+                        <div class="inline-block bg-deepGreen text-white font-black text-sm md:text-base px-4 py-1.5 rounded-full border-2 border-black shadow-pop-sm mb-4">
+                            北海道生まれ・地毛アフロのシンガーソングライター 🐘
+                        </div>
+
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight tracking-wide mb-6 drop-shadow-[0_4px_0_#000]">
+                            日常の愛おしさを、<br>
+                            ポップに歌う。
+                        </h1>
+
+                        <p class="text-black font-extrabold text-base md:text-lg mb-8 bg-cream/90 p-4 rounded-2xl border-2 border-black shadow-pop-sm inline-block max-w-xl">
+                            1st アルバム『よろしくお願いします!』（全11曲）絶賛配信中！自分のペースで好きな音を鳴らしていく、等身大のシンガーソングライター・パオーンけいぞうの公式WEBサイト。
+                        </p>
+
+                        <!-- SNS Quick Links -->
+                        <div class="flex flex-wrap justify-center lg:justify-start items-center gap-3 mb-8">
+
+                            <a href="https://www.instagram.com/paon_keizou/" target="_blank" class="bg-white hover:bg-cream text-black font-bold px-4 py-2 rounded-full border-2 border-black shadow-pop-sm flex items-center gap-2 transition-transform hover:-translate-y-1">
+                                <i class="fa-brands fa-instagram text-accentRed text-lg"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://on.soundcloud.com/Uo6oO6vZeMWH9hdohA" target="_blank" class="bg-white hover:bg-cream text-black font-bold px-4 py-2 rounded-full border-2 border-black shadow-pop-sm flex items-center gap-2 transition-transform hover:-translate-y-1">
+                                <i class="fa-brands fa-soundcloud text-orange-500 text-lg"></i>
+                                <span>SoundCloud</span>
+                            </a>
+                            <a href="https://music.apple.com/jp/artist/%E3%83%91%E3%82%AA%E3%83%BC%E3%83%B3%E3%81%91%E3%81%84%E3%81%9E%E3%81%86/1787007370" target="_blank" class="bg-white hover:bg-cream text-black font-bold px-4 py-2 rounded-full border-2 border-black shadow-pop-sm flex items-center gap-2 transition-transform hover:-translate-y-1">
+                                <i class="fa-brands fa-apple text-red-500 text-lg"></i>
+                                <span>Apple Music</span>
+                            </a>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <div>
+                            <button id="btn-hero-album-play" onclick="playSampleTrack('album')" class="bg-accentRed hover:bg-accentRedDark text-white font-black text-lg md:text-xl px-8 py-4 rounded-full border-3 border-black shadow-pop hover:shadow-pop-lg transition-all active:translate-y-1 flex items-center justify-center gap-3 mx-auto lg:mx-0 group">
+                                <i class="fa-solid fa-circle-play text-2xl group-hover:scale-125 transition-transform"></i>
+                                <span>1st アルバム『よろしくお願いします!』を試聴</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             SECTION 1: ライブ & ニュース (LIVE & NEWS)
+             ============================================ -->
+        <section id="news" class="news-section mt-16">
+            <div class="green-polka-dot py-6 px-4 border-y-4 border-black text-center relative my-8">
+                <div class="inline-block bg-accentRed text-white font-black text-xl md:text-2xl px-8 py-3 rounded-full border-3 border-black shadow-pop-white">
+                    1. LIVE & NEWS <span class="text-sm font-bold block sm:inline sm:ml-2">ライブ・お知らせ</span>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="bg-white border-4 border-black rounded-3xl p-6 md:p-8 shadow-pop">
+                    <ul class="divide-y-2 divide-gray-200">
+                        
+                        <!-- [ニュース項目 1] -->
+                        <li class="news-item py-4 hover:bg-creamDark/50 p-3 rounded-xl transition-colors cursor-pointer" 
+                            onclick="openNewsModal(this)" 
+                            data-title="下北沢 DaisyBar にて自主企画ライブ『パオーンの逆襲 Vol.2』開催決定！" 
+                            data-date="2026.10.15 (THU)" 
+                            data-tag="LIVE" 
+                            data-tag-class="bg-accentRed text-white" 
+                            data-content="下北沢 DaisyBar にて自主企画ライブ『パオーンの逆襲 Vol.2』の開催が決定しました！チケット予約や詳細はオフィシャルフォーム・SNSよりお問い合わせください！">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                <span class="font-extrabold text-gray-500 text-sm whitespace-nowrap">2026.10.15 (THU)</span>
+                                <span class="bg-accentRed text-white text-xs font-black px-3 py-1 rounded-full border border-black w-max">LIVE</span>
+                                <h3 class="font-bold text-base md:text-lg text-black hover:text-accentRed transition-colors flex-1">
+                                    下北沢 DaisyBar にて自主企画ライブ『パオーンの逆襲 Vol.2』開催決定！
+                                </h3>
+                                <i class="fa-solid fa-chevron-right text-gray-400 sm:block hidden"></i>
+                            </div>
+                        </li>
+
+                        <!-- [ニュース項目 2] -->
+                        <li class="news-item py-4 hover:bg-creamDark/50 p-3 rounded-xl transition-colors cursor-pointer" 
+                            onclick="openNewsModal(this)" 
+                            data-title="1st アルバム『よろしくお願いします!』（全11曲）が Apple Music で配信スタート！" 
+                            data-date="2026.01.07 (WED)" 
+                            data-tag="RELEASE" 
+                            data-tag-class="bg-purple-600 text-white" 
+                            data-content="待望の 1st アルバム『よろしくお願いします!』（全11曲）が Apple Music などの主要サブスクにて好評配信中！『髭を剃ったら』『世界征服』『ガリガリアフロ』など盛りだくさん！ぜひお聴きください！">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                <span class="font-extrabold text-gray-500 text-sm whitespace-nowrap">2026.01.07 (WED)</span>
+                                <span class="bg-purple-600 text-white text-xs font-black px-3 py-1 rounded-full border border-black w-max">RELEASE</span>
+                                <h3 class="font-bold text-base md:text-lg text-black hover:text-accentRed transition-colors flex-1">
+                                    1st アルバム『よろしくお願いします!』（全11曲）が Apple Music で配信スタート！
+                                </h3>
+                                <i class="fa-solid fa-chevron-right text-gray-400 sm:block hidden"></i>
+                            </div>
+                        </li>
+
+                        <!-- [ニュース項目 3] -->
+                        <li class="news-item py-4 hover:bg-creamDark/50 p-3 rounded-xl transition-colors cursor-pointer" 
+                            onclick="openNewsModal(this)" 
+                            data-title="Webカルチャーメディア『POP CULTURE NOW』にてインタビュー記事が掲載！" 
+                            data-date="2026.09.05 (SAT)" 
+                            data-tag="MEDIA" 
+                            data-tag-class="bg-turquoise text-black" 
+                            data-content="カルチャーメディア『POP CULTURE NOW』にパオーンけいぞうのロングインタビューが掲載されました。地毛アフロのルーツや、ゾウへの深い愛、楽曲制作のきっかけについて語っています。">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                <span class="font-extrabold text-gray-500 text-sm whitespace-nowrap">2026.09.05 (SAT)</span>
+                                <span class="bg-turquoise text-black text-xs font-black px-3 py-1 rounded-full border border-black w-max">MEDIA</span>
+                                <h3 class="font-bold text-base md:text-lg text-black hover:text-accentRed transition-colors flex-1">
+                                    Webカルチャーメディア『POP CULTURE NOW』にてインタビュー記事が掲載！
+                                </h3>
+                                <i class="fa-solid fa-chevron-right text-gray-400 sm:block hidden"></i>
+                            </div>
+                        </li>
+
+                        <!-- 過去ニュース（アコーディオン展開で表示） -->
+                        <div id="moreNews" class="hidden divide-y-2 divide-gray-200">
+                            <!-- [過去ニュース 1] -->
+                            <li class="news-item py-4 hover:bg-creamDark/50 p-3 rounded-xl transition-colors cursor-pointer" 
+                                onclick="openNewsModal(this)" 
+                                data-title="渋谷 LUSH にてアコースティックワンマンライブ開催決定！" 
+                                data-date="2025.12.20 (SAT)" 
+                                data-tag="LIVE" 
+                                data-tag-class="bg-accentRed text-white" 
+                                data-content="年末のスペシャルワンマンライブが決定しました！アコースティック編成でお届けします。チケット予約受付中！">
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                    <span class="font-extrabold text-gray-500 text-sm whitespace-nowrap">2025.12.20 (SAT)</span>
+                                    <span class="bg-accentRed text-white text-xs font-black px-3 py-1 rounded-full border border-black w-max">LIVE</span>
+                                    <h3 class="font-bold text-base md:text-lg text-black hover:text-accentRed transition-colors flex-1">
+                                        渋谷 LUSH にてアコースティックワンマンライブ開催決定！
+                                    </h3>
+                                    <i class="fa-solid fa-chevron-right text-gray-400 sm:block hidden"></i>
+                                </div>
+                            </li>
+
+                            <!-- [過去ニュース 2] -->
+                            <li class="news-item py-4 hover:bg-creamDark/50 p-3 rounded-xl transition-colors cursor-pointer" 
+                                onclick="openNewsModal(this)" 
+                                data-title="SoundCloud にて新曲『茅ヶ崎に』デモ音源を限定公開！" 
+                                data-date="2025.11.10 (MON)" 
+                                data-tag="RELEASE" 
+                                data-tag-class="bg-purple-600 text-white" 
+                                data-content="制作中の新曲『茅ヶ崎に』のアコースティックデモバージョンをSoundCloudにて期間限定公開中。ぜひチェックしてください！">
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                    <span class="font-extrabold text-gray-500 text-sm whitespace-nowrap">2025.11.10 (MON)</span>
+                                    <span class="bg-purple-600 text-white text-xs font-black px-3 py-1 rounded-full border border-black w-max">RELEASE</span>
+                                    <h3 class="font-bold text-base md:text-lg text-black hover:text-accentRed transition-colors flex-1">
+                                        SoundCloud にて新曲『茅ヶ崎に』デモ音源を限定公開！
+                                    </h3>
+                                    <i class="fa-solid fa-chevron-right text-gray-400 sm:block hidden"></i>
+                                </div>
+                            </li>
+
+                            <!-- [過去ニュース 3] -->
+                            <li class="news-item py-4 hover:bg-creamDark/50 p-3 rounded-xl transition-colors cursor-pointer" 
+                                onclick="openNewsModal(this)" 
+                                data-title="公式WEBサイトがポップに全面リニューアル！" 
+                                data-date="2025.09.01 (MON)" 
+                                data-tag="INFO" 
+                                data-tag-class="bg-yellow-400 text-black" 
+                                data-content="パオーンけいぞうの公式WEBサイトが新しくリニューアルオープンしました！ライブ情報や楽曲試聴、お問い合わせなど気軽にご利用ください。">
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                                    <span class="font-extrabold text-gray-500 text-sm whitespace-nowrap">2025.09.01 (MON)</span>
+                                    <span class="bg-yellow-400 text-black text-xs font-black px-3 py-1 rounded-full border border-black w-max">INFO</span>
+                                    <h3 class="font-bold text-base md:text-lg text-black hover:text-accentRed transition-colors flex-1">
+                                        公式WEBサイトがポップに全面リニューアル！
+                                    </h3>
+                                    <i class="fa-solid fa-chevron-right text-gray-400 sm:block hidden"></i>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+
+                    <!-- ニュースの「もっと見る」ボタン -->
+                    <div class="mt-6 text-center pt-4 border-t-2 border-gray-100">
+                        <button id="toggleNewsBtn" onclick="toggleNews()" class="bg-cream hover:bg-creamDark text-black font-black text-sm md:text-base px-6 py-2.5 rounded-full border-2 border-black shadow-pop-sm inline-flex items-center gap-2 transition-all active:translate-y-1">
+                            <span id="newsBtnText">もっと見る</span>
+                            <i id="newsBtnIcon" class="fa-solid fa-chevron-down transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             SECTION 2: プロフィール & 人物 (ABOUT & PROFILE)
+             ============================================ -->
+        <section id="about" class="about-section mt-16">
+            <div class="green-polka-dot py-6 px-4 border-y-4 border-black text-center relative my-8">
+                <div class="inline-block bg-accentRed text-white font-black text-xl md:text-2xl px-8 py-3 rounded-full border-3 border-black shadow-pop-white">
+                    2. ABOUT & PROFILE <span class="text-sm font-bold block sm:inline sm:ml-2">プロフィール・人物</span>
+                </div>
+            </div>
+
+            <div class="max-w-5xl mx-auto px-4 relative">
+                <!-- 上段: 概要 & ゾウへの愛（ステッカー配置③） -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 relative z-10">
+                    
+                    <!-- アーティスト概要（天然アフロステッカー） -->
+                    <div class="about-card-profile bg-white border-4 border-black rounded-3xl p-6 md:p-8 shadow-pop card-hover-pop relative overflow-visible">
+                        <!-- 🐘 ステッカー 3-A: 青アフロ象（「天然アフロ」） -->
+                        <img src="images/zou04.png" alt="天然アフロ" 
+                             class="sticker-shadow absolute -top-6 -right-4 w-20 md:w-24 z-20 rotate-[10deg] hover:rotate-0 hover:scale-110 cursor-pointer">
+
+                        <div class="flex items-center gap-3 mb-4 border-b-3 border-black pb-3">
+                            <span class="w-8 h-8 bg-accentRed text-white rounded-full flex items-center justify-center font-black border border-black">P</span>
+                            <div>
+                                <h3 class="font-black text-2xl text-black">パオーンけいぞう</h3>
+                                <p class="text-xs font-extrabold text-gray-500">（ソラヘイ）</p>
+                            </div>
+                        </div>
+                        <p class="font-bold text-gray-800 leading-relaxed text-base mb-4">
+                            北海道生まれ。大学卒業後、湘南の看板屋さんで約3年間スーツを着て営業マンを経験した後に退職。現在は訓練学生として学びながら音楽活動に邁進中！<br><br>
+                            約3年前の失恋をきっかけに曲作りを開始。日常のささやかな愛おしさをポップに歌う、等身大のシンガーソングライター。
+                        </p>
+                        <div class="bg-cream border-2 border-black rounded-xl p-3 font-black text-xs text-black shadow-pop-sm flex items-center gap-2">
+                            <span class="text-lg">💡</span>
+                            <span>驚きの事実：このアフロ、パーマではなく【地毛】です！</span>
+                        </div>
+                    </div>
+
+                    <!-- ゾウ愛好家として（リアル象ステッカー） -->
+                    <div class="about-card-elephant bg-white border-4 border-black rounded-3xl p-6 md:p-8 shadow-pop card-hover-pop relative overflow-visible">
+                        <!-- 🐘 ステッカー 3-B: リアル象（ピン留め風） -->
+                        <img src="images/zou03.png" alt="リアル象" 
+                             class="sticker-shadow absolute -bottom-6 -right-4 w-24 md:w-28 z-20 -rotate-[8deg] hover:rotate-0 hover:scale-110 cursor-pointer">
+
+                        <div class="flex items-center gap-3 mb-4 border-b-3 border-black pb-3">
+                            <span class="w-8 h-8 bg-turquoise text-black rounded-full flex items-center justify-center font-black border border-black">🐘</span>
+                            <h3 class="font-black text-2xl text-black">ゾウへの愛（概念愛好）</h3>
+                        </div>
+                        <p class="font-bold text-gray-800 leading-relaxed text-base mb-4">
+                            小さい頃から「ゾウ」という概念そのものを愛しています。<br>
+                            服やお部屋のインテリアも気づけばすべて「ゾウ軸」で購入してしまうほど！いつか本物のゾウを飼うのが夢。
+                        </p>
+                        <div class="pt-2 border-t-2 border-gray-100">
+                            <p class="font-black text-xs text-gray-500 mb-2">【性格 & ムード】</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-turquoise text-black text-xs font-black px-3 py-1 rounded-full border border-black">マイペース・自由人</span>
+                                <span class="bg-yellow-300 text-black text-xs font-black px-3 py-1 rounded-full border border-black">明るいムードメーカー</span>
+                                <span class="bg-emerald-200 text-black text-xs font-black px-3 py-1 rounded-full border border-black">おだやか・癒やし系</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 下段: 詳細データ（3カラム） -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                    <!-- PERSONAL DATA -->
+                    <div class="bg-deepGreen text-white border-4 border-black rounded-3xl p-6 shadow-pop card-hover-pop">
+                        <div class="w-12 h-12 bg-turquoise text-black rounded-2xl border-2 border-black flex items-center justify-center text-2xl font-black mb-4 shadow-pop-sm">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <h4 class="inline-block bg-cream text-black font-black text-base md:text-lg px-3 py-1 rounded-xl border-2 border-black shadow-pop-sm mb-3">
+                            PERSONAL DATA
+                        </h4>
+                        <div class="font-bold text-emerald-100 text-sm leading-relaxed space-y-2">
+                            <p>🎨 <strong>バースデーカラー:</strong><br>ターコイズブルー（#49C9E3）<br><span class="text-xs text-yellow-300">色言葉：「自由」「自分のペース」</span></p>
+                            <p>🦁 <strong>ハリポタの組み分け寮:</strong><br>グリフィンドール（勇気ある者たちの寮）</p>
+                        </div>
+                    </div>
+
+                    <!-- ROOTS & INFLUENCES -->
+                    <div class="bg-deepGreen text-white border-4 border-black rounded-3xl p-6 shadow-pop card-hover-pop">
+                        <div class="w-12 h-12 bg-accentRed text-white rounded-2xl border-2 border-black flex items-center justify-center text-2xl font-black mb-4 shadow-pop-sm">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h4 class="inline-block bg-cream text-black font-black text-base md:text-lg px-3 py-1 rounded-xl border-2 border-black shadow-pop-sm mb-3">
+                            ROOTS & INFLUENCES
+                        </h4>
+                        <div class="font-bold text-emerald-100 text-xs leading-relaxed space-y-1">
+                            <p>🎵 <strong>Music:</strong> カネコアヤノ / たま / 倉内太 / 島崎智子</p>
+                            <p>🎬 <strong>Movie/Book:</strong> 『街の上で』 / 『ハリー・ポッター』 / 『ちいかわ』</p>
+                            <p>🌙 <strong>My Boom:</strong> 寝る前の「寝落ちいかわ」</p>
+                        </div>
+                    </div>
+
+                    <!-- FAVORITES -->
+                    <div class="bg-deepGreen text-white border-4 border-black rounded-3xl p-6 shadow-pop card-hover-pop">
+                        <div class="w-12 h-12 bg-yellow-400 text-black rounded-2xl border-2 border-black flex items-center justify-center text-2xl font-black mb-4 shadow-pop-sm">
+                            <i class="fa-solid fa-mug-hot"></i>
+                        </div>
+                        <h4 class="inline-block bg-cream text-black font-black text-base md:text-lg px-3 py-1 rounded-xl border-2 border-black shadow-pop-sm mb-3">
+                            FAVORITES
+                        </h4>
+                        <p class="font-bold text-emerald-100 text-xs leading-relaxed">
+                            お酒全般、カフェ巡り、サウナ後の美味しいご飯！自然の中へのお出かけや旅、筋トレや面白いアニメ鑑賞など、日常のワクワクが大好物です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             SECTION 3: 音楽 & ユニット (MUSIC & PROJECTS)
+             ============================================ -->
+        <section id="music" class="music-section mt-16">
+            <div class="green-polka-dot py-6 px-4 border-y-4 border-black text-center relative my-8">
+                <div class="inline-block bg-accentRed text-white font-black text-xl md:text-2xl px-8 py-3 rounded-full border-3 border-black shadow-pop-white">
+                    3. MUSIC & PROJECTS <span class="text-sm font-bold block sm:inline sm:ml-2">音楽・ユニット</span>
+                </div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-4">
+                
+                <!-- ① 1st アルバム 特集カード（ステッカー配置②） -->
+                <div class="music-card-album bg-white border-4 border-black rounded-3xl p-6 md:p-8 shadow-pop mb-10 relative overflow-visible">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-5 flex justify-center">
+                            <div class="relative w-full max-w-sm aspect-square bg-cream rounded-2xl border-4 border-black shadow-pop overflow-visible group">
+                                <!-- ジャケット画像 -->
+                                <img src="images/paoon-album.jpg" alt="1st アルバム『よろしくお願いします!』ジャケット" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-300">
+                                
+                                <div class="absolute top-3 left-3 bg-accentRed text-white font-black text-xs px-3 py-1 rounded-full border-2 border-black shadow-pop-sm z-10">
+                                    NOW ON SALE
+                                </div>
+
+                                <!-- 🐘 ステッカー 2-A: ギター緑象 (アルバム右下にペタッと貼る) -->
+                                <img src="images/zou02.png" alt="ギター緑象" 
+                                     class="sticker-shadow absolute -bottom-6 -right-6 w-28 md:w-36 z-20 rotate-12 hover:scale-110 cursor-pointer">
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-7">
+                            <div class="inline-block bg-turquoise text-black font-extrabold text-xs px-3 py-1 rounded-full border border-black mb-2">
+                                🐘 OFFICIAL 1st ALBUM (11 Tracks)
+                            </div>
+                            <h3 class="text-2xl md:text-4xl font-black text-black mb-3">1st アルバム『よろしくお願いします!』</h3>
+                            <p class="font-bold text-gray-700 text-sm md:text-base leading-relaxed mb-4">
+                                日常の愛おしさと切なさを、アコースティック＆ファンキーなポップサウンドに込めた全11曲入魂の1stアルバム。
+                            </p>
+                            <!-- トラックリスト -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">1 茅ヶ崎に(Short Ver.)</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">2 坊主でマツチョ</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">3 まぼろし</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">4 うまい話</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">5 春風に乗って</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">6 疲れた</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">7 飼い犬</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">8 髭を剃ったら</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">9 世界征服</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">10 スパイス風</span>
+                                <span class="bg-cream border-2 border-black text-xs font-black px-3 py-1 rounded-lg">11 ガリガリアフロ</span>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://music.apple.com/jp/album/%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99/1863607180" target="_blank" class="bg-appleMusic hover:bg-red-600 text-white font-black px-5 py-3 rounded-full border-2 border-black shadow-pop-sm flex items-center gap-2 active:translate-y-1 transition-all">
+                                    <i class="fa-brands fa-apple text-xl"></i>
+                                    <span>Apple Music で聴く</span>
+                                </a>
+                                <a href="https://soundcloud.com/9epnxcdfrv20" target="_blank" class="bg-white hover:bg-cream text-black font-black px-5 py-3 rounded-full border-2 border-black shadow-pop-sm flex items-center gap-2 active:translate-y-1 transition-all">
+                                    <i class="fa-brands fa-soundcloud text-orange-500 text-xl"></i>
+                                    <span>SoundCloud</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 埋め込みプレイヤー (Apple Music & SoundCloud) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                    <!-- Apple Music Embed -->
+                    <div class="bg-white border-4 border-black rounded-3xl p-6 shadow-pop">
+                        <div class="flex items-center justify-between gap-2 mb-4 border-b-3 border-black pb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="w-10 h-10 bg-appleMusic text-white rounded-full flex items-center justify-center font-black border-2 border-black text-xl shadow-pop-sm">
+                                    <i class="fa-brands fa-apple"></i>
+                                </span>
+                                <div>
+                                    <h3 class="font-black text-xl text-black">Apple Music Player</h3>
+                                    <p class="text-xs font-extrabold text-gray-500">1stアルバム『よろしくお願いします!』試聴 🍎</p>
+                                </div>
+                            </div>
+                            <span class="bg-red-100 text-red-600 font-black text-xs px-2.5 py-1 rounded-full border border-red-300">OFFICIAL</span>
+                        </div>
+                        
+                        <div class="rounded-2xl overflow-hidden border-3 border-black shadow-pop-sm bg-gray-50 flex items-center justify-center min-h-[175px]">
+                            <iframe 
+                                allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" 
+                                frameborder="0" 
+                                height="175" 
+                                style="width:100%;overflow:hidden;border-radius:12px;" 
+                                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" 
+                                src="https://embed.music.apple.com/jp/album/%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99/1863607180">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- SoundCloud Embed -->
+                    <div class="bg-white border-4 border-black rounded-3xl p-6 shadow-pop">
+                        <div class="flex items-center justify-between gap-2 mb-4 border-b-3 border-black pb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-black border-2 border-black text-xl shadow-pop-sm">
+                                    <i class="fa-brands fa-soundcloud"></i>
+                                </span>
+                                <div>
+                                    <h3 class="font-black text-xl text-black">SoundCloud Player</h3>
+                                    <p class="text-xs font-extrabold text-gray-500">デモ音源やシングルを聴く 🎧</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border-3 border-black shadow-pop-sm bg-black/5 min-h-[166px]">
+                            <iframe 
+                                width="100%" 
+                                height="166" 
+                                scrolling="no" 
+                                frameborder="no" 
+                                allow="autoplay" 
+                                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/9epnxcdfrv20&color=%2349c9e3&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 各種活動ユニット（ソロ / ザ ヴーギー / NOVICERO） -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- ② Solo Project -->
+                    <div class="project-card-solo bg-turquoise border-4 border-black rounded-3xl overflow-visible shadow-pop card-hover-pop flex flex-col justify-between relative">
+                        <div class="w-full h-52 bg-cream border-b-4 border-black relative overflow-hidden group rounded-t-[20px]">
+                            <img src="images/solo.webp" alt="パオーンけいぞう" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute top-3 left-3 bg-accentRed text-white font-black text-xs px-3 py-1 rounded-full border-2 border-black shadow-pop-sm">SOLO</div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <span class="font-extrabold text-xs text-black block mb-2">Acoustic Pop</span>
+                                <h3 class="font-black text-2xl text-black mb-2">パオーンけいぞう</h3>
+                                <p class="font-bold text-sm text-gray-900 mb-4 leading-relaxed">
+                                    「日常の愛おしさをポップに歌う、等身大のシンガーソング」<br>
+                                    1st アルバム『よろしくお願いします!』絶賛リリース中！
+                                </p>
+                            </div>
+                            <a href="https://www.instagram.com/paon_keizou/" target="_blank" class="w-full bg-accentRed hover:bg-accentRedDark text-white font-black py-3 rounded-xl border-2 border-black shadow-pop-sm flex items-center justify-center gap-2 transition-all active:translate-y-1">
+                                <i class="fa-brands fa-instagram text-xl"></i>
+                                <span>Instagramを見る</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ③ Band: ザ ヴーギー（ステッカー配置：赤ポップ象） -->
+                    <div class="project-card-voogie bg-pink-200 border-4 border-black rounded-3xl overflow-visible shadow-pop card-hover-pop flex flex-col justify-between relative">
+                        <!-- 🐘 ステッカー 2-B: 赤ポップ象 (カード枠から右上にはみ出させる) -->
+                        <img src="images/zou01.png" alt="赤ポップ象" 
+                             class="sticker-shadow absolute -top-6 -right-4 w-20 md:w-24 z-20 -rotate-12 hover:rotate-0 hover:scale-110 cursor-pointer">
+
+                        <div class="w-full h-52 bg-cream border-b-4 border-black relative overflow-hidden group rounded-t-[20px]">
+                            <img src="images/the-voogie.jpg" alt="ザ ヴーギー" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute top-3 left-3 bg-accentRed text-white font-black text-xs px-3 py-1 rounded-full border-2 border-black shadow-pop-sm">BAND</div>
+                            <div class="absolute bottom-3 right-3 bg-black text-white text-xs font-bold px-2.5 py-1 rounded border border-black">BAND</div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <span class="font-extrabold text-xs text-black block mb-1">Retro Pop</span>
+                                <h3 class="font-black text-2xl text-black mb-1">ザ ヴーギー</h3>
+                                <p class="font-extrabold text-xs text-purple-700 mb-2">@the_voogie</p>
+                                <p class="font-bold text-sm text-gray-900 mb-4 leading-relaxed">
+                                    「グルーヴィーで癖になる！遊び心全開のレトロポップバンド」
+                                </p>
+                            </div>
+                            <a href="https://lit.link/thevoogie" target="_blank" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-black py-3 rounded-xl border-2 border-black shadow-pop-sm flex items-center justify-center gap-2 transition-all active:translate-y-1">
+                                <i class="fa-solid fa-link text-lg"></i>
+                                <span>lit.linkを見る</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ④ Unit: NOVICERO（ステッカー配置：リアル象） -->
+                    <div class="project-card-novicero bg-cyan-200 border-4 border-black rounded-3xl overflow-visible shadow-pop card-hover-pop flex flex-col justify-between relative">
+                        <!-- 🐘 ステッカー 2-C: リアル象 (カード枠から右上にはみ出させる) -->
+                        <img src="images/zou03.png" alt="リアル象" 
+                             class="sticker-shadow absolute -top-6 -right-4 w-20 md:w-24 z-20 rotate-12 hover:rotate-0 hover:scale-110 cursor-pointer">
+
+                        <div class="w-full h-52 bg-cream border-b-4 border-black relative overflow-hidden group rounded-t-[20px]">
+                            <img src="images/novicero.jpg" alt="NOVICERO" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute top-3 left-3 bg-accentRed text-white font-black text-xs px-3 py-1 rounded-full border-2 border-black shadow-pop-sm">UNIT </div>
+                            <div class="absolute bottom-3 right-3 bg-black text-white text-xs font-bold px-2.5 py-1 rounded border border-black">TWIN UNIT</div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <span class="font-extrabold text-xs text-black block mb-1">Experimental</span>
+                                <h3 class="font-black text-2xl text-black mb-1">NOVICERO</h3>
+                                <p class="font-extrabold text-xs text-teal-700 mb-2">@novi_cero</p>
+                                <p class="font-bold text-sm text-gray-900 mb-4 leading-relaxed">
+                                    「爽快なメロディと実験的サウンドが交差するツインユニット」
+                                </p>
+                            </div>
+                            <a href="https://www.instagram.com/novi_cero/" target="_blank" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-black py-3 rounded-xl border-2 border-black shadow-pop-sm flex items-center justify-center gap-2 transition-all active:translate-y-1">
+                                <i class="fa-brands fa-instagram text-xl"></i>
+                                <span>Instagramを見る</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             SECTION 4: SNS & メッセージ (ONE MORE)
+             ============================================ -->
+        <section id="more" class="more-section mt-16">
+            <div class="green-polka-dot py-6 px-4 border-y-4 border-black text-center relative my-8">
+                <div class="inline-block bg-accentRed text-white font-black text-xl md:text-2xl px-8 py-3 rounded-full border-3 border-black shadow-pop-white">
+                    4. ONE MORE <span class="text-sm font-bold block sm:inline sm:ml-2">SNS・メディア</span>
+                </div>
+            </div>
+
+            <div class="max-w-5xl mx-auto px-4">
+                <!-- SNS Cards (3カラム) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Instagram -->
+                    <div class="bg-white border-4 border-black rounded-3xl p-6 shadow-pop text-center card-hover-pop flex flex-col items-center">
+                        <div class="w-28 h-28 bg-pink-100 rounded-full border-4 border-black flex items-center justify-center shadow-pop-sm mb-4 relative overflow-hidden">
+                            <i class="fa-brands fa-instagram text-5xl text-accentRed"></i>
+                        </div>
+                        <h4 class="inline-block bg-pink-100 text-black font-black text-lg px-4 py-1 rounded-full border-2 border-black shadow-pop-sm mb-3">Instagram</h4>
+                        <p class="font-bold text-sm text-gray-600 mb-6">日常のスナップ、オフショット、弾き語りショート動画を更新中！</p>
+                        <a href="https://www.instagram.com/paon_keizou/" target="_blank" class="w-full mt-auto bg-accentRed hover:bg-accentRedDark text-white font-black py-2.5 rounded-full border-2 border-black shadow-pop-sm block transition-all">
+                            インスタを見る (@paon_keizou)
+                        </a>
+                    </div>
+
+                    <!-- SoundCloud -->
+                    <div class="bg-white border-4 border-black rounded-3xl p-6 shadow-pop text-center card-hover-pop flex flex-col items-center">
+                        <div class="w-28 h-28 bg-orange-100 rounded-full border-4 border-black flex items-center justify-center shadow-pop-sm mb-4 relative overflow-hidden">
+                            <i class="fa-brands fa-soundcloud text-5xl text-orange-500"></i>
+                        </div>
+                        <h4 class="inline-block bg-orange-100 text-black font-black text-lg px-4 py-1 rounded-full border-2 border-black shadow-pop-sm mb-3">SoundCloud</h4>
+                        <p class="font-bold text-sm text-gray-600 mb-6">未発表デモ音源やアイデアスケッチ、BGMトラックを無料公開！</p>
+                        <a href="https://on.soundcloud.com/Uo6oO6vZeMWH9hdohA" target="_blank" class="w-full mt-auto bg-orange-500 hover:bg-orange-600 text-white font-black py-2.5 rounded-full border-2 border-black shadow-pop-sm block transition-all">
+                            音源を聞く
+                        </a>
+                    </div>
+
+                    <!-- note -->
+                    <div class="bg-white border-4 border-black rounded-3xl p-6 shadow-pop text-center card-hover-pop flex flex-col items-center">
+                        <div class="w-28 h-28 bg-emerald-100 rounded-full border-4 border-black flex items-center justify-center shadow-pop-sm mb-4 relative overflow-hidden">
+                            <i class="fa-solid fa-pen-nib text-5xl text-emerald-600"></i>
+                        </div>
+                        <h4 class="inline-block bg-emerald-100 text-black font-black text-lg px-4 py-1 rounded-full border-2 border-black shadow-pop-sm mb-3">note</h4>
+                        <p class="font-bold text-sm text-gray-600 mb-6">楽曲の制作裏話、コラム、日々の思考を綴った長編エッセイ。</p>
+                        <a href="https://note.com/lush_tern5889" target="_blank" class="w-full mt-auto bg-emerald-600 hover:bg-emerald-700 text-white font-black py-2.5 rounded-full border-2 border-black shadow-pop-sm block transition-all">
+                            記事を読む
+                        </a>
+                    </div>
+                </div>
+
+                <!-- メッセージカード (MESSAGE FROM PAOON KEIZO) -->
+                <div class="message-card bg-white border-4 border-black rounded-3xl p-8 md:p-12 shadow-pop relative speech-bubble mb-16">
+                    <div class="absolute -top-6 left-8 bg-accentRed text-white font-black text-sm px-4 py-1 rounded-full border-2 border-black shadow-pop-sm">
+                        MESSAGE FROM PAOON KEIZO
+                    </div>
+
+                    <h3 class="font-black text-2xl md:text-3xl text-black mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-quote-left text-accentRed"></i>
+                        <span>屋根の色は、自分で決める。</span>
+                    </h3>
+
+                    <p class="font-bold text-gray-800 text-base md:text-lg leading-relaxed mb-8">
+                        街を見渡すと、いろんな色の屋根がある。<br>
+                        赤や青やグレー、誰かが決めたわけじゃなく、住む人が選んだ色だ。<br><br>
+                        僕たちの音楽や生き方も同じでいいはず。誰かに決められたルールに縛られる必要なんてない。<br>
+                        自分のペースで、好きな音を鳴らしていく。<br>
+                        このサイトに来てくれたあなたの日常が、少しだけ楽しく、軽やかになりますように。<br><br>
+                        ライブやイベントのご相談はもちろん、「アフロを見に来たよ！」という気軽なメッセージも大歓迎です。どんなことでも、お気軽にお声がけください！
+                    </p>
+
+<!-- 署名部分：テキストから手書きサイン画像へ変更 -->
+    <div class="signature">
+      <img src="images/sign.png" alt="パオーン けいぞう サイン" class="sign-image">
+    </div>
+  </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================
+             SECTION 5: お問い合わせ (CONTACT ME)
+             ============================================ -->
+        <section id="contact" class="contact-section mt-16">
+            <div class="bg-turquoise border-y-4 md:border-4 md:rounded-3xl border-black py-10 px-4 shadow-pop-lg max-w-5xl mx-auto">
+                <div class="text-center py-4 mb-6 overflow-hidden">
+                    <h2 class="font-black text-4xl sm:text-6xl md:text-7xl text-white tracking-widest pop-text-3d uppercase transform -rotate-2 select-none">
+                        CONTACT ME !!!
+                    </h2>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-cream border-3 border-black rounded-2xl p-6 md:p-10 shadow-pop text-center">
+                        <div class="inline-block bg-accentRed text-white font-black text-base md:text-xl px-6 py-2 rounded-full border-2 border-black shadow-pop-sm mb-4">
+                            OFFICIAL CONTACT & OFFER
+                        </div>
+
+                        <p class="font-black text-xl md:text-2xl text-black mb-2">
+                            ご依頼、チケット予約、メッセージはこちらから
+                        </p>
+
+                        <!-- アクションボタン一覧 -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mt-6">
+                            <!-- チケット予約 -->
+                            <button onclick="openContactModal('ticket')" class="bg-accentRed hover:bg-accentRedDark text-white font-black text-sm md:text-base p-4 rounded-2xl border-3 border-black shadow-pop hover:shadow-pop-lg transition-all active:translate-y-1 flex flex-col items-center justify-center gap-2 group">
+                                <i class="fa-solid fa-ticket text-3xl text-yellow-300 group-hover:scale-110 transition-transform"></i>
+                                <span>🎫 チケット予約フォーム</span>
+                            </button>
+
+                            <!-- お仕事のご依頼 -->
+                            <button onclick="openContactModal('offer')" class="bg-deepGreen hover:bg-deepGreenLight text-white font-black text-sm md:text-base p-4 rounded-2xl border-3 border-black shadow-pop hover:shadow-pop-lg transition-all active:translate-y-1 flex flex-col items-center justify-center gap-2 group">
+                                <i class="fa-solid fa-paper-plane text-3xl text-yellow-400 group-hover:scale-110 transition-transform"></i>
+                                <span>✉️ 出演依頼・お仕事フォーム</span>
+                            </button>
+
+                            <!-- Instagram DM -->
+                            <a href="https://www.instagram.com/paon_keizou/" target="_blank" class="bg-deepGreen hover:bg-deepGreenLight text-white font-black text-sm md:text-base p-4 rounded-2xl border-3 border-black shadow-pop hover:shadow-pop-lg transition-all active:translate-y-1 flex flex-col items-center justify-center gap-2 group">
+                                <i class="fa-brands fa-instagram text-3xl text-turquoise group-hover:scale-110 transition-transform"></i>
+                                <span>💬 Instagram DM連絡</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ============================================
+         フッター (FOOTER)
+         ============================================ -->
+    <footer id="site-footer" class="bg-accentRed border-t-4 border-black text-white py-12 px-4">
+        <div class="max-w-5xl mx-auto flex flex-col items-center text-center">
+            <!-- フッター内 SNSアイコン -->
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="https://www.instagram.com/paon_keizou/" target="_blank" class="w-12 h-12 bg-white border-2 border-black rounded-full flex items-center justify-center text-2xl text-black shadow-pop-sm hover:bg-turquoise hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://on.soundcloud.com/Uo6oO6vZeMWH9hdohA" target="_blank" class="w-12 h-12 bg-white border-2 border-black rounded-full flex items-center justify-center text-2xl text-black shadow-pop-sm hover:bg-turquoise hover:text-white transition-all"><i class="fa-brands fa-soundcloud"></i></a>
+                <a href="https://music.apple.com/jp/artist/%E3%83%91%E3%82%AA%E3%83%BC%E3%83%B3%E3%81%91%E3%81%84%E3%81%9E%E3%81%86/1787007370" target="_blank" class="w-12 h-12 bg-white border-2 border-black rounded-full flex items-center justify-center text-2xl text-black shadow-pop-sm hover:bg-appleMusic hover:text-white transition-all"><i class="fa-brands fa-apple"></i></a>
+                <a href="https://note.com/lush_tern5889" target="_blank" class="w-12 h-12 bg-white border-2 border-black rounded-full flex items-center justify-center text-2xl text-black shadow-pop-sm hover:bg-turquoise hover:text-white transition-all"><i class="fa-solid fa-book-open"></i></a>
+            </div>
+
+            <!-- フッター ナビゲーション -->
+            <nav class="flex flex-wrap justify-center gap-4 md:gap-8 font-bold text-sm md:text-base mb-6">
+                <a href="#news" class="hover:underline">LIVE / NEWS</a>
+                <a href="#about" class="hover:underline">ABOUT</a>
+                <a href="#music" class="hover:underline">MUSIC</a>
+                <a href="#more" class="hover:underline">ONE MORE</a>
+                <a href="#contact" class="hover:underline">CONTACT</a>
+            </nav>
+
+            <span class="font-black text-3xl md:text-4xl tracking-wider text-white drop-shadow-[0_2px_0_#000] mb-4">
+                パオーンけいぞう
+            </span>
+            <p class="font-bold text-sm text-red-100">
+                &copy; 2026 PAOON KEIZO / SORAHEI. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- ============================================
+         モーダル 1: ニュース詳細モーダル
+         ============================================ -->
+    <div id="newsModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div id="newsModalBox" class="bg-cream border-4 border-black rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-pop-lg relative transform scale-90 transition-transform duration-300">
+            <button onclick="closeNewsModal()" class="absolute -top-4 -right-4 w-10 h-10 bg-accentRed text-white rounded-full border-2 border-black font-bold shadow-pop-sm flex items-center justify-center hover:scale-110 transition-transform">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <span id="newsModalDate" class="font-extrabold text-gray-500 text-xs">2026.00.00</span>
+                    <span id="newsModalTag" class="bg-accentRed text-white text-xs font-black px-3 py-1 rounded-full border border-black">LIVE</span>
+                </div>
+                <h3 id="newsModalTitle" class="font-black text-xl md:text-2xl text-black mb-4 leading-tight">ニュースタイトル</h3>
+                <div id="newsModalContent" class="font-bold text-sm md:text-base text-gray-800 bg-white p-4 rounded-2xl border-2 border-black shadow-pop-sm leading-relaxed mb-6">
+                    ニュースの詳細内容がここに入ります。
+                </div>
+                <div class="text-center">
+                    <button onclick="closeNewsModal()" class="bg-gray-200 hover:bg-gray-300 text-black font-black px-6 py-2.5 rounded-full border-2 border-black shadow-pop-sm text-sm">
+                        閉じる
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================
+         モーダル 2: 楽曲試聴モーダル
+         ============================================ -->
+    <div id="audioModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div id="audioModalBox" class="bg-cream border-4 border-black rounded-3xl p-6 md:p-8 max-w-md w-full shadow-pop-lg relative transform scale-90 transition-transform duration-300">
+            <button onclick="closeAudioModal()" class="absolute -top-4 -right-4 w-10 h-10 bg-accentRed text-white rounded-full border-2 border-black font-bold shadow-pop-sm flex items-center justify-center hover:scale-110 transition-transform">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center">
+                <div class="w-28 h-28 mx-auto mb-4 relative rounded-2xl border-3 border-black overflow-hidden shadow-pop bg-white">
+                    <img id="audioModalImg" src="images/paoon-album.jpg" onerror="this.onerror=null; this.src='https://placehold.co/300x300/FFFDE7/004C34?text=MUSIC';" alt="Cover Art" class="w-full h-full object-cover">
+                </div>
+                <span id="audioModalTag" class="bg-orange-500 text-white text-xs font-black px-3 py-1 rounded-full border border-black"><i class="fa-brands fa-apple mr-1"></i>1st ALBUM 『よろしくお願いします!』</span>
+                <h3 id="audioModalTitle" class="font-black text-2xl text-black my-2">よろしくお願いします!</h3>
+                <p id="audioModalDesc" class="font-bold text-sm text-gray-700 mb-4">『髭を剃ったら』『世界征服』『ガリガリアフロ』など全11曲収録</p>
+
+                <div class="flex justify-center gap-3">
+                    <a href="https://music.apple.com/jp/album/%E3%82%88%E3%82%8D%E3%81%97%E3%81%8F%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99/1863607180" target="_blank" class="bg-appleMusic hover:bg-red-600 text-white font-black px-4 py-2.5 rounded-full border-2 border-black shadow-pop-sm flex items-center gap-2 text-xs transition-all">
+                        <i class="fa-brands fa-apple text-base"></i>
+                        <span>Apple Music</span>
+                    </a>
+                    <a href="https://soundcloud.com/9epnxcdfrv20" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-black px-4 py-2.5 rounded-full border-2 border-black shadow-pop-sm flex items-center gap-2 text-xs transition-all">
+                        <i class="fa-brands fa-soundcloud text-base"></i>
+                        <span>SoundCloud</span>
+                    </a>
+                    <button onclick="closeAudioModal()" class="bg-gray-200 text-black font-black px-4 py-2.5 rounded-full border-2 border-black shadow-pop-sm hover:bg-gray-300 text-xs">
+                        閉じる
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================
+         モーダル 3: お問い合わせ & チケット予約フォーム
+         ============================================ -->
+    <div id="contactModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div class="bg-cream border-4 border-black rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-pop-lg relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 w-10 h-10 bg-accentRed text-white rounded-full border-2 border-black font-bold shadow-pop-sm flex items-center justify-center hover:scale-110 z-10">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <h3 id="modalHeaderTitle" class="font-black text-2xl text-black mb-2">お問い合わせ・各種フォーム</h3>
+            <p id="modalHeaderDesc" class="font-bold text-gray-700 text-sm mb-6">下記フォームより必要事項をご入力の上、送信してください。</p>
+
+            <form onsubmit="alert('送信が完了しました！お問い合わせありがとうございます。'); closeContactModal(); return false;" class="space-y-4 text-left">
+                <div>
+                    <label class="block font-black text-xs text-black mb-1">お問い合わせ種別</label>
+                    <select id="contactTypeSelect" class="w-full bg-white border-2 border-black rounded-xl p-2.5 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-accentRed">
+                        <option value="offer">✉️ 出演依頼・取材・お仕事</option>
+                        <option value="ticket">🎫 ライブチケット取り置き予約</option>
+                        <option value="other">💬 その他メッセージ</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-black text-xs text-black mb-1">お名前 / 貴社名 <span class="text-accentRed">*</span></label>
+                    <input type="text" required placeholder="例：パオーン 太郎" class="w-full bg-white border-2 border-black rounded-xl p-2.5 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-accentRed">
+                </div>
+
+                <div>
+                    <label class="block font-black text-xs text-black mb-1">メールアドレス <span class="text-accentRed">*</span></label>
+                    <input type="email" required placeholder="example@email.com" class="w-full bg-white border-2 border-black rounded-xl p-2.5 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-accentRed">
+                </div>
+
+                <div>
+                    <label class="block font-black text-xs text-black mb-1">メッセージ / ご予約公演名・枚数 <span class="text-accentRed">*</span></label>
+                    <textarea required rows="4" placeholder="チケット予約の場合は「公演日・公演名・希望枚数」をご記入ください。" class="w-full bg-white border-2 border-black rounded-xl p-2.5 font-bold text-sm focus:outline-none focus:ring-2 focus:ring-accentRed"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-accentRed hover:bg-accentRedDark text-white font-black py-3 rounded-full border-2 border-black shadow-pop-sm transition-transform active:translate-y-1">
+                    送信する
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // --- モバイルメニュー制御 ---
+        const menuBtn = document.getElementById('btn-open-menu');
+        const closeMenuBtn = document.getElementById('btn-close-menu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuContent = document.getElementById('mobileMenuContent');
+
+        menuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+            mobileMenuContent?.classList.remove('translate-x-full');
+        });
+
+        closeMenuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+            mobileMenuContent?.classList.add('translate-x-full');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenuContent?.classList.add('translate-x-full');
+            });
+        });
+
+        // --- 過去ニュース アコーディオン展開/格納 ---
+        function toggleNews() {
+            const moreNews = document.getElementById('moreNews');
+            const btnText = document.getElementById('newsBtnText');
+            const btnIcon = document.getElementById('newsBtnIcon');
+
+            if (moreNews.classList.contains('hidden')) {
+                moreNews.classList.remove('hidden');
+                btnText.innerText = '閉じる';
+                btnIcon.classList.remove('fa-chevron-down');
+                btnIcon.classList.add('fa-chevron-up');
+            } else {
+                moreNews.classList.add('hidden');
+                btnText.innerText = 'もっと見る';
+                btnIcon.classList.remove('fa-chevron-up');
+                btnIcon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // --- ニュース詳細 モーダル制御 ---
+        function openNewsModal(element) {
+            const modal = document.getElementById('newsModal');
+            const modalBox = document.getElementById('newsModalBox');
+            
+            const title = element.getAttribute('data-title');
+            const date = element.getAttribute('data-date');
+            const tag = element.getAttribute('data-tag');
+            const tagClass = element.getAttribute('data-tag-class') || 'bg-accentRed text-white';
+            const content = element.getAttribute('data-content');
+
+            document.getElementById('newsModalTitle').innerText = title;
+            document.getElementById('newsModalDate').innerText = date;
+            
+            const tagElem = document.getElementById('newsModalTag');
+            tagElem.innerText = tag;
+            tagElem.className = `text-xs font-black px-3 py-1 rounded-full border border-black ${tagClass}`;
+            
+            document.getElementById('newsModalContent').innerText = content;
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalBox?.classList.remove('scale-90');
+        }
+
+        function closeNewsModal() {
+            const modal = document.getElementById('newsModal');
+            const modalBox = document.getElementById('newsModalBox');
+            
+            modalBox?.classList.add('scale-90');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // --- 楽曲試聴 モーダル制御 ---
+        function playSampleTrack(key) {
+            const modal = document.getElementById('audioModal');
+            const title = document.getElementById('audioModalTitle');
+            const desc = document.getElementById('audioModalDesc');
+            const tag = document.getElementById('audioModalTag');
+
+            if (key === 'voogie') {
+                title.innerText = 'ザ ヴーギー';
+                desc.innerText = 'グルーヴィーで癖になるレトロポップサウンド！';
+                tag.innerHTML = '<i class="fa-solid fa-music mr-1"></i>BAND / ザ ヴーギー';
+            } else if (key === 'novicero') {
+                title.innerText = 'NOVICERO';
+                desc.innerText = '爽快なメロディと実験的サウンドが交差するツインユニット！';
+                tag.innerHTML = '<i class="fa-solid fa-music mr-1"></i>UNIT / NOVICERO';
+            } else {
+                title.innerText = 'よろしくお願いします!';
+                desc.innerText = '『髭を剃ったら』『世界征服』『ガリガリアフロ』など全11曲収録';
+                tag.innerHTML = '<i class="fa-brands fa-apple mr-1"></i>1st ALBUM 『よろしくお願いします!』';
+            }
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeAudioModal() {
+            const modal = document.getElementById('audioModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // --- お問い合わせ モーダル制御 ---
+        function openContactModal(type) {
+            const modal = document.getElementById('contactModal');
+            const select = document.getElementById('contactTypeSelect');
+            if (type && select) {
+                select.value = type;
+            }
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.add('opacity-0', 'pointer-events-none');
+        }
+    </script>
+</body>
+</html>

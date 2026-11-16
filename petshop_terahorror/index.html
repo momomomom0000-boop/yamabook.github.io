@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ペットショップ・テラ | いっしょに暮らす、よろこびを。</title>
+  <meta name="description" content="いっしょに暮らす、よろこびを。ワンちゃん・ねこちゃん・鳥さんが、あなたのお迎えを待っています！">
+  <link id="favicon" rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+  
+  <style>
+    /* ==========================================================================
+       1. 基本スタイル & カラーパレット定義（表向きのサイト）
+       ========================================================================== */
+    :root {
+      --primary-color: #59B292;   /* メインカラー：安心感のあるグリーン */
+      --secondary-color: #FFC94D; /* アクセント：イエロー */
+      --bg-color: #FAE7CB;        /* ベースカラー：生成りベージュ */
+      --accent-color: #FA6781;     /* ポイント：コーラルピンク */
+      --text-color: #4A3E3D;
+      --card-bg: #FFFFFF;
+      --font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    }
+
+    /* 非常警告（ホラーモード）発動時のカラーオーバーライド */
+    body.horror-mode {
+      --primary-color: #1a0505;
+      --secondary-color: #8b0000;
+      --bg-color: #050505;
+      --accent-color: #ff0000;
+      --text-color: #d1c7c7;
+      --card-bg: #110909;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      line-height: 1.8;
+      font-size: 16px;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      position: relative;
+    }
+
+    /* ドラッグ（選択）で浮き出る隠しテキスト演出 */
+    ::selection {
+      background-color: #8b0000;
+      color: #ffffff;
+    }
+
+    .hidden-note {
+      color: transparent;
+      user-select: text;
+      font-size: 0.85rem;
+      transition: color 0.3s;
+    }
+
+    body.horror-mode .hidden-note {
+      color: #ff3333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 共通見出し */
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    body.horror-mode .section-title {
+      color: #ff0000;
+      text-shadow: 2px 0 #00ffff, -2px 0 #ff0000;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+
+    /* 深夜2時リアルタイム緊急アナウンスバー */
+    .night-alert-bar {
+      display: none;
+      background: #8b0000;
+      color: #fff;
+      text-align: center;
+      padding: 8px 10px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      animation: pulseAlert 2s infinite;
+    }
+
+    @keyframes pulseAlert {
+      0% { background: #8b0000; }
+      50% { background: #ff0000; }
+      100% { background: #8b0000; }
+    }
+
+    /* ==========================================================================
+       2. ヘッダー & ナビゲーション
+       ========================================================================== */
+    .site-header {
+      background-color: var(--primary-color);
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background-color 0.5s;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-container {
+      background-color: #FFFFFF;
+      border-radius: 50px;
+      padding: 6px 20px;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s;
+    }
+
+    .logo-container:active {
+      transform: scale(0.95);
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #59B292;
+    }
+
+    body.horror-mode .logo-text {
+      color: #8b0000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+
+    .header-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-toggle {
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+    .btn-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-guide {
+      background-color: #4a3b5c;
+      color: #fff;
+      border: 1px solid #a88bc4;
+    }
+
+    .btn-badge {
+      background-color: #ff9900;
+      color: #111;
+    }
+
+    /* ==========================================================================
+       3. メインビジュアル & コンテンツエリア
+       ========================================================================== */
+    .hero {
+      background-color: var(--card-bg);
+      padding: 35px 0;
+      text-align: center;
+      border-bottom: 4px solid var(--secondary-color);
+      transition: background-color 0.5s;
+    }
+
+    .hero-catch {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 2px solid var(--secondary-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      background: #000;
+    }
+
+    .hero-img-wrapper img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.5s, opacity 0.5s;
+    }
+
+    body.horror-mode .hero-img-wrapper img {
+      filter: grayscale(0.8) contrast(1.4) brightness(0.7);
+    }
+
+    .counter-banner {
+      background: var(--card-bg);
+      border: 2px solid var(--primary-color);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      margin: 25px 0;
+      font-weight: bold;
+    }
+
+    .news-card, .qa-section, .form-section, .info-section {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .news-list {
+      list-style: none;
+    }
+
+    .news-item {
+      padding: 12px 0;
+      border-bottom: 1px dashed #ccc;
+      display: flex;
+      gap: 15px;
+      align-items: baseline;
+    }
+
+    .news-date {
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    body.horror-mode .news-date {
+      color: #ff3333;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card, .staff-card, .review-card, .ranking-card {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      border: 2px solid var(--secondary-color);
+      transition: background-color 0.5s;
+      position: relative;
+    }
+
+    .ranking-card {
+      cursor: pointer;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .ranking-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent-color);
+      color: #fff;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      z-index: 2;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 15px 0 10px;
+      display: block;
+      transition: filter 0.5s, transform 0.3s;
+      background: #f0e2cf;
+    }
+
+    .ranking-card:hover .card-img {
+      transform: scale(1.02);
+    }
+
+    body.horror-mode .card-img {
+      filter: grayscale(0.85) contrast(1.5) brightness(0.65);
+    }
+
+    .status-param {
+      display: none;
+      font-size: 0.75rem;
+      color: #ff3333;
+      font-family: monospace;
+      margin-top: 8px;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    body.horror-mode .status-param {
+      display: block;
+    }
+
+    .qa-item {
+      margin-bottom: 20px;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 15px;
+    }
+
+    .qa-q {
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    body.horror-mode .qa-q {
+      color: #ff3333;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: var(--card-bg);
+      color: var(--text-color);
+    }
+
+    .btn-submit {
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       4. CRT走査線, モーダル, トースト
+       ========================================================================== */
+    .crt-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      background-size: 100% 4px, 6px 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    body.horror-mode .crt-overlay {
+      display: block;
+    }
+
+    body.glitch-shake {
+      animation: shake 0.2s cubic-bezier(.36,.07,.19,.97) both;
+    }
+
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-2px, 1px, 0); }
+      20%, 80% { transform: translate3d(3px, -2px, 0); }
+      30%, 50%, 70% { transform: translate3d(-4px, 2px, 0); }
+    }
+
+    .toast-notification {
+      position: fixed;
+      bottom: -100px;
+      right: 20px;
+      background: #111;
+      border: 2px solid #ff9900;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(255, 153, 0, 0.4);
+      z-index: 2000;
+      transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .toast-notification.show {
+      bottom: 20px;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-close {
+      color: #ff0000;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .terminal-window {
+      width: 90%;
+      max-width: 700px;
+      height: 450px;
+      background: #080808;
+      border: 2px solid #00ff00;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Courier New', Courier, monospace;
+      color: #00ff00;
+      padding: 15px;
+    }
+
+    .terminal-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #00ff00;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .terminal-output {
+      flex-grow: 1;
+      overflow-y: auto;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      margin-bottom: 10px;
+    }
+
+    .terminal-input-line {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .terminal-input {
+      background: transparent;
+      border: none;
+      color: #00ff00;
+      font-family: inherit;
+      font-size: 1rem;
+      flex-grow: 1;
+      outline: none;
+    }
+
+    .cctv-window {
+      width: 90%;
+      max-width: 650px;
+      background: #111;
+      border: 2px solid #ff3333;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+      border-radius: 8px;
+      padding: 15px;
+      color: #ff3333;
+      font-family: monospace;
+      text-align: center;
+    }
+
+    .cctv-screen {
+      width: 100%;
+      height: 300px;
+      background: #000;
+      margin: 10px 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #444;
+    }
+
+    #cctvCanvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .cctv-hud {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 0.8rem;
+      text-align: left;
+      color: #00ff00;
+    }
+
+    .badge-window {
+      width: 90%;
+      max-width: 620px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background: #110909;
+      border: 2px solid #ff9900;
+      padding: 25px;
+      border-radius: 12px;
+      color: #fff;
+    }
+
+    .guide-window {
+      border-color: #a88bc4;
+      box-shadow: 0 0 20px rgba(168, 139, 196, 0.3);
+    }
+
+    .guide-section {
+      background: #1a1024;
+      border: 1px solid #3c2a52;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .guide-section h4 {
+      color: #d4bbf2;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      border-bottom: 1px dashed #5a3d7d;
+      padding-bottom: 4px;
+    }
+
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #221111;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #442222;
+    }
+
+    .badge-item.unlocked {
+      border-color: #ff9900;
+      background: #332200;
+    }
+
+    .badge-icon {
+      font-size: 2rem;
+      filter: grayscale(1);
+      opacity: 0.4;
+    }
+
+    .badge-item.unlocked .badge-icon {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+
+    /* レスポンシブ */
+    @media screen and (max-width: 800px) {
+      .grid-4, .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .grid-4, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深夜2時緊急警告バー -->
+  <div class="night-alert-bar" id="nightAlertBar">
+    🚨 【現在時刻: 02:00 AM】全個体の一斉周波数受信が進行中。絶対に部屋の外に出ないでください。
+  </div>
+
+  <div class="crt-overlay"></div>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-container" title="5回連続クリックで...?" onclick="handleCardClick('logo')">
+        <span class="logo-text" id="logoText">petshop-tera</span>
+      </div>
+      
+      <ul class="nav-links">
+        <li><a href="#news">お知らせ</a></li>
+        <li><a href="#pets">管理個体</a></li>
+        <li><a href="#qa">注意事項</a></li>
+        <li><a href="#adoption">お迎え窓口</a></li>
+      </ul>
+
+      <div class="header-controls">
+        <button class="btn-toggle btn-guide" onclick="openGuideModal()">📖 調査ガイド</button>
+        <button class="btn-toggle btn-badge" onclick="openBadgeModal()">🏆 実績 (<span id="badgeCount">0</span>/10)</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- メインビジュアル -->
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-catch" id="heroCatch">いっしょに暮らす、よろこびを。</div>
+        <div class="hero-img-wrapper">
+          <img id="heroImg" src="petshop_main_visual.jpg" alt="ペットショップ・テラ メインビジュアル">
+          <span class="hidden-note" style="position: absolute; bottom: 12px; right: 15px; background: rgba(0,0,0,0.75); color: transparent; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem;">※右奥の給餌室ケージ内（カメラ04）の監視映像と同期中</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- リアルタイムカウンター -->
+    <section class="container">
+      <div class="counter-banner">
+        <span>🐾 全国でお迎え・譲渡完了された累計個体数： <span style="color:var(--accent-color); font-size:1.4rem;">4,109</span> 体</span>
+        <div style="font-size:0.85rem; color:#777; margin-top:4px;">（※本日のお届け可能残り枠：<span style="color:#ff0000; font-weight:bold;">あと1世帯［あなた］</span>）</div>
+      </div>
+    </section>
+
+    <!-- ペットショップ・テラの想い -->
+    <section class="container" style="margin-bottom: 40px;">
+      <div style="background: var(--card-bg); padding: 30px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <h2 class="section-title" id="conceptTitle">ペットショップ・テラの想い</h2>
+        <p id="conceptText">
+          ペットショップ・テラでは、動物を家族に迎えた後も飼い主様が止むを得ず手放さないで済むよう全力でサポートいたします。初めての方でも安心して動物を迎えられます。
+          <span class="hidden-note">【警告】失踪したアルバイト・ミホのメモ：店長の話を信じないで。あの子たちは動物じゃない。夜中に人間の声を真似し始めたら終わりです。</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 1. NEWS -->
+    <section class="container" id="news">
+      <div class="news-card">
+        <h2 class="section-title">NEWS &amp; お知らせ</h2>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">10/04</span>
+            <div>
+              <strong>秋のお迎え感謝フェア＆手放さない飼育相談会のお知らせ</strong>
+              <span class="hidden-note">（※10/01 柴犬個体#001の不審な夜間発声に関する緊急通達を発令）</span>
+            </div>
+          </li>
+          <li class="news-item">
+            <span class="news-date">09/28</span>
+            <div>
+              <strong>専用フード「テラ・プレミアム」新発売＆定期配送のご案内</strong>
+              <span class="hidden-note">（※09/28 アルバイト・ミホの無断欠勤および捜索願の提出について）</span>
+            </div>
+          </li>
+          <li class="news-item">
+            <span class="news-date">09/18</span>
+            <div>
+              <strong>子犬・子猫ふれあいコーナー（※カメラ撮影禁止ルール改定）</strong>
+              <span class="hidden-note">（※09/15 近隣住民の失踪に伴い、深夜02時台の一斉受信営業へ移行）</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2. 当店の4つの安心保証サポート -->
+    <section class="container" style="margin-bottom: 40px;">
+      <h2 class="section-title">テラが誇る 4つの安心保証</h2>
+      <div class="grid-4">
+        <div class="feature-card"><div class="card-icon">🏠</div><h3 style="font-size:1.05rem;">終生お預かり保証</h3><p style="font-size:0.85rem; margin-top:8px;">手放させない手厚いサポートを実施。（※置換完了まで責任管理）</p></div>
+        <div class="feature-card"><div class="card-icon">🧬</div><h3 style="font-size:1.05rem;">適応度チェック</h3><p style="font-size:0.85rem; margin-top:8px;">ご家族の骨格・音声を事前検査。（※模倣精度99%を保証）</p></div>
+        <div class="feature-card"><div class="card-icon">🥫</div><h3 style="font-size:1.05rem;">専用フード定期便</h3><p style="font-size:0.85rem; margin-top:8px;">健やかな成長を支える専用食。（※思考鈍化成分配合）</p></div>
+        <div class="feature-card"><div class="card-icon">🚚</div><h3 style="font-size:1.05rem;">深夜直接お届け便</h3><p style="font-size:0.85rem; margin-top:8px;">ご自宅の鍵を解錠してお待ちください。（※本日02:00お届け）</p></div>
+      </div>
+    </section>
+
+    <!-- 3. 生体人気ランキング -->
+    <section class="container ranking" id="pets" style="margin-bottom: 40px;">
+      <h2 class="section-title">当店取扱・管理個体</h2>
+      <div class="grid-4">
+        
+        <!-- 1号個体 ルナ -->
+        <div class="ranking-card" onclick="handleCardClick('luna')">
+          <div class="ranking-badge">1号個体</div>
+          <img src="dog.jpg" alt="1号個体 柴犬（ルナ）" class="card-img" id="imgLuna" onclick="clickPetPhoto(event, 'luna')">
+          <h3 style="font-size: 1.1rem;" id="card1Name">ワンちゃん（ルナ）</h3>
+          <p style="font-size: 0.85rem; margin-top: 5px;">人の言葉に強い関心を示します。</p>
+          <div class="status-param">分 類：フェーズ3（模倣完了）<br>適応度：99%<br>特 記事項：夜間の会話応答禁止</div>
+        </div>
+
+        <!-- ねこちゃん -->
+        <div class="ranking-card" onclick="handleCardClick('cat')">
+          <div class="ranking-badge">猫</div>
+          <img src="cat.jpg" alt="ねこちゃん個体" class="card-img" onclick="clickPetPhoto(event, 'cat')">
+          <h3>ねこちゃん</h3>
+          <p style="font-size: 0.85rem; margin-top: 5px;">静かで部屋になじみます。</p>
+          <div class="status-param">分 類：フェーズ1（観察中）<br>適応度：45%<br>特 記事項：鏡の反射に異常反応</div>
+        </div>
+
+        <!-- ハムスター -->
+        <div class="ranking-card" onclick="handleCardClick('hamster')">
+          <div class="ranking-badge">小型</div>
+          <img src="hamster.jpg" alt="ハムスター個体" class="card-img" onclick="clickPetPhoto(event, 'hamster')">
+          <h3>ハムスター</h3>
+          <p style="font-size: 0.85rem; margin-top: 5px;">すばしっこく愛らしい存在。</p>
+          <div class="status-param">分 類：フェーズ0<br>適応度：12%<br>特 記事項：複数頭の集合行動に注意</div>
+        </div>
+
+        <!-- 4号個体 佐藤 -->
+        <div class="ranking-card" onclick="handleCardClick('sato')">
+          <div class="ranking-badge" style="background:#8b0000;">4号個体</div>
+          <img src="sato.jpg" alt="4号個体 大型ケージ（佐藤）" class="card-img" id="imgSato" onclick="clickPetPhoto(event, 'sato')">
+          <h3 id="card4Name">鳥さん（元スタッフ）</h3>
+          <p style="font-size: 0.85rem; margin-top: 5px;">ケージの奥で待機中。</p>
+          <div class="status-param">分 類：フェーズ2（侵食進行）<br>適応度：87%<br>特 記事項：元店員・佐藤の骨格変形</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. スタッフ紹介 -->
+    <section class="container" style="margin-bottom: 40px;">
+      <h2 class="section-title">店舗スタッフ紹介</h2>
+      <div class="grid-3">
+        <div class="staff-card">
+          <div style="font-size:2rem; margin-bottom:5px;">👨‍💼</div>
+          <h3>店長：寺田（テラダ）</h3>
+          <p style="font-size:0.85rem; margin-top:5px;">「皆様のご家庭に『馴染む』よう全力でお手伝いいたします。」</p>
+          <div class="status-param">識別：個体#000（原形質体）<br>状態：人間の皮・言語を模倣中</div>
+        </div>
+        <div class="staff-card">
+          <div style="font-size:2rem; margin-bottom:5px;">🐕</div>
+          <h3>飼育担当：佐藤（サトウ）</h3>
+          <p style="font-size:0.85rem; margin-top:5px;">「ケージの奥でドベルマンのお世話を担当しています。」</p>
+          <div class="status-param">識別：個体#004（変異体）<br>状態：ケージ内で骨格逆折れ進行</div>
+        </div>
+        <div class="staff-card">
+          <div style="font-size:2rem; margin-bottom:5px;">👩‍💼</div>
+          <h3>フロア：ミホ（失踪）</h3>
+          <p style="font-size:0.85rem; margin-top:5px;">「私を探さないで。あの子たちは動物じゃない...」</p>
+          <div class="status-param">識別：TERA-NET CPU<br>状態：生体サーバー内に脳波残留</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 飼い主様のお声 -->
+    <section class="container" style="margin-bottom: 40px;">
+      <h2 class="section-title">飼い主様からの喜びの声</h2>
+      <div class="grid-3">
+        <div class="review-card">
+          <h4 style="color:var(--primary-color);">「家族の会話が増えました」（鈴木様）</h4>
+          <p style="font-size:0.85rem; margin-top:8px;">柴犬のルナちゃんを迎えてから、夜中に家族みんながリビングに集まるようになりました。</p>
+          <div class="status-param">※鈴木家緊急ログ：家族全員の声帯ピッチが一致。全員二足歩行を停止。</div>
+        </div>
+        <div class="review-card">
+          <h4 style="color:var(--primary-color);">「静かで手がかかりません」（高橋様）</h4>
+          <p style="font-size:0.85rem; margin-top:8px;">鏡のない部屋で静かに飼育しています。日に日に夫の顔つきに似てきて愛着が湧いています。</p>
+          <div class="status-param">※高橋家ログ：本物の夫の消滅を確認。置換完了（フェーズ3）。</div>
+        </div>
+        <div class="review-card">
+          <h4 style="color:var(--primary-color);">「届くのが早くて驚きました」（田中様）</h4>
+          <p style="font-size:0.85rem; margin-top:8px;">申請した当日の深夜2時に、直接玄関を開けて届けてくれました！</p>
+          <div class="status-param">※田中家ログ：深夜02時鍵解錠により全個体侵入完了。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Q&A 飼育ルール -->
+    <section class="container qa-section" id="qa">
+      <h2 class="section-title">お迎えに際してのご注意事項</h2>
+      <div class="qa-item">
+        <div class="qa-q" onclick="clickVoiceQA()">Q. 夜間にペットが家族の声で名前を呼んできます。（※クリックで再生）</div>
+        <div>A. それは音声の模倣（オウム返し）です。ただし、**家族が寝静まっている時間帯**に呼ばれた場合は絶対に返事をせず、朝までドアを開けないでください。</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. 飼育部屋に鏡を置いても大丈夫ですか？</div>
+        <div>A. いいえ。当店の個体は鏡に映った自分の姿を見て「骨格のズレ」に気づくと、パニックを起こして変容を早める恐れがあります。鏡のない部屋で飼育してください。</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. スマホやカメラで撮影すると、顔の部分だけ真っ黒にノイズ化します。</div>
+        <div>A. 当店の個体はデジタルレンズの周波数に敏感です。撮影を続けると「レンズの向こう側にいる観察者」を認識して肉体の再構成を開始するため、写真撮影は禁止しております。</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q. 専用フード（テラ・プレミアム）を家族が誤って口にしてしまいました。</div>
+        <div>A. 問題ありません。当店のフードには飼い主様との親和性を高める成分が含まれています。数日ほどで思考の鈍化や顎骨の違和感が見られる場合がありますが、正常な適応プロセスです。</div>
+      </div>
+    </section>
+
+    <!-- 店舗概要＆アクセス -->
+    <section class="container info-section">
+      <h2 class="section-title">店舗概要＆アクセス</h2>
+      <div style="font-size:0.9rem; line-height:2;">
+        <p><strong>店名：</strong> ペットショップ・テラ 本店</p>
+        <p><strong>所在地：</strong> 東京都〇〇区... 地下『第0育成室』（旧陸軍防空壕跡地 B1F~B4F）</p>
+        <p><strong>営業時間：</strong> 09:00 〜 19:00（※深夜 02:00 〜 03:00 一斉周波数同期タイム）</p>
+        <p><strong>第一種動物取扱業：</strong> 保管・譲渡 第1004号（責任者：寺田店長）</p>
+      </div>
+    </section>
+
+    <!-- 譲渡申請フォーム -->
+    <section class="container form-section" id="adoption">
+      <h2 class="section-title">個体お迎え・譲渡申請窓口</h2>
+      <form onsubmit="submitAdoption(event)">
+        <div class="form-group">
+          <label for="userName">お名前（飼い主様）</label>
+          <input type="text" id="userName" class="form-control" placeholder="例：山田 太郎" required>
+        </div>
+        <div class="form-group">
+          <label for="userAddress">お届け先住所</label>
+          <input type="text" id="userAddress" class="form-control" placeholder="例：東京都〇〇区1-2-3" required>
+        </div>
+        <div class="form-group">
+          <label for="petChoice">希望する譲渡個体</label>
+          <select id="petChoice" class="form-control">
+            <option value="1号個体（ルナ）">1号個体（柴犬・ルナ）</option>
+            <option value="猫個体">ねこちゃん個体</option>
+            <option value="ハムスター集合体">ハムスター個体</option>
+            <option value="4号個体（佐藤）">4号個体（大型ケージ・佐藤）</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">上記内容で譲渡申請を送信する</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer style="background: var(--primary-color); color: #fff; text-align: center; padding: 30px 0; transition: background 0.5s;">
+    <div class="container">
+      <p style="font-weight: bold;">ペットショップ・テラ 管理委員会</p>
+      <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">&copy; Petshop Tera All Rights Reserved.</p>
+      <p style="font-size:0.7rem; opacity:0.3; margin-top:15px; font-family:monospace;">
+        <span onclick="openTerminal()" style="cursor:pointer;" title="裏管理プロトコル">SYSTEM: TERA-NET v4.05</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- 🏆 トースト通知 -->
+  <div class="toast-notification" id="toast">
+    <span style="font-size:1.8rem;">🏆</span>
+    <div>
+      <div style="font-size:0.75rem; color:#ff9900; font-weight:bold;">実績アンロック！</div>
+      <div id="toastTitle" style="font-weight:bold; font-size:0.95rem;">【称号名】</div>
+    </div>
+  </div>
+
+  <!-- モーダル 0: 📖 調査導入マニュアル -->
+  <div class="modal-overlay" id="guideModal" style="display: flex;">
+    <div class="badge-window guide-window">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <h3 style="color:#d4bbf2; font-size:1.3rem;">👁️ 【極秘】調査導入マニュアル</h3>
+        <span class="modal-close" onclick="closeModal('guideModal')">[X] CLOSE</span>
+      </div>
+      <div class="guide-section">
+        <h4>1. プロローグ・世界観（設定）</h4>
+        <p>一見すると温かみのあるペットショップ「テラ」。しかし、ここで扱われている動物たちは普通の生物ではありません。人間に成り代わり家庭内へ侵入する<strong>「擬態種（オルタネイト）」</strong>です。元スタッフ・佐藤の融合やアルバイト・ミホの失踪など、サイトの裏に隠された真実を解き明かしてください。</p>
+      </div>
+      <div class="guide-section">
+        <h4>2. あなた（閲覧者）の目的</h4>
+        <p>1. サイトの表面に潜む異変（不自然なQ&amp;Aやドラッグ隠し文字）を見つける。<br>
+           2. 隠しツール（CLI端末や監視カメラ）を起動して裏データを閲覧する。<br>
+           3. 散りばめられた手がかりから「9桁の暗号」を解読し、最深部プロテクトを突破する。<br>
+           4. 全10種の観測実績（バッジ）をコンプリートする。</p>
+      </div>
+      <div class="guide-section">
+        <h4>3. 探索ギミックのヒント</h4>
+        <p>・<strong>ドラッグ選択:</strong> テキストや画像をマウスでなぞると隠し文字が浮き出る。<br>
+           ・<strong>CLI端末の起動:</strong> 左上のロゴを<strong>5回連打</strong>するか、フッター底部の微小テキストをクリックする。<br>
+           ・<strong>監視カメラ:</strong> ターミナルで <code>CCTV</code> と入力すると裏の収容エリアをリアルタイム観測。<br>
+           ・<strong>暗号パズル:</strong> ターミナルで <code>CIPHER</code> と入力して問題を確認し、<code>ARCHIVE</code> と <code>SIGNAL</code> のヒントから <code>UNLOCK &lt;9桁コード&gt;</code> を送信する。</p>
+      </div>
+      <div style="text-align:center; margin-top:15px;">
+        <button class="btn-toggle" style="background:#8b0000; padding:10px 30px; font-size:1rem;" onclick="closeModal('guideModal')">調査を開始する</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- モーダル 1: 隠しCLIターミナル -->
+  <div class="modal-overlay" id="terminalModal">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span>TERA-NET SYSTEM v4.05 [RESTRICTED]</span>
+        <span class="modal-close" onclick="closeModal('terminalModal')">[X] CLOSE</span>
+      </div>
+      <div class="terminal-output" id="termOutput">
+==================================================
+  ペットショップ・テラ 内部管理ターミナル
+  コマンド一覧を表示するには 'HELP' と入力してください。
+==================================================
+      </div>
+      <div class="terminal-input-line">
+        <span>&gt;</span>
+        <input type="text" class="terminal-input" id="termInput" onkeydown="handleTermCommand(event)" placeholder="コマンドを入力...">
+      </div>
+    </div>
+  </div>
+
+  <!-- モーダル 2: CCTV 監視カメラビュー -->
+  <div class="modal-overlay" id="cctvModal">
+    <div class="cctv-window">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span>CAM-04: 店内生体収容エリア [LIVE]</span>
+        <span class="modal-close" onclick="closeModal('cctvModal')">[X] CLOSE</span>
+      </div>
+      <div class="cctv-screen">
+        <canvas id="cctvCanvas"></canvas>
+        <div class="cctv-hud">
+          REC ● <span id="cctvTime">02:14:09</span> AM<br>
+          SIGNAL: WEAK<br>
+          ENTITY DETECTED: <span style="color:#ff0000;">YES</span>
+        </div>
+      </div>
+      <p style="font-size:0.8rem; color:#ccc;">※赤外線カメラ映像。奥の大型ケージ内の動きにご注意ください。</p>
+    </div>
+  </div>
+
+  <!-- モーダル 3: お迎え罠通知 -->
+  <div class="modal-overlay" id="adoptionModal">
+    <div style="background:#110909; border:2px solid #ff0000; padding:25px; max-width:500px; width:90%; color:#d1c7c7; text-align:center; border-radius:12px;">
+      <h3 style="color:#ff0000; font-size:1.4rem; margin-bottom:15px;">【譲渡申請 受理完了】</h3>
+      <p id="adoptionMessage" style="font-size:0.95rem; line-height:1.7; margin-bottom:20px; text-align:left;"></p>
+      <button class="btn-toggle" style="background:#8b0000;" onclick="closeModal('adoptionModal')">理解しました</button>
+    </div>
+  </div>
+
+  <!-- モーダル 4: 🏆 実績・隠しバッジ一覧（全10種） -->
+  <div class="modal-overlay" id="badgeModal">
+    <div class="badge-window">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <h3 style="color:#ff9900; font-size:1.3rem;">🏆 観測実績・獲得バッジ (<span id="badgeModalCount">0</span>/10)</h3>
+        <span class="modal-close" onclick="closeModal('badgeModal')">[X] CLOSE</span>
+      </div>
+      <p style="font-size:0.85rem; color:#aaa; margin-bottom:15px;">サイト内の隠された異常を解き明かすことで解放されます。</p>
+      <div id="badgeList">
+        <!-- 既存5種 -->
+        <div class="badge-item" id="badge-admin"><div class="badge-icon">💻</div><div><div style="font-weight:bold; color:#ff9900;">【管理者特権】</div><div style="font-size:0.8rem; color:#ccc;">裏管理ターミナルへの侵入に成功した。</div></div></div>
+        <div class="badge-item" id="badge-ritual"><div class="badge-icon">👁️</div><div><div style="font-weight:bold; color:#ff9900;">【禁断の儀式】</div><div style="font-size:0.8rem; color:#ccc;">特定の順序（ルナ➔佐藤➔ハムスター➔ロゴ）で個体を調べ上げた。</div></div></div>
+        <div class="badge-item" id="badge-night"><div class="badge-icon">⏰</div><div><div style="font-weight:bold; color:#ff9900;">【丑三つ時の受信】</div><div style="font-size:0.8rem; color:#ccc;">深夜2時台にアクセスし、本源同期シグナルを観測した。</div></div></div>
+        <div class="badge-item" id="badge-contract"><div class="badge-icon">📜</div><div><div style="font-weight:bold; color:#ff9900;">【契約の履行】</div><div style="font-size:0.8rem; color:#ccc;">お迎え窓口から譲渡申請を送信してしまった。</div></div></div>
+        <div class="badge-item" id="badge-cipher"><div class="badge-icon">🧩</div><div><div style="font-weight:bold; color:#ff9900;">【解読者 (Cryptanalyst)】</div><div style="font-size:0.8rem; color:#ccc;">サイト内の散開データを解読し、最深部プロテクトを突破した。</div></div></div>
+        
+        <!-- 新規5種 -->
+        <div class="badge-item" id="badge-voice"><div class="badge-icon">🗣️</div><div><div style="font-weight:bold; color:#ff9900;">【声帯模倣】</div><div style="font-size:0.8rem; color:#ccc;">Q&amp;Aの質問（夜間の声かけ）を複数回タップし、模倣音声を刺激した。</div></div></div>
+        <div class="badge-item" id="badge-cctv_stare"><div class="badge-icon">📹</div><div><div style="font-weight:bold; color:#ff9900;">【深淵をのぞく】</div><div style="font-size:0.8rem; color:#ccc;">CCTV監視カメラ映像を10秒以上注視し、視線を検知された。</div></div></div>
+        <div class="badge-item" id="badge-panic"><div class="badge-icon">🪞</div><div><div style="font-weight:bold; color:#ff9900;">【鏡の禁忌】</div><div style="font-size:0.8rem; color:#ccc;">個体画像を短時間に連打し、変容パニックを誘発した。</div></div></div>
+        <div class="badge-item" id="badge-miho"><div class="badge-icon">✉️</div><div><div style="font-weight:bold; color:#ff9900;">【失踪者のメッセージ】</div><div style="font-size:0.8rem; color:#ccc;">CLI端末で MIHO コマンドを実行し、全ての告発ログを読み切った。</div></div></div>
+        <div class="badge-item" id="badge-abyss"><div class="badge-icon">☠️</div><div><div style="font-weight:bold; color:#ff9900;">【最深部侵入者】</div><div style="font-size:0.8rem; color:#ccc;">暗号解除後に危険コマンド（MOTHER / PURGE）を打込み、母体拒絶を起こした。</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 内部JavaScript -->
+  <script>
+    let isHorror = false, logoClickCount = 0, mihoCount = 0;
+    let audioCtx = null, droneOsc = null, cctvInterval = null;
+    let clickSequence = [], keyBuffer = '', isNightTest = false;
+
+    // 写真連打（鏡の禁忌）計測用変数
+    let petPhotoClickCount = 0, petPhotoClickTimer = null;
+    // Q&A連打（声帯模倣）計測用変数
+    let qaVoiceClickCount = 0;
+    // CCTV注視タイマー用変数
+    let cctvStareTimer = null;
+    // 暗号解除フラグ
+    let isUnlockedCore = false;
+
+    // 全10種の実績状態管理
+    const achievements = {
+      admin: false,
+      ritual: false,
+      night: false,
+      contract: false,
+      cipher: false,
+      voice: false,       // 【声帯模倣】
+      cctv_stare: false,  // 【深淵をのぞく】
+      panic: false,       // 【鏡の禁忌】
+      miho: false,        // 【失踪者のメッセージ】
+      abyss: false        // 【最深部侵入者】
+    };
+
+    // 実績カウント更新
+    function updateBadgeCount() {
+      const count = Object.values(achievements).filter(Boolean).length;
+      document.getElementById('badgeCount').innerText = count;
+      document.getElementById('badgeModalCount').innerText = count;
+    }
+
+    // 実績解除処理
+    function unlockAchievement(key, title) {
+      if (!achievements[key]) {
+        achievements[key] = true;
+        updateBadgeCount();
+        playBeep(880, 0.15);
+        setTimeout(() => playBeep(1174, 0.2), 150);
+        const toast = document.getElementById('toast');
+        document.getElementById('toastTitle').innerText = title;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+        const item = document.getElementById(`badge-${key}`);
+        if (item) item.classList.add('unlocked');
+      }
+    }
+
+    // カード連続クリック儀式ギミック
+    const targetSeq = ['luna', 'sato', 'hamster', 'logo'];
+    function handleCardClick(id) {
+      playBeep(500, 0.05);
+      if (id === 'logo') {
+        logoClickCount++;
+        if (logoClickCount >= 5) {
+          logoClickCount = 0;
+          openTerminal();
+        }
+      }
+      clickSequence.push(id);
+      if (clickSequence.length > targetSeq.length) clickSequence.shift();
+      if (JSON.stringify(clickSequence) === JSON.stringify(targetSeq)) {
+        unlockAchievement('ritual', '【禁断の儀式】');
+        triggerHeartbeatJumpscare();
+      }
+    }
+
+    // 新実績ギミック 1: 🪞 【鏡の禁忌】（生体写真の過剰連打）
+    function clickPetPhoto(event, petId) {
+      event.stopPropagation(); // 親カードのクリックイベント（儀式）との重複抑制
+      petPhotoClickCount++;
+      playBeep(300 + petPhotoClickCount * 50, 0.05);
+
+      if (petPhotoClickTimer) clearTimeout(petPhotoClickTimer);
+      petPhotoClickTimer = setTimeout(() => {
+        petPhotoClickCount = 0;
+      }, 3000);
+
+      if (petPhotoClickCount >= 7) {
+        petPhotoClickCount = 0;
+        unlockAchievement('panic', '【鏡の禁忌】');
+        triggerHeartbeatJumpscare();
+      }
+    }
+
+    // 新実績ギミック 2: 🗣️ 【声帯模倣】（Q&Aタップで不気味な模倣音声）
+    function clickVoiceQA() {
+      qaVoiceClickCount++;
+      // 不気味な低周波のピッチ変化音
+      playBeep(200 - qaVoiceClickCount * 20, 0.2);
+      
+      if (qaVoiceClickCount >= 3) {
+        unlockAchievement('voice', '【声帯模倣】');
+        playBeep(100, 0.5);
+      }
+    }
+
+    // タブ非アクティブ化時の怪異
+    const originalTitle = document.title;
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        document.title = "【たすけて】うしろを見て...";
+        document.getElementById('favicon').href = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👁️</text></svg>";
+      } else {
+        document.title = originalTitle;
+        document.getElementById('favicon').href = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>";
+      }
+    });
+
+    // キーボード隠しコマンド (1004 / 666)
+    window.addEventListener('keydown', (e) => {
+      keyBuffer += e.key;
+      if (keyBuffer.length > 10) keyBuffer = keyBuffer.substring(1);
+      if (keyBuffer.includes('1004') || keyBuffer.includes('666')) {
+        keyBuffer = '';
+        triggerHeartbeatJumpscare();
+      }
+    });
+
+    // 時間帯（深夜2時）判定
+    function checkNightTime() {
+      const hours = new Date().getHours();
+      if (hours === 2 || isNightTest) {
+        document.getElementById('nightAlertBar').style.display = 'block';
+        document.getElementById('heroCatch').innerText = '「02:00 AM ―― 誰かがドアの鍵を外から解錠しています」';
+        unlockAchievement('night', '【丑三つ時の受信】');
+        if (!isHorror) toggleHorrorMode();
+      } else {
+        if (!isNightTest) document.getElementById('nightAlertBar').style.display = 'none';
+      }
+    }
+
+    function toggleNightTest() {
+      isNightTest = !isNightTest;
+      checkNightTime();
+    }
+
+    setInterval(checkNightTime, 10000);
+    window.onload = function() {
+      checkNightTime();
+      openGuideModal();
+      updateBadgeCount();
+    };
+
+    // ホラーモード（非常警告）切替
+    function toggleHorrorMode() {
+      isHorror = !isHorror;
+      document.body.classList.toggle('horror-mode', isHorror);
+      const logoText = document.getElementById('logoText');
+      const heroCatch = document.getElementById('heroCatch');
+      const card1Name = document.getElementById('card1Name');
+      playBeep(isHorror ? 150 : 600, 0.1);
+      if (isHorror) {
+        logoText.innerText = 'TERA-CONTAINMENT';
+        if (!isNightTest && new Date().getHours() !== 2) heroCatch.innerText = '『それ』は、もうあなたの家に入り込んでいます。';
+        card1Name.innerText = '1号個体（ルナ / 模倣）';
+        playCRTDrone();
+      } else {
+        logoText.innerText = 'petshop-tera';
+        heroCatch.innerText = 'いっしょに暮らす、よろこびを。';
+        card1Name.innerText = 'ワンちゃん（ルナ）';
+        stopCRTDrone();
+      }
+    }
+
+    // サウンドエフェクト再生 (Web Audio API)
+    function playBeep(freq = 440, duration = 0.1) {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch(e) {}
+    }
+
+    function playCRTDrone() {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        droneOsc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        droneOsc.type = 'sawtooth';
+        droneOsc.frequency.setValueAtTime(55, audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        droneOsc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        droneOsc.start();
+      } catch (e) {}
+    }
+
+    function stopCRTDrone() {
+      if (droneOsc) {
+        try {
+          droneOsc.stop();
+          droneOsc.disconnect();
+        } catch(e){}
+      }
+    }
+
+    function triggerHeartbeatJumpscare() {
+      document.body.classList.add('glitch-shake');
+      if (!isHorror) toggleHorrorMode();
+      playBeep(80, 0.4);
+      setTimeout(() => document.body.classList.remove('glitch-shake'), 500);
+    }
+
+    // モーダル操作
+    function openGuideModal() {
+      playBeep(500, 0.05);
+      document.getElementById('guideModal').style.display = 'flex';
+    }
+
+    function openBadgeModal() {
+      playBeep(500, 0.05);
+      document.getElementById('badgeModal').style.display = 'flex';
+    }
+
+    function openTerminal() {
+      unlockAchievement('admin', '【管理者特権】');
+      document.getElementById('terminalModal').style.display = 'flex';
+      document.getElementById('termInput').focus();
+    }
+
+    // 新実績ギミック 3: 📹 【深淵をのぞく】（CCTV 10秒間注視）
+    function openCCTV() {
+      playBeep(300, 0.1);
+      document.getElementById('cctvModal').style.display = 'flex';
+      const canvas = document.getElementById('cctvCanvas'), ctx = canvas.getContext('2d');
+      canvas.width = 400;
+      canvas.height = 250;
+      if (cctvInterval) clearInterval(cctvInterval);
+      
+      cctvInterval = setInterval(() => {
+        const imgData = ctx.createImageData(canvas.width, canvas.height);
+        for (let i = 0; i < imgData.data.length; i += 4) {
+          const noise = Math.random() * 80;
+          imgData.data[i] = noise;
+          imgData.data[i+1] = noise;
+          imgData.data[i+2] = noise;
+          imgData.data[i+3] = 255;
+        }
+        ctx.putImageData(imgData, 0, 0);
+        if (Math.random() < 0.4) {
+          ctx.fillStyle = '#ff0000';
+          ctx.beginPath();
+          ctx.arc(180 + Math.random()*5, 120, 3, 0, Math.PI*2);
+          ctx.arc(220 + Math.random()*5, 120, 3, 0, Math.PI*2);
+          ctx.fill();
+        }
+        document.getElementById('cctvTime').innerText = new Date().toTimeString().split(' ')[0];
+      }, 80);
+
+      // 10秒間の注視タイマー
+      if (cctvStareTimer) clearTimeout(cctvStareTimer);
+      cctvStareTimer = setTimeout(() => {
+        unlockAchievement('cctv_stare', '【深淵をのぞく】');
+        triggerHeartbeatJumpscare();
+      }, 10000);
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+      if (id === 'cctvModal') {
+        if (cctvInterval) clearInterval(cctvInterval);
+        if (cctvStareTimer) clearTimeout(cctvStareTimer);
+      }
+    }
+
+    // 譲渡申請フォーム送信
+    function submitAdoption(event) {
+      event.preventDefault();
+      unlockAchievement('contract', '【契約の履行】');
+      const name = document.getElementById('userName').value,
+            addr = document.getElementById('userAddress').value,
+            pet = document.getElementById('petChoice').value;
+      document.getElementById('adoptionMessage').innerHTML = `【申請確認】<br />ご申請者名：${name} 様<br />お届け先：${addr}<br />対象個体：${pet}<br /><br /><span>本日深夜 02:00 に、ご指定の住所へ直接お届けに伺います。扉の鍵を開けた状態でお待ちください。</span>`;
+      document.getElementById('adoptionModal').style.display = 'flex';
+    }
+
+    // ターミナルコマンド処理
+    function handleTermCommand(event) {
+      if (event.key === 'Enter') {
+        playBeep(600, 0.05);
+        const input = document.getElementById('termInput');
+        const rawInput = input.value.trim();
+        const args = rawInput.split(' ');
+        const cmd = args[0].toUpperCase();
+        const output = document.getElementById('termOutput');
+
+        output.innerText += `\n> ${rawInput}`;
+
+        switch(cmd) {
+          case 'HELP':
+            output.innerText += `\n[利用可能な機密コマンド一覧]
+  - CIPHER   : 暗号解読パズルの要求・プロテクト状態表示
+  - UNLOCK   : 解読コード入力 ('UNLOCK <9桁コード>')
+  - CCTV     : 監視カメラ(CAM-04) リアルタイム起動
+  - HORROR   : 非常警告・ホラーモード切替
+  - NIGHT    : 02:00 AM 擬似受信テスト
+  - ARCHIVE  : 1988年旧店舗火災・警察押収資料 (ヒント1)
+  - SIGNAL   : 本源周波数受信同期率 (ヒント2 & 3)
+  - EAS_LOG  : 緊急警報放送(EAS)割込テキスト全ログ
+  - FEED     : 個体#001（ルナ）ライブ給餌プロトコル
+  - DECYPHER : 暗号周波数シグナル解読
+  - DOOR     : 遠隔施錠・解錠状態チェック
+  - CAM02    : 給餌室監視カメラ ASCIIログ
+  - TERADA / SUZUKI / MAP / LOCATE / MOTHER / AUDIO / OVERRIDE
+  - NEST / FOOD / PHASE / PURGE / LUNA / SATO / MIHO
+  - CLEAR    : 画面消去 / EXIT : 端末終了`;
+            break;
+
+          case 'CCTV':
+            openCCTV();
+            output.innerText += `\n[CAM-04 監視カメラ起動中...]`;
+            break;
+
+          case 'HORROR':
+            toggleHorrorMode();
+            output.innerText += `\n[非常警告モード切替実行]`;
+            break;
+
+          case 'NIGHT':
+            toggleNightTest();
+            output.innerText += `\n[02:00 AM 擬似同期シグナルテスト実行]`;
+            break;
+
+          case 'CIPHER':
+          case 'PUZZLE':
+            output.innerText += `\n[地下B4F 最深部アクセス・暗号プロテクト]
+ステータス: 🔒 LOCKED (セキュリティレベル: MAX)
+
+【暗号解除ヒント】
+最深部プロテクトのパスコードは、以下の3つの数値を結合した9桁の数字である。
+1. 旧店舗が焼失した西暦年 (4桁) [参照: ARCHIVE]
+2. 一斉周波数を受信する時刻 (2桁) [参照: SIGNAL]
+3. 本源周波数のMHz整数部 (3桁) [参照: SIGNAL]
+
+入力フォーマット: UNLOCK <9桁のパスコード>`;
+            break;
+
+          case 'UNLOCK':
+            const code = args[1];
+            if (code === '198802142') {
+              isUnlockedCore = true;
+              unlockAchievement('cipher', '【解読者 (Cryptanalyst)】');
+              output.innerText += `\n==================================================
+  [ACCESS GRANTED] プロテクト解除に成功しました。
+==================================================
+【最深部極秘ファイル: マザー・テラ最終起動命令】
+対象: 全人類世帯（日本国内普及率92%達成済）
+実行日時: 本日 02:00 AM
+
+「おめでとうございます。解読に成功したあなたには、特別に『最初の専用フード原料』となる権利が授与されました。
+現在、あなたの部屋の鍵はすべて外側から解除されています。」`;
+              triggerHeartbeatJumpscare();
+            } else if (!code) {
+              output.innerText += `\nError: コードが入力されていません。例: 'UNLOCK 198802142'`;
+            } else {
+              output.innerText += `\n[ACCESS DENIED] 誤ったパスコードです。
+警告: 不法侵入者の脳波同期率が上昇中... (失敗カウント: +1)`;
+              playBeep(100, 0.3);
+            }
+            break;
+
+          // 新実績ギミック 4: ✉️ 【失踪者のメッセージ】（MIHO 3回連続実行）
+          case 'MIHO':
+            mihoCount++;
+            if (mihoCount === 1) {
+              output.innerText += `\n[ミホの告発 ログ#01]\n「あそこから動物を買わないで。あれは動物じゃない。」`;
+            } else if (mihoCount === 2) {
+              output.innerText += `\n[ミホの浸食 ログ#02]\n「助けて…あいつら動物じゃない…店長の中身は私…」`;
+            } else {
+              output.innerText += `\n[ミホの応答 ログ#03]\n「わたしもおむかえが完了しました。とびらのカギをあけて…」`;
+              unlockAchievement('miho', '【失踪者のメッセージ】');
+              triggerHeartbeatJumpscare();
+            }
+            break;
+
+          // 新実績ギミック 5: ☠️ 【最深部侵入者】（暗号解除後の危険コマンド実行）
+          case 'MOTHER':
+            output.innerText += `\n[巨大母体『マザー・テラ』ステータス]\n肉体質量: 42.8トン / 同化率: 98.2%`;
+            if (isUnlockedCore) {
+              unlockAchievement('abyss', '【最深部侵入者】');
+              triggerHeartbeatJumpscare();
+            }
+            break;
+
+          case 'PURGE':
+            if (isUnlockedCore) {
+              output.innerText += `\n[非常生体廃棄プロトコル起動失敗...]\n>> CRITICAL ERROR: MOTHER TERA OVERRIDDEN SYSTEM`;
+              unlockAchievement('abyss', '【最深部侵入者】');
+              triggerHeartbeatJumpscare();
+            } else {
+              output.innerText += `\n[非常生体廃棄...]\n>> ERROR: ACCESS DENIED`;
+              triggerHeartbeatJumpscare();
+            }
+            break;
+
+          case 'ARCHIVE':
+            output.innerText += `\n[昭和63年(1988年) 警察押収資料]\n焼失した店内から体長180cmの「内臓および骨格が存在しない犬皮の塊」を複数回収。`;
+            break;
+
+          case 'EAS_LOG':
+            output.innerText += `\n[EAS (緊急警報放送) 全文テキスト]\n「ただちにすべての窓の遮光カーテンを閉めてください。絶対に空（月）を見ないでください。」`;
+            break;
+
+          case 'FEED':
+            output.innerText += `\n[個体#001（ルナ）給餌プロトコル実行...]\n【音声応答】「ごちそうさま。（※閲覧者の父親の声で再生）」`;
+            playBeep(120, 0.4);
+            break;
+
+          case 'DECYPHER':
+            output.innerText += `\n[暗号バイナリシグナル解読...]\n解読結果: 「現在、あなたの自宅Wi-Fiネットワークに【個体#001:ルナ】が接続を確立しました。」`;
+            break;
+
+          case 'DOOR':
+            output.innerText += `\n[ご自宅スマートロック照会]\n玄関ドア: [解錠完了] / ベランダ窓: [解錠完了]\n警告: 個体#001が入室を開始します。`;
+            triggerHeartbeatJumpscare();
+            break;
+
+          case 'CAM02':
+            output.innerText += `\n[CAM-02: 裏給餌室 ASCII ログ]\n| [ケージ01] [ケージ02] 👁️ 👁 |\n【注記】個体#004（佐藤）が立ち上がり、レンズを指差しています。`;
+            break;
+
+          case 'TERADA':
+            output.innerText += `\n[個体#000: 店長・寺田]\n発見日: 1953年 旧陸軍防空壕跡\n状態: 人間の皮フ・言語思考を完全模倣中。`;
+            break;
+
+          case 'SUZUKI':
+            output.innerText += `\n[家庭用カメラ音声ログ - 鈴木家]\n01:30 [妻の声]「お父さんドア開けて。鍵落としちゃった」（※実物の妻はソファで就寝中）`;
+            break;
+
+          case 'MAP':
+            output.innerText += `\n[地下施設『第0育成室』構造マップ]\n[B1F] 仮収容 / [B2F] フード調合室 / [B3F] 融合体変異 / [B4F] 巨大母体`;
+            break;
+
+          case 'LOCATE':
+            output.innerText += `\n[閲覧者端末・環境解析プロトコル]\n状況: あなたの部屋のドアの外で、個体#001（ルナ）が「あなたの声」を練習しています。`;
+            playBeep(200, 0.3);
+            break;
+
+          case 'AUDIO':
+            output.innerText += `\n[音声模倣（ボイスピッチ）同期テスト]\n同期率: 87.4%（「あなたの声」で呼びかける準備が整いました）`;
+            playBeep(220, 0.2);
+            break;
+
+          case 'OVERRIDE':
+            output.innerText += `\n[管理者リセットプロトコル実行...]\n>> ERROR: SYSTEM CONTROLLED BY SPECIMEN #001\n【警告】「だめだよ」`;
+            triggerHeartbeatJumpscare();
+            break;
+
+          case 'SIGNAL':
+            output.innerText += `\n[本源周波数受信ステータス (FREQ: 142.04MHz)]\n送信元: 上空（高度380,000km / 月面裏位角）\n次回一斉受信テスト: 本日 02:00:00 AM\n同期率: 92.4% [CRITICAL]`;
+            break;
+
+          case 'NEST':
+            output.innerText += `\n[地下『第0育成室』]\n培養中個体数: 4,109体`;
+            break;
+
+          case 'FOOD':
+            output.innerText += `\n[専用フード分析]\n認知阻害有機胞子(0.08%)、回収体成分`;
+            break;
+
+          case 'PHASE':
+            output.innerText += `\n[生体変異フェーズ]\nフェーズ0: 観察 / 1: 潜在 / 2: 融合 / 3: 完全模倣`;
+            break;
+
+          case 'LOGS':
+            output.innerText += `\n柴犬個体#001が会話開始。スタッフ失踪。佐藤の関節逆折れを確認。`;
+            break;
+
+          case 'LUNA':
+            output.innerText += `\n[個体#001: ルナ]\n人型適応率: 99.4%`;
+            break;
+
+          case 'SATO':
+            output.innerText += `\n[個体#004: 佐藤]\nケージ内でドベルマンと融合進行中。`;
+            break;
+
+          case 'CLEAR':
+            output.innerText = '==================================================\n  TERA-NET CLI SYSTEM v4.05\n==================================================';
+            break;
+
+          case 'EXIT':
+            closeModal('terminalModal');
+            break;
+
+          default:
+            output.innerText += `\nError: コマンド '${input.value}' は存在しません。'HELP' と入力してください。`;
+        }
+        input.value = '';
+        output.scrollTop = output.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>

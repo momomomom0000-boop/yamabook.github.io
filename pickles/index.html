@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>すっぱい？いいえ、あまーくておいしい！魔法のカラフルおやこピクルス</title>
+    <!-- Google Fonts: Kosugi Maru & M PLUS Rounded 1c -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ヘッダー（上部固定） -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo-link">
+                <img src="img/logo.png" alt="西洋風漬物ピックルス 理事委員会" class="header-logo-img">
+            </a>
+            <nav class="nav">
+                <a href="#secret">ピクルスってなーに？</a>
+                <a href="#power">お酢のパワー</a>
+                <a href="#recipe">かんたんレシピ</a>
+                <a href="#bottle">お気に入りのびん</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ファーストビュー (FV) -->
+        <section class="section-container fv-section">
+            <div class="fv-presents">✨ オリジナルピクルス推進委員会 Presents ✨</div>
+            <div class="fv-badge">西洋風漬物ピックルス</div>
+            <h1 class="fv-title">
+                <span class="accent-text">すっぱい？いいえ、あまーくておいしい！</span>
+                魔法のカラフルおやこピクルス
+            </h1>
+            <p class="fv-subtitle">きゅうりもパプリカも、おいしく変身！おうちでかんたん、野菜すきすき大作戦🥒✨</p>
+
+            <div class="image-box fv-image-box">
+                <img src="img/fv-main.jpg" alt="カラフルおやこピクルス メインビジュアル">
+            </div>
+
+            <a href="#recipe" class="fv-cta">
+                🎉 おうちで作れる！まろやか甘口レシピ公開中！
+            </a>
+        </section>
+
+        <!-- セクション1：ピクルスってなーに？お酢の妖精のお話 -->
+        <section id="secret" class="section-container">
+            <h2>おはなし：ピクルスってなーに？お酢の妖精のお話</h2>
+            <p class="section-lead">ストーリーでわかる！</p>
+
+            <div class="fairy-intro">
+                <div class="chara-img-box chara-sticker">
+                    <img src="img/chara-fairy.png" alt="お酢の妖精ビネガーちゃん">
+                </div>
+                <div class="fairy-speech">
+                    <p class="speech-title">お酢の妖精「ビネガーちゃん」🧚‍♂️</p>
+                    <p>「ピクルスはね、おやさいを長持ちさせる“まほうのスープ”に漬けたものなんだよ！」</p>
+                </div>
+            </div>
+
+            <div class="story-box">
+                <p>むかしむかし、西洋（ヨーロッパ）で生まれた漬物なんだ。野菜をお酢や砂糖、ハーブで作った液に漬け込むと、すっぱ甘くてパリパリおいしい変身をするんだよ！</p>
+                <p>「すっぱいのが苦手なお子さんでも大丈夫！甘みをたっぷり足せば、フルーツみたいなおやつに変身しちゃうんだよ♪」</p>
+            </div>
+
+            <!-- 第一話（アコーディオン） -->
+            <details class="story-accordion">
+                <summary class="story-accordion-title">
+                    🥕 第一話：にんじん博士と星型マジックの巻 🌟
+                </summary>
+                <div class="story-accordion-content">
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-fairy.png" alt="ビネガーちゃん">
+                            <span>ビネガーちゃん</span>
+                        </div>
+                        <div class="chat-bubble pink">
+                            「みんなー！今日もガラスの瓶の中で、カラフルピクルスパーティーを始めるよ〜！♪」
+                        </div>
+                    </div>
+
+                    <div class="chat-row right">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-cucumber.png" alt="きゅうり君">
+                            <span>きゅうり君</span>
+                        </div>
+                        <div class="chat-bubble green">
+                            「ポリポリッ！見て見て！ぼく、甘酢に入って鮮やかな緑色になったよ！」
+                        </div>
+                    </div>
+
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-carrot.png" alt="にんじん博士">
+                            <span>にんじん博士</span>
+                        </div>
+                        <div class="chat-bubble orange">
+                            「……ふむ。みんなは華やかで羨ましいのう。わしは固くて少し不器用じゃから、苦手がられることが多くてな……」
+                        </div>
+                    </div>
+
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-fairy.png" alt="ビネガーちゃん">
+                            <span>ビネガーちゃん</span>
+                        </div>
+                        <div class="chat-bubble pink">
+                            「大丈夫！サッとお湯の温泉に30秒入ってから、型抜きで『ポン！』と押せば……魔法がかかるよ！✨」
+                        </div>
+                    </div>
+
+                    <div class="chat-row right">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-paprika.png" alt="パプリカちゃん">
+                            <span>パプリカちゃん</span>
+                        </div>
+                        <div class="chat-bubble red">
+                            「わあ！キラキラのお星さまに変身したわ！瓶の中が夜空みたいでとっても素敵！⭐」
+                        </div>
+                    </div>
+
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-carrot.png" alt="にんじん博士">
+                            <span>にんじん博士</span>
+                        </div>
+                        <div class="chat-bubble orange">
+                            「フォッフォッフォ！自分で型抜きしたお星さまは特別おいしいぞ。みんなもお料理マジックに挑戦じゃ！」
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 第二話（アコーディオン） -->
+            <details class="story-accordion">
+                <summary class="story-accordion-title">
+                    🌟 第二話：カラフル野菜の「げんきパワー」をさがせ！ 💪
+                </summary>
+                <div class="story-accordion-content">
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-fairy.png" alt="ビネガーちゃん">
+                            <span>ビネガーちゃん</span>
+                        </div>
+                        <div class="chat-bubble pink">
+                            「みんなー！ 今日はお腹の中に元気やバリアをとどける『魔法の栄養ひみつ』をお話しするよ〜！」
+                        </div>
+                    </div>
+
+                    <div class="chat-row right">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-cucumber.png" alt="きゅうり君">
+                            <span>きゅうり君</span>
+                        </div>
+                        <div class="chat-bubble green">
+                            「ぼくのカラダはお水がいっぱい！ カリウムっていうパワーでお腹の中をすっきり綺麗にして、潤いをチャージするんだポリ！」
+                        </div>
+                    </div>
+
+                    <div class="chat-row right">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-paprika.png" alt="パプリカちゃん">
+                            <span>パプリカちゃん</span>
+                        </div>
+                        <div class="chat-bubble red">
+                            「私のドレスには『ビタミンC』がたっぷり！ 風邪のバイキンをやっつける元気バリアを作っちゃうわ♪」
+                        </div>
+                    </div>
+
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-carrot.png" alt="にんじん博士">
+                            <span>にんじん博士</span>
+                        </div>
+                        <div class="chat-bubble orange">
+                            「わしのオレンジ色は『カロテン』のしるしじゃ！ 体の中で『ビタミンA』に変身して、目やお肌を守ってくれるんじゃよ。」
+                        </div>
+                    </div>
+
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-fairy.png" alt="ビネガーちゃん">
+                            <span>ビネガーちゃん</span>
+                        </div>
+                        <div class="chat-bubble pink">
+                            「私の甘酢スープに入れば『クエン酸』の力で元気が100倍！ 疲れを吹き飛ばして、お腹もペコペコになっちゃうよ！✨」
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 第三話（アコーディオン） -->
+            <details class="story-accordion">
+                <summary class="story-accordion-title">
+                    🥗 第三話：魔法のリメイク！「ピクルス液のへんしんドレッシング」の巻 ✨
+                </summary>
+                <div class="story-accordion-content">
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-paprika.png" alt="パプリカちゃん">
+                            <span>パプリカちゃん</span>
+                        </div>
+                        <div class="chat-bubble red">
+                            「あ〜ん、ピクルスを全部ポリポリ食べちゃったわ！……でも、びんの中に残ったあまーいスープ（ピクルス液）、捨てるのはもったいないなぁ…」
+                        </div>
+                    </div>
+
+                    <div class="chat-row right">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-cucumber.png" alt="きゅうり君">
+                            <span>きゅうり君</span>
+                        </div>
+                        <div class="chat-bubble green">
+                            「そうなんだよ！お野菜のうまみと甘酢がぎゅっと詰まってるのに、流しに捨てちゃうのはかわいそうだよね」
+                        </div>
+                    </div>
+
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-fairy.png" alt="ビネガーちゃん">
+                            <span>ビネガーちゃん</span>
+                        </div>
+                        <div class="chat-bubble pink">
+                            「ふふふ、心配ご無用！残ったピクルス液は『魔法のドレッシング』や『タルタルソース』に変身できるんだよ〜！♪」
+                        </div>
+                    </div>
+
+                    <div class="chat-row left">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-fairy.png" alt="ビネガーちゃん">
+                            <span>ビネガーちゃん</span>
+                        </div>
+                        <div class="chat-bubble pink">
+                            「オリーブオイルと塩コショウを混ぜるだけで特製ドレッシングに！マヨネーズと茹で卵を混ぜればお魚やお肉にぴったりのタルタルソースになっちゃうの！」
+                        </div>
+                    </div>
+
+                    <div class="chat-row right">
+                        <div class="chat-chara chara-sticker">
+                            <img src="img/chara-carrot.png" alt="にんじん博士">
+                            <span>にんじん博士</span>
+                        </div>
+                        <div class="chat-bubble orange">
+                            「フォッフォッフォ！最後の一滴までおいしく食べきるのが、真のピクルスマスターじゃな！みんなもリメイク料理に挑戦じゃ！」
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 変身するおやさい仲間たち -->
+            <h3 class="sub-title">🌟 変身するおやさい仲間たち</h3>
+            <div class="chara-grid">
+                <div class="chara-card">
+                    <div class="chara-img-box chara-sticker">
+                        <img src="img/chara-cucumber.png" alt="きゅうり君">
+                    </div>
+                    <h4 class="chara-name">🥒 きゅうり君</h4>
+                    <p>漬かるとポリポリ感が倍増！王道の主役☆</p>
+                </div>
+                <div class="chara-card">
+                    <div class="chara-img-box chara-sticker">
+                        <img src="img/chara-paprika.png" alt="パプリカちゃん">
+                    </div>
+                    <h4 class="chara-name">🫑 パプリカちゃん</h4>
+                    <p>赤と黄色のカラフル担当！甘みが引き立つよ。</p>
+                </div>
+                <div class="chara-card">
+                    <div class="chara-img-box chara-sticker">
+                        <img src="img/chara-carrot.png" alt="にんじん博士">
+                    </div>
+                    <h4 class="chara-name">🥕 にんじん博士</h4>
+
+                    <p>型抜きすると超かわいい！お星さまに変身！</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション2：お酢のパワーでげんきもりもり！ -->
+        <section id="power" class="section-container">
+            <h2>おはなし2：お酢のパワーでげんきもりもり！💪✨</h2>
+            <p class="section-lead">からだにうれしい！</p>
+
+            <div class="tips-grid">
+                <!-- ポイント1 -->
+                <div class="tips-card">
+                    <div class="tips-img-box">
+                        <img src="img/power-01.png" alt="つかれをふきとばす！">
+                    </div>
+                    <h4 class="tips-card-title">つかれをふきとばす！</h4>
+                    <p>お酢に含まれるクエン酸は、遊んだあとの疲れをとるのにぴったり！元気がわいてくるよ。</p>
+                </div>
+
+                <!-- ポイント2 -->
+                <div class="tips-card">
+                    <div class="tips-img-box">
+                        <img src="img/power-02.png" alt="ごはんがおいしくなる！">
+                    </div>
+                    <h4 class="tips-card-title">ごはんがおいしくなる！</h4>
+                    <p>さわやかな酸味が胃腸を刺激して、お腹がすくよ！食欲がない夏場にもバッチリ。</p>
+                </div>
+
+                <!-- ポイント3 -->
+                <div class="tips-card">
+                    <div class="tips-img-box">
+                        <img src="img/power-03.png" alt="お腹にやさしい！">
+                    </div>
+                    <h4 class="tips-card-title">お腹にやさしい！</h4>
+                    <p>お酢の成分が防腐効果を発揮して長持ち。野菜のビタミンもそのまま摂れちゃう！</p>
+                </div>
+            </div>
+
+            <!-- 基本の材料 -->
+            <div class="material-container">
+                <h3 class="sub-title">☑️ おうちにある材料でできちゃうよ！</h3>
+                <ul class="material-list">
+                    <li>穀物酢（または米酢）</li>
+                    <li>お砂糖（またはハチミツ）</li>
+                    <li>ひとつまみの塩</li>
+                    <li>お好みの野菜</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- セクション3：きゅうりとパプリカのまろやかおやこレシピ -->
+        <section id="recipe" class="section-container">
+            <h2>おはなし3：きゅうりとパプリカのまろやかおやこレシピ 👩‍🍳👨‍🍳</h2>
+            <p class="section-lead">作ってみよう！<br>すっぱさ控えめ！お子さまが喜ぶあまーいピクルス液です♪</p>
+
+            <!-- レシピ1 -->
+            <div class="recipe-detail-card">
+                <h3 class="recipe-title">🥒 きゅうりとコーンのまろやかピクルス</h3>
+                <p class="recipe-time">（調理時間：10分）</p>
+                <div class="recipe-flex">
+                    <div class="recipe-side">
+                        <div class="recipe-img-box">
+                            <img src="img/recipe-cucumber.jpg" alt="きゅうりとコーンのピクルス">
+                        </div>
+                    </div>
+                    <div class="recipe-main">
+                        <div class="recipe-block">
+                            <h4 class="block-title">🛒 材料（びん1本分）</h4>
+                            <ul>
+                                <li>きゅうり：2本（乱切りまたはスティック）</li>
+                                <li>スイートコーン（缶詰）：大さじ3</li>
+                            </ul>
+                            <p class="liquid-title">★ 魔法のピクルス液（混ぜるだけ）</p>
+                            <ul>
+                                <li>お酢：100ml</li>
+                                <li>水：100ml</li>
+                                <li>砂糖：大さじ3〜4（お好みで調整）</li>
+                                <li>塩：小さじ1/2</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-block">
+                            <h4 class="block-title">🔪 作り方</h4>
+                            <ol>
+                                <li>お鍋に【魔法のピクルス液】の材料を入れてひと煮立ちさせ、冷まします。</li>
+                                <li>きゅうりを一口大に切り、プチプチ食感のコーンと一緒に清潔な容器へ入れます。</li>
+                                <li>冷ましたピクルス液を注ぎ、冷蔵庫で3時間以上置いたら完成！</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- レシピ2 -->
+            <div class="recipe-detail-card">
+                <h3 class="recipe-title">🫑 パプリカと星型にんじんのカラフルスティック</h3>
+                <p class="recipe-time">（調理時間：15分）</p>
+                <div class="recipe-flex">
+                    <div class="recipe-side">
+                        <div class="recipe-img-box">
+                            <img src="img/recipe-paprika.jpg" alt="パプリカとにんじんのピクルス">
+                        </div>
+                    </div>
+                    <div class="recipe-main">
+                        <div class="recipe-block">
+                            <h4 class="block-title">🛒 材料（びん1本分）</h4>
+                            <ul>
+                                <li>パプリカ（赤・黄）：各1/2個（1cm幅にカット）</li>
+                                <li>にんじん：1/2本（クッキー型で星型に抜く）</li>
+                            </ul>
+                            <p class="liquid-title">★ ピクルス液（りんご酢アレンジ）</p>
+                            <ul>
+                                <li>りんご酢（または穀物酢）：100ml</li>
+                                <li>水：100ml</li>
+                                <li>ハチミツ：大さじ3（※1歳未満のお子様は砂糖に変更）</li>
+                                <li>塩：小さじ1/2</li>
+                            </ul>
+                        </div>
+                        <div class="recipe-block">
+                            <h4 class="block-title">🔪 作り方</h4>
+                            <ol>
+                                <li>にんじんはサッと30秒ほど下ゆですると、柔らかく味がしみやすくなります。</li>
+                                <li>ピクルス液の材料を加熱してしっかり混ぜ、冷ましておきます。</li>
+                                <li>パプリカとにんじんをびんに敷き詰め、ピクルス液を注ぎ入れます。</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 野菜嫌いを卒業する3つの魔法 -->
+            <h3 class="sub-title">🪄 野菜嫌いを卒業する3つの魔法</h3>
+            <div class="tips-grid">
+                <div class="tips-card">
+                    <span class="tips-num">STEP 1</span>
+                    <h4 class="tips-card-title">型抜きでたのしく！⭐️</h4>
+                    <p>星やハートの型で抜くと「自分で作った！」と大喜び。</p>
+                </div>
+                <div class="tips-card">
+                    <span class="tips-num">STEP 2</span>
+                    <h4 class="tips-card-title">甘みをプラス！🍯</h4>
+                    <p>砂糖やりんご酢でフルーティーにするとバクバク食べちゃう！</p>
+                </div>
+                <div class="tips-card">
+                    <span class="tips-num">STEP 3</span>
+                    <h4 class="tips-card-title">びんの変化を観察！👀</h4>
+                    <p>「明日どうなってるかな？」と観察することで食への興味UP！</p>
+                </div>
+            </div>
+
+            <!-- リメイクレシピコーナー -->
+            <div class="remake-container masking-tape masking-tape-mint">
+                <h3 class="sub-title">✨ 残ったピクルス液もむだにしない！魔法のリメイクレシピ</h3>
+                <p class="text-center" style="font-size: 0.9rem; margin-bottom: 20px;">
+                    ピクルスを食べ終わった後も楽しみがいっぱい！おうちの料理がぐっと美味しく変身します♪
+                </p>
+
+                <div class="remake-grid">
+                    <div class="remake-card">
+                        <div class="remake-badge">人気 No.1</div>
+                        <h4 class="remake-title">🥔 マヨいらず！ポテトサラダ</h4>
+                        <p class="remake-desc">
+                            刻んだピクルスを茹でたジャガイモに混ぜるだけ！ピクルス液を小さじ1足すと、さっぱり爽やかなお店の味に♪
+                        </p>
+                    </div>
+                    <div class="remake-card">
+                        <div class="remake-badge">お魚・お肉に</div>
+                        <h4 class="remake-title">🥚 自家製まろやかタルタル</h4>
+                        <p class="remake-desc">
+                            細かく刻んだピクルス ＋ ゆで卵 ＋ マヨネーズを混ぜるだけ！エビフライやチキン南蛮にベストマッチ☆
+                        </p>
+                    </div>
+                    <div class="remake-card">
+                        <div class="remake-badge">液まで活用！</div>
+                        <h4 class="remake-title">🥗 魔法のフルーティードレッシング</h4>
+                        <p class="remake-desc">
+                            余ったピクルス液に「オリーブオイル」と「塩こしょう」を混ぜるだけ！野菜がモリモリ食べられる特製ドレッシングの完成！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション4：お気に入りのガラスびんでつくろう！ -->
+        <section id="bottle" class="section-container">
+            <h2>おはなし4：お気に入りのガラスびんでつくろう！🫙✨</h2>
+            <p class="section-lead">見た目もキュート！<br>透明なびんにカラフルな野菜を詰めると、まるでインテリアみたい！</p>
+
+            <div class="container-recommend">
+                <h3 class="sub-title">おすすめの容器</h3>
+                <p class="text-center">WECKやメイソンジャーなどの密閉できるガラス瓶がおすすめ！ジャムの空き瓶でもOK♪</p>
+                <div class="bottle-img-box" style="width: 100%; max-width: 600px; height: 250px; margin: 20px auto; overflow: hidden; border-radius: 15px;">
+                    <img src="img/bottle-glass.jpg" alt="お気に入りのガラス瓶に詰まったカラフルピクルス" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+            </div>
+
+            <!-- 保護者の方へ -->
+            <div class="notice-box text-left">
+                <h4 class="notice-title">⚠️ 保護者の方へ（安全上の注意）</h4>
+                <ul>
+                    <li><strong>びんの消毒：</strong> 雑菌を防ぐため、熱湯消毒またはアルコール消毒を行った清潔な容器をご使用ください。</li>
+                    <li><strong>ハチミツの注意：</strong> 1歳未満の乳幼児にはハチミツを与えないでください（砂糖で代用可能）。</li>
+                    <li><strong>保存期間：</strong> 冷蔵庫で保管し、1週間以内を目安にお早めにお召し上がりください。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- よくあるご質問（Q&A） -->
+        <section class="section-container">
+            <h2>よくあるご質問（Q&A）❓</h2>
+            <div class="qa-box">
+                <p class="question">Q. 酸っぱいのが苦手な子供でも食べられますか？</p>
+                <p class="answer">A. はい！お湯で薄めたり、砂糖の量を少し増やすことでツンとした酸味が和らぎます。りんご酢を使うのもフルーティーでおすすめです。</p>
+            </div>
+            <div class="qa-box">
+                <p class="question">Q. 作ってからどれくらいで食べられますか？</p>
+                <p class="answer">A. 漬けてから3時間ほどで味がなじみますが、一晩置くとさらに味がしっかり染み込んで美味しくなります！</p>
+            </div>
+            <div class="qa-box">
+                <p class="question">Q. 他にどんな野菜が使えますか？</p>
+                <p class="answer">A. プチトマト、大根、うずらの卵、ブロッコリーの茎なども人気です！カラフルに組み合わせを楽しんでみてください。</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3 class="footer-logo">
+                    <img src="img/logo.png" alt="西洋風漬物ピックルス 理事委員会" class="footer-logo-img">
+                </h3>
+                <p class="footer-message">「ひとつのびんから、家族みんなの笑顔がひろがりますように。」</p>
+            </div>
+
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#secret">ピクルスってなーに？</a></li>
+                    <li><a href="#power">お酢のパワー</a></li>
+                    <li><a href="#recipe">かんたんレシピ</a></li>
+                    <li><a href="#bottle">お気に入りのびん</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-notice">
+                <p>※お鍋や包丁を使うときは、かならず保護者の方と一緒に作業を行ってください。</p>
+            </div>
+
+            <div class="back-to-top">
+                <a href="#">▲ ページの先頭へもどる</a>
+            </div>
+
+            <p class="copyright">Copyright（C) 職業訓練授業課題.All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

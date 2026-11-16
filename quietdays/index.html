@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>quiet days</title>
+  
+  <!-- Google Fonts: Shippori Mincho (見出し用明朝体), Noto Sans JP (本文用), Inter (英字) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- 外部CSSファイルの読み込み -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+     01. Hero / First View（ファーストビュー）
+     ========================================================================== -->
+  <section class="hero">
+    <!-- 背景画像（雨粒が伝う窓辺・フィルム調） -->
+    <div class="hero__bg">
+      <img src="img/hero-window.jpg" alt="雨の日の窓辺" class="hero__bg-img">
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="container hero__container">
+      <!-- 余白をたっぷりと持たせたミニマルなテキストエリア -->
+      <div class="hero__content">
+        <p class="hero__sub-copy">遠くで電車の音が聞こえる、午後。</p>
+        <h1 class="hero__main-copy">
+          雨ふりの朝、<br>
+          ジンジャーエールを飲むような。
+        </h1>
+      </div>
+    </div>
+
+    <!-- 下へ誘うインジケーター -->
+    <div class="hero__scroll">
+      <span>scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     02. Essays / Stories（エッセイ・日常の記録）
+     ========================================================================== -->
+  <section class="essays" id="essays">
+    <div class="essays__container">
+      
+      <!-- セクション見出し -->
+      <div class="section-header">
+        <span class="section-number">02.</span>
+        <h2 class="section-title">ガード下のオレンジ、すれ違う自転車のライト</h2>
+      </div>
+
+      <!-- エッセイ記事リスト（縦1列の読書スタイル） -->
+      <div class="essay-list">
+
+        <!-- 記事 1 -->
+        <article class="essay-item">
+          <a href="#" class="essay-link">
+            <div class="essay-meta">
+              <span class="essay-date">2026.10.20</span>
+              <span class="essay-tag">街の景色</span>
+            </div>
+            <h3 class="essay-item-title">古いレコードと、冷えた缶ビール</h3>
+            <p class="essay-excerpt">
+              理由もなく遠回りした帰り道。すり減ったレコードの針音が頭の中でずっと鳴っている。僕たちはどこへ向かうわけでもなく、ただ風を待っている。
+            </p>
+          </a>
+        </article>
+
+        <!-- 記事 2 -->
+        <article class="essay-item">
+          <a href="#" class="essay-link">
+            <div class="essay-meta">
+              <span class="essay-date">2026.10.14</span>
+              <span class="essay-tag">部屋の隅</span>
+            </div>
+            <h3 class="essay-item-title">京阪電車の窓に映る、つまらない顔</h3>
+            <p class="essay-excerpt">
+              ガタンゴトンと揺れる車窓。イヤホンから漏れるメロディだけが、この世界の正しいスピードを教えてくれる気がした。
+            </p>
+          </a>
+        </article>
+
+        <!-- 記事 3 -->
+        <article class="essay-item">
+          <a href="#" class="essay-link">
+            <div class="essay-meta">
+              <span class="essay-date">2026.10.05</span>
+              <span class="essay-tag">旅の終わり</span>
+            </div>
+            <h3 class="essay-item-title">ばらの花束を抱えて歩いた午後</h3>
+            <p class="essay-excerpt">
+              特別な約束なんてなかったのに、なぜかあの日の匂いを鮮明に思い出す。濡れたアスファルトに、不器用な優しさが溶けていく。
+            </p>
+          </a>
+        </article>
+
+        <!-- 記事 4 -->
+        <article class="essay-item">
+          <a href="#" class="essay-link">
+            <div class="essay-meta">
+              <span class="essay-date">2026.09.28</span>
+              <span class="essay-tag">雨の音</span>
+            </div>
+            <h3 class="essay-item-title">ガード下の光と、すれ違う自転車</h3>
+            <p class="essay-excerpt">
+              遠くの踏切が鳴って、濡れたアスファルトに自転車のライトがスッと伸びる。何てことのない夕方なのに、胸のあたりが妙に温かくなる。
+            </p>
+          </a>
+        </article>
+
+        <!-- 記事 5 -->
+        <article class="essay-item">
+          <a href="#" class="essay-link">
+            <div class="essay-meta">
+              <span class="essay-date">2026.09.15</span>
+              <span class="essay-tag">部屋の隅</span>
+            </div>
+            <h3 class="essay-item-title">飲みかけのジンジャーエール</h3>
+            <p class="essay-excerpt">
+              窓ガラスを叩く雨の音。炭酸の抜けた甘い匂いと、きみが残していったマグカップ。このまま時間が止まってしまえばいいのにと思う。
+            </p>
+          </a>
+        </article>
+
+        <!-- 記事 6 -->
+        <article class="essay-item">
+          <a href="#" class="essay-link">
+            <div class="essay-meta">
+              <span class="essay-date">2026.09.01</span>
+              <span class="essay-tag">夜の気配</span>
+            </div>
+            <h3 class="essay-item-title">古いカセットテープのざらつく音</h3>
+            <p class="essay-excerpt">
+              ラジカセのスイッチを入れると、擦り切れたギターの音が部屋に満ちる。不器用な毎日のなかに、ほんの小さな光を見つけた気がした。
+            </p>
+          </a>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     03. Gallery / Fragments（日常の断片）
+     ========================================================================== -->
+  <section class="gallery" id="gallery">
+    <div class="gallery__container">
+      
+      <!-- セクション見出し -->
+      <div class="section-header">
+        <span class="section-number">03.</span>
+        <h2 class="section-title">缶ビールのプルタブと、さび付いた踏切の音</h2>
+      </div>
+
+      <!-- スクラップブック風ギャラリー・グリッド -->
+      <div class="scrapbook-grid">
+
+        <!-- 写真 1 -->
+        <figure class="scrapbook-item item-rot-left">
+          <div class="scrapbook-photo-wrap js-modal-open" data-full="img/gallery-coffee.jpg" data-caption="2026.10 / 窓辺のコーヒー">
+            <img src="img/gallery-coffee.jpg" alt="窓辺のマグカップ" loading="lazy">
+            <span class="scrapbook-overlay">view ↗</span>
+          </div>
+          <figcaption class="scrapbook-caption">
+            <span class="scrapbook-date">2026.10 / 窓辺のコーヒー</span>
+            <p class="scrapbook-memo">冷めたお湯と、すこし曇ったガラス窓。</p>
+          </figcaption>
+        </figure>
+
+        <!-- 写真 2 -->
+        <figure class="scrapbook-item item-rot-right">
+          <div class="scrapbook-photo-wrap js-modal-open" data-full="img/gallery-cactus.jpg" data-caption="2026.10 / 部屋の隅">
+            <img src="img/gallery-cactus.jpg" alt="古い壁とサボテン" loading="lazy">
+            <span class="scrapbook-overlay">view ↗</span>
+          </div>
+          <figcaption class="scrapbook-caption">
+            <span class="scrapbook-date">2026.10 / 部屋の隅</span>
+            <p class="scrapbook-memo">日当たりの悪い場所でも、ちゃんと息をしている。</p>
+          </figcaption>
+        </figure>
+
+        <!-- 写真 3 -->
+        <figure class="scrapbook-item item-rot-center">
+          <div class="scrapbook-photo-wrap js-modal-open" data-full="img/gallery-curtain.jpg" data-caption="2026.09 / 午後のカーテン">
+            <img src="img/gallery-curtain.jpg" alt="カーテン越しの光" loading="lazy">
+            <span class="scrapbook-overlay">view ↗</span>
+          </div>
+          <figcaption class="scrapbook-caption">
+            <span class="scrapbook-date">2026.09 / 午後のカーテン</span>
+            <p class="scrapbook-memo">風がカーテンを揺らして、部屋の空気が入れ替わる。</p>
+          </figcaption>
+        </figure>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     04. Contact / Letters（こころのなかの、ちいさな手紙）
+     ========================================================================== -->
+  <section class="contact" id="contact">
+    <div class="contact__container">
+      
+      <div class="quiet-letter">
+        <p class="quiet-letter__text">
+          用事なんかないけれど、夜のハイウェイを抜けるように、<br>
+          ふと誰かに伝えたくなったとき。<br>
+        </p>
+
+        <!-- 封筒画像のリンクカード -->
+        <a href="https://www.figma.com/board/dTVlmfPKStBZZJZLpoC5ex/%E3%81%98%E3%82%86%E3%81%86%E3%81%A1%E3%82%87?node-id=0-1&t=aETSgzNig6uq9Abn-1" target="_blank" rel="noopener noreferrer" class="letter-link-card">
+          <div class="letter-photo-wrap">
+            <img src="img/letter.png" alt="みんなのじゆうちょう（封筒）" loading="lazy">
+            <span class="letter-overlay">開く ↗</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     05. Sound / Fragments（音の気配）
+     ========================================================================== -->
+  <section class="sound" id="sound">
+    <div class="sound__container">
+      
+      <div class="section-header">
+        <span class="section-number">04.</span>
+        <h2 class="section-title">部屋に流れる、かすかなメロディ</h2>
+      </div>
+
+      <div class="player-grid">
+        <!-- Spotify 埋め込みプレイヤー -->
+        <div class="player-wrap">
+          <iframe src="https://open.spotify.com/embed/track/4b0KnTod9wJzoqNpAUCEKK?utm_source=generator&theme=1" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- YouTubeへの静かなリンクカード -->
+        <a href="https://www.youtube.com/watch?v=baNgL0jFkAs" target="_blank" rel="noopener noreferrer" class="youtube-link-card">
+          <span class="youtube-link-text">YouTube で「ばらの花」を聴く ↗</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     Footer
+     ========================================================================== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <p class="footer-copy">雨ふりの朝、ジンジャーエールを飲むような小さな静けさを。</p>
+      <p class="footer-credit">© 2026 quiet days / All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     Modal（拡大表示用）
+     ========================================================================== -->
+  <div class="modal" id="imageModal" aria-hidden="true">
+    <div class="modal__overlay" id="modalOverlay"></div>
+    <div class="modal__content">
+      <button type="button" class="modal__close" id="modalClose" aria-label="閉じる">×</button>
+      <img src="" alt="" class="modal__img" id="modalImg">
+      <p class="modal__caption" id="modalCaption"></p>
+    </div>
+  </div>
+
+  <!-- JavaScriptの読み込み -->
+  <script src="script.js"></script>
+</body>
+</html>

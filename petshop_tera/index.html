@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ペットショップ・テラ | いっしょに暮らす、よろこびを。</title>
+  <meta name="description" content="いっしょに暮らす、よろこびを。ワンちゃん・ねこちゃん・鳥さんが、あなたのお迎えを待っています！動物病院やペットホテル、トリミングなど家族に迎えた後もお客様をしっかりサポート。初めての方でも安心です。">
+  
+  <!-- Google Fonts (あたたかみのある丸ゴシック体/Noto Sans JP) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="img/logo.png" type="image/png">
+  <style>
+   /* ==========================================================================
+   カラーパレット定義
+   #59B292 : メインカラー（安心感・グリーン）
+   #FFC94D : アクセントカラー（元気・アクセントイエロー）
+   #FAE7CB : ベースカラー（ぬくもり・生成り背景）
+   #FA6781 : ポイントカラー（可愛らしさ・コーラルピンク）
+   ========================================================================== */
+:root {
+  --primary-color: #59B292;
+  --secondary-color: #FFC94D;
+  --bg-color: #FAE7CB;
+  --accent-color: #FA6781;
+  --text-color: #4A3E3D;
+  --white: #FFFFFF;
+  --font-heading: 'Kiwi Maru', serif, sans-serif;
+  --font-body: 'Noto Sans JP', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 共通見出し */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   ヘッダー & ナビゲーション
+   ========================================================================== */
+.site-header {
+  background-color: var(--primary-color);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 白いカプセル型のロゴ外枠 */
+.logo-container {
+  background-color: var(--white);
+  border-radius: 50px;
+  padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.3s;
+}
+
+.logo-container:hover {
+  opacity: 0.9;
+}
+
+/* ヘッダーロゴ画像（大きさを制御） */
+.site-logo {
+  height: 50px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.main-nav a {
+  color: var(--white);
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.main-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* SP用ハンバーガーボタン */
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   メインイメージ (Hero Section)
+   ========================================================================== */
+.hero {
+  background-color: var(--white);
+  padding: 40px 0;
+  text-align: center;
+  border-bottom: 4px solid var(--secondary-color);
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-img-wrapper {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.hero-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-catch {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   ペットショップ・テラの想い
+   ========================================================================== */
+.concept {
+  padding: 60px 0;
+  background-color: var(--white);
+  margin: 30px 0;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.concept-text {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+  padding: 0 10px;
+}
+
+/* ==========================================================================
+   NEWS
+   ========================================================================== */
+.news {
+  padding: 40px 0 60px;
+}
+
+.news-list {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 25px 30px;
+  list-style: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.news-item {
+  display: flex;
+  align-items: baseline;
+  padding: 15px 0;
+  border-bottom: 1px dashed #E0E0E0;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-date {
+  font-weight: 700;
+  color: var(--primary-color);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.news-title {
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   当店人気ランキング
+   ========================================================================== */
+.ranking {
+  padding: 40px 0 60px;
+}
+
+.ranking-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.ranking-card {
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 2px solid var(--secondary-color);
+}
+
+.ranking-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-color);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.ranking-img-wrapper {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 15px 0 10px;
+}
+
+.ranking-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ranking-name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+/* ==========================================================================
+   フッター
+   ========================================================================== */
+.site-footer {
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 40px;
+}
+
+.footer-copyright {
+  font-size: 0.85rem;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   レスポンシブ対応
+   ========================================================================== */
+
+/* --- タブレット対応 (800px以下) --- */
+@media screen and (max-width: 800px) {
+  .ranking-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .ranking-img-wrapper {
+    height: 150px;
+  }
+}
+
+/* --- スマートフォン対応 (600px以下) --- */
+@media screen and (max-width: 600px) {
+  .site-logo {
+    height: 40px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: block;
+  }
+
+  .main-nav.active {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 15px 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .main-nav.active ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-catch {
+    font-size: 1.2rem;
+  }
+
+  .news-item {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .news-date {
+    width: auto;
+  }
+
+  .ranking-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .ranking-img-wrapper {
+    height: 200px;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+     1. ヘッダー / ナビゲーション
+     ========================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+<a href="#" class="logo-container">
+  <img src="img/logo.png" alt="ペットショップ・テラ ロゴ" class="site-logo">
+</a>
+
+      <button class="hamburger-btn" aria-label="メニューを開く" onclick="toggleMenu()">☰</button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#concept">ペットショップ・テラの想い</a></li>
+          <li><a href="#news">NEWS</a></li>
+          <li><a href="#ranking">当店人気ランキング</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+       2. メインイメージ
+       ========================================================================== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-catch">いっしょに暮らす、よろこびを。</div>
+        <div class="hero-img-wrapper">
+          <img src="img/main-image.jpg" alt="ペットショップ・テラ メインイメージ">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       3. ペットショップ・テラの想い
+       ========================================================================== -->
+    <section class="container" id="concept">
+      <div class="concept">
+        <h2 class="section-title">ペットショップ・テラの想い</h2>
+        <div class="concept-text">
+          <p>
+            ペットショップ・テラでは、動物病院やペットホテル、トリミングなど動物を家族に迎えた後も飼い主様が止むを得ず手放さないといけない状態をつくらないように飼い主様をしっかりサポートをしていきます。なので、初めての方でも安心して、動物を飼うことができます。一緒に動物も飼い主様を全力でサポートしたいと思います。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       4. NEWS
+       ========================================================================== -->
+    <section class="container" id="news">
+      <div class="news">
+        <h2 class="section-title">NEWS</h2>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-date">9/17</span>
+            <span class="news-title">10月のしつけ教室の予約が始まりました！</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">9/18</span>
+            <span class="news-title">秋の4連休ふれあいコーナーのお知らせ</span>
+          </li>
+          <li class="news-item">
+            <span class="news-date">9/23</span>
+            <span class="news-title">子犬が産まれました♪</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       5. 当店人気ランキング
+       ========================================================================== -->
+    <section class="container" id="ranking">
+      <div class="ranking">
+        <h2 class="section-title">当店人気ランキング</h2>
+        <div class="ranking-grid">
+          
+          <!-- 犬 -->
+          <div class="ranking-card">
+            <div class="ranking-badge">犬</div>
+            <div class="ranking-img-wrapper">
+              <img src="img/dog.jpg" alt="犬">
+            </div>
+            <div class="ranking-name">ワンちゃん</div>
+          </div>
+
+          <!-- 猫 -->
+          <div class="ranking-card">
+            <div class="ranking-badge">猫</div>
+            <div class="ranking-img-wrapper">
+              <img src="img/cat.jpg" alt="猫">
+            </div>
+            <div class="ranking-name">ねこちゃん</div>
+          </div>
+
+          <!-- ハムスター -->
+          <div class="ranking-card">
+            <div class="ranking-badge">ハムスター</div>
+            <div class="ranking-img-wrapper">
+              <img src="img/hamster.jpg" alt="ハムスター">
+            </div>
+            <div class="ranking-name">ハムスター</div>
+          </div>
+
+          <!-- 鳥 -->
+          <div class="ranking-card">
+            <div class="ranking-badge">鳥</div>
+            <div class="ranking-img-wrapper">
+              <img src="img/bird.jpg" alt="鳥">
+            </div>
+            <div class="ranking-name">鳥さん</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+     6. フッター
+     ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="logo-text" style="color: var(--white);">petshop-tera</div>
+      <p class="footer-copyright">&copy; petshop-tera All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SP用メニュー簡易切り替えJavaScript -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
