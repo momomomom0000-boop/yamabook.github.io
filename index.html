@@ -100,6 +100,13 @@
 
         <!-- お知らせリスト -->
         <ul class="news__list" id="newsList">
+          <!-- 新着お知らせ: 終わらない午睡 A Drift in Time 追加 -->
+          <li class="news__item">
+            <time class="news__date" datetime="2026-11-17">2026.11.17</time>
+            <span class="news__category">制作成果</span>
+            <a href="work15.html" class="news__link">新しく作品（終わらない午睡 A Drift in Time）を追加しました</a>
+          </li>
+
           <li class="news__item">
             <time class="news__date" datetime="2026-11-12">2026.11.12</time>
             <span class="news__category">制作成果</span>
@@ -138,7 +145,7 @@
           <li class="news__item is-hidden">
             <time class="news__date" datetime="2026-10-20">2026.10.20</time>
             <span class="news__category">制作成果</span>
-            <a href="#works" class="news__link">新しく作品（kyouritz photo studio）を追加しました</a>
+            <a href="#works`" class="news__link">新しく作品（kyouritz photo studio）を追加しました</a>
           </li>
           <li class="news__item is-hidden">
             <time class="news__date" datetime="2026-10-13">2026.10.13</time>
@@ -178,7 +185,6 @@
 
     </div>
   </section>
-
   <!-- ==========================================================================
      04_About (やまものとのことセクション)
      ========================================================================== -->
@@ -293,9 +299,32 @@
 
       <!-- 作品カードグリッド -->
       <div class="works__grid">
+		  <!-- ★ 新しい作品カード (NEW): 終わらない午睡 A Drift in Time -->
+        <article class="works__card has-new-badge works__modal-trigger" data-category="video"
+                data-title="終わらない午睡（A Drift in Time）"
+                data-category-text="VIDEO PRODUCTION / DREAMCORE / SOUND DESIGN"
+                data-desc="「懐かしいけれど、もう戻れない」を感情の軸に制作したドリームコア映像作品。<br>【制作】過剰なホラー表現を抑え、明るい光と柔らかなぼかし、時計の秒針音や風の環境音を重ねて、どこでもない夢の風景を漂うような浮遊感と切なさを表現。"
+                data-spec="担当: 企画・構成・動画編集・エフェクト加工・音響デザイン / 制作期間: 2日 / ツール: Adobe Premiere Pro"
+                data-demo-url="https://youtu.be/aC-R3IR0mfM"
+                data-images='["img/work17_mv.jpg"]'
+                data-link="work15.html"
+                role="button" tabindex="0">
+          <div class="works__card-thumb">
+            <img src="img/work17_thumb.jpg" alt="終わらない午睡 A Drift in Time プレビュー" width="720" height="360" loading="lazy" class="works__card-img">
+          </div>
+          <div class="works__card-body">
+            <ul class="works__card-tags">
+              <li class="works__card-tag">#映像作品</li>
+              <li class="works__card-tag">#ドリームコア</li>
+              <li class="works__card-tag">#PremierePro</li>
+            </ul>
+            <h3 class="works__card-title">終わらない午睡</h3>
+            <p class="works__card-desc">A Drift in Time</p>
+          </div>
+        </article>
 
         <!-- 01. 1999年8月32日 -->
-        <article class="works__card has-new-badge works__modal-trigger" data-category="video"
+        <article class="works__card works__modal-trigger" data-category="video"
                 data-title="1999年8月32日（LOST FOOTAGE [1998]）"
                 data-category-text="WEIRDCORE / DREAMCORE / VIDEO EDITING"
                 data-desc="ウィアードコアとドリームコアが融合した不条理な世界観。<br>【実装】VHSノイズ、色収差、ローパスフィルターによるこもった音響、目玉のコラージュ演出によるアナログな恐怖と懐古の表現。"
