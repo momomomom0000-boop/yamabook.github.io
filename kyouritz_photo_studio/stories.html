@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F2EDE3">
+  <meta name="description" content="kyouritz photo studioで撮影されたカップルのリアルなストーリーとインタビュー。撮影当日のドキュメンタリーレポートやリアルな見積もりをご紹介します。">
+  <title>Stories &amp; Voice | kyouritz photo studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- 共通ベースCSSと専用CSSの読み込み -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/stories.css">
+  
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+   <header class="site-header">
+    <a class="brand" href="index.html" aria-label="kyouritz photo studio トップ">
+      <img src="img/logo-b.svg" alt="kyouritz photo studio">
+    </a>
+    <nav class="header-nav" aria-label="メインナビゲーション">
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="stories.html">お客様の声</a>
+      <a href="plans.html">プラン・アクセス</a>
+    </nav>
+    <a class="header-cta" href="reserve.html">試着会予約</a>
+    
+    <!-- ハンバーガーボタン -->
+    <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-menu">
+      <svg class="menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <line class="bar bar-1" x1="3" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-2" x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-3" x1="3" y1="17" x2="21" y2="17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </header>
+
+  <nav class="site-menu" id="site-menu" aria-label="サイトメニュー" hidden>
+    <button class="menu-close" type="button" aria-label="メニューを閉じる">×</button>
+    <span class="eyebrow">MENU</span>
+    <a href="index.html#top">トップページ</a>
+    <a href="index.html#intro">私たちの想い</a>
+    <a href="gallery.html">ギャラリー・ロケーション</a>
+    <a href="collection.html">衣裳コレクション</a>
+    <a href="photographers.html">カメラマン紹介</a>
+    <a href="stories.html">お客様の声・撮影レポート</a>
+    <a href="plans.html">プラン・料金詳細</a>
+    <a class="menu-reserve" href="reserve.html">無料試着会を予約する ↗</a>
+  </nav>
+  <button class="menu-scrim" type="button" aria-label="メニューを閉じる" hidden></button>
+
+  <main id="top">
+    <!-- パンくずリスト -->
+    <nav class="breadcrumbs" aria-label="パンくずリスト">
+      <div class="breadcrumbs-inner">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="index.html">
+              <span itemprop="name">HOME</span>
+            </a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">お客様の声・撮影レポート</span>
+            <meta itemprop="position" content="2">
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- 下層ページ用ヘッダーセクション -->
+    <section class="hero" style="min-height: 420px; height: 50svh;" aria-label="お客様の声ヘッダー">
+      <div class="hero-slides">
+        <figure class="hero-slide is-active">
+          <img src="img/story-01.jpg" alt="撮影レポートのイメージ" fetchpriority="high">
+        </figure>
+      </div>
+      <div class="hero-shade"></div>
+      <div class="hero-content" style="transform: translateY(-38%);">
+        <span class="eyebrow">STORIES &amp; VOICE</span>
+        <h1 style="font-size: clamp(24px, 3.5vw, 38px);">ふたりの物語が、<br>一番の宝物になる。</h1>
+        <p>実際に kyouritz photo studio で撮影されたカップルのリアルなインタビューと、心温まるドキュメンタリーレポートをご紹介します。</p>
+      </div>
+    </section>
+
+    <!-- レポート導入 -->
+    <section class="stories-intro section-wrap">
+      <span class="eyebrow">DOCUMENTARY REPORTS</span>
+      <h2>世代やスタイルを越えて残す、<br>ふたりの原点。</h2>
+      <p>「どんな想いでスタジオを選び、どんな一日を過ごしたのか」。先輩カップルたちのリアルな声をお届けします。撮影の空気感やアルバムの仕上がりをイメージする参考にしてみてください。</p>
+    </section>
+
+    <!-- ==========================================
+         REPORT 01：20代・ビーチウェディング（深掘り版）
+         ========================================== -->
+    <section class="report-section">
+      <div class="section-wrap">
+        <div class="report-header">
+          <div>
+            <span class="eyebrow" style="color: #927a72;">REPORT 01 ／ 20代後半カップル（ご試着会利用）</span>
+            <h3 class="report-title">「背伸びせず、ふたりらしく笑い合えた時間が、そのまま宝物になりました。」</h3>
+          </div>
+          <span class="report-badge">BEACH LOCATION × Ryuichi Sato</span>
+        </div>
+
+        <div class="report-grid">
+          <div>
+            <img class="report-image" src="img/gallery-02.jpg" alt="ビーチで撮影した笑顔のカップル" loading="lazy">
+            <!-- 小さなスナップギャラリー -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px;">
+              <img src="img/gallery-04.jpg" alt="スナップ1" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--sand);">
+              <img src="img/photo-beach.jpg" alt="スナップ2" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--sand);">
+              <img src="img/story-03.jpg" alt="スナップ3" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--sand);">
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 18px;">
+            <div class="qa-card">
+              <strong class="qa-question">01. スタジオ選びのきっかけと試着会の印象</strong>
+              <p class="qa-answer">「SNSで見かけた写真の自然な光と、作り込まれていない空気感に一目惚れしました。まずは雰囲気を知るために無料試着会に参加したのですが、スタッフの皆さんが私たちの趣味や好みをとても楽しそうに聞いてくれて、ここなら安心して任せられると思いました。」（K様ご夫妻・20代）</p>
+            </div>
+            <div class="qa-card">
+              <strong class="qa-question">02. 撮影当日の雰囲気とカメラマンについて</strong>
+              <p class="qa-answer">「最初はガチガチに緊張していたのですが、カメラマンの佐藤さんがずっと気さくに話しかけてくれて、いつの間にかデートをしているような感覚に。波打ち際を走ったり、夕日を眺めたりしている自然な瞬間をたくさん残してもらえて本当に良かったです！」</p>
+            </div>
+            <div class="qa-card">
+              <strong class="qa-question">03. 仕上がった写真とアルバムを手にして</strong>
+              <p class="qa-answer">「データを見た瞬間、自分たちがこんなに優しい表情をしているんだと驚きました。自宅に届いたアルバムを開くたび、撮影日の潮風や笑い声が鮮やかに蘇ります。一生大切にしたい宝物になりました。」</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         REPORT 02：30代・チャペル＆和装（深掘り版）
+         ========================================== -->
+    <section class="report-section">
+      <div class="section-wrap">
+        <div class="report-header">
+          <div>
+            <span class="eyebrow" style="color: #927a72;">REPORT 02 ／ 30代大人カップル（個別相談会利用）</span>
+            <h3 class="report-title">「歴史ある佇まいと静謐な光の中で、夫婦としての原点を刻みました。」</h3>
+          </div>
+          <span class="report-badge">CHAPEL &amp; KIMONO × Taro Tanaka</span>
+        </div>
+
+        <div class="report-grid is-reverse">
+          <div class="report-text-col" style="display: flex; flex-direction: column; gap: 18px;">
+            <div class="qa-card">
+              <strong class="qa-question">01. スタジオ選びのきっかけと試着会の印象</strong>
+              <p class="qa-answer">「私たちは派手な結婚式よりも、写真にしっかりとこだわりたいという想いがありました。田中さんの重厚感あるポートレート作品に惹かれ、年齢を重ねても色褪せない写真を残せると思い選びました。」（M様ご夫妻・30代）</p>
+            </div>
+            <div class="qa-card">
+              <strong class="qa-question">02. 撮影当日の雰囲気とカメラマンについて</strong>
+              <p class="qa-answer">「チャペルに差し込む光の美しさと、和装の繊細な色合いを最高のタイミングで捉えていただきました。撮影中も私たちのペースに合わせて優しくリードしてくださり、終始リラックスして楽しむことができました。」</p>
+            </div>
+            <div class="qa-card">
+              <strong class="qa-question">03. 仕上がった写真とアルバムを手にして</strong>
+              <p class="qa-answer">「両親にアルバムをプレゼントしたところ、本当に喜んでくれました。写真一枚一枚にストーリーが感じられて、このスタジオにお願いして心から良かったと実感しています。」</p>
+            </div>
+          </div>
+
+          <div class="report-img-col">
+            <img class="report-image" src="img/gallery-03.jpg" alt="チャペルで撮影した落ち着いたカップル" loading="lazy">
+            <!-- 小さなスナップギャラリー -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px;">
+              <img src="img/story-04.jpg" alt="スナップ1" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--sand);">
+              <img src="img/photo-chapel.jpg" alt="スナップ2" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--sand);">
+              <img src="img/clothes-kimono.jpg" alt="スナップ3" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--sand);">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         リアルなお見積りシミュレーションセクション
+         ========================================== -->
+    <section class="estimate-section">
+      <div class="section-wrap" style="max-width: 900px;">
+        <div class="section-heading" style="text-align: center; margin-bottom: 25px;">
+          <span class="eyebrow">REAL ESTIMATE SIMULATION</span>
+          <h2>先輩カップルのリアルなお見積り例</h2>
+          <p>「実際にかかる費用感が知りたい」という不安を解消する、オプション込みのリアルな内訳をご紹介します。</p>
+        </div>
+
+        <div class="estimate-grid">
+          <!-- カウント1 -->
+          <div class="estimate-card">
+            <div>
+              <span class="eyebrow" style="color: #927a72; margin-bottom: 6px;">CASE 01（土日撮影・ビーチ）</span>
+              <h3 style="font-family: var(--serif); font-size: 19px; margin-bottom: 15px;">ロケーション充実プラン</h3>
+              <ul class="estimate-list">
+                <li><span>ロケーション撮影基本プラン</span><span>￥21,600</span></li>
+                <li><span>土日祝日撮影料金</span><span>￥5,500</span></li>
+                <li><span>カメラマン指名料（佐藤）</span><span>￥5,000</span></li>
+                <li><span>プレミアム増刷アルバム</span><span>￥8,800</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="estimate-total-wrap">
+                <span class="estimate-total-label">総額（税込目安）</span>
+                <span class="estimate-total-price">約 40,900円</span>
+              </div>
+              <p class="estimate-note">※衣装、ヘアメイク、全データレタッチが基本プランに含まれており、追加料金の心配も少なく安心です。</p>
+              <a class="button button-light" href="reserve.html?type=estimate" style="width: 100%; text-align: center;">この内容で無料お見積り相談 ↗</a>
+            </div>
+          </div>
+
+          <!-- カウント2 -->
+          <div class="estimate-card">
+            <div>
+              <span class="eyebrow" style="color: #927a72; margin-bottom: 6px;">CASE 02（平日・チャペル＆和装）</span>
+              <h3 style="font-family: var(--serif); font-size: 19px; margin-bottom: 15px;">衣装2着こだわりプラン</h3>
+              <ul class="estimate-list">
+                <li><span>スタジオ撮影基本プラン</span><span>￥10,800</span></li>
+                <li><span>追加ドレスフィッティング</span><span>￥11,000</span></li>
+                <li><span>カメラマン指名料（田中）</span><span>￥5,000</span></li>
+                <li><span>平日撮影特典</span><span>￥0</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="estimate-total-wrap">
+                <span class="estimate-total-label">総額（税込目安）</span>
+                <span class="estimate-total-price">約 26,800円</span>
+              </div>
+              <p class="estimate-note">※ドレスから和装への衣装チェンジや、お二人のご要望に合わせた柔軟なカスタマイズが可能です。</p>
+              <a class="button button-light" href="reserve.html?type=estimate" style="width: 100%; text-align: center;">この内容で無料お見積り相談 ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 試着会バナー案内（強力なゴール導線） -->
+    <section class="section-wrap" style="padding-top: 80px; padding-bottom: 110px;">
+      <aside class="trial-banner" id="trial">
+        <div>
+          <span class="eyebrow">SPECIAL EVENT / 2026</span>
+          <h3>【7/1〜開催】<br>ウェディングドレス無料試着会 ＆ 個別お見積り相談会</h3>
+          <p>「うちの場合はいくらになる？」など、おふたりのご予算やご希望に合わせて専任スタッフが丁寧にお見積りを作成いたします。</p>
+        </div>
+        <a class="button button-light" href="reserve.html?type=trial">無料試着会・お見積りを予約する <span>↗</span></a>
+      </aside>
+    </section>
+  </main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="footer-brand" href="index.html"><img src="img/logo-a.svg" alt="kyouritz photo studio"></a>
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳コレクション</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="plans.html">プラン・料金</a>
+      <a href="stories.html">お客様の声</a>
+    </nav>
+    <a class="footer-reserve" href="reserve.html">無料試着会・お見積りを予約する ↗</a>
+    <small>© <span id="copyright-year">2026</span> kyouritz photo studio Inc. All Rights Reserved.</small>
+  </div>
+</footer>
+
+  <!-- 右下固定バナー -->
+  <aside class="floating-cta" aria-label="無料試着会予約">
+    <div class="floating-bg" style="background-image: url('img/clothes-dress.jpg');"></div>
+    <div class="floating-overlay"></div>
+    <div class="floating-content">
+      <span class="floating-eyebrow">7/1 START ／ FREE TRIAL</span>
+      <strong class="floating-title">運命の一着に出会う、無料試着会。</strong>
+    </div>
+    <a class="floating-btn" href="reserve.html">
+      <span>予約はこちらから</span> <i>↗</i>
+    </a>
+    <button class="floating-close" type="button" aria-label="予約案内を閉じる">×</button>
+  </aside>
+</body>
+</html>

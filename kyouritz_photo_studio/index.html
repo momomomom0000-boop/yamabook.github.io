@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F2EDE3">
+  <meta name="description" content="ふたりらしい自然な表情を、一枚のポートレートに。kyouritz photo studioのウェディングフォトと無料試着会。">
+  <title>kyouritz photo studio | ふたりらしい、記念日のかたち。</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="kyouritz photo studio トップ">
+      <img src="img/logo-b.svg" alt="kyouritz photo studio">
+    </a>
+    <nav class="header-nav" aria-label="メインナビゲーション">
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="stories.html">お客様の声</a>
+      <a href="plans.html">プラン・アクセス</a>
+    </nav>
+    <a class="header-cta" href="reserve.html">試着会予約</a>
+    
+    <!-- ハンバーガーボタン -->
+    <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-menu">
+      <svg class="menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <line class="bar bar-1" x1="3" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-2" x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-3" x1="3" y1="17" x2="21" y2="17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </header>
+
+  <nav class="site-menu" id="site-menu" aria-label="サイトメニュー" hidden>
+    <button class="menu-close" type="button" aria-label="メニューを閉じる">×</button>
+    <span class="eyebrow">MENU</span>
+    <a href="index.html#top">トップページ</a>
+    <a href="index.html#intro">私たちの想い</a>
+    <a href="gallery.html">ギャラリー・ロケーション</a>
+    <a href="collection.html">衣裳コレクション</a>
+    <a href="photographers.html">カメラマン紹介</a>
+    <a href="stories.html">お客様の声・撮影レポート</a>
+    <a href="plans.html">プラン・料金詳細</a>
+    <a class="menu-reserve" href="reserve.html">無料試着会を予約する ↗</a>
+  </nav>
+  <button class="menu-scrim" type="button" aria-label="メニューを閉じる" hidden></button>
+  <main id="top">
+    <!-- 02. HERO / FIRST VIEW -->
+    <section class="hero" aria-label="メインビジュアル">
+      <div class="hero-slides">
+        <figure class="hero-slide is-active">
+          <img src="img/mainimage.jpg" alt="柔らかな光の中で寄り添うふたり" fetchpriority="high">
+        </figure>
+        <figure class="hero-slide">
+          <img src="img/mainimage2.jpg" alt="自然な笑顔を交わすふたり">
+        </figure>
+        <figure class="hero-slide">
+          <img src="img/mainimage3.jpg" alt="爽やかな水辺で過ごすふたり">
+        </figure>
+      </div>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <span class="eyebrow">A DAY TO REMEMBER</span>
+        <h1>これからの歩みの原点を、<br>いちばん美しい記念日に。</h1>
+        <p>記念すべき日に向けて、運命の一着と出会う心躍る試着会を。柔らかな光を映すレンズの向こう側で、ふたりの温かな記憶をいつまでも色褪せない記念日に仕立てます。</p>
+        <a class="text-link" href="#intro">OUR PHILOSOPHY ── 私たちの想い <span>↘</span></a>
+      </div>
+      <div class="hero-controls" aria-label="スライドショー操作">
+        <span class="hero-count"><span id="slide-current">01</span> / 03</span>
+        <button class="slide-dot is-active" type="button" aria-label="1枚目を表示" aria-pressed="true"></button>
+        <button class="slide-dot" type="button" aria-label="2枚目を表示" aria-pressed="false"></button>
+        <button class="slide-dot" type="button" aria-label="3枚目を表示" aria-pressed="false"></button>
+      </div>
+      <span class="hero-scroll">SCROLL <i></i></span>
+    </section>
+
+    <!-- 04. NEWS -->
+    <section class="news section-wrap" id="news">
+      <div class="section-heading section-heading-inline">
+        <div>
+          <span class="eyebrow">NEWS &amp; TOPICS</span>
+          <h2>お知らせ</h2>
+        </div>
+        <a class="text-link dark-link" href="reserve.html">試着会のご予約 <span>↗</span></a>
+      </div>
+      <a class="news-item" href="reserve.html">
+        <time datetime="2026-07-01">2026.07.01</time>
+        <span class="news-tag">EVENT</span>
+        <span class="news-title">【7/1〜開催】運命の一着に出会う「ウェディングドレス無料試着会」のご案内</span>
+        <span class="news-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="news-item" href="gallery.html">
+        <time datetime="2026-06-15">2026.06.15</time>
+        <span class="news-tag">STUDIO</span>
+        <span class="news-title">季節の光を楽しむ、新しいロケーション撮影プランが登場しました</span>
+        <span class="news-arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+    <!-- 03. INTRO (ブランドの想い) -->
+    <section class="intro section-paper" id="intro">
+      <div class="intro-inner">
+        <span class="eyebrow">OUR PHILOSOPHY</span>
+        <h2>ふたりの「いつも」が、<br>深く、美しいストーリーになる。</h2>
+        <p>作り込まれたセットや、型にはまったポーズはいりません。私たちが大切にしているのは、ふたりがこれまで歩んできた記憶の温度と、言葉にしなくても伝わる空気感です。朝の窓辺から差し込む優しい自然光や、ふと見つめ合った瞬間のやわらかな表情。kyouritz photo studioは、カメラマンとの小さな対話から始まります。飾り立てるのではなく、本来の美しさを丁寧にすくい取ること。今日という特別な原点を、何年経っても愛おしく振り返ることができる一枚のポートレートに仕立て上げます。</p>
+        <span class="intro-mark" aria-hidden="true">K</span>
+      </div>
+    </section>
+
+    <!-- 05. GALLERY & RANKING (ギャラリーダイジェスト ──► gallery.html)[cite: 11] -->
+    <section class="gallery section-wrap" id="gallery">
+      <div class="section-heading">
+        <span class="eyebrow">GALLERY &amp; LOCATION</span>
+        <h2>光と空気を纏う、<br>シネマティックな瞬間。</h2>
+        <p>ふたりらしさが自然に映える、お気に入りのロケーションから。</p>
+      </div>
+
+      <div class="ranking-grid">
+        <a class="ranking-card ranking-first" href="gallery.html" aria-label="人気ロケーション第1位、ビーチ">
+          <div class="ranking-image">
+            <img src="img/photo-beach.jpg" alt="海辺で撮影したウェディングフォト" loading="lazy">
+            <img class="ranking-badge" src="img/badge-ranking.svg" alt="人気ランキング第1位">
+          </div>
+          <span class="ranking-number">01 <small>RANKING</small></span>
+          <h3>海辺のロケーション</h3>
+          <span class="ranking-caption">BEACH</span>
+        </a>
+        <a class="ranking-card" href="gallery.html" aria-label="人気ロケーション第2位、チャペル">
+          <div class="ranking-image">
+            <img src="img/photo-chapel.jpg" alt="自然光が差し込むチャペル" loading="lazy">
+          </div>
+          <span class="ranking-number">02 <small>RANKING</small></span>
+          <h3>静かなチャペル</h3>
+          <span class="ranking-caption">CHAPEL</span>
+        </a>
+        <a class="ranking-card" href="gallery.html" aria-label="人気ロケーション第3位、東京">
+          <div class="ranking-image">
+            <img src="img/photo-tokyo.jpg" alt="街並みを背景にした東京ロケーションフォト" loading="lazy">
+          </div>
+          <span class="ranking-number">03 <small>RANKING</small></span>
+          <h3>街角のスナップ</h3>
+          <span class="ranking-caption">TOKYO</span>
+        </a>
+      </div>
+
+      <div style="text-align: center; margin-top: 48px;">
+        <a class="text-link dark-link" href="gallery.html" style="font-size: 12px; letter-spacing: 0.1em;">
+          すべてのギャラリー・ロケーションを見る <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 06. CLOTHES & TRIAL EVENT (衣裳コレクション ──► collection.html)[cite: 6, 11] -->
+    <section class="clothes" id="clothes">
+      <div class="clothes-inner">
+        <div class="clothes-heading">
+          <img class="clothes-logo" src="img/logo-a.svg" alt="kyouritz photo studio">
+          <span class="eyebrow">COLLECTION</span>
+          <h2>運命の一着と、<br>一生モノの光を纏う日。</h2>
+          <p>纏った瞬間、心がときめくドレス・和装・タキシード。気になるスタイルをご覧ください。</p>
+        </div>
+        <div class="clothes-tabs" role="tablist" aria-label="衣裳の種類">
+          <button class="clothes-tab is-active" type="button" role="tab" id="tab-dress" aria-selected="true" aria-controls="panel-dress" data-category="dress">Dress</button>
+          <button class="clothes-tab" type="button" role="tab" id="tab-kimono" aria-selected="false" aria-controls="panel-kimono" data-category="kimono" tabindex="-1">Kimono</button>
+          <button class="clothes-tab" type="button" role="tab" id="tab-tuxedo" aria-selected="false" aria-controls="panel-tuxedo" data-category="tuxedo" tabindex="-1">Tuxedo</button>
+        </div>
+        
+        <div class="clothes-panels-wrap">
+          <div class="clothes-panel is-active" role="tabpanel" id="panel-dress" aria-labelledby="tab-dress">
+            <a class="clothes-photo" href="collection.html#dress">
+              <img src="img/clothes-dress.jpg" alt="ウェディングドレスのコレクション" loading="lazy">
+              <span>VIEW COLLECTION ↗</span>
+            </a>
+          </div>
+          <div class="clothes-panel" role="tabpanel" id="panel-kimono" aria-labelledby="tab-kimono">
+            <a class="clothes-photo" href="collection.html#kimono">
+              <img src="img/clothes-kimono.jpg" alt="和装のコレクション" loading="lazy">
+              <span>VIEW COLLECTION ↗</span>
+            </a>
+          </div>
+          <div class="clothes-panel" role="tabpanel" id="panel-tuxedo" aria-labelledby="tab-tuxedo">
+            <a class="clothes-photo" href="collection.html#tuxedo">
+              <img src="img/clothes-tuxedo.jpg" alt="タキシードのコレクション" loading="lazy">
+              <span>VIEW COLLECTION ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 36px;">
+          <a class="text-link" href="collection.html" style="color: var(--bone); border-bottom-color: var(--bone); font-size: 12px; letter-spacing: 0.1em;">
+            衣裳詳細・3スタイルを見る <span>↗</span>
+          </a>
+        </div>
+
+        <!-- 試着会バナー（予約フォームへ直行） -->
+        <aside class="trial-banner" id="trial">
+          <div>
+            <span class="eyebrow">SPECIAL EVENT / 2026</span>
+            <h3>【7/1〜開催】<br>ウェディングドレス無料試着会</h3>
+            <p>気になるドレスを試着して、特別な一日のイメージを膨らませてみませんか。</p>
+          </div>
+          <a class="button button-light" href="reserve.html">無料試着会を予約する <span>↗</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 07. PHOTOGRAPHER (カメラマン紹介 ──► photographers.html)[cite: 2, 11] -->
+    <section class="photographers section-wrap" id="photographer">
+      <div class="section-heading">
+        <span class="eyebrow">OUR PHOTOGRAPHERS</span>
+        <h2>ただ美しいだけじゃない。<br>ふたりの温度が伝わるポートレート。</h2>
+        <p>何気ない会話を重ねながら、飾り立てない本来の表情と空気感を丁寧に切り取ります。</p>
+      </div>
+      
+      <div class="photographer-grid">
+        <article class="photographer-card">
+          <img src="img/photographer-tanaka.jpg" alt="カメラマン Taro Tanaka" loading="lazy">
+          <div>
+            <div class="photographer-meta">
+              <span class="eyebrow">PHOTOGRAPHER</span>
+              <span class="photographer-tag">40代 / 歴15年</span>
+            </div>
+            <h3>Taro Tanaka</h3>
+            <p>確かな技術と深い眼差しで、おふたりのドラマチックな瞬間を切り取ります。</p>
+          </div>
+        </article>
+
+        <article class="photographer-card">
+          <img src="img/photographer-sato.jpg" alt="カメラマン Ryuichi Sato" loading="lazy">
+          <div>
+            <div class="photographer-meta">
+              <span class="eyebrow">PHOTOGRAPHER</span>
+              <span class="photographer-tag">40代 / 歴12年</span>
+            </div>
+            <h3>Ryuichi Sato</h3>
+            <p>歴史ある空間や美しいロケーションを活かし、深みのあるポートレートに仕立てます。</p>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align: center; margin-top: 36px;">
+        <a class="text-link dark-link" href="photographers.html" style="font-size: 12px; letter-spacing: 0.1em;">
+          カメラマン詳細・指名案内を見る <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 08. PLAN & ACCESS (プラン・料金 ──► plans.html & reserve.html)[cite: 3, 11] -->
+    <section class="plans section-paper" id="plan">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <span class="eyebrow">PLAN &amp; ACCESS</span>
+          <h2>ふたりにちょうどいい、<br>透明な撮影のかたち。</h2>
+        </div>
+        <div class="plan-grid">
+          <article class="plan-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="eyebrow">STUDIO PLAN</span>
+              <h3>スタジオプラン</h3>
+              <p class="plan-price">￥10,800<span>〜（税込）</span></p>
+              <p>パッケージ内容：衣装、ヘアメイク、レタッチ、アルバム、写真データ</p>
+            </div>
+            <div style="margin-top: 20px;">
+              <a class="text-link dark-link" href="plans.html#studio" style="font-size: 11px;">プラン詳細・FAQを見る ↗</a>
+            </div>
+          </article>
+          <article class="plan-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="eyebrow">LOCATION PLAN</span>
+              <h3>ロケーションプラン</h3>
+              <p class="plan-price">￥21,600<span>〜（税込）</span></p>
+              <p>パッケージ内容：衣装、ヘアメイク、レタッチ、アルバム、写真データ</p>
+            </div>
+            <div style="margin-top: 20px;">
+              <a class="text-link dark-link" href="plans.html#location" style="font-size: 11px;">プラン詳細・FAQを見る ↗</a>
+            </div>
+          </article>
+        </div>
+
+        <div style="text-align: center; margin-top: 36px;">
+          <a class="text-link dark-link" href="plans.html" style="font-size: 12px; letter-spacing: 0.1em;">
+            すべてのプラン詳細・FAQを見る <span>↗</span>
+          </a>
+        </div>
+
+        <div class="access" style="margin-top: 60px;">
+          <div class="access-copy">
+            <span class="eyebrow">ACCESS</span>
+            <h3>kyouritz photo studio</h3>
+            <p>〒164-0001 東京都中野区〇-〇-〇<br>
+            TEL：03-xxxx-xxxx<br>
+            営業時間：11:00〜20:00（定休日：火曜日・水曜日）</p>
+            <a class="text-link dark-link" href="https://www.google.com/maps/search/?api=1&amp;query=kyouritz%20photo%20studio" target="_blank" rel="noopener noreferrer">Google マップで検索 <span>↗</span></a>
+          </div>
+          <div class="map-frame">
+            <iframe title="Google マップで kyouritz photo studio を検索" src="https://maps.google.com/maps?q=kyouritz%20photo%20studio&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09. STORIES (先輩のリアルな声 ──► stories.html)[cite: 5, 11] -->
+    <section class="stories-digest section-wrap" id="stories-digest" style="padding-top: 40px; padding-bottom: 110px;">
+      <div class="section-heading">
+        <span class="eyebrow">STORIES &amp; VOICE</span>
+        <h2>ふたりの物語が、<br>一番の宝物になる。</h2>
+        <p>実際にkyouritz photo studioで撮影された先輩カップルのリアルな声をご紹介します。</p>
+      </div>
+
+      <div class="photographer-grid" style="margin-bottom: 32px;">
+        <article class="photographer-card" style="background: rgb(255 253 249 / 60%);">
+          <img src="img/story-03.jpg" alt="ビーチ撮影の先輩カップル" loading="lazy">
+          <div style="padding: 20px;">
+            <span class="eyebrow" style="color: #927a72; font-size: 10px;">REPORT 01 ／ 20代後半カップル</span>
+            <h3 style="font-size: 16px; margin: 6px 0 8px;">「背伸びせず、ふたりらしく笑い合えた時間が宝物に。」</h3>
+            <p style="font-size: 11px; margin: 0;">SNSの自然な光に惹かれ無料試着会へ。雰囲気の良さと丁寧なカウンセリングで決めました。</p>
+          </div>
+        </article>
+
+        <article class="photographer-card" style="background: rgb(255 253 249 / 60%);">
+          <img src="img/clothes-kimono.jpg" alt="チャペル撮影の先輩カップル" loading="lazy">
+          <div style="padding: 20px;">
+            <span class="eyebrow" style="color: #927a72; font-size: 10px;">REPORT 02 ／ 30代大人カップル</span>
+            <h3 style="font-size: 16px; margin: 6px 0 8px;">「歴史ある佇まいと光の中で、夫婦の原点を刻めました。」</h3>
+            <p style="font-size: 11px; margin: 0;">年齢を重ねても色褪せない重厚感ある写真を残したく、写真にこだわって選びました。</p>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align: center;">
+        <a class="text-link dark-link" href="stories.html" style="font-size: 12px; letter-spacing: 0.1em;">
+          お客様の声・レポート一覧を見る <span>↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 10. FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="footer-brand" href="index.html"><img src="img/logo-a.svg" alt="kyouritz photo studio"></a>
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳コレクション</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="plans.html">プラン・料金</a>
+      <a href="stories.html">お客様の声</a>
+    </nav>
+    <a class="footer-reserve" href="reserve.html">無料試着会・お見積りを予約する ↗</a>
+    <small>© <span id="copyright-year">2026</span> kyouritz photo studio Inc. All Rights Reserved.</small>
+  </div>
+</footer>
+
+  <!-- 🔥 どのページにいても常に見える最終ゴール（右下固定追従バナー：reserve.html）[cite: 4, 11] -->
+  <aside class="floating-cta" aria-label="無料試着会予約">
+    <div class="floating-bg" style="background-image: url('img/clothes-dress.jpg');"></div>
+    <div class="floating-overlay"></div>
+    <div class="floating-content">
+      <span class="floating-eyebrow">7/1 START ／ FREE TRIAL</span>
+      <strong class="floating-title">運命の一着に出会う、無料試着会。</strong>
+    </div>
+    <a class="floating-btn" href="reserve.html">
+      <span>予約はこちらから</span> <i>↗</i>
+    </a>
+    <button class="floating-close" type="button" aria-label="予約案内を閉じる">×</button>
+  </aside>
+</body>
+</html>

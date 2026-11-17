@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F2EDE3">
+  <meta name="description" content="kyouritz photo studioのフォトグラファー紹介。個性豊かなクリエイター陣の哲学や経歴、得意なテイストをご紹介します。">
+  <title>Our Photographers | kyouritz photo studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+   <header class="site-header">
+    <a class="brand" href="index.html" aria-label="kyouritz photo studio トップ">
+      <img src="img/logo-b.svg" alt="kyouritz photo studio">
+    </a>
+    <nav class="header-nav" aria-label="メインナビゲーション">
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="stories.html">お客様の声</a>
+      <a href="plans.html">プラン・アクセス</a>
+    </nav>
+    <a class="header-cta" href="reserve.html">試着会予約</a>
+    
+    <!-- ハンバーガーボタン -->
+    <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-menu">
+      <svg class="menu-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <line class="bar bar-1" x1="3" y1="7" x2="21" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-2" x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+        <line class="bar bar-3" x1="3" y1="17" x2="21" y2="17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </header>
+
+  <nav class="site-menu" id="site-menu" aria-label="サイトメニュー" hidden>
+    <button class="menu-close" type="button" aria-label="メニューを閉じる">×</button>
+    <span class="eyebrow">MENU</span>
+    <a href="index.html#top">トップページ</a>
+    <a href="index.html#intro">私たちの想い</a>
+    <a href="gallery.html">ギャラリー・ロケーション</a>
+    <a href="collection.html">衣裳コレクション</a>
+    <a href="photographers.html">カメラマン紹介</a>
+    <a href="stories.html">お客様の声・撮影レポート</a>
+    <a href="plans.html">プラン・料金詳細</a>
+    <a class="menu-reserve" href="reserve.html">無料試着会を予約する ↗</a>
+  </nav>
+  <button class="menu-scrim" type="button" aria-label="メニューを閉じる" hidden></button>
+
+  <main id="top">
+    <!-- パンくずリスト -->
+    <nav class="breadcrumbs" aria-label="パンくずリスト">
+      <div class="breadcrumbs-inner">
+        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a itemprop="item" href="index.html">
+              <span itemprop="name">HOME</span>
+            </a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">フォトグラファー紹介</span>
+            <meta itemprop="position" content="2">
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- 下層ページ用ヘッダーセクション -->
+    <section class="hero" style="min-height: 420px; height: 50svh;" aria-label="フォトグラファーヘッダー">
+      <div class="hero-slides">
+        <figure class="hero-slide is-active">
+          <img src="img/photographer-tanaka.jpg" alt="フォトグラファーの撮影風景" fetchpriority="high">
+        </figure>
+      </div>
+      <div class="hero-shade"></div>
+      <div class="hero-content" style="transform: translateY(-38%);">
+        <span class="eyebrow">OUR PHOTOGRAPHERS</span>
+        <h1 style="font-size: clamp(24px, 3.5vw, 38px);">ふたりの気持ちに、<br>そっと寄り添う人。</h1>
+        <p>何気ない会話を重ねながら、ふたりらしい自然な表情と温かな記憶を引き出すクリエイター陣をご紹介します。</p>
+      </div>
+    </section>
+
+    <!-- フォトグラファー詳細一覧セクション -->
+    <section class="photographers section-wrap" id="photographers-list" style="padding-top: 100px; padding-bottom: 80px;">
+      <div class="section-heading" style="text-align: center; margin-bottom: 50px;">
+        <span class="eyebrow">CREATORS DIRECTORY</span>
+        <h2>個性豊かなクリエイターたち</h2>
+        <p>それぞれの視点と哲学で、おふたりの特別な一日を物語に仕立てます。</p>
+      </div>
+      
+      <div style="display: flex; flex-direction: column; gap: 40px;">
+        <!-- 1. Taro Tanaka -->
+        <article class="photographer-card" style="display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; background: rgb(255 253 249 / 60%); border: 1px solid var(--sand);">
+          <img src="img/photographer-tanaka.jpg" alt="カメラマン Taro Tanaka" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover;">
+          <div style="padding: 36px;">
+            <div class="photographer-meta" style="margin-bottom: 8px;">
+              <span class="eyebrow" style="color: #927a72; font-size: 10px;">VETERAN PHOTOGRAPHER</span>
+              <span class="photographer-tag">40代 / 歴15年</span>
+            </div>
+            <h3 style="font-family: var(--serif); font-size: 22px; margin: 0 0 10px;">Taro Tanaka</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0 0 16px; opacity: 0.85;">確かな技術と深い眼差しで、おふたりのドラマチックな瞬間を切り取ります。光と影のコントラストを活かし、何年経っても色褪せない重厚感のあるポートレートが得意です。</p>
+            <div style="font-size: 10.5px; color: #8f7772; letter-spacing: 0.08em; border-top: 1px solid var(--sand); padding-top: 12px;">
+              <strong>得意なテイスト：</strong> チャペル / ドラマチック / シネマティック
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Ryuichi Sato -->
+        <article class="photographer-card" style="display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; background: rgb(255 253 249 / 60%); border: 1px solid var(--sand);">
+          <img src="img/photographer-sato.jpg" alt="カメラマン Ryuichi Sato" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover;">
+          <div style="padding: 36px;">
+            <div class="photographer-meta" style="margin-bottom: 8px;">
+              <span class="eyebrow" style="color: #927a72; font-size: 10px;">SENIOR PHOTOGRAPHER</span>
+              <span class="photographer-tag">40代 / 歴12年</span>
+            </div>
+            <h3 style="font-family: var(--serif); font-size: 22px; margin: 0 0 10px;">Ryuichi Sato</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0 0 16px; opacity: 0.85;">歴史ある空間や美しい自然ロケーションを活かし、空気感まで写し取るような深みのあるポートレートに仕立てます。自然体の笑顔を引き出す穏やかなコミュニケーションが好評です。</p>
+            <div style="font-size: 10.5px; color: #8f7772; letter-spacing: 0.08em; border-top: 1px solid var(--sand); padding-top: 12px;">
+              <strong>得意なテイスト：</strong> ビーチ / 自然光 / アーキテクチャ
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Takumi Takahashi -->
+        <article class="photographer-card" style="display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; background: rgb(255 253 249 / 60%); border: 1px solid var(--sand);">
+          <img src="img/photographer-takahashi.jpg" alt="カメラマン Takumi Takahashi" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover;">
+          <div style="padding: 36px;">
+            <div class="photographer-meta" style="margin-bottom: 8px;">
+              <span class="eyebrow" style="color: #927a72; font-size: 10px;">PHOTOGRAPHER</span>
+              <span class="photographer-tag">30代 / 歴10年</span>
+            </div>
+            <h3 style="font-family: var(--serif); font-size: 22px; margin: 0 0 10px;">Takumi Takahashi</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0 0 16px; opacity: 0.85;">おふたりの日常の延長線上にるような、リラックスした空気感を大切にしています。ふとした瞬間に交わす視線や、いつもの優しい笑顔をそのまま写真に残します。</p>
+            <div style="font-size: 10.5px; color: #8f7772; letter-spacing: 0.08em; border-top: 1px solid var(--sand); padding-top: 12px;">
+              <strong>得意なテイスト：</strong> ストリートスナップ / カジュアル / ナチュラル
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Ayaka Nakamura -->
+        <article class="photographer-card" style="display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; background: rgb(255 253 249 / 60%); border: 1px solid var(--sand);">
+          <img src="img/photographer-nakamura.jpg" alt="カメラマン Ayaka Nakamura" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover;">
+          <div style="padding: 36px;">
+            <div class="photographer-meta" style="margin-bottom: 8px;">
+              <span class="eyebrow" style="color: #927a72; font-size: 10px;">PHOTOGRAPHER</span>
+              <span class="photographer-tag">20代 / 歴6年</span>
+            </div>
+            <h3 style="font-family: var(--serif); font-size: 22px; margin: 0 0 10px;">Ayaka Nakamura</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0 0 16px; opacity: 0.85;">「何年先も見返したくなる、あたたかな一枚を一緒につくりましょう」。女性ならではの繊細な視点で、ドレスの裾の広がりやふたりの温かな手の温もりを優しくすくい取ります。</p>
+            <div style="font-size: 10.5px; color: #8f7772; letter-spacing: 0.08em; border-top: 1px solid var(--sand); padding-top: 12px;">
+              <strong>得意なテイスト：</strong> 和装 / ソフトトーン / ディテール
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Madoka Ito -->
+        <article class="photographer-card" style="display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; background: rgb(255 253 249 / 60%); border: 1px solid var(--sand);">
+          <img src="img/photographer-ito.jpg" alt="カメラマン Madoka Ito" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover;">
+          <div style="padding: 36px;">
+            <div class="photographer-meta" style="margin-bottom: 8px;">
+              <span class="eyebrow" style="color: #927a72; font-size: 10px;">PHOTOGRAPHER</span>
+              <span class="photographer-tag">30代 / 歴8年</span>
+            </div>
+            <h3 style="font-family: var(--serif); font-size: 22px; margin: 0 0 10px;">Madoka Ito</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0 0 16px; opacity: 0.85;">ふとした瞬間にこぼれる、飾らない美しさを引き出すのが得意です。撮影中であることを忘れてしまうような楽しい会話を通じて、内面からにじみ出る魅力を捉えます。</p>
+            <div style="font-size: 10.5px; color: #8f7772; letter-spacing: 0.08em; border-top: 1px solid var(--sand); padding-top: 12px;">
+              <strong>得意なテイスト：</strong> ポートレート / エモーショナル / チャペル
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. Sakura Takayama -->
+        <article class="photographer-card" style="display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; background: rgb(255 253 249 / 60%); border: 1px solid var(--sand);">
+          <img src="img/photographer-sakura.jpg" alt="カメラマン Sakura Takayama" loading="lazy" style="width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover;">
+          <div style="padding: 36px;">
+            <div class="photographer-meta" style="margin-bottom: 8px;">
+              <span class="eyebrow" style="color: #927a72; font-size: 10px;">PHOTOGRAPHER</span>
+              <span class="photographer-tag">20代 / 歴5年</span>
+            </div>
+            <h3 style="font-family: var(--serif); font-size: 22px; margin: 0 0 10px;">Sakura Takayama</h3>
+            <p style="font-size: 11.5px; line-height: 2; margin: 0 0 16px; opacity: 0.85;">やわらかな光と優しい色彩で、大切な一日を物語のように綴ります。トレンドを取り入れたスタイリッシュな構図と、透明感あふれるトーンメイクが若い世代に大人気です。</p>
+            <div style="font-size: 10.5px; color: #8f7772; letter-spacing: 0.08em; border-top: 1px solid var(--sand); padding-top: 12px;">
+              <strong>得意なテイスト：</strong> トレンド / 透明感 / サンセット
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- カメラマン指名についての案内・メッセージ -->
+    <section class="section-paper" style="padding: 100px 0; border-top: 1px solid var(--sand);">
+      <div class="section-wrap" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <span class="eyebrow">DESIGNATED PHOTOGRAPHER</span>
+        <h2 style="font-family: var(--serif); font-size: clamp(24px, 3.5vw, 34px); margin: 15px 0 25px;">「この人に撮ってほしい」という想いを、<br>大切にカタチにします。</h2>
+        <p style="font-size: 12px; line-height: 2.3; margin: 0 auto 35px; text-align: left; opacity: 0.85;">
+          kyouritz photo studioでは、おふたりの好みのテイストや、人柄の相性に合わせてカメラマンをご指名いただくことが可能です。<br>
+          「こんな雰囲気の写真が好き」「人見知りなので話しやすい人がいい」など、どんな些細なご希望でもお気軽にご相談ください。<br>
+          無料試着会やカウンセリングの際にも、最適なクリエイターのご提案や過去の作品集をご覧いただけます。
+        </p>
+        <div style="display: inline-block; padding: 16px 28px; background: var(--banana); border: 1px solid rgb(62 49 45 / 15%); font-size: 11.5px; letter-spacing: 0.1em;">
+          指名料について：どのクリエイターでも一律 ￥5,000 にてご指名いただけます。
+        </div>
+      </div>
+    </section>
+
+    <!-- 試着会バナー案内 -->
+    <section class="section-wrap" style="padding-top: 80px; padding-bottom: 100px;">
+      <aside class="trial-banner" id="trial">
+        <div>
+          <span class="eyebrow">SPECIAL EVENT / 2026</span>
+          <h3>【7/1〜開催】<br>ウェディングドレス無料試着会</h3>
+          <p>気になるドレスを試着して、特別な一日のイメージをふくらませて。</p>
+        </div>
+        <a class="button button-light" href="reserve.html">無料試着会を予約する <span>↗</span></a>
+      </aside>
+    </section>
+  </main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="footer-brand" href="index.html"><img src="img/logo-a.svg" alt="kyouritz photo studio"></a>
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <a href="index.html">トップ</a>
+      <a href="gallery.html">ギャラリー</a>
+      <a href="collection.html">衣裳コレクション</a>
+      <a href="photographers.html">カメラマン</a>
+      <a href="plans.html">プラン・料金</a>
+      <a href="stories.html">お客様の声</a>
+    </nav>
+    <a class="footer-reserve" href="reserve.html">無料試着会・お見積りを予約する ↗</a>
+    <small>© <span id="copyright-year">2026</span> kyouritz photo studio Inc. All Rights Reserved.</small>
+  </div>
+</footer>
+
+  <!-- 右下固定バナー -->
+  <aside class="floating-cta" aria-label="無料試着会予約">
+    <div class="floating-bg" style="background-image: url('img/clothes-dress.jpg');"></div>
+    <div class="floating-overlay"></div>
+    <div class="floating-content">
+      <span class="floating-eyebrow">7/1 START ／ FREE TRIAL</span>
+      <strong class="floating-title">運命の一着に出会う、無料試着会。</strong>
+    </div>
+    <a class="floating-btn" href="reserve.html">
+      <span>予約はこちらから</span> <i>↗</i>
+    </a>
+    <button class="floating-close" type="button" aria-label="予約案内を閉じる">×</button>
+  </aside>
+</body>
+</html>
