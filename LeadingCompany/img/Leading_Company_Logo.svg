@@ -1,0 +1,103 @@
+<svg id="logoSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" class="w-full h-full max-w-md max-h-full">
+                        <defs>
+                            <!-- Linear Highlight Gradient for internal core path -->
+                            <linearGradient id="cyanCoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00E5FF"></stop>
+                                <stop offset="100%" stop-color="#00A8FF"></stop>
+                            </linearGradient>
+                            
+                            <!-- Drop Shadow Filter for nodes -->
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="3" result="blur"></feGaussianBlur>
+                                <feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
+                            </filter>
+                        </defs>
+
+                        <!-- LOGO MARK / SYMBOL -->
+                        <g id="logoSymbol" transform="translate(400, 230)">
+                            
+                            <!-- Deep Blue Background Structural Mesh (Thick Lines) -->
+                            <g stroke="#142542" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                <!-- Outer Boundary of L -->
+                                <path d="M -15,-180 L 25,-140 L -25,-40 L 45,-90 L 80,-30 L -10,30 L 105,30 L 40,95 L -60,95 L -85,5 L -65,-75 Z"></path>
+                                
+                                <!-- Inner Geometric Triangulation Connections -->
+                                <path d="M -15,-180 L -25,-40"></path>
+                                <path d="M 25,-140 L -25,-40"></path>
+                                <path d="M -25,-40 L 80,-30"></path>
+                                <path d="M -25,-40 L -10,30"></path>
+                                <path d="M -65,-75 L -25,-40"></path>
+                                <path d="M -85,5 L -25,-40"></path>
+                                <path d="M -85,5 L -10,30"></path>
+                                <path d="M -60,95 L -10,30"></path>
+                                <path d="M -60,95 L 40,95"></path>
+                                <path d="M -10,30 L 40,95"></path>
+                                <path d="M 105,30 L 40,95"></path>
+                                <path d="M 80,-30 L 105,30"></path>
+                            </g>
+
+                            <!-- Cyan High-Tech Accent Path (Internal Energy Line) -->
+                            <path d="M 15,-145 L -15,-55 L 20,-35 L 5,-10" stroke="url(#cyanCoreGrad)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+
+                            <!-- Network Nodes (Circles with Outer Ring and Cyan Center) -->
+                            <!-- Node 1: Top Tip -->
+                            <g transform="translate(-15, -180)">
+                                <circle r="14" fill="#142542"></circle>
+                                <circle r="8" fill="#00C8FF"></circle>
+                            </g>
+                            <!-- Node 2: Top Right Inner -->
+                            <g transform="translate(25, -140)">
+                                <circle r="12" fill="#142542"></circle>
+                                <circle r="6.5" fill="#00C8FF"></circle>
+                            </g>
+                            <!-- Node 3: Center Mid Spine -->
+                            <g transform="translate(-25, -40)">
+                                <circle r="13" fill="#142542"></circle>
+                                <circle r="7" fill="#00C8FF"></circle>
+                            </g>
+                            <!-- Node 4: Left Upper Shoulder -->
+                            <g transform="translate(-65, -75)">
+                                <circle r="13" fill="#142542"></circle>
+                                <circle r="7" fill="#00C8FF"></circle>
+                            </g>
+                            <!-- Node 5: Far Left Mid -->
+                            <g transform="translate(-85, 5)">
+                                <circle r="12" fill="#142542"></circle>
+                                <circle r="6.5" fill="#00C8FF"></circle>
+                            </g>
+                            <!-- Node 6: Bottom Left Corner -->
+                            <g transform="translate(-60, 95)">
+                                <circle r="14" fill="#142542"></circle>
+                                <circle r="8" fill="#00C8FF"></circle>
+                            </g>
+                            <!-- Node 7: Mid Bottom Junction -->
+                            <g transform="translate(-10, 30)">
+                                <circle r="13" fill="#142542"></circle>
+                                <circle r="7" fill="#00C8FF"></circle>
+                            </g>
+                            <!-- Node 8: Lower Mid Node -->
+                            <g transform="translate(20, 65)">
+                                <circle r="11" fill="#142542"></circle>
+                                <circle r="6" fill="#00C8FF"></circle>
+                            </g>
+                            <!-- Node 9: Right Wing Corner Base -->
+                            <g transform="translate(40, 95)">
+                                <circle r="14" fill="#142542"></circle>
+                                <circle r="8" fill="#00C8FF"></circle>
+                            </g>
+                            <!-- Node 10: Right Outer Vertex -->
+                            <g transform="translate(80, -30)">
+                                <circle r="11" fill="#142542"></circle>
+                                <circle r="6" fill="#00C8FF"></circle>
+                            </g>
+                        </g>
+
+                        <!-- TYPOGRAPHY / BRAND NAME -->
+                        <g id="logoText" text-anchor="middle" fill="#142542">
+                            <!-- "LEADING" Primary Brand Title -->
+                            <text x="400" y="475" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="64" font-weight="900" letter-spacing="4" id="textLeading" fill="#142542">LEADING</text>
+
+                            <!-- "COMPANY" Secondary Brand Subtitle -->
+                            <text x="400" y="535" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="12" id="textCompany" fill="#142542">COMPANY</text>
+                        </g>
+                    </svg>

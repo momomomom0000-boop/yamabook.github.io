@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 119.65 126.5">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: url(#_名称未設定グラデーション_2);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 4.64px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        isolation: isolate;
+        opacity: .8;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #00f2fe;
+      }
+
+      .cls-5 {
+        fill: #f8fafc;
+        stroke: #e2e8f0;
+        stroke-miterlimit: 2.38;
+        stroke-width: .6px;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 3.1 3.1;
+        stroke-width: 3.1px;
+      }
+
+      .cls-2, .cls-6 {
+        stroke: #00f2fe;
+        stroke-miterlimit: 3.1;
+      }
+
+      .cls-7, .cls-6 {
+        fill: #0a192f;
+      }
+
+      .cls-6 {
+        stroke-width: 2.32px;
+      }
+    </style>
+    <linearGradient id="_名称未設定グラデーション_2" data-name="名称未設定グラデーション 2" x1="-237.8" y1="489.71" x2="-236.8" y2="488.71" gradientTransform="translate(12021.0931 26572.2886) scale(50.3008 -54.1701)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00f2fe"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <g id="_レイヤー_1-2" data-name="レイヤー 1">
+    <g>
+      <rect class="cls-5" x=".3" y=".3" width="119.06" height="119.06" rx="14.29" ry="14.29"/>
+      <g>
+        <path class="cls-7" d="M31.85,25.89h27.09v73.52h50.3v27.09H31.85V25.89Z"/>
+        <path class="cls-1" d="M58.93,45.24l30.95,30.95h19.35l-19.35,23.22"/>
+        <path class="cls-2" d="M58.93,76.2h30.95"/>
+        <circle class="cls-4" cx="58.93" cy="45.24" r="3.87"/>
+        <circle class="cls-4" cx="89.89" cy="76.2" r="4.64"/>
+        <circle class="cls-6" cx="109.23" cy="76.2" r="3.1"/>
+        <circle class="cls-4" cx="58.93" cy="76.2" r="3.1"/>
+        <circle class="cls-4" cx="89.89" cy="99.41" r="3.87"/>
+        <polygon class="cls-3" points="58.93 25.89 74.41 25.89 58.93 41.37 58.93 25.89"/>
+        <polygon class="cls-3" points="109.23 111.02 109.23 126.5 93.76 126.5 109.23 111.02"/>
+      </g>
+    </g>
+  </g>
+</svg>

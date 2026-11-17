@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社員紹介 (Expert Team) - Leading Company株式会社</title>
+    <meta name="description" content="Leading Company株式会社を支えるチームメンバーをご紹介します。それぞれの現場で向き合う課題や、大切にしている技術と仕事への想いをお伝えします。">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="img/logo-mark.svg" alt="" class="logo-img">
+                <span>Leading Company</span>
+            </a>
+            <nav class="nav-links" id="navLinks" aria-label="メインナビゲーション">
+                <a href="index.html" data-nav="home" data-i18n="home">ホーム</a>
+                <a href="company.html" data-nav="company" data-i18n="company">企業情報</a>
+                <a href="members.html" class="active" aria-current="page" data-nav="members" data-i18n="members">社員紹介</a>
+                <a href="cases.html" data-nav="cases" data-i18n="cases">導入事例</a>
+                <a href="company.html#contact" class="btn-primary" data-nav="contact" data-i18n="contact">お問い合わせ</a>
+                <label class="language-option">
+                    <span class="sr-only" data-i18n="language">言語</span>
+                    <select class="language-select" data-language-select aria-label="Language Selector">
+                        <option value="ja">JA</option>
+                        <option value="en">EN</option>
+                    </select>
+                </label>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero compact" style="border-bottom: 1px solid var(--border-color); background: var(--bg-primary);">
+            <div class="container" style="text-align: center; max-width: 840px;">
+                <span class="hero-tag" style="letter-spacing: 0.25em;">Expert Team</span>
+                <h1 data-i18n="membersTitle" style="font-size: clamp(2.4rem, 4vw, 3.5rem); font-weight: 800; color: var(--primary); margin: 16px 0 20px;">
+                    モノづくりと課題に向き合う、<br>チームの顔をご紹介します。
+                </h1>
+                <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto; line-height: 1.8; font-weight: 400;">
+                    綺麗事だけではない現場の試行錯誤と、それぞれの専門性。私たちが日々の仕事で大切にしているリアルな視点をお届けします。
+                </p>
+            </div>
+        </section>
+
+        <section class="member-grid-section" style="background-color: var(--bg-secondary);">
+            <div class="container">
+                <div class="member-grid">
+                    
+                    <!-- 代表取締役 田中 太郎 -->
+                    <article class="member-card">
+                        <div class="member-info-wrapper" style="width: 100%;">
+                            <div class="member-avatar-wrap">
+                                <div class="member-avatar" role="img" aria-label="田中 太郎のプロフィール画像" style="background-image: url('img/IMG-14.jpg');"></div>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-role">代表取締役</span>
+                                <h3 class="member-name">田中 太郎</h3>
+                                <p class="member-quote">「2001年の設立以来、私たちは誇りと美学を持って技術を研ぎ澄ましてきました。変化の激しい時代だからこそ、表面的な流行に流されず、社会の根幹を支える不変の価値を愚直に創り続けます。」</p>
+                            </div>
+                        </div>
+                        <div class="member-socials">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <div class="member-info-wrapper" style="width: 100%;">
+                            <div class="member-avatar-wrap">
+                                <div class="member-avatar" role="img" aria-label="木村 雅彦のプロフィール画像" style="background-image: url('img/IMG-05.jpg');"></div>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-role">CEO / 最高経営責任者</span>
+                                <h3 class="member-name">木村 雅彦</h3>
+                                <p class="member-quote">「『言われた通りの仕様で作る』だけなら、私たちの存在理由はありません。時にクライアントと徹底的に議論し、事業の本当の課題に泥臭く向き合い続けること。それこそが伴走者の役割だと思っています。」</p>
+                            </div>
+                        </div>
+                        <div class="member-socials">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <div class="member-info-wrapper" style="width: 100%;">
+                            <div class="member-avatar-wrap">
+                                <div class="member-avatar" role="img" aria-label="鈴木 雅樹のプロフィール画像" style="background-image: url('img/IMG-06.jpg');"></div>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-role">CTO / 最高技術責任者</span>
+                                <h3 class="member-name">鈴木 雅樹</h3>
+                                <p class="member-quote">「見栄えが良いだけのシステムは作りません。数年後に開発チームが変わっても事故が起きず、安全に拡張できるか。コードの『1行の美しさと安全性』に最後までこだわり抜くのが私の美学です。」</p>
+                            </div>
+                        </div>
+                        <div class="member-socials">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <div class="member-info-wrapper" style="width: 100%;">
+                            <div class="member-avatar-wrap">
+                                <div class="member-avatar" role="img" aria-label="佐藤 真理子のプロフィール画像" style="background-image: url('img/IMG-07.jpg');"></div>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-role">プロジェクトマネージャー</span>
+                                <h3 class="member-name">佐藤 真理子</h3>
+                                <p class="member-quote">「開発現場はいつも予想外の連続です。だからこそ、現場のエンジニアとクライアントの間に立ち、互いの想いや不安を丁寧に紐解いていく。全員が前を向いて走れる状態を作るのが私の仕事です。」</p>
+                            </div>
+                        </div>
+                        <div class="member-socials">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <div class="member-info-wrapper" style="width: 100%;">
+                            <div class="member-avatar-wrap">
+                                <div class="member-avatar" role="img" aria-label="田中 美香のプロフィール画像" style="background-image: url('img/IMG-08.jpg');"></div>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-role">クリエイティブデザイナー</span>
+                                <h3 class="member-name">田中 美香</h3>
+                                <p class="member-quote">「単に『きれいな画面』を描くのではなく、使う人が迷わず目的を果たせるか、触っていて心地よいかを徹底的に突き詰めます。ロジックと感性の両方を大切にしたいですね。」</p>
+                            </div>
+                        </div>
+                        <div class="member-socials">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <div class="member-info-wrapper" style="width: 100%;">
+                            <div class="member-avatar-wrap">
+                                <div class="member-avatar" role="img" aria-label="高木 美智子のプロフィール画像" style="background-image: url('img/IMG-09.jpg');"></div>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-role">ヘルプデスク担当</span>
+                                <h3 class="member-name">高木 美智子</h3>
+                                <p class="member-quote">「画面の向こうで困っている方の『たすかった！』の一言が一番の励みです。難しい専門用語を使わず、相手の不安に寄り添ったわかりやすい対応を心掛けています。」</p>
+                            </div>
+                        </div>
+                        <div class="member-socials">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                        </div>
+                    </article>
+
+                    <article class="member-card">
+                        <div class="member-info-wrapper" style="width: 100%;">
+                            <div class="member-avatar-wrap">
+                                <div class="member-avatar" role="img" aria-label="渡辺 健太のプロフィール画像" style="background-image: url('img/IMG-10.jpg');"></div>
+                            </div>
+                            <div class="member-info">
+                                <span class="member-role">人事担当</span>
+                                <h3 class="member-name">渡辺 健太</h3>
+                                <p class="member-quote">「型にはまった採用はしていません。それぞれが得意な尖った強みを持ち寄り、お互いをリスペクトしながらのびのびと挑戦できる環境を愚直に作っていきたいと考えています。」</p>
+                            </div>
+                        </div>
+                        <div class="member-socials">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo-link">
+                        <img src="img/footer-logo.svg" alt="Leading Company" class="footer-logo-img">
+                    </a>
+                    <p>技術の力で100年先のスタンダードを創る。私たちは本質的な価値を追求し続けるエンジニアリングパートナーです。</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="navigation">Navigation</h4>
+                    <ul>
+                        <li><a href="index.html" data-i18n="home">ホーム</a></li>
+                        <li><a href="company.html" data-i18n="company">企業情報</a></li>
+                        <li><a href="members.html" data-i18n="members">社員紹介</a></li>
+                        <li><a href="cases.html" data-i18n="cases">導入事例</a></li>
+                        <li><a href="company.html#recruit" data-i18n="careers">採用情報</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="support">Support & Contact</h4>
+                    <ul>
+                        <li><a href="company.html#contact" data-i18n="contact">お問い合わせ</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-address">本社：〒164-8787 東京都中野区東中野4-2-3</p>
+                <p class="copyright">Copyright &copy; Leading Company KK. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
