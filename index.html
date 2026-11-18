@@ -100,6 +100,13 @@
 
         <!-- お知らせリスト -->
         <ul class="news__list" id="newsList">
+          <!-- 新着お知らせ: DO NOT QUESTION AUTHORITY. 追加 -->
+          <li class="news__item">
+            <time class="news__date" datetime="2026-11-18">2026.11.18</time>
+            <span class="news__category">制作成果</span>
+            <a href="work16.html" class="news__link">新しく作品（DO NOT QUESTION AUTHORITY.）を追加しました</a>
+          </li>
+
           <!-- 新着お知らせ: 終わらない午睡 A Drift in Time 追加 -->
           <li class="news__item">
             <time class="news__date" datetime="2026-11-17">2026.11.17</time>
@@ -145,7 +152,7 @@
           <li class="news__item is-hidden">
             <time class="news__date" datetime="2026-10-20">2026.10.20</time>
             <span class="news__category">制作成果</span>
-            <a href="#works`" class="news__link">新しく作品（kyouritz photo studio）を追加しました</a>
+            <a href="#works" class="news__link">新しく作品（kyouritz photo studio）を追加しました</a>
           </li>
           <li class="news__item is-hidden">
             <time class="news__date" datetime="2026-10-13">2026.10.13</time>
@@ -185,6 +192,7 @@
 
     </div>
   </section>
+
   <!-- ==========================================================================
      04_About (やまものとのことセクション)
      ========================================================================== -->
@@ -252,15 +260,15 @@
               </a>
             </li>
 
-<!-- GitHub -->
-<li class="about__sns-item">
-  <a href="https://github.com/momomomom0000-boop" target="_blank" rel="noopener noreferrer" class="about__sns-link" aria-label="GitHub">
-    <svg class="about__sns-icon" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-    </svg>
-    <span>GitHub</span>
-  </a>
-</li>
+            <!-- GitHub -->
+            <li class="about__sns-item">
+              <a href="https://github.com/momomomom0000-boop" target="_blank" rel="noopener noreferrer" class="about__sns-link" aria-label="GitHub">
+                <svg class="about__sns-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span>GitHub</span>
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -280,8 +288,8 @@
   </section>
 
   <!-- ==========================================================================
-       05_Works (つくったものセクション)
-       ========================================================================== -->
+     05_Works (つくったものセクション)
+     ========================================================================== -->
   <section class="works" id="works">
     <div class="works__container">
 
@@ -299,7 +307,31 @@
 
       <!-- 作品カードグリッド -->
       <div class="works__grid">
-		  <!-- ★ 新しい作品カード (NEW): 終わらない午睡 A Drift in Time -->
+        <!-- ★ 新しい作品カード (NEW): DO NOT QUESTION AUTHORITY. -->
+        <article class="works__card has-new-badge works__modal-trigger" data-category="video"
+                data-title="DO NOT QUESTION AUTHORITY."
+                data-category-text="CINEMATIC SHORT & VSFX / DYSTOPIA"
+                data-desc="12秒のディストピア・ショート映像作品。<br>【制作】巨大な構造物の前に立たされたときの「抗えない大きさ」や「どうしようもない窮屈さ」を、重低音の響きとフィルムグレイン・走査線の質感で表現。"
+                data-spec="担当: 企画・構成・映像編集・エフェクト加工・音響デザイン / 制作期間: 約4時間 / ツール: Adobe Premiere Pro"
+                data-demo-url="https://youtube.com/shorts/GVp0iKUHldM?si=x_PzKseK-C5-Zd93"
+                data-images='["img/work18_mv.jpg"]'
+                data-link="work16.html"
+                role="button" tabindex="0">
+          <div class="works__card-thumb">
+            <img src="img/work18_thumb.jpg" alt="DO NOT QUESTION AUTHORITY. プレビュー" width="720" height="360" loading="lazy" class="works__card-img">
+          </div>
+          <div class="works__card-body">
+            <ul class="works__card-tags">
+              <li class="works__card-tag">#映像作品</li>
+              <li class="works__card-tag">#ディストピア</li>
+              <li class="works__card-tag">#PremierePro</li>
+            </ul>
+            <h3 class="works__card-title">DO NOT QUESTION AUTHORITY.</h3>
+            <p class="works__card-desc">Cinematic Short &amp; VSFX</p>
+          </div>
+        </article>
+
+        <!-- ★ 新しい作品カード (NEW): 終わらない午睡 A Drift in Time -->
         <article class="works__card has-new-badge works__modal-trigger" data-category="video"
                 data-title="終わらない午睡（A Drift in Time）"
                 data-category-text="VIDEO PRODUCTION / DREAMCORE / SOUND DESIGN"
