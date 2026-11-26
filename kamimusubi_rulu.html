@@ -40,14 +40,13 @@
     }
 
     .container {
-      max-width: 960px;
+      max-width: 1020px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    /* ヘッダー・カード共通 */
     .header-card,
     .rule-card,
     .control-bar,
@@ -82,7 +81,6 @@
       color: var(--dark-brown);
     }
 
-    /* パレット見本ストリップ */
     .palette-strip {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -140,7 +138,6 @@
       font-weight: 700;
     }
 
-    /* 命名ルールカード */
     .rule-card,
     .cat-section {
       padding: 20px;
@@ -248,7 +245,6 @@
       font-weight: 700;
     }
 
-    /* フィルター＆進捗バー */
     .control-bar {
       padding: 16px 18px;
       display: flex;
@@ -307,7 +303,6 @@
       color: var(--ivory);
     }
 
-    /* テーブル */
     .table-wrap {
       overflow-x: auto;
     }
@@ -316,7 +311,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 12.5px;
-      min-width: 680px;
+      min-width: 740px;
     }
 
     th {
@@ -347,7 +342,6 @@
       display: none;
     }
 
-    /* ステータス選択 */
     .status-select {
       font-family: "Noto Sans JP", sans-serif;
       font-size: 11.5px;
@@ -378,8 +372,13 @@
       color: var(--ivory);
     }
 
-    /* ファイル名＆コピー */
-    .file-cell {
+    .file-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .file-main-row {
       display: flex;
       align-items: center;
       gap: 6px;
@@ -412,6 +411,39 @@
 
     .copy-btn:hover {
       background-color: var(--gold);
+      color: var(--ivory);
+    }
+
+    .ratio-variants {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .ratio-variants-label {
+      font-size: 10.5px;
+      color: var(--olive-green);
+      font-weight: 700;
+      margin-right: 2px;
+    }
+
+    .variant-btn {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 5px;
+      border: 1px solid var(--border-warm);
+      background-color: var(--surface-warm);
+      color: var(--dark-brown);
+      cursor: pointer;
+    }
+
+    .variant-btn:hover,
+    .variant-btn.active {
+      background-color: var(--olive-green);
+      border-color: var(--olive-green);
       color: var(--ivory);
     }
 
@@ -453,7 +485,7 @@
       <p class="eyebrow">神結（かみむすび）リニューアル制作メモ</p>
       <h1 class="page-title">素材一覧＆画像ファイル命名ルール表</h1>
       <p class="page-desc">
-        アイボリー・ベージュ・ゴールド・バーミリオン・ダークブラウン・オリーブグリーンでまとめた素材管理表です（黒は不使用）。カラーコードやファイル名のコピーボタン、状況フィルターを活用できます。
+        アイボリー・ベージュ・ゴールド・バーミリオン・ダークブラウン・オリーブグリーンでまとめた素材管理表です（黒は不使用）。各写真の比率ボタン（<code>16:9</code> / <code>4:3</code> / <code>1:1</code> / <code>3:4</code>）を押すと、その比率に合わせたファイル名に切り替わりワンクリックでコピーできます。
       </p>
 
       <div class="palette-strip" aria-label="使用カラーパレット">
@@ -508,7 +540,6 @@
       </div>
     </header>
 
-    <!-- 命名ルールまとめ -->
     <section class="rule-card">
       <h2 class="sec-title">画像ファイル命名ルール（写真拡張子は .jpeg 統一）</h2>
       <div class="formula-box">
@@ -528,8 +559,8 @@
           <ul class="rule-list">
             <li>半角英小文字（<code>a-z</code>）・半角数字（<code>0-9</code>）・ハイフン（<code>-</code>）のみ使用</li>
             <li>写真は原則 <code>.jpeg</code> に統一（ロゴ・イラストは <code>.svg</code> / <code>.png</code> も可）</li>
+            <li>写真比率は <code>16x9</code>・<code>4x3</code>・<code>1x1</code>・<code>3x4</code> など実物に合わせて末尾を変更</li>
             <li>複数候補があるときは <code>-a-</code> / <code>-b-</code> で枝番をつけ、採用分を枝番なしに揃える</li>
-            <li>サイズ違いを分けるときは末尾に <code>-640</code> などを追加</li>
           </ul>
         </div>
         <div class="rule-box">
@@ -547,7 +578,6 @@
       </div>
     </section>
 
-    <!-- フィルター＆進捗 -->
     <div class="control-bar">
       <div class="stats" id="statsBar">
         <div class="stat-pill">全素材: <span id="statAll">0</span>件</div>
@@ -565,20 +595,20 @@
 
     <!-- 1. 写真素材 -->
     <section class="cat-section">
-      <h2 class="sec-title">1. 写真素材（.jpeg）</h2>
+      <h2 class="sec-title">1. 写真素材（.jpeg・比率バリエーション対応）</h2>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th style="width: 120px;">状況</th>
-              <th style="width: 190px;">用途・場所</th>
-              <th>推奨ファイル名</th>
-              <th style="width: 95px;">比率目安</th>
+              <th style="width: 185px;">用途・場所</th>
+              <th>推奨ファイル名＆比率別コピー</th>
+              <th style="width: 95px;">目安</th>
               <th>撮影・選定メモ</th>
             </tr>
           </thead>
           <tbody>
-            <tr data-id="p-hero">
+            <tr data-id="p-hero" data-base="hero-twilight-lamp" data-default-ratio="16x9">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -588,15 +618,25 @@
               </td>
               <td><strong>メインビジュアル</strong><br /><span class="memo-text">「おいしい料理と酒！！」背景</span></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">hero-twilight-lamp-16x9.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">hero-twilight-lamp-16x9.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="1x1">1:1</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">16:9</span><br /><span class="memo-text">800×450〜</span></td>
               <td class="memo-text">夕暮れ〜夜のあたたかい明かり・料理とお酒の空気感</td>
             </tr>
-            <tr data-id="p-shop">
+
+            <tr data-id="p-shop" data-base="shop-counter-mood" data-default-ratio="16x9">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -606,15 +646,25 @@
               </td>
               <td><strong>ご挨拶セクション</strong><br /><span class="memo-text">店の雰囲気が感じられる写真</span></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">shop-counter-mood-16x9.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">shop-counter-mood-16x9.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="1x1">1:1</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">16:9</span><br /><span class="memo-text">800×450</span></td>
               <td class="memo-text">カウンターや席の距離感がわかる入りやすいカット</td>
             </tr>
-            <tr data-id="p-food1">
+
+            <tr data-id="p-food1" data-base="food-ajillo" data-default-ratio="1x1">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -624,15 +674,25 @@
               </td>
               <td><strong>お品書き：アヒージョ</strong></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">food-ajillo-1x1.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">food-ajillo-1x1.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="1x1">1:1</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">1:1</span><br /><span class="memo-text">640×640〜</span></td>
               <td class="memo-text">グツグツ感・湯気や彩りが伝わるアップ</td>
             </tr>
-            <tr data-id="p-food2">
+
+            <tr data-id="p-food2" data-base="food-tamagoyaki" data-default-ratio="1x1">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -642,15 +702,25 @@
               </td>
               <td><strong>お品書き：卵焼き</strong></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">food-tamagoyaki-1x1.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">food-tamagoyaki-1x1.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="1x1">1:1</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">1:1</span><br /><span class="memo-text">640×640〜</span></td>
               <td class="memo-text">焼き色・ふっくら感がわかる定番カット</td>
             </tr>
-            <tr data-id="p-food3">
+
+            <tr data-id="p-food3" data-base="food-nankotsu-karaage" data-default-ratio="1x1">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -660,15 +730,25 @@
               </td>
               <td><strong>お品書き：なんこつのからあげ</strong></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">food-nankotsu-karaage-1x1.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">food-nankotsu-karaage-1x1.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="1x1">1:1</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">1:1</span><br /><span class="memo-text">640×640〜</span></td>
               <td class="memo-text">おつまみ感・カリッとした質感が伝わるカット</td>
             </tr>
-            <tr data-id="p-course1">
+
+            <tr data-id="p-course1" data-base="course-01-main" data-default-ratio="16x9">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -678,15 +758,25 @@
               </td>
               <td><strong>宴会コース紹介：コース1</strong></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">course-01-main-16x9.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">course-01-main-16x9.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="1x1">1:1</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">16:9</span></td>
               <td class="memo-text">アコーディオン展開時またはカード用写真</td>
             </tr>
-            <tr data-id="p-course2">
+
+            <tr data-id="p-course2" data-base="course-02-main" data-default-ratio="16x9">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -696,15 +786,25 @@
               </td>
               <td><strong>宴会コース紹介：コース2</strong></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">course-02-main-16x9.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">course-02-main-16x9.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="1x1">1:1</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">16:9</span></td>
               <td class="memo-text">アコーディオン展開時またはカード用写真</td>
             </tr>
-            <tr data-id="p-course3">
+
+            <tr data-id="p-course3" data-base="course-03-main" data-default-ratio="16x9">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -714,15 +814,25 @@
               </td>
               <td><strong>宴会コース紹介：コース3</strong></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">course-03-main-16x9.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">course-03-main-16x9.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="1x1">1:1</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">16:9</span></td>
               <td class="memo-text">アコーディオン展開時またはカード用写真</td>
             </tr>
-            <tr data-id="p-route">
+
+            <tr data-id="p-route" data-base="route-tsuruma-exit-01" data-default-ratio="16x9">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -732,15 +842,25 @@
               </td>
               <td><strong>駅からの詳しい行き方</strong><br /><span class="memo-text">スライドショー／アコーディオン用</span></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">route-tsuruma-exit-01-16x9.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">route-tsuruma-exit-01-16x9.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                    <button type="button" class="variant-btn" data-ratio="1x1">1:1</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">16:9</span></td>
               <td class="memo-text">01・02・03…の連番で鶴間駅〜サンライト鶴間1Fまで</td>
             </tr>
-            <tr data-id="p-ogp">
+
+            <tr data-id="p-ogp" data-base="ogp-kamimusubi-share" data-default-ratio="1200x630">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -750,9 +870,17 @@
               </td>
               <td><strong>SNS・LINE共有用OGP画像</strong></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">ogp-kamimusubi-share-1200x630.jpeg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">ogp-kamimusubi-share-1200x630.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">サイズ/比率:</span>
+                    <button type="button" class="variant-btn active" data-ratio="1200x630">1200×630</button>
+                    <button type="button" class="variant-btn" data-ratio="16x9">16:9</button>
+                    <button type="button" class="variant-btn" data-ratio="1x1">1:1</button>
+                  </div>
                 </div>
               </td>
               <td><span class="ratio-badge">1200×630</span></td>
@@ -771,7 +899,7 @@
           <thead>
             <tr>
               <th style="width: 120px;">状況</th>
-              <th style="width: 190px;">用途・場所</th>
+              <th style="width: 185px;">用途・場所</th>
               <th>推奨ファイル名</th>
               <th style="width: 95px;">形式目安</th>
               <th>メモ</th>
@@ -788,9 +916,9 @@
               </td>
               <td><strong>ヘッダー左上ロゴ</strong></td>
               <td>
-                <div class="file-cell">
+                <div class="file-main-row">
                   <code class="file-code">brand-logo-header.svg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                  <button type="button" class="copy-btn" data-copy="brand-logo-header.svg">コピー</button>
                 </div>
               </td>
               <td><span class="ratio-badge">SVG / PNG</span></td>
@@ -806,15 +934,15 @@
               </td>
               <td><strong>フッター中央の丸枠ロゴ</strong></td>
               <td>
-                <div class="file-cell">
+                <div class="file-main-row">
                   <code class="file-code">brand-logo-footer-circle.svg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                  <button type="button" class="copy-btn" data-copy="brand-logo-footer-circle.svg">コピー</button>
                 </div>
               </td>
               <td><span class="ratio-badge">SVG / PNG</span></td>
               <td class="memo-text">フッターの円形枠に収まるシンボル・ロゴ</td>
             </tr>
-            <tr data-id="b-portrait">
+            <tr data-id="b-portrait" data-base="brand-master-portrait" data-default-ratio="1x1">
               <td>
                 <select class="status-select" data-state="todo" aria-label="状況">
                   <option value="todo" selected>これから用意</option>
@@ -824,13 +952,21 @@
               </td>
               <td><strong>店主の似顔絵イラスト</strong><br /><span class="memo-text">「メニューにないお料理も…」横</span></td>
               <td>
-                <div class="file-cell">
-                  <code class="file-code">brand-master-portrait-1x1.png</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                <div class="file-block">
+                  <div class="file-main-row">
+                    <code class="file-code">brand-master-portrait-1x1.jpeg</code>
+                    <button type="button" class="copy-btn row-copy-btn">コピー</button>
+                  </div>
+                  <div class="ratio-variants">
+                    <span class="ratio-variants-label">比率別:</span>
+                    <button type="button" class="variant-btn active" data-ratio="1x1">1:1</button>
+                    <button type="button" class="variant-btn" data-ratio="4x3">4:3</button>
+                    <button type="button" class="variant-btn" data-ratio="3x4">3:4</button>
+                  </div>
                 </div>
               </td>
-              <td><span class="ratio-badge">1:1 PNG</span></td>
-              <td class="memo-text">丸枠にトリミングしやすい正方形・背景透過</td>
+              <td><span class="ratio-badge">1:1</span></td>
+              <td class="memo-text">丸枠にトリミングしやすい正方形・イラスト</td>
             </tr>
             <tr data-id="b-sns">
               <td>
@@ -842,9 +978,9 @@
               </td>
               <td><strong>SNS・支払いアイコン</strong><br /><span class="memo-text">Instagram / LINE / X / 現金・PayPay</span></td>
               <td>
-                <div class="file-cell">
+                <div class="file-main-row">
                   <code class="file-code">brand-icon-instagram.svg</code>
-                  <button type="button" class="copy-btn">コピー</button>
+                  <button type="button" class="copy-btn" data-copy="brand-icon-instagram.svg">コピー</button>
                 </div>
               </td>
               <td><span class="ratio-badge">SVG</span></td>
@@ -863,7 +999,7 @@
           <thead>
             <tr>
               <th style="width: 120px;">状況</th>
-              <th style="width: 190px;">項目</th>
+              <th style="width: 185px;">項目</th>
               <th>記載内容・準備データ</th>
               <th>確認メモ</th>
             </tr>
@@ -940,7 +1076,7 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "kamimusubi_assets_status_v3";
+    const STORAGE_KEY = "kamimusubi_assets_status_v4";
     const selects = document.querySelectorAll(".status-select");
     const filterBtns = document.querySelectorAll(".filter-btn");
     let currentFilter = "all";
@@ -995,6 +1131,49 @@
       document.getElementById("statDone").textContent = done;
     }
 
+    async function copyTextWithFeedback(text, btn) {
+      if (!text || !btn) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = "コピー済";
+        setTimeout(() => { btn.textContent = orig; }, 1200);
+      } catch (e) {}
+    }
+
+    // 比率ボタン押下：ファイル名をその比率に書き換えてそのままコピー
+    document.querySelectorAll(".variant-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const tr = btn.closest("tr");
+        const base = tr?.dataset.base;
+        const ratio = btn.dataset.ratio;
+        const codeEl = tr?.querySelector(".file-code");
+        const copyBtn = tr?.querySelector(".row-copy-btn");
+        if (!base || !ratio || !codeEl) return;
+
+        tr.querySelectorAll(".variant-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const nextFileName = `${base}-${ratio}.jpeg`;
+        codeEl.textContent = nextFileName;
+        await copyTextWithFeedback(nextFileName, copyBtn || btn);
+      });
+    });
+
+    // 「コピー」ボタン押下（カラーコード・固定ロゴ・現在のファイル名）
+    document.querySelectorAll(".copy-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const tr = btn.closest("tr");
+        const text = (
+          btn.dataset.copy ||
+          tr?.querySelector(".file-code")?.textContent ||
+          btn.previousElementSibling?.textContent ||
+          ""
+        ).trim();
+        await copyTextWithFeedback(text, btn);
+      });
+    });
+
     selects.forEach((sel) => {
       sel.addEventListener("change", () => {
         saveStates();
@@ -1008,19 +1187,6 @@
         btn.classList.add("active");
         currentFilter = btn.dataset.filter;
         updateUI();
-      });
-    });
-
-    document.querySelectorAll(".copy-btn").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const text = (btn.dataset.copy || btn.previousElementSibling?.textContent || "").trim();
-        if (!text) return;
-        try {
-          await navigator.clipboard.writeText(text);
-          const orig = btn.textContent;
-          btn.textContent = "コピー済";
-          setTimeout(() => { btn.textContent = orig; }, 1200);
-        } catch (e) {}
       });
     });
 
