@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>神結（かみむすび）素材管理＆命名ルール一覧表</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --ivory: #FAF8F3;
+      --beige: #E9DCCB;
+      --gold: #B99A63;
+      --vermillion: #A65E50;
+      --dark-brown: #514039;
+      --olive-green: #68785B;
+      --surface-warm: #F4ECE0;
+      --border-warm: rgba(81, 64, 57, 0.18);
+      --vermillion-soft: rgba(166, 94, 80, 0.14);
+      --gold-soft: rgba(185, 154, 99, 0.18);
+      --olive-soft: rgba(104, 120, 91, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      background-color: var(--beige);
+      color: var(--dark-brown);
+      line-height: 1.7;
+      padding: 20px 14px 64px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ヘッダー・カード共通 */
+    .header-card,
+    .rule-card,
+    .control-bar,
+    .cat-section {
+      background-color: var(--ivory);
+      border: 1px solid var(--border-warm);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(81, 64, 57, 0.07);
+    }
+
+    .header-card {
+      padding: 22px 20px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--vermillion);
+      margin-bottom: 6px;
+    }
+
+    .page-title {
+      font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark-brown);
+      margin-bottom: 8px;
+    }
+
+    .page-desc {
+      font-size: 13.5px;
+      color: var(--dark-brown);
+    }
+
+    /* パレット見本ストリップ */
+    .palette-strip {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    @media (min-width: 540px) {
+      .palette-strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 820px) {
+      .palette-strip {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+    .swatch {
+      background-color: var(--surface-warm);
+      border: 1px solid var(--border-warm);
+      border-radius: 10px;
+      padding: 8px;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .swatch-color {
+      height: 24px;
+      border-radius: 6px;
+      border: 1px solid var(--border-warm);
+    }
+
+    .swatch-name {
+      font-weight: 700;
+      color: var(--dark-brown);
+      line-height: 1.3;
+    }
+
+    .swatch-code-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .swatch-hex {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11px;
+      color: var(--olive-green);
+      font-weight: 700;
+    }
+
+    /* 命名ルールカード */
+    .rule-card,
+    .cat-section {
+      padding: 20px;
+    }
+
+    .sec-title {
+      font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark-brown);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-warm);
+    }
+
+    .sec-title::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: var(--vermillion);
+      flex-shrink: 0;
+    }
+
+    .formula-box {
+      background-color: var(--surface-warm);
+      border: 1px dashed var(--gold);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .token {
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .token-prefix { background: var(--vermillion); color: var(--ivory); }
+    .token-subject { background: var(--dark-brown); color: var(--ivory); }
+    .token-note { background: var(--olive-green); color: var(--ivory); }
+    .token-ratio { background: var(--ivory); border: 1px solid var(--border-warm); color: var(--dark-brown); }
+    .token-ext { background: var(--gold); color: var(--ivory); }
+
+    .rule-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 720px) {
+      .rule-grid {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
+
+    .rule-box {
+      background-color: var(--surface-warm);
+      border: 1px solid var(--border-warm);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 12.5px;
+    }
+
+    .rule-box h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark-brown);
+      margin-bottom: 6px;
+    }
+
+    .rule-list {
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .prefix-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .prefix-tag {
+      font-size: 11.5px;
+      background-color: var(--ivory);
+      border: 1px solid var(--border-warm);
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+
+    .prefix-tag code {
+      color: var(--vermillion);
+      font-weight: 700;
+    }
+
+    /* フィルター＆進捗バー */
+    .control-bar {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (min-width: 720px) {
+      .control-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .stat-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: var(--surface-warm);
+      border: 1px solid var(--border-warm);
+    }
+
+    .stat-pill span {
+      color: var(--vermillion);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--border-warm);
+      background-color: var(--surface-warm);
+      color: var(--dark-brown);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background-color: var(--vermillion);
+      border-color: var(--vermillion);
+      color: var(--ivory);
+    }
+
+    /* テーブル */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      min-width: 680px;
+    }
+
+    th {
+      text-align: left;
+      font-weight: 700;
+      color: var(--olive-green);
+      background-color: var(--surface-warm);
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--border-warm);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid var(--border-warm);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.is-done {
+      opacity: 0.65;
+    }
+
+    tr.is-hidden {
+      display: none;
+    }
+
+    /* ステータス選択 */
+    .status-select {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border-warm);
+      background-color: var(--surface-warm);
+      color: var(--dark-brown);
+      cursor: pointer;
+    }
+
+    .status-select[data-state="have"] {
+      background-color: var(--olive-soft);
+      border-color: rgba(104, 120, 91, 0.45);
+      color: var(--olive-green);
+    }
+
+    .status-select[data-state="todo"] {
+      background-color: var(--vermillion-soft);
+      border-color: rgba(166, 94, 80, 0.45);
+      color: var(--vermillion);
+    }
+
+    .status-select[data-state="done"] {
+      background-color: var(--dark-brown);
+      border-color: var(--dark-brown);
+      color: var(--ivory);
+    }
+
+    /* ファイル名＆コピー */
+    .file-cell {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .file-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11.5px;
+      background-color: var(--surface-warm);
+      border: 1px solid var(--border-warm);
+      padding: 3px 7px;
+      border-radius: 6px;
+      color: var(--dark-brown);
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1px solid var(--gold);
+      background-color: var(--gold-soft);
+      color: var(--dark-brown);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--gold);
+      color: var(--ivory);
+    }
+
+    .ratio-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background-color: var(--olive-soft);
+      color: var(--olive-green);
+      white-space: nowrap;
+    }
+
+    .memo-text {
+      color: var(--olive-green);
+      font-size: 12px;
+    }
+
+    .reset-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 6px;
+    }
+
+    .reset-btn {
+      background: none;
+      border: none;
+      color: var(--dark-brown);
+      font-size: 11.5px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header-card">
+      <p class="eyebrow">神結（かみむすび）リニューアル制作メモ</p>
+      <h1 class="page-title">素材一覧＆画像ファイル命名ルール表</h1>
+      <p class="page-desc">
+        アイボリー・ベージュ・ゴールド・バーミリオン・ダークブラウン・オリーブグリーンでまとめた素材管理表です（黒は不使用）。カラーコードやファイル名のコピーボタン、状況フィルターを活用できます。
+      </p>
+
+      <div class="palette-strip" aria-label="使用カラーパレット">
+        <div class="swatch">
+          <div class="swatch-color" style="background-color: #FAF8F3;"></div>
+          <div class="swatch-name">Ivory</div>
+          <div class="swatch-code-row">
+            <code class="swatch-hex">#FAF8F3</code>
+            <button type="button" class="copy-btn" data-copy="#FAF8F3">コピー</button>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background-color: #E9DCCB;"></div>
+          <div class="swatch-name">Beige</div>
+          <div class="swatch-code-row">
+            <code class="swatch-hex">#E9DCCB</code>
+            <button type="button" class="copy-btn" data-copy="#E9DCCB">コピー</button>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background-color: #B99A63;"></div>
+          <div class="swatch-name">Gold</div>
+          <div class="swatch-code-row">
+            <code class="swatch-hex">#B99A63</code>
+            <button type="button" class="copy-btn" data-copy="#B99A63">コピー</button>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background-color: #A65E50;"></div>
+          <div class="swatch-name">Vermillion</div>
+          <div class="swatch-code-row">
+            <code class="swatch-hex">#A65E50</code>
+            <button type="button" class="copy-btn" data-copy="#A65E50">コピー</button>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background-color: #514039;"></div>
+          <div class="swatch-name">Dark Brown</div>
+          <div class="swatch-code-row">
+            <code class="swatch-hex">#514039</code>
+            <button type="button" class="copy-btn" data-copy="#514039">コピー</button>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background-color: #68785B;"></div>
+          <div class="swatch-name">Olive Green</div>
+          <div class="swatch-code-row">
+            <code class="swatch-hex">#68785B</code>
+            <button type="button" class="copy-btn" data-copy="#68785B">コピー</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 命名ルールまとめ -->
+    <section class="rule-card">
+      <h2 class="sec-title">画像ファイル命名ルール（写真拡張子は .jpeg 統一）</h2>
+      <div class="formula-box">
+        <span class="token token-prefix">[区分]</span>
+        <span>-</span>
+        <span class="token token-subject">[対象]</span>
+        <span>-</span>
+        <span class="token token-note">[補足]</span>
+        <span>-</span>
+        <span class="token token-ratio">[比率またはサイズ]</span>
+        <span class="token token-ext">.jpeg</span>
+      </div>
+
+      <div class="rule-grid">
+        <div class="rule-box">
+          <h3>基本ルール・運用メモ</h3>
+          <ul class="rule-list">
+            <li>半角英小文字（<code>a-z</code>）・半角数字（<code>0-9</code>）・ハイフン（<code>-</code>）のみ使用</li>
+            <li>写真は原則 <code>.jpeg</code> に統一（ロゴ・イラストは <code>.svg</code> / <code>.png</code> も可）</li>
+            <li>複数候補があるときは <code>-a-</code> / <code>-b-</code> で枝番をつけ、採用分を枝番なしに揃える</li>
+            <li>サイズ違いを分けるときは末尾に <code>-640</code> などを追加</li>
+          </ul>
+        </div>
+        <div class="rule-box">
+          <h3>先頭の区分（プレフィックス）</h3>
+          <div class="prefix-tags">
+            <span class="prefix-tag"><code>hero-</code> メイン</span>
+            <span class="prefix-tag"><code>shop-</code> 店内・外観</span>
+            <span class="prefix-tag"><code>food-</code> 料理・お酒</span>
+            <span class="prefix-tag"><code>course-</code> 宴会コース</span>
+            <span class="prefix-tag"><code>route-</code> 駅からの道順</span>
+            <span class="prefix-tag"><code>brand-</code> ロゴ・似顔絵</span>
+            <span class="prefix-tag"><code>ogp-</code> 共有・OGP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- フィルター＆進捗 -->
+    <div class="control-bar">
+      <div class="stats" id="statsBar">
+        <div class="stat-pill">全素材: <span id="statAll">0</span>件</div>
+        <div class="stat-pill">手元にある: <span id="statHave">0</span>件</div>
+        <div class="stat-pill">これから用意: <span id="statTodo">0</span>件</div>
+        <div class="stat-pill">準備完了: <span id="statDone">0</span>件</div>
+      </div>
+      <div class="filters" role="group" aria-label="ステータス絞り込み">
+        <button type="button" class="filter-btn active" data-filter="all">すべて</button>
+        <button type="button" class="filter-btn" data-filter="have">手元にある</button>
+        <button type="button" class="filter-btn" data-filter="todo">これから用意</button>
+        <button type="button" class="filter-btn" data-filter="done">準備完了</button>
+      </div>
+    </div>
+
+    <!-- 1. 写真素材 -->
+    <section class="cat-section">
+      <h2 class="sec-title">1. 写真素材（.jpeg）</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 120px;">状況</th>
+              <th style="width: 190px;">用途・場所</th>
+              <th>推奨ファイル名</th>
+              <th style="width: 95px;">比率目安</th>
+              <th>撮影・選定メモ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-id="p-hero">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>メインビジュアル</strong><br /><span class="memo-text">「おいしい料理と酒！！」背景</span></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">hero-twilight-lamp-16x9.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">16:9</span><br /><span class="memo-text">800×450〜</span></td>
+              <td class="memo-text">夕暮れ〜夜のあたたかい明かり・料理とお酒の空気感</td>
+            </tr>
+            <tr data-id="p-shop">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>ご挨拶セクション</strong><br /><span class="memo-text">店の雰囲気が感じられる写真</span></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">shop-counter-mood-16x9.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">16:9</span><br /><span class="memo-text">800×450</span></td>
+              <td class="memo-text">カウンターや席の距離感がわかる入りやすいカット</td>
+            </tr>
+            <tr data-id="p-food1">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>お品書き：アヒージョ</strong></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">food-ajillo-1x1.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">1:1</span><br /><span class="memo-text">640×640〜</span></td>
+              <td class="memo-text">グツグツ感・湯気や彩りが伝わるアップ</td>
+            </tr>
+            <tr data-id="p-food2">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>お品書き：卵焼き</strong></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">food-tamagoyaki-1x1.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">1:1</span><br /><span class="memo-text">640×640〜</span></td>
+              <td class="memo-text">焼き色・ふっくら感がわかる定番カット</td>
+            </tr>
+            <tr data-id="p-food3">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>お品書き：なんこつのからあげ</strong></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">food-nankotsu-karaage-1x1.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">1:1</span><br /><span class="memo-text">640×640〜</span></td>
+              <td class="memo-text">おつまみ感・カリッとした質感が伝わるカット</td>
+            </tr>
+            <tr data-id="p-course1">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>宴会コース紹介：コース1</strong></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">course-01-main-16x9.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">16:9</span></td>
+              <td class="memo-text">アコーディオン展開時またはカード用写真</td>
+            </tr>
+            <tr data-id="p-course2">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>宴会コース紹介：コース2</strong></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">course-02-main-16x9.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">16:9</span></td>
+              <td class="memo-text">アコーディオン展開時またはカード用写真</td>
+            </tr>
+            <tr data-id="p-course3">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>宴会コース紹介：コース3</strong></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">course-03-main-16x9.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">16:9</span></td>
+              <td class="memo-text">アコーディオン展開時またはカード用写真</td>
+            </tr>
+            <tr data-id="p-route">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>駅からの詳しい行き方</strong><br /><span class="memo-text">スライドショー／アコーディオン用</span></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">route-tsuruma-exit-01-16x9.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">16:9</span></td>
+              <td class="memo-text">01・02・03…の連番で鶴間駅〜サンライト鶴間1Fまで</td>
+            </tr>
+            <tr data-id="p-ogp">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>SNS・LINE共有用OGP画像</strong></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">ogp-kamimusubi-share-1200x630.jpeg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">1200×630</span></td>
+              <td class="memo-text">URL共有時にサムネイル表示される画像</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2. ロゴ・イラスト・アイコン -->
+    <section class="cat-section">
+      <h2 class="sec-title">2. ロゴ・イラスト・アイコン素材</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 120px;">状況</th>
+              <th style="width: 190px;">用途・場所</th>
+              <th>推奨ファイル名</th>
+              <th style="width: 95px;">形式目安</th>
+              <th>メモ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-id="b-logo-head">
+              <td>
+                <select class="status-select" data-state="have" aria-label="状況">
+                  <option value="todo">これから用意</option>
+                  <option value="have" selected>手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>ヘッダー左上ロゴ</strong></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">brand-logo-header.svg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">SVG / PNG</span></td>
+              <td class="memo-text">背景透過・スマホ幅でも潰れない横長またはコンパクト版</td>
+            </tr>
+            <tr data-id="b-logo-foot">
+              <td>
+                <select class="status-select" data-state="have" aria-label="状況">
+                  <option value="todo">これから用意</option>
+                  <option value="have" selected>手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>フッター中央の丸枠ロゴ</strong></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">brand-logo-footer-circle.svg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">SVG / PNG</span></td>
+              <td class="memo-text">フッターの円形枠に収まるシンボル・ロゴ</td>
+            </tr>
+            <tr data-id="b-portrait">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>店主の似顔絵イラスト</strong><br /><span class="memo-text">「メニューにないお料理も…」横</span></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">brand-master-portrait-1x1.png</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">1:1 PNG</span></td>
+              <td class="memo-text">丸枠にトリミングしやすい正方形・背景透過</td>
+            </tr>
+            <tr data-id="b-sns">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>SNS・支払いアイコン</strong><br /><span class="memo-text">Instagram / LINE / X / 現金・PayPay</span></td>
+              <td>
+                <div class="file-cell">
+                  <code class="file-code">brand-icon-instagram.svg</code>
+                  <button type="button" class="copy-btn">コピー</button>
+                </div>
+              </td>
+              <td><span class="ratio-badge">SVG</span></td>
+              <td class="memo-text"><code>brand-icon-line.svg</code> / <code>brand-icon-x.svg</code> 等で統一</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. テキスト・外部リンク素材 -->
+    <section class="cat-section">
+      <h2 class="sec-title">3. テキスト原稿・外部リンク素材</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 120px;">状況</th>
+              <th style="width: 190px;">項目</th>
+              <th>記載内容・準備データ</th>
+              <th>確認メモ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-id="t-greet">
+              <td>
+                <select class="status-select" data-state="have" aria-label="状況">
+                  <option value="todo">これから用意</option>
+                  <option value="have" selected>手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>メイン・ご挨拶原稿</strong></td>
+              <td>「おいしい料理と酒！！」「酒を愉しみ、料理を味わう〜『鳳凰美田』『鍋島』…」</td>
+              <td class="memo-text">夜ごはん利用や初見向けのひと言を足すか最終確認</td>
+            </tr>
+            <tr data-id="t-menu">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>お品書きコメント＆全メニュー</strong></td>
+              <td>アヒージョ・卵焼き・なんこつのからあげの紹介文＋<code>more menu</code>先の一覧</td>
+              <td class="memo-text">価格表記（税込／税別）やドリンク一覧の有無を確認</td>
+            </tr>
+            <tr data-id="t-course">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>宴会コース詳細（1〜3）</strong></td>
+              <td>各コース名・料金・品数・飲み放題条件・利用人数や予約締切</td>
+              <td class="memo-text">アコーディオン開閉時に見やすい文字量に整理</td>
+            </tr>
+            <tr data-id="t-info">
+              <td>
+                <select class="status-select" data-state="have" aria-label="状況">
+                  <option value="todo">これから用意</option>
+                  <option value="have" selected>手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>店情報・電話番号・姉妹店案内</strong></td>
+              <td>神奈川県大和市鶴間2-10-13 サンライト鶴間 1F／17:00〜24:30（L.O.24:00）／水曜定休／席数・喫煙可・現金/PayPay</td>
+              <td class="memo-text">予約用電話番号の確定表記・姉妹店URLの確認</td>
+            </tr>
+            <tr data-id="t-links">
+              <td>
+                <select class="status-select" data-state="todo" aria-label="状況">
+                  <option value="todo" selected>これから用意</option>
+                  <option value="have">手元にある</option>
+                  <option value="done">準備完了</option>
+                </select>
+              </td>
+              <td><strong>Googleマップ・SNS・共有機能</strong></td>
+              <td>地図埋め込みコード・SNS各URL・共有文「あれもある、これもある。お酒と料理、ごはんものまでいろいろ揃う鶴間の『神結』。【URL】」</td>
+              <td class="memo-text">スマホの共有シート＆一括コピーボタンに組み込み</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="reset-row">
+      <button type="button" class="reset-btn" id="resetBtn">状況の選択を初期状態に戻す</button>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "kamimusubi_assets_status_v3";
+    const selects = document.querySelectorAll(".status-select");
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    let currentFilter = "all";
+
+    function loadSavedStates() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        selects.forEach((sel) => {
+          const id = sel.closest("tr")?.dataset.id;
+          if (id && saved[id]) {
+            sel.value = saved[id];
+          }
+        });
+      } catch (e) {}
+    }
+
+    function saveStates() {
+      try {
+        const data = {};
+        selects.forEach((sel) => {
+          const id = sel.closest("tr")?.dataset.id;
+          if (id) data[id] = sel.value;
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {}
+    }
+
+    function updateUI() {
+      let all = 0, have = 0, todo = 0, done = 0;
+
+      selects.forEach((sel) => {
+        const val = sel.value;
+        sel.dataset.state = val;
+        const tr = sel.closest("tr");
+        if (!tr) return;
+
+        all++;
+        if (val === "have") have++;
+        if (val === "todo") todo++;
+        if (val === "done") done++;
+
+        tr.classList.toggle("is-done", val === "done");
+        const visible = currentFilter === "all" || val === currentFilter;
+        tr.classList.toggle("is-hidden", !visible);
+      });
+
+      document.getElementById("statAll").textContent = all;
+      document.getElementById("statHave").textContent = have;
+      document.getElementById("statTodo").textContent = todo;
+      document.getElementById("statDone").textContent = done;
+    }
+
+    selects.forEach((sel) => {
+      sel.addEventListener("change", () => {
+        saveStates();
+        updateUI();
+      });
+    });
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.filter;
+        updateUI();
+      });
+    });
+
+    document.querySelectorAll(".copy-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const text = (btn.dataset.copy || btn.previousElementSibling?.textContent || "").trim();
+        if (!text) return;
+        try {
+          await navigator.clipboard.writeText(text);
+          const orig = btn.textContent;
+          btn.textContent = "コピー済";
+          setTimeout(() => { btn.textContent = orig; }, 1200);
+        } catch (e) {}
+      });
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      location.reload();
+    });
+
+    loadSavedStates();
+    updateUI();
+  </script>
+</body>
+</html>
