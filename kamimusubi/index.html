@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>居酒屋 神結（かみむすび）｜HERO〜ご挨拶・お品書き・宴会コース・店舗案内・フッター</title>
+  <!-- Google Fonts: Shippori Mincho / Noto Sans JP / Jost / Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FAF8F3',
+            beige: '#E9DCCB',
+            darkbrown: '#514039',
+            gold: '#B99A63',
+            vermillion: '#A65E50',
+            olive: '#68785B',
+            washi: '#F7F5EE',
+            kamimusubiGold: '#A69049',
+            kamimusubiDarkGold: '#786832',
+            kamimusubiOlive: '#6A7045',
+            inkDark: '#2B2A27',
+            inkMuted: '#4A4842',
+            lineGreen: '#06C755',
+            italyGreen: '#009246',
+            italyRed: '#CE2B37',
+          },
+          fontFamily: {
+            mincho: ['"Shippori Mincho"', '"Hiragino Mincho ProN"', '"Yu Mincho"', 'serif'],
+            sans: ['"Noto Sans JP"', '"Hiragino Kaku Gothic ProN"', 'sans-serif'],
+            gothic: ['"Noto Sans JP"', '"Hiragino Kaku Gothic ProN"', 'sans-serif'],
+            jost: ['"Jost"', 'sans-serif'],
+            serifEn: ['"Cinzel"', 'Georgia', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <!-- 外部CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="pb-16">
+
+  <!-- 上部コントロールバー（制作・デザインレビュー用） -->
+  <header class="sticky top-0 z-40 bg-[#514039] text-[#FAF8F3] shadow-md border-b border-[#B99A63]/40">
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 py-2.5 flex flex-wrap items-center justify-between gap-2.5">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <span class="font-jost text-[11px] tracking-widest uppercase px-2.5 py-1 rounded-full bg-[#A65E50] text-[#FAF8F3] font-medium shrink-0">
+          DESIGN COMP V2
+        </span>
+        <div class="leading-tight min-w-0">
+          <p class="font-mincho text-xs sm:text-sm md:text-base font-semibold tracking-wider truncate">
+            居酒屋 神結（かみむすび）HERO 〜 ご挨拶・お品書き・宴会コース・店舗案内・フッター
+          </p>
+          <p class="text-[11px] text-[#E9DCCB]/90 truncate">
+            HTML/CSS/JS分割対応 ｜ ロゴ・画像・姉妹店バナー差し替えBOX搭載
+          </p>
+        </div>
+      </div>
+
+      <!-- プレビュー切替ボタン群 -->
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <a
+          href="#course"
+          class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mincho font-medium bg-[#B99A63] text-[#514039] hover:opacity-90 transition shadow-sm"
+        >
+          ↓ 宴会コース
+        </a>
+        <a
+          href="#access"
+          class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mincho font-medium bg-[#68785B] text-[#FAF8F3] hover:opacity-90 transition shadow-sm"
+        >
+          ↓ 店舗案内
+        </a>
+        <div class="inline-flex rounded-xl bg-[#FAF8F3]/10 p-1 border border-[#B99A63]/30" role="group" aria-label="画面幅切り替え">
+          <button
+            id="btnModePc"
+            type="button"
+            onclick="setPreviewMode('pc')"
+            class="px-2.5 sm:px-3 py-1 rounded-lg text-xs font-jost font-medium tracking-wide transition bg-[#FAF8F3] text-[#514039] shadow-sm"
+          >
+            1200px PC
+          </button>
+          <button
+            id="btnModeSp"
+            type="button"
+            onclick="setPreviewMode('sp')"
+            class="px-2.5 sm:px-3 py-1 rounded-lg text-xs font-jost font-medium tracking-wide transition text-[#FAF8F3] hover:bg-[#FAF8F3]/10"
+          >
+            375px SP
+          </button>
+        </div>
+
+        <button
+          id="btnToggleGuides"
+          type="button"
+          onclick="toggleGuides()"
+          class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-sans font-medium border border-[#B99A63] text-[#FAF8F3] hover:bg-[#B99A63]/20 transition flex items-center gap-1.5"
+        >
+          <span id="guideDot" class="w-2 h-2 rounded-full bg-[#E9DCCB]/50"></span>
+          <span>BOX・構成ガイド</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- カラーパレット確認ストリップ -->
+    <div class="bg-[#FAF8F3] text-[#514039] border-t border-[#E9DCCB] px-3 sm:px-4 py-1.5">
+      <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2 text-[11px]">
+        <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
+          <span class="font-jost font-semibold tracking-wider text-[#514039]/70">PALETTE V2:</span>
+          <span class="inline-flex items-center gap-1"><i class="w-3 h-3 rounded-full border border-[#514039]/25 bg-[#FAF8F3]"></i>Ivory 65%</span>
+          <span class="inline-flex items-center gap-1"><i class="w-3 h-3 rounded-full border border-[#514039]/25 bg-[#E9DCCB]"></i>Beige 15%</span>
+          <span class="inline-flex items-center gap-1"><i class="w-3 h-3 rounded-full bg-[#514039]"></i>Dark Brown 10%</span>
+          <span class="inline-flex items-center gap-1"><i class="w-3 h-3 rounded-full bg-[#B99A63]"></i>Gold 6%</span>
+          <span class="inline-flex items-center gap-1"><i class="w-3 h-3 rounded-full bg-[#A65E50]"></i>Vermillion 4%</span>
+          <span class="inline-flex items-center gap-1"><i class="w-3 h-3 rounded-full bg-[#68785B]"></i>Olive(補助)</span>
+        </div>
+        <span class="font-jost text-[#514039]/70 hidden sm:inline">Shippori Mincho / Noto Sans JP / Jost / Cinzel</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- プレビュー本体コンテナ -->
+  <main class="px-2 sm:px-6 pt-4 sm:pt-6">
+    <div id="previewCanvas" class="preview-canvas mode-pc mx-auto washi-ivory shadow-2xl overflow-hidden relative">
+
+     <!-- =========================================================
+           グローバルナビゲーション（神結 V2 仕様）
+           ========================================================= -->
+      <nav class="sticky top-0 z-30 bg-[#FAF8F3]/95 backdrop-blur-md border-b border-[#E9DCCB] px-3 sm:px-6 md:px-10 py-3">
+        <div class="flex items-center justify-between gap-2">
+          <!-- ヘッダーロゴ差し替えBOX（SVG対応） -->
+          <a href="#hero" aria-label="居酒屋 神結 トップへ" class="flex items-center group shrink-0">
+            <div
+              class="asset-box asset-box--contain w-36 sm:w-44 h-9 sm:h-10 rounded-lg px-2"
+              data-slot-label="HEADER LOGO"
+            >
+              <img src="" alt="居酒屋 神結 ロゴ" class="asset-img" />
+              <span class="asset-placeholder !text-[10px]">HEADER LOGO<small>SVG差し替え枠</small></span>
+            </div>
+          </a>
+
+          <!-- ナビゲーション（日本語のみ） -->
+          <div id="pcNavLinks" class="hidden md:flex items-center gap-8 text-xs font-medium tracking-wider text-[#514039]">
+            <a href="#greeting" class="hover:text-[#A65E50] transition font-mincho text-[14px]">
+              ご挨拶
+            </a>
+            <a href="#dishes" class="hover:text-[#A65E50] transition font-mincho text-[14px]">
+              酒と料理
+            </a>
+            <a href="#course" class="hover:text-[#A65E50] transition font-mincho text-[14px]">
+              宴会コース
+            </a>
+            <a href="#access" class="hover:text-[#A65E50] transition font-mincho text-[14px]">
+              店舗案内
+            </a>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <a
+              href="tel:08068431212"
+              class="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-[#A65E50] text-[#FAF8F3] text-xs font-medium shadow-sm hover:opacity-90 transition"
+            >
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+              <span id="navTelLabel" class="font-jost tracking-wider">080-6843-1212</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- =========================================================
+           SECTION 01: HERO（3×3正方形グリッド＋中央ロゴ専用枠）
+           ========================================================= -->
+      <section id="hero" class="relative px-3 sm:px-6 md:px-10 pt-5 sm:pt-6 pb-10 sm:pb-12 guide-outline">
+        <div class="guide-badge mb-3 px-2.5 py-1 rounded-full bg-[#E9DCCB] text-[#514039] text-[11px] font-jost">
+          SECTION 01 / HERO：3×3 グリッド（周囲8枚写真 ＋ 中央SVGロゴ専用）
+        </div>
+
+        <div class="relative max-w-4xl mx-auto">
+          <div class="grid grid-cols-3 gap-1.5 sm:gap-2.5 md:gap-3.5 rounded-2xl overflow-hidden p-1.5 sm:p-2 bg-[#E9DCCB]/75 border border-[#B99A63]/40 shadow-inner">
+            <!-- 1（上段・左） -->
+            <div class="asset-box aspect-square rounded-lg sm:rounded-xl" data-slot-label="HERO 01">
+              <img src="" alt="鶴間の夜に灯るあたたかい提灯の明かり" class="asset-img" />
+              <span class="asset-placeholder">HERO 01<small>灯りでお出迎え</small></span>
+            </div>
+            <!-- 2（上段・中央） -->
+            <div class="asset-box aspect-square rounded-lg sm:rounded-xl" data-slot-label="HERO 02">
+              <img src="" alt="鳳凰美田や獺祭など厳選した日本酒の酒器" class="asset-img" />
+              <span class="asset-placeholder">HERO 02<small>厳選日本酒</small></span>
+            </div>
+            <!-- 3（上段・右） -->
+            <div class="asset-box aspect-square rounded-lg sm:rounded-xl" data-slot-label="HERO 03">
+              <img src="" alt="目の前のテーブルに運ばれるお刺身盛り合わせ" class="asset-img" />
+              <span class="asset-placeholder">HERO 03<small>定番の和食</small></span>
+            </div>
+            <!-- 4（二段目・左） -->
+            <div class="asset-box aspect-square rounded-lg sm:rounded-xl" data-slot-label="HERO 04">
+              <img src="" alt="ほっとできる温かい店内カウンター" class="asset-img" />
+              <span class="asset-placeholder">HERO 04<small>カウンター席</small></span>
+            </div>
+            <!-- 5（二段目・中央：画像なし・ロゴSVG専用マス） -->
+            <div class="aspect-square rounded-lg sm:rounded-xl bg-[#FAF8F3] border border-[#B99A63]/45 flex items-center justify-center p-2 sm:p-4">
+              <div
+                class="asset-box asset-box--contain w-full h-full rounded-lg p-1.5 sm:p-3"
+                data-slot-label="HERO LOGO"
+              >
+                <img src="" alt="居酒屋 神結 ロゴ" class="asset-img" />
+                <span class="asset-placeholder !text-[10px] sm:!text-xs">
+                  HERO LOGO
+                  <small>SVG差し替え枠<br />（画像なし・ロゴのみ）</small>
+                </span>
+              </div>
+            </div>
+            <!-- 6（二段目・右） -->
+            <div class="asset-box aspect-square rounded-lg sm:rounded-xl" data-slot-label="HERO 06">
+              <img src="" alt="和食の枠にとらわれない特製ピザや創作料理" class="asset-img" />
+              <span class="asset-placeholder">HERO 06<small>創作の一皿</small></span>
+            </div>
+            <!-- 7（三段目・左） -->
+            <div class="asset-box aspect-square rounded-lg sm:rounded-xl" data-slot-label="HERO 07">
+              <img src="" alt="湯気の立つ温かいおでんと煮込み料理" class="asset-img" />
+              <span class="asset-placeholder">HERO 07<small>おでん・煮込み</small></span>
+            </div>
+            <!-- 8（三段目・中央） -->
+            <div class="asset-box aspect-square rounded-lg sm:rounded-xl" data-slot-label="HERO 08">
+              <img src="" alt="人気のチャーハンや食事メニュー" class="asset-img" />
+              <span class="asset-placeholder">HERO 08<small>ごはん・〆</small></span>
+            </div>
+            <!-- 9（三段目・右） -->
+            <div class="asset-box aspect-square rounded-lg sm:rounded-xl" data-slot-label="HERO 09">
+              <img src="" alt="お酒がすすむ香ばしい串焼き" class="asset-img" />
+              <span class="asset-placeholder">HERO 09<small>串焼き・揚げ物</small></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO直下の基本情報バー（カプセルなし・基本情報のみ） -->
+        <div class="max-w-4xl mx-auto mt-5 pt-4 border-t border-[#B99A63]/35 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs sm:text-[13px] text-[#514039] font-mincho tracking-wider">
+          <span>小田急江ノ島線「鶴間駅」徒歩5〜6分</span>
+          <span class="text-[#B99A63]" aria-hidden="true">／</span>
+          <span>営業時間 17:00〜24:30（L.O. 24:00）</span>
+          <span class="text-[#B99A63]" aria-hidden="true">／</span>
+          <span>水曜定休</span>
+          <span class="text-[#B99A63]" aria-hidden="true">／</span>
+          <span>店内喫煙可</span>
+        </div>
+      </section>
+
+<!-- =========================================================
+           SECTION 02: ご挨拶
+           ========================================================= -->
+    <section class="greeting-section" id="greeting">
+  <div class="greeting-card">
+    <!-- ヘッダー行：左に「ご挨拶」＋市松模様ライン、右に赤提灯 -->
+    <div class="greeting-header">
+      <div class="greeting-title-group">
+        <h2 class="greeting-heading">ご挨拶</h2>
+        <span class="greeting-pattern" aria-label="市松模様" role="img"></span>
+      </div>
+      <div class="greeting-lantern" aria-hidden="true">
+        <!-- 提灯SVG -->
+        <svg width="34" height="58" viewBox="0 0 34 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="17" y1="0" x2="17" y2="8" stroke="#3B312B" stroke-width="1.5"/>
+          <rect x="11" y="7" width="12" height="4" rx="1.5" fill="#2D241E"/>
+          <rect x="7" y="11" width="20" height="34" rx="10" fill="url(#lanternGlow)" stroke="#5A2A20" stroke-width="1.2"/>
+          <line x1="8.5" y1="19" x2="25.5" y2="19" stroke="#5A2A20" stroke-opacity="0.35" stroke-width="0.8"/>
+          <line x1="7.5" y1="28" x2="26.5" y2="28" stroke="#5A2A20" stroke-opacity="0.35" stroke-width="0.8"/>
+          <line x1="8.5" y1="37" x2="25.5" y2="37" stroke="#5A2A20" stroke-opacity="0.35" stroke-width="0.8"/>
+          <text x="17" y="25" text-anchor="middle" fill="#2D1E18" font-size="6.5" font-family="serif" font-weight="bold">神</text>
+          <text x="17" y="34" text-anchor="middle" fill="#2D1E18" font-size="6.5" font-family="serif" font-weight="bold">結</text>
+          <rect x="11" y="45" width="12" height="3.5" rx="1.5" fill="#2D241E"/>
+          <line x1="17" y1="48.5" x2="17" y2="56" stroke="#3B312B" stroke-width="1.5"/>
+          <defs>
+            <radialGradient id="lanternGlow" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#FCE4C8"/>
+              <stop offset="55%" stop-color="#C96B59"/>
+              <stop offset="100%" stop-color="#8C3B2D"/>
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <hr class="greeting-divider" />
+
+    <!-- メイン2カラム：左側＝写真＋あしらい ／ 右側＝縦書きテキスト -->
+    <div class="greeting-body">
+      <!-- 【左側】写真＋背景あしらい -->
+      <div class="greeting-visual-col">
+        <!-- 背面のカラーブロックあしらい（左上アイボリー・左下オリーブ・右端テラコッタ） -->
+        <span class="deco-plate deco-top-left" aria-hidden="true"></span>
+        <span class="deco-plate deco-bottom-left" aria-hidden="true"></span>
+        <span class="deco-plate deco-right-tab" aria-hidden="true"></span>
+
+        <!-- メイン写真枠（白フチ＋内側ゴールド破線） -->
+        <div class="shop-photo-frame">
+          <div class="shop-photo-inner">
+            <!-- 実際の写真を入れる場合は以下のimgタグを使用 -->
+            <!-- <img src="images/shop-exterior.jpg" alt="居酒屋 神結 店先風景" /> -->
+            <div class="photo-placeholder">
+              <span class="en">SHOP PHOTO BOX</span>
+              <span class="jp">店先画像枠</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 【右側】縦書きメッセージ＋「店主 ニキータより」＋縦書き大見出し -->
+<!-- 【右側】縦書きメッセージ＋「店主 ニキータより」＋縦書き大見出し -->
+<div class="greeting-text-col">
+  <div class="greeting-signature-wrap">
+    <span class="signature-plate" aria-hidden="true"></span>
+    <p class="greeting-signature">店主 ニキータより</p>
+  </div>
+
+  <div class="vertical-paragraphs-wrap">
+    <div class="vertical-paragraphs">
+      <p>
+        鶴間駅から徒歩5〜6分。常連さんを第一に大切にしながら、初めての方や夜ごはん利用もふらっと立ち寄れる店です。
+      </p>
+      <p>
+        お酒と料理はもちろん、「こんな料理が食べたい」というご相談も店長のニキータへ気軽にお声がけください。
+      </p>
+      <p>
+        今夜もあたたかい明かりでお待ちしています。
+      </p>
+    </div>
+    <span class="paragraphs-bottom-bar" aria-hidden="true"></span>
+  </div>
+
+  <div class="vertical-catch-wrap">
+    <h3 class="vertical-catch">
+      常連さんの安心感と、<br />あたたかい明かりで。
+    </h3>
+    <span class="catch-accent-bar" aria-hidden="true"></span>
+  </div>
+</div>
+    </div>
+
+    <hr class="greeting-divider bottom" />
+  </div>
+</section>
+ <!-- =========================================================
+     SECTION 03: お品書き（料理BOX ＋ 酒BOX ＋ 店長ニキータ）
+     ========================================================= -->
+<section id="dishes" class="relative px-3 sm:px-6 md:px-12 pt-10 pb-20 sm:pb-24 md:pb-32 border-t border-[#B99A63]/35 guide-outline">
+  <div class="max-w-5xl mx-auto mb-5 flex flex-wrap items-center justify-between gap-2">
+    <div class="guide-badge px-3 py-1 rounded-full bg-[#68785B] text-[#FAF8F3] text-[11px] font-jost">
+      SECTION 03 / お品書き（差し替え画像BOX ＋ ポップアップカルーセル）
+    </div>
+    <div class="guide-badge px-3 py-1 rounded-full bg-[#E9DCCB] text-[#514039] text-[11px] font-sans">
+      料理5枠 ／ 酒4枠 ／ 店長イラスト枠
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto">
+    <!-- セクション見出し -->
+    <div class="pb-6 md:pb-8 border-b border-[#B99A63]/40">
+      <div class="flex items-center gap-4 sm:gap-5">
+        <h2 class="font-mincho text-2xl sm:text-3xl font-semibold tracking-[0.22em] text-[#514039] shrink-0">
+          お品書き
+        </h2>
+        <div>
+          <p class="font-mincho text-xs sm:text-sm text-[#514039]/85">
+            和食の旨みと、イタリアンの自由な発想
+          </p>
+          <div class="gold-ichimatsu-bar mt-2 rounded-sm"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ブロック①【料理】 -->
+    <div class="mt-10 sm:mt-12 md:mt-14 relative">
+      <div
+        aria-hidden="true"
+        class="hidden md:block absolute -right-4 -top-5 w-[86%] h-[92%] rounded-2xl border border-[#B99A63]/45 bg-[#FAF8F3]/75 shadow-sm"
+      ></div>
+
+      <div class="relative z-10 md:w-[92%] washi-beige rounded-2xl border border-[#B99A63]/40 p-4 sm:p-6 md:p-11">
+        <!-- 見出し・リード文 -->
+        <div class="max-w-2xl md:ml-auto mb-8 sm:mb-10">
+          <h3 class="font-mincho text-lg sm:text-xl md:text-[28px] font-bold text-[#514039] tracking-[0.12em] md:tracking-[0.14em] leading-snug md:text-right">
+            一杯を引き立てる、こだわりの一皿。
+          </h3>
+          <p class="font-sans text-[13px] sm:text-[13.5px] md:text-[14.5px] text-[#514039]/90 leading-[1.95] mt-3.5 text-left">
+            お酒とともに味わっていただきたいのは、素材の旨みを生かした定番の和食。そして、和食の枠にとらわれない創作料理。<br class="hidden md:inline" />
+            姉妹店 Sorriso でイタリアンシェフとして腕を振るっていた店長ならではの発想で、ここでしか味わえない料理をご用意しております。
+          </p>
+        </div>
+
+        <!-- 料理写真グリッド -->
+        <div id="dishCollageGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-4 md:gap-5 items-start">
+          <!-- 料理1 -->
+          <figure
+            onclick="openMenuCarousel(0)"
+            class="collage-trigger md:col-span-4 md:-ml-8 bg-[#FAF8F3] p-2 rounded-xl border border-[#E9DCCB] shadow-[0_12px_28px_rgba(81,64,57,0.14)]"
+          >
+            <div class="asset-box aspect-[4/3] rounded-lg" data-slot-label="DISH 01">
+              <img src="" alt="若鶏のからあげ" class="asset-img" />
+              <span class="asset-placeholder">DISH PHOTO 01<small>若鶏のからあげ</small></span>
+            </div>
+            <figcaption class="pt-2 px-1">
+              <span class="font-mincho text-xs md:text-[13px] font-semibold text-[#514039] block truncate">若鶏のからあげ</span>
+            </figcaption>
+          </figure>
+
+          <!-- 料理2 -->
+          <figure
+            onclick="openMenuCarousel(1)"
+            class="collage-trigger md:col-span-4 md:mt-5 bg-[#FAF8F3] p-2 rounded-xl border border-[#E9DCCB] shadow-[0_12px_28px_rgba(81,64,57,0.14)]"
+          >
+            <div class="asset-box aspect-[4/3] rounded-lg" data-slot-label="DISH 02">
+              <img src="" alt="海鮮の創作一皿" class="asset-img" />
+              <span class="asset-placeholder">DISH PHOTO 02<small>海鮮の創作一皿</small></span>
+            </div>
+            <figcaption class="pt-2 px-1">
+              <span class="font-mincho text-xs md:text-[13px] font-semibold text-[#514039] block truncate">海鮮の創作一皿</span>
+            </figcaption>
+          </figure>
+
+          <!-- 料理3 -->
+          <figure
+            onclick="openMenuCarousel(2)"
+            class="collage-trigger sm:col-span-2 md:col-span-4 bg-[#FAF8F3] p-2 rounded-xl border border-[#E9DCCB] shadow-[0_12px_28px_rgba(81,64,57,0.14)]"
+          >
+            <div class="asset-box aspect-[16/10] md:aspect-[4/3] rounded-lg" data-slot-label="DISH 03">
+              <img src="" alt="旬のお刺身盛り合わせ" class="asset-img" />
+              <span class="asset-placeholder">DISH PHOTO 03<small>旬のお刺身盛り合わせ</small></span>
+            </div>
+            <figcaption class="pt-2 px-1">
+              <span class="font-mincho text-xs md:text-[13px] font-semibold text-[#514039] block truncate">旬のお刺身盛り合わせ</span>
+            </figcaption>
+          </figure>
+
+          <!-- 料理4 -->
+          <figure
+            onclick="openMenuCarousel(3)"
+            class="collage-trigger md:col-span-5 md:col-start-2 md:-mb-14 bg-[#FAF8F3] p-2.5 rounded-xl border border-[#B99A63]/50 shadow-[0_14px_32px_rgba(81,64,57,0.16)]"
+          >
+            <div class="asset-box aspect-[16/10] rounded-lg" data-slot-label="DISH 04">
+              <img src="" alt="大根のバターステーキ" class="asset-img" />
+              <span class="asset-placeholder">DISH PHOTO 04<small>大根のバターステーキ</small></span>
+            </div>
+            <figcaption class="pt-2 px-1">
+              <span class="font-mincho text-xs md:text-[13px] font-semibold text-[#514039] block truncate">大根のバターステーキ</span>
+            </figcaption>
+          </figure>
+
+          <!-- 料理5 -->
+          <figure
+            onclick="openMenuCarousel(4)"
+            class="collage-trigger md:col-span-5 md:-mr-10 md:-mb-10 bg-[#FAF8F3] p-2.5 rounded-xl border border-[#B99A63]/50 shadow-[0_14px_32px_rgba(81,64,57,0.16)]"
+          >
+            <div class="asset-box aspect-[16/10] rounded-lg" data-slot-label="DISH 05">
+              <img src="" alt="香ばし和風仕立ての特製ピザ" class="asset-img" />
+              <span class="asset-placeholder">DISH PHOTO 05<small>香ばし和風仕立ての特製ピザ</small></span>
+            </div>
+            <figcaption class="pt-2 px-1">
+              <span class="font-mincho text-xs md:text-[13px] font-semibold text-[#514039] block truncate">香ばし和風仕立ての特製ピザ</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- ブロック②【酒】 -->
+    <div class="mt-16 sm:mt-20 md:mt-28 relative">
+      <div
+        aria-hidden="true"
+        class="washi-olive rounded-2xl hidden md:block absolute left-8 right-0 -bottom-6 h-[58%] shadow-md"
+      ></div>
+
+      <div
+        aria-hidden="true"
+        class="hidden md:block absolute -left-4 -top-4 w-[78%] h-[86%] rounded-2xl border border-[#68785B]/35 bg-[#FAF8F3]/80"
+      ></div>
+
+      <div class="relative z-10 md:ml-6 washi-beige rounded-2xl border border-[#B99A63]/45 p-4 sm:p-6 md:p-11">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
+          <div class="md:col-span-5 min-w-0">
+            <h3 class="font-mincho text-lg sm:text-xl md:text-[26px] font-bold text-[#514039] tracking-[0.12em] md:tracking-[0.14em] leading-snug">
+              酒を愉しみ、料理を味わう。
+            </h3>
+            <p class="font-mincho text-sm md:text-base font-semibold text-[#A65E50] tracking-wider mt-1.5">
+              今宵の一杯に、特別な出会いを。
+            </p>
+            <div class="w-12 h-px bg-[#B99A63] my-4"></div>
+            <p class="font-sans text-[13px] sm:text-[13.5px] md:text-[14.5px] text-[#514039]/90 leading-[1.9] md:leading-[1.95]">
+              「鳳凰美田」「獺祭」をはじめ、個性豊かな日本酒を取り揃えております。<br />
+              なかなか出会えない一本を求める日本酒好きの方にも、これから日本酒を楽しんでみたいという方にも。きっとお気に入りの一杯に出会えるはずです。
+            </p>
+          </div>
+
+          <div class="md:col-span-7 grid grid-cols-2 gap-3 sm:gap-3.5 md:gap-4 items-center min-w-0">
+            <div class="space-y-3 sm:space-y-3.5 md:space-y-4 md:mt-8">
+              <figure
+                onclick="openMenuCarousel(5)"
+                class="collage-trigger bg-[#FAF8F3] p-2 rounded-xl border border-[#E9DCCB] shadow-[0_12px_26px_rgba(81,64,57,0.16)]"
+              >
+                <div class="asset-box aspect-[4/5] rounded-lg" data-slot-label="SAKE 01">
+                  <img src="" alt="鳳凰美田・而今 ほか厳選純米酒" class="asset-img" />
+                  <span class="asset-placeholder">SAKE 01<small>鳳凰美田・而今</small></span>
+                </div>
+                <figcaption class="pt-1.5 px-1">
+                  <span class="font-mincho text-[11px] sm:text-xs font-semibold text-[#514039] block truncate">鳳凰美田・而今 ほか</span>
+                </figcaption>
+              </figure>
+
+              <figure
+                onclick="openMenuCarousel(8)"
+                class="collage-trigger bg-[#FAF8F3] p-2 rounded-xl border border-[#E9DCCB] shadow-[0_12px_26px_rgba(81,64,57,0.16)]"
+              >
+                <div class="asset-box aspect-[4/3] rounded-lg" data-slot-label="SAKE 04">
+                  <img src="" alt="涼やかな酒器と一献" class="asset-img" />
+                  <span class="asset-placeholder">SAKE 04<small>酒器と一献</small></span>
+                </div>
+                <figcaption class="pt-1.5 px-1">
+                  <span class="font-mincho text-[11px] sm:text-xs font-semibold text-[#514039] block truncate">涼やかな酒器と一献</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="space-y-3 sm:space-y-3.5 md:space-y-4 md:-mt-12 md:-mb-12">
+              <figure
+                onclick="openMenuCarousel(6)"
+                class="collage-trigger bg-[#FAF8F3] p-2 rounded-xl border border-[#B99A63]/50 shadow-[0_14px_30px_rgba(81,64,57,0.18)]"
+              >
+                <div class="asset-box aspect-[3/4] rounded-lg" data-slot-label="SAKE 02">
+                  <img src="" alt="獺祭・列 ほか銘酒" class="asset-img" />
+                  <span class="asset-placeholder">SAKE 02<small>獺祭・列 ほか</small></span>
+                </div>
+                <figcaption class="pt-1.5 px-1">
+                  <span class="font-mincho text-[11px] sm:text-xs font-semibold text-[#514039] block truncate">獺祭・列 ほか銘酒</span>
+                </figcaption>
+              </figure>
+
+              <figure
+                onclick="openMenuCarousel(7)"
+                class="collage-trigger bg-[#FAF8F3] p-2 rounded-xl border border-[#B99A63]/50 shadow-[0_14px_30px_rgba(81,64,57,0.18)]"
+              >
+                <div class="asset-box aspect-square rounded-lg" data-slot-label="SAKE 03">
+                  <img src="" alt="澤の花・飲み比べ" class="asset-img" />
+                  <span class="asset-placeholder">SAKE 03<small>澤の花・飲み比べ</small></span>
+                </div>
+                <figcaption class="pt-1.5 px-1">
+                  <span class="font-mincho text-[11px] sm:text-xs font-semibold text-[#514039] block truncate">澤の花・飲み比べ</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ブロック③【店長ニキータのひとこと＆ポップアップ写真カルーセル起動CTA】 -->
+    <div class="mt-16 sm:mt-20 md:mt-28 text-center max-w-2xl mx-auto">
+      <div class="relative inline-block">
+        <div class="asset-box asset-box--contain w-32 h-32 md:w-36 md:h-36 mx-auto rounded-full border-2 border-[#B99A63]/70 shadow-inner p-2" data-slot-label="MANAGER">
+          <img src="" alt="店長ニキータ イラスト" class="asset-img rounded-full" />
+          <span class="asset-placeholder">MANAGER BOX<small>店長ニキータ画像枠</small></span>
+        </div>
+        <p class="mt-2 font-mincho text-xs font-semibold tracking-[0.16em] text-[#514039]">
+          店長 ニキータ
+        </p>
+      </div>
+
+      <div class="mt-4">
+        <p class="font-mincho text-base md:text-xl font-bold text-[#514039] tracking-wider leading-relaxed">
+          「メニューにないお料理も店長にお声をかけてみてください」
+        </p>
+        <p class="font-mincho text-sm md:text-base font-semibold text-[#A65E50] tracking-[0.18em] mt-2">
+          ＼ あれもある、これもある！ ／
+        </p>
+        <p class="font-sans text-xs md:text-[13px] text-[#514039]/80 leading-relaxed mt-2.5 max-w-lg mx-auto">
+          苦手な食材のご相談や「今日はこんな気分」「お酒に合うおつまみを少し」など、その日の仕入れに合わせて気さくにお応えします。
+        </p>
+      </div>
+
+      <div class="mt-7">
+        <button
+          type="button"
+          onclick="openMenuCarousel(0)"
+          class="inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#68785B] text-[#FAF8F3] font-mincho text-sm md:text-base font-semibold tracking-[0.16em] shadow-[0_10px_24px_rgba(81,64,57,0.18)] hover:opacity-95 active:scale-[0.99] transition"
+        >
+          <span class="font-jost text-lg leading-none">＋</span>
+          <span>もっとお品書きをみる</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =========================================================
+           SECTION 04: 参・宴会コースのご案内（三の字・3列横並び＆段違い上・下・上構成）
+           ========================================================= -->
+      <section id="course" class="relative pt-12 pb-16 sm:pb-20 md:pb-24 border-t border-[#B99A63]/35 guide-outline">
+        <div class="max-w-5xl mx-auto px-3 sm:px-6 md:px-12 mb-5 flex flex-wrap items-center justify-between gap-2">
+          <div class="guide-badge px-3 py-1 rounded-full bg-[#A65E50] text-[#FAF8F3] text-[11px] font-jost">
+            SECTION 04 / 参・宴会コースのご案内（三の字3列 × 差し替え画像BOX）
+          </div>
+          <div class="guide-badge px-3 py-1 rounded-full bg-[#E9DCCB] text-[#514039] text-[11px] font-sans">
+            赤提灯＋Gold下線 ／ 和紙×石肌ステージ ／ Beige縦長3列カード
+          </div>
+        </div>
+
+        <!-- 見出し〜3コース〜電話予約CTA〜飲み放題案内まで背景を連続 -->
+        <div class="washi-stone-stage border-b border-[#B99A63]/45 pb-12 sm:pb-14 md:pb-16">
+          <!-- セクション見出し（「お品書き」セクションと揃えた構成） -->
+          <div class="max-w-5xl mx-auto px-3 sm:px-6 md:px-12 pt-8 md:pt-10 pb-6 md:pb-8">
+            <div class="flex items-center gap-4 sm:gap-5">
+              <h2 class="font-mincho text-2xl sm:text-3xl font-semibold tracking-[0.22em] text-[#514039] shrink-0">
+                宴会コース
+              </h2>
+              <div>
+                <p class="font-mincho text-xs sm:text-sm text-[#514039]/85">
+                  ご友人との集まりや職場の飲み会に、こだわりのお料理を
+                </p>
+                <div class="gold-ichimatsu-bar mt-2 rounded-sm"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3コースステージ -->
+          <div class="border-t border-[#B99A63]/45 py-8 sm:py-10 md:py-16 px-3 sm:px-6 md:px-10 relative">
+            <div class="max-w-5xl mx-auto">
+              <div
+                id="courseThreeColumns"
+                class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch"
+              >
+                <!-- 左列（1枚目） -->
+                <article class="course-card-item bg-[#E9DCCB]/95 rounded-2xl border border-[#B99A63]/65 shadow-[0_14px_32px_rgba(81,64,57,0.16)] p-4 md:p-5 flex flex-col justify-between min-w-0">
+                  <div>
+                    <div class="bg-[#FAF8F3] p-2 rounded-xl border border-[#B99A63]/45 shadow-sm">
+                      <div class="asset-box aspect-[4/3] rounded-lg" data-slot-label="COURSE 01">
+                        <img src="" alt="わいわい満喫コース料理イメージ" class="asset-img" />
+                        <span class="asset-placeholder">COURSE PHOTO 01<small>わいわい満喫コース</small></span>
+                      </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-b border-[#514039]/15 pb-3.5">
+                      <div class="flex items-center justify-end gap-2">
+                        <span class="px-2 py-0.5 rounded bg-[#FAF8F3] text-[#514039] font-sans text-[10px] font-medium border border-[#B99A63]/40 shrink-0">
+                          全7品
+                        </span>
+                      </div>
+                      <h3 class="font-mincho text-lg md:text-xl font-bold text-[#514039] tracking-wider mt-1">
+                        わいわい満喫コース
+                      </h3>
+                      <div class="mt-2 flex items-baseline gap-1.5 text-[#514039]">
+                        <span class="font-sans text-xs text-[#514039]/80">お一人様</span>
+                        <span class="font-jost text-2xl md:text-3xl font-semibold text-[#A65E50] tracking-tight">2,500</span>
+                        <span class="font-mincho text-sm font-bold text-[#514039]">円</span>
+                        <span class="font-sans text-[11px] text-[#514039]/75">（税込）</span>
+                      </div>
+                      <p class="font-sans text-xs text-[#514039]/85 leading-relaxed mt-2">
+                        気軽な飲み会やお食事会におすすめの定番コース。
+                      </p>
+                    </div>
+
+                    <div class="mt-3.5">
+                      <p class="font-mincho text-[11px] font-semibold text-[#514039]/80 tracking-widest mb-2">
+                        【お料理内容・全7品】
+                      </p>
+                      <ol class="space-y-1.5 font-sans text-xs text-[#514039] leading-snug">
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">01.</span><span>洋風前菜3点盛り</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">02.</span><span>和風つきだし</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">03.</span><span>お野菜のナムル</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">04.</span><span>手羽中甘辛揚げ</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">05.</span><span>ポテトフライ</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">06.</span><span>チャーハン または 海鮮焼きそば</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">07.</span><span>〆のスープ</span></li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 中央列（2枚目）：おすすめバッジ付き -->
+                <article class="course-card-item bg-[#E9DCCB]/95 rounded-2xl border-2 border-[#A65E50]/80 shadow-[0_18px_38px_rgba(81,64,57,0.2)] p-4 md:p-5 flex flex-col justify-between relative mt-2 lg:mt-0 min-w-0">
+                  <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10 px-4 py-1 rounded-full bg-[#A65E50] text-[#FAF8F3] font-mincho text-xs font-bold tracking-widest shadow-md whitespace-nowrap">
+                    ★ 一番人気・おすすめ
+                  </div>
+
+                  <div>
+                    <div class="bg-[#FAF8F3] p-2 rounded-xl border border-[#B99A63]/45 shadow-sm">
+                      <div class="asset-box aspect-[4/3] rounded-lg" data-slot-label="COURSE 02">
+                        <img src="" alt="よくばり満足コース料理イメージ" class="asset-img" />
+                        <span class="asset-placeholder">COURSE PHOTO 02<small>よくばり満足コース</small></span>
+                      </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-b border-[#514039]/15 pb-3.5">
+                      <div class="flex items-center justify-end gap-2">
+                        <span class="px-2 py-0.5 rounded bg-[#FAF8F3] text-[#A65E50] font-sans text-[10px] font-bold border border-[#A65E50]/40 shrink-0">
+                          全8品
+                        </span>
+                      </div>
+                      <h3 class="font-mincho text-lg md:text-xl font-bold text-[#514039] tracking-wider mt-1">
+                        よくばり満足コース
+                      </h3>
+                      <div class="mt-2 flex items-baseline gap-1.5 text-[#514039]">
+                        <span class="font-sans text-xs text-[#514039]/80">お一人様</span>
+                        <span class="font-jost text-2xl md:text-3xl font-semibold text-[#A65E50] tracking-tight">3,000</span>
+                        <span class="font-mincho text-sm font-bold text-[#514039]">円</span>
+                        <span class="font-sans text-[11px] text-[#514039]/75">（税込）</span>
+                      </div>
+                      <p class="font-sans text-xs text-[#514039]/85 leading-relaxed mt-2">
+                        2,500円コースにプラス500円。選べる一品が加わった満足感アップのコース。
+                      </p>
+                    </div>
+
+                    <div class="mt-3.5">
+                      <p class="font-mincho text-[11px] font-semibold text-[#514039]/80 tracking-widest mb-2">
+                        【お料理内容・全8品】
+                      </p>
+                      <ol class="space-y-1.5 font-sans text-xs text-[#514039] leading-snug">
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">01.</span><span>洋風前菜3点盛り</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">02.</span><span>和風つきだし</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">03.</span><span>お野菜のナムル</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">04.</span><span>手羽中甘辛揚げ</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">05.</span><span>ポテトフライ</span></li>
+                        <li class="flex items-start gap-2 bg-[#FAF8F3]/85 rounded-lg p-1.5 border border-[#B99A63]/45">
+                          <span class="font-jost text-[11px] text-[#A65E50] font-bold">06.</span>
+                          <span>
+                            <strong class="font-semibold text-[#A65E50]">選べる一品</strong><br />
+                            <span class="text-[11px] text-[#514039]/90">（サバの和風マリネ ／ 若鶏のフリッター チリソース炒め）</span>
+                          </span>
+                        </li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">07.</span><span>チャーハン または 海鮮焼きそば</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">08.</span><span>〆のスープ</span></li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 右列（3枚目） -->
+                <article class="course-card-item bg-[#E9DCCB]/95 rounded-2xl border border-[#B99A63]/65 shadow-[0_14px_32px_rgba(81,64,57,0.16)] p-4 md:p-5 flex flex-col justify-between min-w-0">
+                  <div>
+                    <div class="bg-[#FAF8F3] p-2 rounded-xl border border-[#B99A63]/45 shadow-sm">
+                      <div class="asset-box aspect-[4/3] rounded-lg" data-slot-label="COURSE 03">
+                        <img src="" alt="神結おすすめ贅沢コース料理イメージ" class="asset-img" />
+                        <span class="asset-placeholder">COURSE PHOTO 03<small>神結おすすめ贅沢コース</small></span>
+                      </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-b border-[#514039]/15 pb-3.5">
+                      <div class="flex items-center justify-end gap-2">
+                        <span class="px-2 py-0.5 rounded bg-[#FAF8F3] text-[#514039] font-sans text-[10px] font-medium border border-[#B99A63]/40 shrink-0">
+                          全9品
+                        </span>
+                      </div>
+                      <h3 class="font-mincho text-lg md:text-xl font-bold text-[#514039] tracking-wider mt-1">
+                        神結おすすめ贅沢コース
+                      </h3>
+                      <div class="mt-2 flex items-baseline gap-1.5 text-[#514039]">
+                        <span class="font-sans text-xs text-[#514039]/80">お一人様</span>
+                        <span class="font-jost text-2xl md:text-3xl font-semibold text-[#A65E50] tracking-tight">3,500</span>
+                        <span class="font-mincho text-sm font-bold text-[#514039]">円</span>
+                        <span class="font-sans text-[11px] text-[#514039]/75">（税込）</span>
+                      </div>
+                      <p class="font-sans text-xs text-[#514039]/85 leading-relaxed mt-2">
+                        3,000円コースにさらにプラス500円。選べる一品に加えて特製ピザも楽しめる充実コース。
+                      </p>
+                    </div>
+
+                    <div class="mt-3.5">
+                      <p class="font-mincho text-[11px] font-semibold text-[#514039]/80 tracking-widest mb-2">
+                        【お料理内容・全9品】
+                      </p>
+                      <ol class="space-y-1.5 font-sans text-xs text-[#514039] leading-snug">
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">01.</span><span>洋風前菜3点盛り</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">02.</span><span>和風つきだし</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">03.</span><span>お野菜のナムル</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">04.</span><span>手羽中甘辛揚げ</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">05.</span><span>ポテトフライ</span></li>
+                        <li class="flex items-start gap-2">
+                          <span class="font-jost text-[11px] text-[#B99A63] font-semibold">06.</span>
+                          <span>選べる一品<span class="text-[11px] text-[#514039]/85">（サバの和風マリネ ／ 若鶏のフリッター チリソース炒め）</span></span>
+                        </li>
+                        <li class="flex items-start gap-2 bg-[#FAF8F3]/85 rounded-lg p-1.5 border border-[#B99A63]/45">
+                          <span class="font-jost text-[11px] text-[#A65E50] font-bold">07.</span>
+                          <span class="font-semibold text-[#514039]">香ばし和風仕立ての特製ピザ</span>
+                        </li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">08.</span><span>チャーハン または 海鮮焼きそば</span></li>
+                        <li class="flex items-start gap-2"><span class="font-jost text-[11px] text-[#B99A63] font-semibold">09.</span><span>〆のスープ</span></li>
+                      </ol>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <!-- 電話予約CTA ＋ 飲み放題オプション枠 -->
+          <div class="max-w-4xl mx-auto px-3 sm:px-6 md:px-10 mt-2 sm:mt-4 md:mt-4 space-y-6">
+            <div class="flex flex-col items-center">
+              <a
+                href="tel:08068431212"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 rounded-xl bg-[#A65E50] text-[#FAF8F3] font-mincho text-xs sm:text-sm md:text-base font-bold tracking-wider shadow-[0_12px_26px_rgba(166,94,80,0.32)] hover:opacity-95 active:scale-[0.99] transition text-center"
+              >
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                <span>お電話でコース予約（<span class="font-jost tracking-normal">080-6843-1212</span>）</span>
+              </a>
+              <span class="font-sans text-[11px] text-[#514039]/75 mt-1.5 text-center">
+                受付時間 17:00〜24:30（水曜定休）
+              </span>
+            </div>
+
+            <div class="washi-beige rounded-2xl border border-[#B99A63]/65 p-4 sm:p-6 md:p-8 shadow-md">
+              <div class="space-y-2 min-w-0">
+                <div class="inline-flex flex-wrap items-center gap-2">
+                  <span class="px-3 py-0.5 rounded-full bg-[#68785B] text-[#FAF8F3] font-jost text-[11px] font-medium tracking-widest">
+                    ALL-YOU-CAN-DRINK OPTION
+                  </span>
+                  <span class="font-mincho text-xs font-bold text-[#A65E50]">生ビール付き！</span>
+                </div>
+                <p class="font-mincho text-base sm:text-lg md:text-xl font-bold text-[#514039] leading-snug">
+                  各コースに <span class="font-jost text-2xl md:text-3xl text-[#A65E50] font-semibold">＋2,000</span>円 で生ビール付き2時間飲み放題を追加可能
+                </p>
+                <p class="font-sans text-xs md:text-[13px] text-[#514039]/90">
+                  （120分制／ラストオーダーは開始から90分後）
+                </p>
+                <p class="font-sans text-xs text-[#514039]/80 pt-0.5">
+                  ※各コースともコース料理のみのご利用も可能です。人数・ご予算・苦手食材のご相談もお気軽にお電話ください。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- =========================================================
+           SECTION 05: 肆・店舗案内・アクセス
+           ========================================================= -->
+      <section id="access" class="relative px-3 sm:px-6 md:px-12 pt-12 pb-16 sm:pb-20 md:pb-24 border-t border-[#B99A63]/35 guide-outline">
+        <div class="max-w-5xl mx-auto mb-5 flex flex-wrap items-center justify-between gap-2">
+          <div class="guide-badge px-3 py-1 rounded-full bg-[#68785B] text-[#FAF8F3] text-[11px] font-jost">
+            SECTION 05 / 肆・店舗案内・アクセス（鶴間駅 徒歩5〜6分・席構成・地図）
+          </div>
+          <div class="guide-badge px-3 py-1 rounded-full bg-[#E9DCCB] text-[#514039] text-[11px] font-sans">
+            基本情報テーブル ／ Googleマップ埋め込み ／ 行き方4ステップ切替
+          </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+          <!-- セクション見出し -->
+          <div class="flex items-end justify-between gap-4 pb-6 md:pb-8 border-b border-[#B99A63]/40">
+            <div class="flex items-start gap-2.5 sm:gap-3 md:gap-4 min-w-0">
+              <div class="flex items-start gap-1.5 sm:gap-2 shrink-0">
+                <span class="tategaki font-mincho text-xs sm:text-sm md:text-base font-semibold tracking-[0.25em] text-[#514039] pt-1">
+                  店舗案内
+                </span>
+                <span class="font-mincho text-4xl sm:text-5xl md:text-7xl font-bold text-[#514039] leading-none select-none">
+                  肆
+                </span>
+              </div>
+              <div class="pt-1 sm:pt-2 md:pt-3 min-w-0">
+                <p class="font-jost text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] sm:tracking-[0.24em] text-[#A65E50] font-semibold uppercase">
+                  SHOP INFORMATION &amp; ACCESS
+                </p>
+                <p class="font-mincho text-xs md:text-sm text-[#514039]/85 mt-0.5">
+                  小田急江ノ島線「鶴間駅」徒歩5〜6分・サンライト鶴間1F
+                </p>
+                <div class="gold-ichimatsu-bar mt-2.5 rounded-sm"></div>
+              </div>
+            </div>
+
+            <div class="hidden sm:flex items-center gap-3 text-[#514039]/80 shrink-0">
+              <div class="text-right">
+                <span class="block font-mincho text-xs tracking-widest">今夜もあたたかい明かりで。</span>
+                <span class="block font-jost text-[10px] text-[#B99A63] tracking-widest mt-0.5">YAMATO TSURUMA · 17:00–24:30</span>
+              </div>
+              <svg class="w-10 h-10 text-[#68785B]" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M24 42 C24 42, 38 29.5, 38 19 C38 11.268 31.732 5 24 5 C16.268 5 10 11.268 10 19 C10 29.5 24 42 24 42 Z" stroke="#514039" />
+                <circle cx="24" cy="19" r="5" fill="#A65E50" stroke="none" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- 2カラム：左（基本情報）／右（地図＆行き方ガイド） -->
+          <div id="accessGrid" class="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+            <!-- 左カラム（7/12） -->
+            <div class="md:col-span-7 washi-beige rounded-2xl border border-[#B99A63]/45 p-4 sm:p-6 md:p-8 shadow-sm min-w-0">
+              <div class="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-[#B99A63]/35">
+                <h3 class="font-mincho text-base sm:text-lg md:text-xl font-bold text-[#514039] tracking-wider">
+                  店舗基本情報
+                </h3>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#FAF8F3] border border-[#B99A63]/45 font-jost text-[10px] tracking-widest text-[#68785B] font-semibold shrink-0">
+                  SHOP DATA
+                </span>
+              </div>
+
+              <dl class="divide-y divide-[#514039]/15 text-xs md:text-[13.5px]">
+                <div class="py-3 flex flex-col sm:flex-row sm:gap-4">
+                  <dt class="sm:w-28 shrink-0 font-mincho font-bold text-[#514039]/80">店名</dt>
+                  <dd class="font-mincho font-bold text-sm md:text-base text-[#514039] mt-0.5 sm:mt-0">
+                    居酒屋 神結（かみむすび）
+                  </dd>
+                </div>
+
+                <div class="py-3 flex flex-col sm:flex-row sm:gap-4">
+                  <dt class="sm:w-28 shrink-0 font-mincho font-bold text-[#514039]/80">住所</dt>
+                  <dd class="text-[#514039] leading-relaxed mt-0.5 sm:mt-0">
+                    〒242-0005 神奈川県大和市鶴間2-10-13 サンライト鶴間1F<br />
+                    <span class="inline-block mt-1 px-2 py-0.5 rounded bg-[#FAF8F3] text-[#68785B] text-[11px] font-medium border border-[#68785B]/30">
+                      小田急江ノ島線「鶴間駅」より徒歩5〜6分
+                    </span>
+                  </dd>
+                </div>
+
+                <div class="py-3 flex flex-col sm:flex-row sm:gap-4">
+                  <dt class="sm:w-28 shrink-0 font-mincho font-bold text-[#514039]/80">お電話</dt>
+                  <dd class="mt-0.5 sm:mt-0">
+                    <a
+                      href="tel:08068431212"
+                      class="font-jost text-base md:text-lg font-semibold text-[#A65E50] underline underline-offset-4 hover:opacity-80 transition"
+                    >
+                      080-6843-1212
+                    </a>
+                    <span class="block text-[11px] text-[#514039]/75 mt-0.5">
+                      お席の空き状況・ご宴会コースのご相談はお気軽にどうぞ
+                    </span>
+                  </dd>
+                </div>
+
+                <div class="py-3 flex flex-col sm:flex-row sm:gap-4">
+                  <dt class="sm:w-28 shrink-0 font-mincho font-bold text-[#514039]/80">営業時間</dt>
+                  <dd class="text-[#514039] mt-0.5 sm:mt-0">
+                    <span class="font-jost font-semibold">17:00 〜 24:30</span>
+                    <span class="text-xs text-[#514039]/80 ml-1">（ラストオーダー 24:00）</span>
+                  </dd>
+                </div>
+
+                <div class="py-3 flex flex-col sm:flex-row sm:gap-4">
+                  <dt class="sm:w-28 shrink-0 font-mincho font-bold text-[#514039]/80">定休日</dt>
+                  <dd class="text-[#514039] font-medium mt-0.5 sm:mt-0">水曜日</dd>
+                </div>
+
+                <div class="py-3 flex flex-col sm:flex-row sm:gap-4">
+                  <dt class="sm:w-28 shrink-0 font-mincho font-bold text-[#514039]/80">お席の構成</dt>
+                  <dd class="text-[#514039] leading-relaxed mt-0.5 sm:mt-0">
+                    カウンター席 5席／店内テーブル席 4名掛け×4卓／外（テラス）テーブル席 6名掛け×1卓
+                  </dd>
+                </div>
+
+                <div class="py-3 flex flex-col sm:flex-row sm:gap-4">
+                  <dt class="sm:w-28 shrink-0 font-mincho font-bold text-[#514039]/80">お支払い</dt>
+                  <dd class="text-[#514039] mt-0.5 sm:mt-0">現金 または PayPay</dd>
+                </div>
+
+                <div class="py-3 flex flex-col sm:flex-row sm:gap-4">
+                  <dt class="sm:w-28 shrink-0 font-mincho font-bold text-[#514039]/80">駐車場</dt>
+                  <dd class="text-[#514039]/85 mt-0.5 sm:mt-0">
+                    専用駐車場はございません（近隣のコインパーキングをご利用ください）
+                  </dd>
+                </div>
+
+                <div class="py-3 flex flex-col sm:flex-row sm:gap-4">
+                  <dt class="sm:w-28 shrink-0 font-mincho font-bold text-[#514039]/80">喫煙・ご利用</dt>
+                  <dd class="mt-0.5 sm:mt-0 flex flex-wrap items-center gap-2">
+                    <span class="px-2.5 py-0.5 rounded-full bg-[#A65E50]/15 text-[#A65E50] border border-[#A65E50]/35 text-[11px] font-semibold">
+                      店内喫煙可
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-[#68785B]/15 text-[#68785B] border border-[#68785B]/35 text-[11px] font-semibold">
+                      夜ごはん・お食事のみも歓迎
+                    </span>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- 右カラム（5/12） -->
+            <div class="md:col-span-5 space-y-5 min-w-0">
+              <!-- Googleマップ埋め込みカード -->
+              <div class="bg-[#FAF8F3] rounded-2xl border border-[#B99A63]/55 p-4 shadow-sm">
+                <div class="flex items-center justify-between gap-2 mb-2.5">
+                  <div>
+                    <span class="font-jost text-[10px] tracking-[0.2em] text-[#B99A63] font-semibold uppercase block">
+                      ACCESS MAP
+                    </span>
+                    <h3 class="font-mincho text-base font-bold text-[#514039]">
+                      鶴間駅からのアクセス
+                    </h3>
+                  </div>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%A4%A7%E5%92%8C%E5%B8%82%E9%B6%9A%E9%96%932-10-13+%E3%82%B5%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%88%E9%B6%94%E9%96%93"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-3 py-1 rounded-lg bg-[#E9DCCB] text-[#514039] text-[11px] font-medium hover:bg-[#B99A63]/30 transition shrink-0"
+                  >
+                    地図アプリ ↗
+                  </a>
+                </div>
+
+                <div class="rounded-xl overflow-hidden border border-[#B99A63]/40 bg-[#E9DCCB]">
+                  <iframe
+                    title="居酒屋 神結 地図（神奈川県大和市鶴間2-10-13）"
+                    src="https://www.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%A4%A7%E5%92%8C%E5%B8%82%E9%B6%9A%E9%96%932-10-13&output=embed"
+                    class="w-full h-48 border-0 block"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+
+                <p class="text-[11.5px] text-[#514039]/80 leading-relaxed mt-2.5">
+                  小田急江ノ島線「鶴間駅」から歩いて5〜6分。サンライト鶴間1階、あたたかい提灯と「神結」の暖簾が目印です。
+                </p>
+              </div>
+
+              <!-- 駅からの行き方4ステップ切替カード -->
+              <div class="washi-beige rounded-2xl border border-[#B99A63]/55 p-4 md:p-5 shadow-sm">
+                <div class="flex items-center justify-between gap-2 mb-2.5">
+                  <span class="font-jost text-[10px] tracking-[0.2em] text-[#68785B] font-semibold uppercase">
+                    WALKING GUIDE · 5–6 MIN
+                  </span>
+                  <span id="walkGuideCounter" class="font-jost text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#FAF8F3] text-[#514039] border border-[#B99A63]/40">
+                    01 / 04
+                  </span>
+                </div>
+
+                <div class="rounded-xl bg-[#FAF8F3] border border-[#B99A63]/40 p-3.5 mb-3">
+                  <p id="walkGuideStep" class="text-[11px] font-semibold text-[#A65E50] mb-1">
+                    STEP 01 · 鶴間駅を出発
+                  </p>
+                  <p id="walkGuideTitle" class="font-mincho text-sm md:text-base font-bold text-[#514039] mb-1">
+                    小田急江ノ島線「鶴間駅」から徒歩5〜6分
+                  </p>
+                  <p id="walkGuideDesc" class="text-xs text-[#514039]/85 leading-relaxed">
+                    駅周辺の落ち着いた街並みから、気負わずゆっくり歩ける距離です。
+                  </p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onclick="stepWalkGuide(-1)"
+                    class="flex-1 py-2 px-3 rounded-xl bg-[#FAF8F3] border border-[#B99A63]/60 text-[#514039] text-xs font-medium hover:bg-[#E9DCCB]/60 transition cursor-pointer"
+                  >
+                    ← 前の案内
+                  </button>
+                  <button
+                    type="button"
+                    onclick="stepWalkGuide(1)"
+                    class="flex-1 py-2 px-3 rounded-xl bg-[#514039] text-[#FAF8F3] text-xs font-medium hover:opacity-95 transition cursor-pointer"
+                  >
+                    次の案内 →
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SECTION 06: 居酒屋「神結」フッターセクション（統合版）
+           ・ロゴ差し替えBOX ＋ 姉妹店バナー画像BOX
+           ========================================================= -->
+      <footer class="relative w-full overflow-hidden bg-washi border-t border-[#B99A63]/40 select-none guide-outline" aria-label="居酒屋 神結 フッター">
+        <!-- 1. 背景レイヤー：和酒棚の一升瓶シルエット＆ラベルアート（SVG描画） -->
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          <svg class="w-full h-full object-cover object-bottom opacity-35" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bottleDarkGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#1E2820"/>
+                <stop offset="30%" stop-color="#354538"/>
+                <stop offset="70%" stop-color="#222E24"/>
+                <stop offset="100%" stop-color="#141C16"/>
+              </linearGradient>
+              <linearGradient id="bottleBrown" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#3B291E"/>
+                <stop offset="35%" stop-color="#5C4030"/>
+                <stop offset="75%" stop-color="#3A271C"/>
+                <stop offset="100%" stop-color="#241710"/>
+              </linearGradient>
+              <linearGradient id="bottleClear" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#7D877E"/>
+                <stop offset="30%" stop-color="#AEB8AF"/>
+                <stop offset="75%" stop-color="#758077"/>
+                <stop offset="100%" stop-color="#586159"/>
+              </linearGradient>
+              <linearGradient id="labelWashi" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FAF7F0"/>
+                <stop offset="100%" stop-color="#E6DFD1"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="1440" height="760" fill="#D5CFC0"/>
+
+            <!-- 一升瓶 1 -->
+            <g transform="translate(20, 140)">
+              <path d="M65,0 L95,0 L98,110 C125,135 150,165 150,210 L150,620 L10,620 L10,210 C10,165 35,135 62,110 Z" fill="url(#bottleBrown)"/>
+              <rect x="22" y="250" width="116" height="240" rx="2" fill="url(#labelWashi)"/>
+              <rect x="34" y="268" width="92" height="55" fill="#B84A39"/>
+              <text x="80" y="304" font-family="'Shippori Mincho', serif" font-size="26" font-weight="800" fill="#FAF7F0" text-anchor="middle">山廃</text>
+              <text x="80" y="405" font-family="'Shippori Mincho', serif" font-size="44" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb">純米酒</text>
+            </g>
+
+            <!-- 一升瓶 2 -->
+            <g transform="translate(185, 110)">
+              <path d="M70,0 L100,0 L103,125 C135,150 160,185 160,235 L160,650 L10,650 L10,235 C10,185 35,150 67,125 Z" fill="url(#bottleDarkGreen)"/>
+              <circle cx="85" cy="185" r="24" fill="url(#labelWashi)"/>
+              <text x="85" y="194" font-family="'Shippori Mincho', serif" font-size="24" font-weight="700" fill="#2B2A27" text-anchor="middle">生</text>
+              <rect x="20" y="275" width="130" height="270" rx="2" fill="url(#labelWashi)"/>
+              <text x="115" y="345" font-family="'Shippori Mincho', serif" font-size="28" font-weight="700" fill="#4A4842" text-anchor="middle" writing-mode="tb">維可。</text>
+              <text x="65" y="385" font-family="'Shippori Mincho', serif" font-size="26" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb">特別純米</text>
+            </g>
+
+            <!-- 一升瓶 3 -->
+            <g transform="translate(365, 95)">
+              <path d="M72,0 L104,0 L107,130 C142,155 168,195 168,245 L168,665 L8,665 L8,245 C8,195 34,155 69,130 Z" fill="url(#bottleBrown)"/>
+              <g transform="rotate(-14, 88, 190)">
+                <rect x="48" y="150" width="80" height="90" rx="3" fill="url(#labelWashi)"/>
+                <text x="88" y="195" font-family="'Shippori Mincho', serif" font-size="16" font-weight="700" fill="#3B291E" text-anchor="middle" writing-mode="tb">ひやおろし</text>
+              </g>
+              <rect x="18" y="290" width="140" height="295" rx="2" fill="url(#labelWashi)"/>
+              <text x="88" y="395" font-family="'Shippori Mincho', serif" font-size="76" font-weight="800" fill="#1F1E1C" text-anchor="middle" writing-mode="tb" letter-spacing="8">北島</text>
+            </g>
+
+            <!-- 一升瓶 4 -->
+            <g transform="translate(555, 115)">
+              <path d="M70,0 L100,0 L103,120 C135,148 160,185 160,235 L160,645 L10,645 L10,235 C10,185 35,148 67,120 Z" fill="url(#bottleClear)"/>
+              <rect x="52" y="155" width="66" height="46" rx="2" fill="url(#labelWashi)"/>
+              <text x="85" y="185" font-family="'Shippori Mincho', serif" font-size="22" font-weight="700" fill="#2B2A27" text-anchor="middle">生酒</text>
+              <rect x="20" y="265" width="130" height="285" rx="2" fill="url(#labelWashi)"/>
+              <text x="85" y="385" font-family="'Shippori Mincho', serif" font-size="54" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb" letter-spacing="6">鶴齢</text>
+            </g>
+
+            <!-- 一升瓶 5 -->
+            <g transform="translate(740, 100)">
+              <path d="M72,0 L104,0 L107,130 C142,155 168,195 168,245 L168,660 L8,660 L8,245 C8,195 34,155 69,130 Z" fill="url(#bottleDarkGreen)"/>
+              <g transform="rotate(10, 88, 195)">
+                <rect x="55" y="145" width="66" height="100" rx="2" fill="#E8C7C8"/>
+                <text x="88" y="195" font-family="'Shippori Mincho', serif" font-size="15" font-weight="700" fill="#5E2B2E" text-anchor="middle" writing-mode="tb">ひやおろし</text>
+              </g>
+              <rect x="18" y="290" width="140" height="295" rx="2" fill="url(#labelWashi)"/>
+              <text x="88" y="395" font-family="'Shippori Mincho', serif" font-size="72" font-weight="800" fill="#232220" text-anchor="middle" writing-mode="tb" letter-spacing="8">謙信</text>
+            </g>
+
+            <!-- 一升瓶 6 -->
+            <g transform="translate(930, 120)">
+              <path d="M70,0 L100,0 L103,120 C135,148 160,185 160,235 L160,640 L10,640 L10,235 C10,185 35,148 67,120 Z" fill="url(#bottleDarkGreen)"/>
+              <rect x="58" y="150" width="54" height="65" rx="2" fill="url(#labelWashi)"/>
+              <text x="85" y="190" font-family="'Shippori Mincho', serif" font-size="24" font-weight="700" fill="#2B2A27" text-anchor="middle">芳</text>
+              <rect x="20" y="265" width="130" height="285" rx="2" fill="url(#labelWashi)"/>
+              <text x="85" y="380" font-family="'Shippori Mincho', serif" font-size="52" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb" letter-spacing="6">離山</text>
+            </g>
+
+            <!-- 一升瓶 7 -->
+            <g transform="translate(1115, 95)">
+              <path d="M72,0 L104,0 L107,130 C142,155 168,195 168,245 L168,665 L8,665 L8,245 C8,195 34,155 69,130 Z" fill="url(#bottleDarkGreen)"/>
+              <rect x="18" y="275" width="140" height="310" rx="2" fill="#1D1C1A"/>
+              <text x="122" y="385" font-family="'Shippori Mincho', serif" font-size="18" font-weight="600" fill="#D4C79E" text-anchor="middle" writing-mode="tb" letter-spacing="3">純米大吟醸</text>
+              <text x="72" y="415" font-family="'Shippori Mincho', serif" font-size="42" font-weight="800" fill="#F5F2EB" text-anchor="middle" writing-mode="tb" letter-spacing="4">熟成蔵隠し</text>
+            </g>
+
+            <!-- 一升瓶 8 -->
+            <g transform="translate(1300, 135)">
+              <path d="M65,0 L95,0 L98,115 C128,140 152,175 152,220 L152,625 L8,625 L8,220 C8,175 32,140 62,115 Z" fill="url(#bottleBrown)"/>
+              <rect x="20" y="260" width="120" height="260" rx="2" fill="url(#labelWashi)"/>
+              <text x="80" y="380" font-family="'Shippori Mincho', serif" font-size="44" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb">特撰</text>
+            </g>
+          </svg>
+
+          <!-- 和紙半透明オーバーレイグラデーション -->
+          <div class="footer-washi-overlay absolute inset-0"></div>
+        </div>
+
+        <!-- ======================================================================
+             フッターメインコンテンツコンテナ
+             ====================================================================== -->
+        <div class="relative z-10 max-w-[760px] mx-auto px-4 sm:px-6 pt-10 pb-12 sm:pt-12 sm:pb-14 flex flex-col items-center">
+
+          <div class="guide-badge mb-4 px-3 py-1 rounded-full bg-[#E9DCCB] text-[#514039] text-[11px] font-jost">
+            SECTION 06 / FOOTER：ロゴ差し替えBOX ＋ SNS ＋ 黒電話予約 ＋ 姉妹店バナー画像BOX
+          </div>
+
+          <!-- 2. ブランドロゴエリア（別データ差し替えBOX） -->
+          <div class="w-full flex flex-col items-center mb-6 sm:mb-7">
+            <div
+              class="asset-box asset-box--contain w-[210px] h-[250px] sm:w-[240px] sm:h-[290px] rounded-2xl p-3"
+              data-slot-label="FOOTER LOGO"
+            >
+              <img src="" alt="居酒屋 神結 ロゴ・エンブレム" class="asset-img" />
+              <span class="asset-placeholder">
+                FOOTER LOGO BOX
+                <small>縦書きロゴ「神結」・キャッチ・<br />和モダンエンブレム画像枠</small>
+              </span>
+            </div>
+          </div>
+
+          <!-- 3. SNSアイコン列（ロゴ下・中央揃え） -->
+          <nav class="flex items-center justify-center gap-[18px] mb-6 sm:mb-7" aria-label="公式SNSアカウント">
+            <!-- Instagram -->
+            <a
+              href="#instagram"
+              aria-label="居酒屋 神結 公式Instagram"
+              class="group flex items-center justify-center w-8 h-8 text-inkDark transition-all duration-200 hover:-translate-y-1 hover:opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold rounded-md"
+            >
+              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5.5" ry="5.5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+
+            <!-- X (旧Twitter) -->
+            <a
+              href="#x-twitter"
+              aria-label="居酒屋 神結 公式X（旧Twitter）"
+              class="group flex items-center justify-center w-8 h-8 text-inkDark transition-all duration-200 hover:-translate-y-1 hover:opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold rounded-md"
+            >
+              <svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+
+            <!-- LINE -->
+            <a
+              href="#line"
+              aria-label="居酒屋 神結 公式LINE"
+              class="group flex items-center justify-center w-[24px] h-[24px] bg-lineGreen rounded-[5px] shadow-xs transition-all duration-200 hover:-translate-y-1 hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold"
+            >
+              <svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" fill="#FFFFFF"/>
+              </svg>
+            </a>
+          </nav>
+
+          <!-- 4. 区切り線（水平線 max-width: 680px） -->
+          <hr class="w-full max-w-[680px] border-0 border-t border-inkMuted mb-6 sm:mb-7" />
+
+          <!-- 5. 電話予約・お問い合わせエリア（中央） -->
+          <div class="w-full max-w-[540px] flex flex-col items-center mb-9 sm:mb-11">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
+              <!-- 左側：レトロな黒電話イラストSVG -->
+              <div class="shrink-0 w-20 h-16 sm:w-24 sm:h-20 flex items-center justify-center" aria-hidden="true">
+                <svg class="w-full h-full drop-shadow-sm" viewBox="0 0 130 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M36 30 C18 32, 12 46, 22 50 C32 54, 10 60, 14 68 C18 76, 36 74, 42 66" stroke="#181818" stroke-width="3.6" stroke-linecap="round" fill="none"/>
+                  <path d="M40 42 C40 34, 48 30, 58 30 L88 30 C98 30, 106 34, 106 42 L112 78 C113 84, 108 88, 102 88 L44 88 C38 88, 33 84, 34 78 L40 42 Z" fill="#181818"/>
+                  <path d="M44 43 C44 37, 50 34, 58 34 L88 34 C96 34, 102 37, 102 43" stroke="#3D3D3D" stroke-width="2" stroke-linecap="round"/>
+                  <rect x="42" y="88" width="12" height="4" rx="1.5" fill="#0D0D0D"/>
+                  <rect x="92" y="88" width="12" height="4" rx="1.5" fill="#0D0D0D"/>
+                  <rect x="52" y="23" width="6" height="9" rx="2" fill="#262626"/>
+                  <rect x="88" y="23" width="6" height="9" rx="2" fill="#262626"/>
+                  <path d="M32 22 C32 13, 52 10, 73 10 C94 10, 114 13, 114 22 L116 29 C116 33, 109 35, 102 34 C96 33, 94 28, 94 24 C88 22, 58 22, 52 24 C52 28, 50 33, 44 34 C37 35, 30 33, 30 29 L32 22 Z" fill="#121212"/>
+                  <path d="M38 18 C48 14, 98 14, 108 18" stroke="#4A4A4A" stroke-width="2.2" stroke-linecap="round"/>
+                  <circle cx="73" cy="58" r="19" fill="#C9B37E" stroke="#333333" stroke-width="2"/>
+                  <circle cx="73" cy="58" r="15.5" fill="#1C1C1C"/>
+                  <circle cx="73" cy="46" r="2.1" fill="#F7F5EE"/>
+                  <circle cx="80" cy="48.5" r="2.1" fill="#F7F5EE"/>
+                  <circle cx="84.5" cy="54.5" r="2.1" fill="#F7F5EE"/>
+                  <circle cx="84.5" cy="61.5" r="2.1" fill="#F7F5EE"/>
+                  <circle cx="80" cy="67.5" r="2.1" fill="#F7F5EE"/>
+                  <circle cx="73" cy="70" r="2.1" fill="#F7F5EE"/>
+                  <circle cx="66" cy="67.5" r="2.1" fill="#F7F5EE"/>
+                  <circle cx="61.5" cy="61.5" r="2.1" fill="#F7F5EE"/>
+                  <circle cx="61.5" cy="54.5" r="2.1" fill="#F7F5EE"/>
+                  <path d="M84 65 L90 69" stroke="#D9C593" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="73" cy="58" r="7" fill="#F7F5EE" stroke="#C9B37E" stroke-width="1.5"/>
+                  <circle cx="73" cy="58" r="2" fill="#8C7A4B"/>
+                </svg>
+              </div>
+
+              <!-- 右側：テキスト・電話番号縦積みブロック -->
+              <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+                <p class="font-mincho font-semibold text-xs sm:text-[13px] tracking-[0.14em] text-[#333333] mb-0.5">
+                  ご予約・お問い合わせ
+                </p>
+
+                <a
+                  href="tel:08068431212"
+                  class="font-gothic font-medium text-[1.75rem] sm:text-[2.55rem] leading-[1.1] tracking-[0.02em] text-[#3A3532] hover:text-kamimusubiDarkGold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold rounded"
+                >
+                  080-6843-1212
+                </a>
+              </div>
+            </div>
+
+            <p class="font-mincho font-medium text-xs sm:text-[13px] tracking-[0.08em] text-inkMuted mt-2 text-center">
+              HPを見たと伝えていただけるとスムーズです。
+            </p>
+          </div>
+
+          <!-- 6. 近隣姉妹店のご案内エリア（別画像バナー差し替えBOX） -->
+          <div class="flex flex-col items-center w-full">
+            <h3 class="font-mincho font-semibold text-xs sm:text-[13.5px] tracking-[0.14em] text-[#333333] mb-3">
+              近隣姉妹店のご案内
+            </h3>
+
+            <!-- 姉妹店「Sorriso」バナー画像差し替えBOX -->
+            <a
+              href="#sorriso"
+              aria-label="近隣姉妹店 ワイワイ入れるイタリアン厨房 Sorriso（ソリーゾ）のサイトへ"
+              class="group block w-full max-w-[276px] transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold"
+            >
+              <div
+                class="asset-box asset-box--contain w-full aspect-[276/74] rounded-md bg-white shadow-[0_2px_10px_rgba(43,42,39,0.12)] group-hover:shadow-[0_6px_16px_rgba(43,42,39,0.18)]"
+                data-slot-label="SISTER BANNER"
+              >
+                <img src="" alt="近隣姉妹店 ワイワイ入れるイタリアン厨房 Sorriso（ソリーゾ）" class="asset-img" />
+                <span class="asset-placeholder">
+                  SISTER SHOP BANNER BOX
+                  <small>姉妹店「Sorriso」バナー画像（276×74比率）</small>
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <!-- 友だち共有ボタン -->
+          <div class="mt-7 flex flex-col items-center">
+            <button
+              type="button"
+              onclick="copyInviteMessage()"
+              class="px-4 py-2 rounded-full bg-[#FAF8F3]/90 text-[#514039] border border-[#B99A63] text-xs font-medium hover:bg-[#E9DCCB]/70 transition shadow-2xs"
+            >
+              友だちに誘う文面をコピー
+            </button>
+            <p id="copyFeedback" class="text-center text-xs text-[#A65E50] font-medium mt-2 h-4"></p>
+          </div>
+
+          <!-- 7. コピーライト表記 -->
+          <p class="mt-4 font-mincho text-[11px] tracking-[0.12em] text-inkMuted/80 text-center">
+            &copy; 居酒屋 神結 All Rights Reserved.
+          </p>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- =========================================================
+       お品書きポップアップ（写真カルーセルモーダル・単価非掲載）
+       ========================================================= -->
+  <div
+    id="menuCarouselModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="carouselModalTitle"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-[#514039]/75 backdrop-blur-sm p-3 sm:p-6"
+    onclick="handleModalBackdropClick(event)"
+  >
+    <div
+      class="washi-ivory w-full max-w-3xl rounded-2xl border-2 border-[#B99A63] shadow-[0_24px_60px_rgba(81,64,57,0.45)] overflow-hidden flex flex-col max-h-[92vh]"
+      onclick="event.stopPropagation()"
+    >
+      <div class="bg-[#E9DCCB]/85 border-b border-[#B99A63]/45 px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3">
+        <div>
+          <span class="font-jost text-[10px] tracking-[0.22em] text-[#A65E50] font-semibold uppercase block">
+            KAMI-MUSUBI MENU GALLERY
+          </span>
+          <h3 id="carouselModalTitle" class="font-mincho text-base sm:text-xl font-bold text-[#514039]">
+            神結のお品書き 写真帖
+          </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <span class="hidden sm:inline-block px-2.5 py-1 rounded-full bg-[#FAF8F3] border border-[#B99A63]/50 text-[11px] text-[#514039]/80">
+            ※単価非掲載
+          </span>
+          <button
+            type="button"
+            onclick="closeMenuCarousel()"
+            aria-label="お品書きポップアップを閉じる"
+            class="w-9 h-9 rounded-full bg-[#514039] text-[#FAF8F3] flex items-center justify-center hover:bg-[#A65E50] transition text-base font-jost"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <div class="px-4 sm:px-6 pt-3 pb-2 border-b border-[#E9DCCB] flex flex-wrap items-center justify-between gap-2 bg-[#FAF8F3]">
+        <div class="flex flex-wrap gap-1.5" role="tablist" aria-label="お品書きカテゴリー">
+          <button type="button" data-cat="all" onclick="filterCarouselCategory('all')" class="cat-tab px-3 py-1 rounded-full text-xs font-mincho font-semibold bg-[#514039] text-[#FAF8F3] transition">
+            すべて
+          </button>
+          <button type="button" data-cat="dish" onclick="filterCarouselCategory('dish')" class="cat-tab px-3 py-1 rounded-full text-xs font-mincho font-semibold bg-[#E9DCCB]/70 text-[#514039] hover:bg-[#E9DCCB] transition">
+            創作・定番料理
+          </button>
+          <button type="button" data-cat="sake" onclick="filterCarouselCategory('sake')" class="cat-tab px-3 py-1 rounded-full text-xs font-mincho font-semibold bg-[#E9DCCB]/70 text-[#514039] hover:bg-[#E9DCCB] transition">
+            厳選日本酒
+          </button>
+          <button type="button" data-cat="meal" onclick="filterCarouselCategory('meal')" class="cat-tab px-3 py-1 rounded-full text-xs font-mincho font-semibold bg-[#E9DCCB]/70 text-[#514039] hover:bg-[#E9DCCB] transition">
+            ごはん・〆
+          </button>
+        </div>
+
+        <span id="carouselCounter" class="font-jost text-xs font-semibold tracking-widest text-[#B99A63]">
+          01 / 12
+        </span>
+      </div>
+
+      <div class="p-4 sm:p-6 overflow-y-auto flex-1">
+        <div class="relative bg-[#E9DCCB]/55 rounded-2xl border border-[#B99A63]/40 p-3 sm:p-5">
+          <!-- カルーセル画像差し替えBOX -->
+          <div class="asset-box relative aspect-[16/10] sm:aspect-[16/9] rounded-xl shadow-inner" data-slot-label="GALLERY PHOTO">
+            <img
+              id="carouselMainImage"
+              src=""
+              alt=""
+              class="asset-img transition-opacity duration-300"
+            />
+            <span id="carouselPlaceholderText" class="asset-placeholder">
+              MENU GALLERY PHOTO BOX
+              <small>別データ画像を MENU_SLIDES に設定してください</small>
+            </span>
+
+            <button
+              type="button"
+              onclick="stepCarousel(-1)"
+              aria-label="前の写真へ"
+              class="z-10 absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FAF8F3]/95 text-[#514039] border border-[#B99A63] shadow-md flex items-center justify-center hover:bg-[#514039] hover:text-[#FAF8F3] transition font-jost text-lg"
+            >
+              ‹
+            </button>
+
+            <button
+              type="button"
+              onclick="stepCarousel(1)"
+              aria-label="次の写真へ"
+              class="z-10 absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FAF8F3]/95 text-[#514039] border border-[#B99A63] shadow-md flex items-center justify-center hover:bg-[#514039] hover:text-[#FAF8F3] transition font-jost text-lg"
+            >
+              ›
+            </button>
+
+            <span
+              id="carouselBadge"
+              class="z-10 absolute top-3 left-3 px-3 py-1 rounded-full bg-[#514039]/90 text-[#FAF8F3] font-jost text-[10px] tracking-widest uppercase border border-[#B99A63]/60"
+            >
+              WASHOKU
+            </span>
+          </div>
+
+          <div class="mt-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+            <div>
+              <h4 id="carouselItemTitle" class="font-mincho text-lg sm:text-2xl font-bold text-[#514039] tracking-wider">
+                若鶏のからあげ
+              </h4>
+              <p id="carouselItemDesc" class="font-sans text-xs sm:text-sm text-[#514039]/85 leading-relaxed mt-1.5">
+                外はかりっと香ばしく、中はふっくらジューシー。日本酒にもハイボールにも寄り添う定番の一皿です。
+              </p>
+            </div>
+            <div class="shrink-0 text-right">
+              <span class="inline-block px-3 py-1 rounded-lg bg-[#FAF8F3] border border-[#B99A63]/45 font-mincho text-xs text-[#68785B] font-semibold">
+                お一人様・夜ごはんも歓迎
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <div id="carouselThumbs" class="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1"></div>
+        </div>
+      </div>
+
+      <div class="bg-[#E9DCCB]/65 border-t border-[#B99A63]/40 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-2 text-xs">
+        <p class="font-mincho text-[#514039]">
+          「メニューにないお料理も店長にお声をかけてみてください」
+        </p>
+        <a
+          href="tel:08068431212"
+          class="px-3.5 py-1.5 rounded-full bg-[#A65E50] text-[#FAF8F3] font-medium hover:opacity-90 transition"
+        >
+          お席のご相談：080-6843-1212
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 外部JavaScript -->
+  <script src="script.js" defer></script>
+</body>
+</html>

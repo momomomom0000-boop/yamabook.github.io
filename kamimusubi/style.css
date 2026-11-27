@@ -1,0 +1,748 @@
+@charset "UTF-8";
+
+:root {
+  --color-ivory: #FAF8F3;
+  --color-beige: #E9DCCB;
+  --color-darkbrown: #514039;
+  --color-gold: #B99A63;
+  --color-vermillion: #A65E50;
+  --color-olive: #68785B;
+  --color-washi: #F7F5EE;
+  --color-kamimusubi-gold: #A69049;
+  --color-kamimusubi-darkgold: #786832;
+  --color-kamimusubi-olive: #6A7045;
+  --color-ink-dark: #2B2A27;
+  --color-ink-muted: #4A4842;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #DCD4C6;
+  color: var(--color-darkbrown);
+  font-family: "Noto Sans JP", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================
+   和紙・紙面テクスチャ
+   ========================================================= */
+.washi-ivory {
+  background-color: #FAF8F3;
+  background-image:
+    radial-gradient(circle at 20% 25%, rgba(233, 220, 203, 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 85% 75%, rgba(185, 154, 99, 0.08) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+.washi-beige {
+  background-color: #EFE5D7;
+  background-image:
+    linear-gradient(145deg, rgba(250, 248, 243, 0.55) 0%, rgba(233, 220, 203, 0.85) 60%, rgba(222, 206, 185, 0.9) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter2)' opacity='0.05'/%3E%3C/svg%3E");
+  box-shadow: 0 18px 42px rgba(81, 64, 57, 0.09);
+}
+
+.washi-vermillion {
+  background-color: #A65E50;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(250, 248, 243, 0.14) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter3'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter3)' opacity='0.07'/%3E%3C/svg%3E");
+}
+
+.washi-olive {
+  background-color: #68785B;
+  background-image:
+    radial-gradient(circle at 70% 25%, rgba(250, 248, 243, 0.12) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter4'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter4)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+.washi-stone-stage {
+  background-color: #D6CEC0;
+  background-image:
+    radial-gradient(ellipse at 18% 22%, rgba(250, 248, 243, 0.55) 0%, transparent 52%),
+    radial-gradient(ellipse at 82% 76%, rgba(81, 64, 57, 0.16) 0%, transparent 58%),
+    linear-gradient(125deg, rgba(233, 220, 203, 0.85) 0%, rgba(196, 185, 168, 0.72) 55%, rgba(178, 166, 148, 0.82) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='stoneNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23stoneNoise)' opacity='0.09'/%3E%3C/svg%3E");
+}
+
+/* フッター和紙グラデーションオーバーレイ */
+.footer-washi-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(247, 245, 238, 0.98) 0%,
+    rgba(247, 245, 238, 0.92) 28%,
+    rgba(247, 245, 238, 0.78) 62%,
+    rgba(242, 238, 228, 0.68) 100%
+  );
+}
+
+/* Goldの繊細な和モダン・市松ドットライン */
+.gold-ichimatsu-bar {
+  height: 8px;
+  width: 112px;
+  max-width: 100%;
+  background-image:
+    linear-gradient(45deg, #B99A63 25%, transparent 25%),
+    linear-gradient(-45deg, #B99A63 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #B99A63 75%),
+    linear-gradient(-45deg, transparent 75%, #B99A63 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+  opacity: 0.85;
+}
+
+/* 縦書きユーティリティ */
+.tategaki {
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* =========================================================
+   別データ差し替え用BOX（ロゴ・写真・姉妹店バナー共通）
+   ========================================================= */
+.asset-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: rgba(233, 220, 203, 0.55);
+  border: 1.5px dashed rgba(185, 154, 99, 0.85);
+}
+
+.asset-box--dark {
+  background-color: rgba(250, 248, 243, 0.08);
+  border-color: rgba(185, 154, 99, 0.75);
+}
+
+.asset-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.asset-box--contain .asset-img {
+  object-fit: contain;
+}
+
+.asset-img[src=""],
+.asset-img:not([src]) {
+  display: none;
+}
+
+.asset-placeholder {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+  font-family: "Jost", "Shippori Mincho", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #514039;
+  line-height: 1.35;
+  pointer-events: none;
+}
+
+.asset-placeholder small {
+  display: block;
+  margin-top: 2px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+}
+
+.asset-box--dark .asset-placeholder {
+  color: #FAF8F3;
+}
+
+.asset-box.has-image {
+  border-style: solid;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.asset-box.has-image .asset-placeholder {
+  display: none;
+}
+
+.asset-tag {
+  position: absolute;
+  z-index: 3;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: "Shippori Mincho", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* =========================================================
+   ご挨拶セクション（左：写真＆あしらい ／ 右：縦書きテキスト）
+   ========================================================= */
+.greeting-section {
+  background-color: #f3efe6;
+  padding: 48px 24px;
+  font-family: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  color: #4a3f37;
+}
+
+.greeting-card {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  background-color: #ebe2d2;
+  border-radius: 12px;
+  padding: 40px 48px 36px;
+  box-shadow: 0 10px 30px rgba(74, 63, 55, 0.08);
+}
+
+.greeting-card::after {
+  content: "";
+  position: absolute;
+  top: 130px;
+  right: -18px;
+  width: 18px;
+  height: calc(100% - 130px);
+  background-color: #964e41;
+  border-radius: 0 10px 0 0;
+}
+
+.greeting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.greeting-title-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.greeting-heading {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #4a3f37;
+  margin: 0;
+}
+
+/* ご挨拶横のあしらい：市松模様 */
+.greeting-pattern {
+  display: inline-block;
+  width: 112px;
+  height: 12px;
+  background-color: #faf7f0;
+  background-image:
+    linear-gradient(45deg, #b99a63 25%, transparent 25%),
+    linear-gradient(-45deg, #b99a63 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #b99a63 75%),
+    linear-gradient(-45deg, transparent 75%, #b99a63 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+  border: 1px solid rgba(185, 154, 99, 0.55);
+  border-radius: 2px;
+  opacity: 0.92;
+}
+
+.greeting-divider {
+  border: none;
+  border-top: 1px solid rgba(185, 154, 99, 0.45);
+  margin: 0 0 32px;
+}
+
+.greeting-divider.bottom {
+  margin: 32px 0 0;
+  width: 86%;
+}
+
+/* メイン2カラム配置（左：写真とあしらい ／ 右：縦書きテキスト） */
+.greeting-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 44px;
+}
+
+.greeting-visual-col {
+  position: relative;
+  flex: 0 0 48%;
+  max-width: 48%;
+  padding: 14px 16px 22px 24px;
+}
+
+.deco-plate {
+  position: absolute;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.deco-top-left {
+  top: 0;
+  left: 10px;
+  width: 55%;
+  height: 45%;
+  background-color: #efe7d8;
+  border: 1px solid rgba(185, 154, 99, 0.35);
+  z-index: 1;
+}
+
+.deco-bottom-left {
+  bottom: 4px;
+  left: 0;
+  width: 68%;
+  height: 56%;
+  background-color: #6b765b;
+  z-index: 1;
+}
+
+.deco-right-tab {
+  top: 24%;
+  right: 4px;
+  width: 24px;
+  height: 36%;
+  background-color: #9c5346;
+  border-radius: 0 6px 6px 0;
+  z-index: 1;
+}
+
+.shop-photo-frame {
+  position: relative;
+  z-index: 2;
+  background-color: #fdfbf7;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(45, 36, 30, 0.12);
+}
+
+.shop-photo-inner {
+  aspect-ratio: 4 / 3;
+  background-color: #efe8da;
+  border: 1px dashed #c7ad7f;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-placeholder {
+  text-align: center;
+  color: #5c5047;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.photo-placeholder .en {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.photo-placeholder .jp {
+  display: block;
+  font-size: 10px;
+  margin-top: 4px;
+  color: #8a7c70;
+}
+
+/* 【右カラム】縦書きテキスト＋店主署名 */
+.greeting-text-col {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 28px;
+  padding-right: 8px;
+}
+
+.vertical-paragraphs {
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  text-orientation: upright;
+  height: 270px;
+  font-size: 13.5px;
+  line-height: 2.15;
+  letter-spacing: 0.12em;
+  color: #4a3f37;
+}
+
+.vertical-paragraphs p {
+  margin: 0 0 0 18px;
+}
+
+.vertical-paragraphs p:last-child {
+  margin-left: 0;
+}
+
+.greeting-signature {
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  text-orientation: upright;
+  height: 270px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #964e41;
+  padding-right: 4px;
+}
+
+.vertical-catch-wrap {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  padding-left: 20px;
+  border-left: 1px solid rgba(185, 154, 99, 0.45);
+}
+
+.vertical-catch {
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.75;
+  letter-spacing: 0.18em;
+  color: #4a3f37;
+  margin: 0;
+}
+
+.catch-accent-bar {
+  display: block;
+  width: 12px;
+  min-height: 250px;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+/* =========================================================
+   レスポンシブ制御（実画面幅 + PC/SPプレビュー切替の両立）
+   ========================================================= */
+@media (min-width: 768px) {
+  #previewCanvas:not(.mode-sp) .editorial-vertical-flow {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  #previewCanvas:not(.mode-sp) .editorial-story-text {
+    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+    text-orientation: upright;
+    height: 330px;
+    width: auto;
+  }
+
+  #previewCanvas:not(.mode-sp) .editorial-story-meta {
+    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+    text-orientation: upright;
+    height: 330px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 0.9rem;
+    border-right: 1px solid rgba(185, 154, 99, 0.35);
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .greeting-card {
+    padding: 28px 20px;
+  }
+  .greeting-card::after {
+    display: none;
+  }
+  .greeting-pattern {
+    width: 72px;
+    height: 10px;
+    background-size: 10px 10px;
+    background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+  }
+  .greeting-body {
+    flex-direction: column;
+    gap: 28px;
+  }
+  .greeting-visual-col {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+  .greeting-text-col {
+    width: 100%;
+    flex-direction: column-reverse;
+    gap: 16px;
+    padding-right: 0;
+  }
+  .vertical-paragraphs,
+  .vertical-catch,
+  .greeting-signature {
+    writing-mode: horizontal-tb;
+    -webkit-writing-mode: horizontal-tb;
+    height: auto;
+  }
+  .vertical-paragraphs p {
+    margin: 0 0 12px 0;
+  }
+  .greeting-signature {
+    justify-content: flex-end;
+    padding-right: 0;
+    margin-top: 4px;
+  }
+  .vertical-catch-wrap {
+    border-left: none;
+    border-bottom: 1px solid rgba(185, 154, 99, 0.45);
+    padding-left: 0;
+    padding-bottom: 12px;
+    width: 100%;
+  }
+  .catch-accent-bar {
+    display: none;
+  }
+}
+
+/* プレビューキャンバス切り替え */
+.preview-canvas {
+  width: 100%;
+  transition: max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.preview-canvas.mode-pc {
+  max-width: 1200px;
+  border-radius: 16px;
+}
+
+.preview-canvas.mode-sp {
+  max-width: 375px;
+  border-radius: 36px;
+  border: 8px solid #514039;
+}
+
+/* SPプレビュー枠（mode-sp）選択時は、PCブラウザ上でもSPレイアウトを強制適用 */
+.preview-canvas.mode-sp .greeting-card {
+  padding: 28px 20px !important;
+}
+
+.preview-canvas.mode-sp .greeting-card::after {
+  display: none !important;
+}
+
+.preview-canvas.mode-sp .greeting-pattern {
+  width: 72px !important;
+  height: 10px !important;
+  background-size: 10px 10px !important;
+  background-position: 0 0, 0 5px, 5px -5px, -5px 0 !important;
+}
+
+.preview-canvas.mode-sp .greeting-body {
+  flex-direction: column !important;
+  gap: 28px !important;
+}
+
+.preview-canvas.mode-sp .greeting-visual-col {
+  flex: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.preview-canvas.mode-sp .greeting-text-col {
+  width: 100% !important;
+  flex-direction: column-reverse !important;
+  gap: 16px !important;
+  padding-right: 0 !important;
+}
+
+.preview-canvas.mode-sp .vertical-paragraphs,
+.preview-canvas.mode-sp .vertical-catch,
+.preview-canvas.mode-sp .greeting-signature {
+  writing-mode: horizontal-tb !important;
+  -webkit-writing-mode: horizontal-tb !important;
+  height: auto !important;
+}
+
+.preview-canvas.mode-sp .vertical-paragraphs p {
+  margin: 0 0 12px 0 !important;
+}
+
+.preview-canvas.mode-sp .greeting-signature {
+  justify-content: flex-end !important;
+  padding-right: 0 !important;
+  margin-top: 4px !important;
+}
+
+.preview-canvas.mode-sp .vertical-catch-wrap {
+  border-left: none !important;
+  border-bottom: 1px solid rgba(185, 154, 99, 0.45) !important;
+  padding-left: 0 !important;
+  padding-bottom: 12px !important;
+  width: 100% !important;
+}
+
+.preview-canvas.mode-sp .catch-accent-bar {
+  display: none !important;
+}
+
+.preview-canvas.mode-sp .editorial-vertical-flow {
+  display: block !important;
+}
+
+.preview-canvas.mode-sp .editorial-story-text {
+  writing-mode: horizontal-tb !important;
+  -webkit-writing-mode: horizontal-tb !important;
+  height: auto !important;
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.95 !important;
+  letter-spacing: 0.04em !important;
+}
+
+.preview-canvas.mode-sp .editorial-story-text p {
+  margin-left: 0 !important;
+  margin-bottom: 0.875rem !important;
+}
+
+.preview-canvas.mode-sp .editorial-story-meta {
+  writing-mode: horizontal-tb !important;
+  -webkit-writing-mode: horizontal-tb !important;
+  height: auto !important;
+  padding-right: 0 !important;
+  border-right: 0 !important;
+  margin-top: 1.25rem !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid rgba(185, 154, 99, 0.3) !important;
+  display: block !important;
+}
+
+.preview-canvas.mode-sp #editorialBodyGrid {
+  flex-direction: column !important;
+}
+
+.preview-canvas.mode-sp #verticalHeadingWrap {
+  width: 100% !important;
+  justify-content: flex-end !important;
+  padding-left: 0 !important;
+  border-left: 0 !important;
+}
+
+.preview-canvas.mode-sp #offsetPhotoRow {
+  flex-direction: column !important;
+  margin-top: -1.5rem !important;
+}
+
+.preview-canvas.mode-sp #offsetPhotoRow > figure {
+  width: 100% !important;
+  border-radius: 1rem !important;
+}
+
+.preview-canvas.mode-sp #dishCollageGrid {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.preview-canvas.mode-sp #dishCollageGrid figure {
+  grid-column: span 1 / span 1 !important;
+  margin: 0 !important;
+}
+
+.preview-canvas.mode-sp #courseThreeColumns {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.preview-canvas.mode-sp #accessGrid {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.preview-canvas.mode-sp #accessGrid > div {
+  grid-column: span 1 / span 1 !important;
+}
+
+/* レイアウト＆BOXガイド表示制御 */
+.guide-badge {
+  display: none;
+}
+
+body.show-guides .guide-badge {
+  display: inline-flex;
+}
+
+body.show-guides .guide-outline {
+  outline: 1.5px dashed #B99A63;
+  outline-offset: -2px;
+}
+
+body.show-guides .asset-box {
+  outline: 2px dashed #A65E50;
+  outline-offset: -2px;
+}
+
+/* 提灯のやわらかな灯りアニメーション */
+@keyframes lanternGlow {
+  0%, 100% {
+    filter: drop-shadow(0 6px 14px rgba(166, 94, 80, 0.32));
+    transform: rotate(-1.5deg);
+  }
+  50% {
+    filter: drop-shadow(0 8px 20px rgba(185, 154, 99, 0.48));
+    transform: rotate(1.5deg);
+  }
+}
+
+.lantern-float {
+  transform-origin: top center;
+  animation: lanternGlow 5.5s ease-in-out infinite;
+}
+
+/* クリック可能なコラージュ写真のホバー演出 */
+.collage-trigger {
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.collage-trigger:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(81, 64, 57, 0.22);
+}
+
+/* 横スクロールバー非表示 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
