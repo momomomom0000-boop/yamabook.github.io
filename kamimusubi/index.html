@@ -839,7 +839,7 @@
         </div>
       </section>
 <!-- =========================================================
-           SECTION 05: 店舗案内・アクセス（ワイヤーフレーム準拠・アコーディオン式徒歩案内）
+           SECTION 05: 店舗案内・アクセス（店情報は前のまま ＋ マップ ＋ アコーディオン式行き方）
            ========================================================= -->
       <section id="access" class="relative pt-12 pb-16 sm:pb-20 md:pb-24 border-t border-[#B99A63]/35 guide-outline">
         <div class="max-w-4xl mx-auto px-3 sm:px-6 md:px-10 mb-5 flex flex-wrap items-center justify-between gap-2">
@@ -847,7 +847,7 @@
             SECTION 05 / 店舗案内・アクセス
           </div>
           <div class="guide-badge px-3 py-1 rounded-full bg-[#E9DCCB] text-[#514039] text-[11px] font-sans">
-            店情報テーブル ／ マップ埋め込み ／ アコーディオン式行き方ガイド
+            店舗基本情報（既存維持） ／ マップ埋め込み ／ アコーディオン式行き方ガイド
           </div>
         </div>
 
@@ -856,7 +856,7 @@
           <div class="max-w-4xl mx-auto px-3 sm:px-6 md:px-10 pt-8 md:pt-10 pb-6 md:pb-8">
             <div class="flex items-center gap-4 sm:gap-5">
               <h2 class="font-mincho text-2xl sm:text-3xl font-semibold tracking-[0.22em] text-[#514039] shrink-0">
-                店情報
+                店舗案内
               </h2>
               <div>
                 <p class="font-mincho text-xs sm:text-sm text-[#514039]/85">
@@ -867,97 +867,105 @@
             </div>
           </div>
 
-          <!-- 本体エリア：店情報テーブル → マップ埋め込み → アコーディオン式行き方 -->
+          <!-- 本体エリア：店舗基本情報（前のまま） → マップ埋め込み → アコーディオン式行き方 -->
           <div class="border-t border-[#B99A63]/45 py-8 sm:py-10 px-3 sm:px-6 md:px-10">
             <div class="max-w-3xl mx-auto space-y-8">
-              <!-- 1. 店情報テーブル -->
-              <div class="washi-beige rounded-2xl border border-[#B99A63]/65 shadow-[0_12px_28px_rgba(81,64,57,0.12)] overflow-hidden">
-                <table class="w-full border-collapse text-left font-sans text-xs sm:text-[13px] text-[#514039]">
-                  <thead>
-                    <tr class="bg-[#E9DCCB] border-b border-[#B99A63]/55 font-mincho text-xs text-[#514039]/85">
-                      <th scope="col" class="py-3 px-4 sm:px-5 w-28 sm:w-36 font-semibold">項目</th>
-                      <th scope="col" class="py-3 px-4 sm:px-5 font-semibold">掲載内容</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-[#514039]/15 bg-[#FAF8F3]/85">
-                    <tr>
-                      <th scope="row" class="py-3.5 px-4 sm:px-5 font-mincho font-semibold text-[#514039]/85 align-top">所在地</th>
-                      <td class="py-3.5 px-4 sm:px-5 leading-relaxed">
-                        神奈川県大和市鶴間2-10-13 サンライト鶴間1F
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="py-3.5 px-4 sm:px-5 font-mincho font-semibold text-[#514039]/85 align-top">駐車場</th>
-                      <td class="py-3.5 px-4 sm:px-5 leading-relaxed">
-                        なし
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="py-3.5 px-4 sm:px-5 font-mincho font-semibold text-[#514039]/85 align-top">電話番号</th>
-                      <td class="py-3.5 px-4 sm:px-5 leading-relaxed">
-                        <a
-                          href="tel:08068431212"
-                          class="font-jost text-sm sm:text-base font-semibold text-[#A65E50] underline decoration-[#A65E50]/40 underline-offset-4 hover:opacity-85"
-                        >
-                          080-6843-1212
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="py-3.5 px-4 sm:px-5 font-mincho font-semibold text-[#514039]/85 align-top">席数</th>
-                      <td class="py-3.5 px-4 sm:px-5 leading-relaxed">
-                        ・店内テーブル：4名席×4卓・テラス／外テーブル：6名席×1卓・カウンター：5席
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="py-3.5 px-4 sm:px-5 font-mincho font-semibold text-[#514039]/85 align-top">営業時間</th>
-                      <td class="py-3.5 px-4 sm:px-5 leading-relaxed">
-                        17:00〜24:30（ラストオーダー 24:00）
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="py-3.5 px-4 sm:px-5 font-mincho font-semibold text-[#514039]/85 align-top">定休日</th>
-                      <td class="py-3.5 px-4 sm:px-5 leading-relaxed">
-                        水曜日
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="py-3.5 px-4 sm:px-5 font-mincho font-semibold text-[#514039]/85 align-top">お支払い方法</th>
-                      <td class="py-3.5 px-4 sm:px-5 leading-relaxed">
-                        現金、PayPay
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="py-3.5 px-4 sm:px-5 font-mincho font-semibold text-[#514039]/85 align-top">喫煙</th>
-                      <td class="py-3.5 px-4 sm:px-5 leading-relaxed">
-                        喫煙可
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="py-3.5 px-4 sm:px-5 font-mincho font-semibold text-[#514039]/85 align-top">地図</th>
-                      <td class="py-3.5 px-4 sm:px-5 leading-relaxed">
-                        <a
-                          href="#access-map-embed"
-                          class="text-[#A65E50] underline decoration-[#A65E50]/45 underline-offset-4 hover:opacity-85"
-                        >
-                          Googleマップで見る
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <!-- 1. 店舗基本情報（前の内容・デザインそのまま） -->
+              <div class="washi-beige rounded-2xl border border-[#B99A63]/65 shadow-[0_14px_32px_rgba(81,64,57,0.14)] p-5 sm:p-6 md:p-7 min-w-0">
+                <div class="pb-3.5 mb-1 border-b border-[#514039]/15">
+                  <h3 class="font-mincho text-lg sm:text-xl font-bold text-[#514039] tracking-wider">
+                    店舗基本情報
+                  </h3>
+                </div>
 
-              <!-- 支払いの補足 -->
-              <p class="font-mincho text-xs sm:text-sm text-[#514039] text-center">
-                支払：現金またはPayPay
-              </p>
+                <dl class="divide-y divide-[#514039]/15 font-sans text-xs sm:text-[13px] text-[#514039]">
+                  <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                    <dt class="sm:w-28 shrink-0 font-mincho font-semibold text-[#514039]/80">店名</dt>
+                    <dd class="font-medium text-[#514039]">居酒屋 神結（かみむすび）</dd>
+                  </div>
+
+                  <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                    <dt class="sm:w-28 shrink-0 font-mincho font-semibold text-[#514039]/80">住所</dt>
+                    <dd class="leading-relaxed">
+                      〒242-0005 神奈川県大和市鶴間2-10-13 サンライト鶴間1F
+                      <span class="block mt-1.5 w-fit px-2.5 py-0.5 rounded bg-[#FAF8F3] text-[#514039] text-[11px] border border-[#B99A63]/40">
+                        小田急江ノ島線「鶴間駅」より徒歩5〜6分
+                      </span>
+                    </dd>
+                  </div>
+
+                  <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                    <dt class="sm:w-28 shrink-0 font-mincho font-semibold text-[#514039]/80">お電話</dt>
+                    <dd class="leading-relaxed">
+                      <a
+                        href="tel:08068431212"
+                        class="font-jost text-base sm:text-lg font-semibold text-[#A65E50] underline decoration-[#A65E50]/40 underline-offset-4 hover:opacity-85"
+                      >
+                        080-6843-1212
+                      </a>
+                      <span class="block text-[11px] text-[#514039]/75 mt-0.5">
+                        お席の空き状況・ご宴会コースのご相談はお気軽にどうぞ
+                      </span>
+                    </dd>
+                  </div>
+
+                  <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                    <dt class="sm:w-28 shrink-0 font-mincho font-semibold text-[#514039]/80">営業時間</dt>
+                    <dd>
+                      <span class="font-jost font-semibold">17:00 〜 24:30</span>
+                      <span class="text-[11px] text-[#514039]/80">（ラストオーダー 24:00）</span>
+                    </dd>
+                  </div>
+
+                  <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                    <dt class="sm:w-28 shrink-0 font-mincho font-semibold text-[#514039]/80">定休日</dt>
+                    <dd>水曜日</dd>
+                  </div>
+
+                  <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                    <dt class="sm:w-28 shrink-0 font-mincho font-semibold text-[#514039]/80">お席の構成</dt>
+                    <dd class="leading-relaxed">
+                      カウンター席 5席 ／ 店内テーブル席 4名掛け×4卓 ／ 外（テラス）テーブル席 6名掛け×1卓
+                    </dd>
+                  </div>
+
+                  <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                    <dt class="sm:w-28 shrink-0 font-mincho font-semibold text-[#514039]/80">お支払い</dt>
+                    <dd>現金 または PayPay</dd>
+                  </div>
+
+                  <div class="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                    <dt class="sm:w-28 shrink-0 font-mincho font-semibold text-[#514039]/80">駐車場</dt>
+                    <dd>なし</dd>
+                  </div>
+
+                  <div class="pt-3 pb-1 flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4">
+                    <dt class="sm:w-28 shrink-0 font-mincho font-semibold text-[#514039]/80">喫煙・ご利用</dt>
+                    <dd class="flex flex-wrap gap-1.5">
+                      <span class="px-2.5 py-0.5 rounded bg-[#FAF8F3] text-[#514039] text-[11px] font-medium border border-[#B99A63]/45">
+                        喫煙可
+                      </span>
+                      <span class="px-2.5 py-0.5 rounded bg-[#FAF8F3] text-[#514039] text-[11px] font-medium border border-[#B99A63]/45">
+                        夜ごはん・お食事のみも歓迎
+                      </span>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
 
               <!-- 2. マップ埋め込み -->
               <div
                 id="access-map-embed"
-                class="bg-[#FAF8F3] rounded-2xl border border-[#B99A63]/65 shadow-[0_12px_28px_rgba(81,64,57,0.12)] p-3 sm:p-4"
+                class="bg-[#FAF8F3] rounded-2xl border border-[#B99A63]/65 shadow-[0_12px_28px_rgba(81,64,57,0.12)] p-4 sm:p-5"
               >
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <h3 class="font-mincho text-base sm:text-lg font-bold text-[#514039] tracking-wider">
+                    鶴間駅からのアクセス
+                  </h3>
+                  <span class="font-jost text-[11px] tracking-widest text-[#B99A63] font-semibold">
+                    GOOGLE MAP
+                  </span>
+                </div>
                 <div class="w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden border border-[#B99A63]/45 bg-[#E9DCCB]">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d203.0331544651983!2d139.45292211773221!3d35.491159198461915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f8aeb582d283%3A0x3e08ee6755b9d9c6!2z56We57WQ77yI44GL44G_44KA44GZ44Gz77yJ!5e0!3m2!1sja!2sjp!4v1795755408674!5m2!1sja!2sjp"
