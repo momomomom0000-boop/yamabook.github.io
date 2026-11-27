@@ -847,7 +847,7 @@
             SECTION 05 / 店舗案内・アクセス
           </div>
           <div class="guide-badge px-3 py-1 rounded-full bg-[#E9DCCB] text-[#514039] text-[11px] font-sans">
-            店舗基本情報 ／ Google Map ／ 徒歩ガイド写真枠
+            店舗基本情報 ／ Google Map ／ カルーセル型徒歩ガイド写真枠
           </div>
         </div>
 
@@ -867,7 +867,7 @@
             </div>
           </div>
 
-          <!-- 店舗基本情報＋マップ・徒歩ガイド -->
+          <!-- 店舗基本情報＋マップ・カルーセル徒歩ガイド -->
           <div class="border-t border-[#B99A63]/45 py-8 sm:py-10 md:py-12 px-3 sm:px-6 md:px-10">
             <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-start">
               <!-- 左カラム：店舗基本情報 -->
@@ -953,7 +953,7 @@
                 </dl>
               </div>
 
-              <!-- 右カラム：Googleマップ＋鶴間駅からの徒歩ガイド写真枠 -->
+              <!-- 右カラム：Googleマップ＋カルーセル型徒歩ガイド写真枠 -->
               <div class="lg:col-span-5 space-y-6 min-w-0">
                 <!-- マップ枠 -->
                 <div class="bg-[#FAF8F3] rounded-2xl border border-[#B99A63]/65 shadow-[0_14px_32px_rgba(81,64,57,0.14)] p-4 sm:p-5">
@@ -972,37 +972,124 @@
                   </div>
                 </div>
 
-                <!-- 徒歩ガイド：鶴間駅からの道案内写真枠 -->
-                <div class="washi-beige rounded-2xl border border-[#B99A63]/65 shadow-[0_14px_32px_rgba(81,64,57,0.14)] p-4 sm:p-5">
+                <!-- カルーセル型徒歩ガイド（写真枠付き） -->
+                <div
+                  id="walkingGuideCarousel"
+                  class="washi-beige rounded-2xl border border-[#B99A63]/65 shadow-[0_14px_32px_rgba(81,64,57,0.14)] p-4 sm:p-5"
+                >
+                  <!-- 上部ヘッダー：WALKING GUIDE · 5–6 MIN ＋ 01 / 04 バッジ -->
                   <div class="flex items-center justify-between gap-2 mb-3">
-                    <h3 class="font-mincho text-base sm:text-lg font-bold text-[#514039] tracking-wider">
-                      鶴間駅からの徒歩ガイド
-                    </h3>
-                    <span class="font-jost text-[11px] tracking-widest text-[#B99A63] font-semibold">
-                      5–6 MIN
+                    <span class="font-jost text-[11px] tracking-[0.2em] text-[#514039]/80 font-semibold uppercase">
+                      WALKING GUIDE · 5–6 MIN
+                    </span>
+                    <span
+                      id="walkingGuideCounter"
+                      class="px-3 py-0.5 rounded-full bg-[#FAF8F3] border border-[#B99A63]/50 font-jost text-xs font-semibold text-[#514039] tracking-wider"
+                    >
+                      01 / 04
                     </span>
                   </div>
 
-                  <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-[#FAF8F3] p-1.5 rounded-xl border border-[#B99A63]/45">
-                      <div class="asset-box aspect-[4/3] rounded-lg" data-slot-label="WALK 01">
-                        <img src="" alt="鶴間駅からの道案内写真 01" class="asset-img" />
-                        <span class="asset-placeholder">WALK PHOTO 01<small>鶴間駅〜道案内</small></span>
+                  <!-- スライド表示エリア -->
+                  <div class="overflow-hidden rounded-xl border border-[#B99A63]/50 bg-[#FAF8F3]">
+                    <div
+                      id="walkingGuideTrack"
+                      class="flex transition-transform duration-300 ease-out"
+                    >
+                      <!-- STEP 01 -->
+                      <div class="walking-slide w-full shrink-0 p-3.5 sm:p-4">
+                        <div class="asset-box aspect-[16/10] rounded-lg mb-3" data-slot-label="WALK STEP 01">
+                          <img src="" alt="STEP 01 鶴間駅改札からの道案内" class="asset-img" />
+                          <span class="asset-placeholder">WALK PHOTO 01<small>STEP 01 鶴間駅改札〜出口</small></span>
+                        </div>
+                        <p class="font-jost text-[11px] font-semibold tracking-wider text-[#A65E50]">
+                          STEP 01 · 鶴間駅改札からスタート
+                        </p>
+                        <h4 class="font-mincho text-base sm:text-lg font-bold text-[#514039] mt-0.5">
+                          小田急江ノ島線「鶴間駅」東口方面へ
+                        </h4>
+                        <p class="font-sans text-xs text-[#514039]/85 leading-relaxed mt-1.5">
+                          改札を出て東口側の階段・出口から地上へ降り、駅前通り方面へ進みます。
+                        </p>
                       </div>
-                      <p class="font-sans text-[11px] text-[#514039]/85 mt-1.5 px-1">
-                        ① 鶴間駅からのルート
-                      </p>
-                    </div>
 
-                    <div class="bg-[#FAF8F3] p-1.5 rounded-xl border border-[#B99A63]/45">
-                      <div class="asset-box aspect-[4/3] rounded-lg" data-slot-label="WALK 02">
-                        <img src="" alt="鶴間駅からの道案内写真 02" class="asset-img" />
-                        <span class="asset-placeholder">WALK PHOTO 02<small>サンライト鶴間1F</small></span>
+                      <!-- STEP 02 -->
+                      <div class="walking-slide w-full shrink-0 p-3.5 sm:p-4">
+                        <div class="asset-box aspect-[16/10] rounded-lg mb-3" data-slot-label="WALK STEP 02">
+                          <img src="" alt="STEP 02 鶴間駅からの道案内" class="asset-img" />
+                          <span class="asset-placeholder">WALK PHOTO 02<small>STEP 02 商店街・通りを直進</small></span>
+                        </div>
+                        <p class="font-jost text-[11px] font-semibold tracking-wider text-[#A65E50]">
+                          STEP 02 · 通りをまっすぐ進む
+                        </p>
+                        <h4 class="font-mincho text-base sm:text-lg font-bold text-[#514039] mt-0.5">
+                          鶴間二丁目方面へ徒歩約3分
+                        </h4>
+                        <p class="font-sans text-xs text-[#514039]/85 leading-relaxed mt-1.5">
+                          駅前の通りを道なりに直進し、住宅とお店が並ぶ落ち着いた通りへ入ります。
+                        </p>
                       </div>
-                      <p class="font-sans text-[11px] text-[#514039]/85 mt-1.5 px-1">
-                        ② サンライト鶴間1F・お店前
-                      </p>
+
+                      <!-- STEP 03 -->
+                      <div class="walking-slide w-full shrink-0 p-3.5 sm:p-4">
+                        <div class="asset-box aspect-[16/10] rounded-lg mb-3" data-slot-label="WALK STEP 03">
+                          <img src="" alt="STEP 03 サンライト鶴間付近の道案内" class="asset-img" />
+                          <span class="asset-placeholder">WALK PHOTO 03<small>STEP 03 サンライト鶴間手前</small></span>
+                        </div>
+                        <p class="font-jost text-[11px] font-semibold tracking-wider text-[#A65E50]">
+                          STEP 03 · 建物が見えてきます
+                        </p>
+                        <h4 class="font-mincho text-base sm:text-lg font-bold text-[#514039] mt-0.5">
+                          「サンライト鶴間」1階へ
+                        </h4>
+                        <p class="font-sans text-xs text-[#514039]/85 leading-relaxed mt-1.5">
+                          駅から歩いて5〜6分ほどで「サンライト鶴間」の建物に到着します。
+                        </p>
+                      </div>
+
+                      <!-- STEP 04 -->
+                      <div class="walking-slide w-full shrink-0 p-3.5 sm:p-4">
+                        <div class="asset-box aspect-[16/10] rounded-lg mb-3" data-slot-label="WALK STEP 04">
+                          <img src="" alt="STEP 04 神結の提灯と暖簾が目印" class="asset-img" />
+                          <span class="asset-placeholder">WALK PHOTO 04<small>STEP 04 提灯と暖簾・店舗外観</small></span>
+                        </div>
+                        <p class="font-jost text-[11px] font-semibold tracking-wider text-[#A65E50]">
+                          STEP 04 · あたたかい明かりへ
+                        </p>
+                        <h4 class="font-mincho text-base sm:text-lg font-bold text-[#514039] mt-0.5">
+                          「神結」の提灯と暖簾が目印
+                        </h4>
+                        <p class="font-sans text-xs text-[#514039]/85 leading-relaxed mt-1.5">
+                          17:00〜24:30（L.O. 24:00）営業・水曜定休。常連さんも初めての方も気さくな明かりでお待ちしています。
+                        </p>
+                      </div>
                     </div>
+                  </div>
+
+                  <!-- ドットインジケーター -->
+                  <div class="flex items-center justify-center gap-1.5 mt-3" id="walkingGuideDots">
+                    <button type="button" data-slide="0" aria-label="STEP 01" class="walking-dot w-2 h-2 rounded-full bg-[#514039] transition-all"></button>
+                    <button type="button" data-slide="1" aria-label="STEP 02" class="walking-dot w-2 h-2 rounded-full bg-[#514039]/25 transition-all"></button>
+                    <button type="button" data-slide="2" aria-label="STEP 03" class="walking-dot w-2 h-2 rounded-full bg-[#514039]/25 transition-all"></button>
+                    <button type="button" data-slide="3" aria-label="STEP 04" class="walking-dot w-2 h-2 rounded-full bg-[#514039]/25 transition-all"></button>
+                  </div>
+
+                  <!-- 操作ボタン（← 前の案内 ／ 次の案内 →） -->
+                  <div class="grid grid-cols-2 gap-3 mt-3">
+                    <button
+                      type="button"
+                      id="walkingPrevBtn"
+                      class="py-2.5 px-3 rounded-xl bg-[#FAF8F3] border border-[#B99A63]/55 text-[#514039] font-mincho text-xs sm:text-[13px] font-semibold tracking-wider hover:bg-[#FAF8F3]/80 active:scale-[0.99] transition"
+                    >
+                      ← 前の案内
+                    </button>
+                    <button
+                      type="button"
+                      id="walkingNextBtn"
+                      class="py-2.5 px-3 rounded-xl bg-[#514039] text-[#FAF8F3] font-mincho text-xs sm:text-[13px] font-semibold tracking-wider shadow-sm hover:opacity-95 active:scale-[0.99] transition"
+                    >
+                      次の案内 →
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1011,6 +1098,55 @@
         </div>
       </section>
 
+      <script>
+        (function () {
+          const track = document.getElementById('walkingGuideTrack');
+          const slides = track ? track.querySelectorAll('.walking-slide') : [];
+          const counter = document.getElementById('walkingGuideCounter');
+          const prevBtn = document.getElementById('walkingPrevBtn');
+          const nextBtn = document.getElementById('walkingNextBtn');
+          const dots = document.querySelectorAll('#walkingGuideDots .walking-dot');
+          if (!track || slides.length === 0) return;
+
+          let currentIndex = 0;
+          const total = slides.length;
+
+          function updateCarousel(index) {
+            currentIndex = (index + total) % total;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            if (counter) {
+              counter.textContent = `${String(currentIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+            }
+            dots.forEach((dot, i) => {
+              dot.classList.toggle('bg-[#514039]', i === currentIndex);
+              dot.classList.toggle('w-4', i === currentIndex);
+              dot.classList.toggle('bg-[#514039]/25', i !== currentIndex);
+              dot.classList.toggle('w-2', i !== currentIndex);
+            });
+          }
+
+          prevBtn && prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+          nextBtn && nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+          dots.forEach((dot) => {
+            dot.addEventListener('click', () => {
+              const idx = Number(dot.getAttribute('data-slide'));
+              if (!Number.isNaN(idx)) updateCarousel(idx);
+            });
+          });
+
+          // スワイプ操作対応
+          let startX = 0;
+          track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+          }, { passive: true });
+          track.addEventListener('touchend', (e) => {
+            const diff = e.changedTouches[0].clientX - startX;
+            if (Math.abs(diff) > 40) {
+              updateCarousel(diff < 0 ? currentIndex + 1 : currentIndex - 1);
+            }
+          });
+        })();
+      </script>
       <!-- =========================================================
            SECTION 06: 居酒屋「神結」フッターセクション（統合版）
            ・ロゴ差し替えBOX ＋ 姉妹店バナー画像BOX
