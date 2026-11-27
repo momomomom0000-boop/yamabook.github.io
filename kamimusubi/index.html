@@ -1152,282 +1152,274 @@
           });
         })();
       </script>
-      <!-- =========================================================
-           SECTION 06: 居酒屋「神結」フッターセクション（統合版）
-           ・ロゴ差し替えBOX ＋ 姉妹店バナー画像BOX
+<!-- =========================================================
+           SECTION 06: フッター（写真背景差し替え対応・公式SNS・共有ポップアップ）
            ========================================================= -->
-      <footer class="relative w-full overflow-hidden bg-washi border-t border-[#B99A63]/40 select-none guide-outline" aria-label="居酒屋 神結 フッター">
-        <!-- 1. 背景レイヤー：和酒棚の一升瓶シルエット＆ラベルアート（SVG描画） -->
-        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
-          <svg class="w-full h-full object-cover object-bottom opacity-35" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="bottleDarkGreen" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#1E2820"/>
-                <stop offset="30%" stop-color="#354538"/>
-                <stop offset="70%" stop-color="#222E24"/>
-                <stop offset="100%" stop-color="#141C16"/>
-              </linearGradient>
-              <linearGradient id="bottleBrown" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#3B291E"/>
-                <stop offset="35%" stop-color="#5C4030"/>
-                <stop offset="75%" stop-color="#3A271C"/>
-                <stop offset="100%" stop-color="#241710"/>
-              </linearGradient>
-              <linearGradient id="bottleClear" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#7D877E"/>
-                <stop offset="30%" stop-color="#AEB8AF"/>
-                <stop offset="75%" stop-color="#758077"/>
-                <stop offset="100%" stop-color="#586159"/>
-              </linearGradient>
-              <linearGradient id="labelWashi" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#FAF7F0"/>
-                <stop offset="100%" stop-color="#E6DFD1"/>
-              </linearGradient>
-            </defs>
+      <footer id="footer" class="relative border-t border-[#B99A63]/35 bg-[#FAF8F3] text-[#514039] overflow-hidden guide-outline">
+        <!-- 後から写真に差し替えやすい背景レイヤー（酒のイラストは削除済み） -->
+        <div
+          class="footer-bg-photo absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none"
+          style="background-image: url('');"
+          data-bg-slot="FOOTER_BG_PHOTO"
+          aria-hidden="true"
+        ></div>
 
-            <rect width="1440" height="760" fill="#D5CFC0"/>
-
-            <!-- 一升瓶 1 -->
-            <g transform="translate(20, 140)">
-              <path d="M65,0 L95,0 L98,110 C125,135 150,165 150,210 L150,620 L10,620 L10,210 C10,165 35,135 62,110 Z" fill="url(#bottleBrown)"/>
-              <rect x="22" y="250" width="116" height="240" rx="2" fill="url(#labelWashi)"/>
-              <rect x="34" y="268" width="92" height="55" fill="#B84A39"/>
-              <text x="80" y="304" font-family="'Shippori Mincho', serif" font-size="26" font-weight="800" fill="#FAF7F0" text-anchor="middle">山廃</text>
-              <text x="80" y="405" font-family="'Shippori Mincho', serif" font-size="44" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb">純米酒</text>
-            </g>
-
-            <!-- 一升瓶 2 -->
-            <g transform="translate(185, 110)">
-              <path d="M70,0 L100,0 L103,125 C135,150 160,185 160,235 L160,650 L10,650 L10,235 C10,185 35,150 67,125 Z" fill="url(#bottleDarkGreen)"/>
-              <circle cx="85" cy="185" r="24" fill="url(#labelWashi)"/>
-              <text x="85" y="194" font-family="'Shippori Mincho', serif" font-size="24" font-weight="700" fill="#2B2A27" text-anchor="middle">生</text>
-              <rect x="20" y="275" width="130" height="270" rx="2" fill="url(#labelWashi)"/>
-              <text x="115" y="345" font-family="'Shippori Mincho', serif" font-size="28" font-weight="700" fill="#4A4842" text-anchor="middle" writing-mode="tb">維可。</text>
-              <text x="65" y="385" font-family="'Shippori Mincho', serif" font-size="26" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb">特別純米</text>
-            </g>
-
-            <!-- 一升瓶 3 -->
-            <g transform="translate(365, 95)">
-              <path d="M72,0 L104,0 L107,130 C142,155 168,195 168,245 L168,665 L8,665 L8,245 C8,195 34,155 69,130 Z" fill="url(#bottleBrown)"/>
-              <g transform="rotate(-14, 88, 190)">
-                <rect x="48" y="150" width="80" height="90" rx="3" fill="url(#labelWashi)"/>
-                <text x="88" y="195" font-family="'Shippori Mincho', serif" font-size="16" font-weight="700" fill="#3B291E" text-anchor="middle" writing-mode="tb">ひやおろし</text>
-              </g>
-              <rect x="18" y="290" width="140" height="295" rx="2" fill="url(#labelWashi)"/>
-              <text x="88" y="395" font-family="'Shippori Mincho', serif" font-size="76" font-weight="800" fill="#1F1E1C" text-anchor="middle" writing-mode="tb" letter-spacing="8">北島</text>
-            </g>
-
-            <!-- 一升瓶 4 -->
-            <g transform="translate(555, 115)">
-              <path d="M70,0 L100,0 L103,120 C135,148 160,185 160,235 L160,645 L10,645 L10,235 C10,185 35,148 67,120 Z" fill="url(#bottleClear)"/>
-              <rect x="52" y="155" width="66" height="46" rx="2" fill="url(#labelWashi)"/>
-              <text x="85" y="185" font-family="'Shippori Mincho', serif" font-size="22" font-weight="700" fill="#2B2A27" text-anchor="middle">生酒</text>
-              <rect x="20" y="265" width="130" height="285" rx="2" fill="url(#labelWashi)"/>
-              <text x="85" y="385" font-family="'Shippori Mincho', serif" font-size="54" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb" letter-spacing="6">鶴齢</text>
-            </g>
-
-            <!-- 一升瓶 5 -->
-            <g transform="translate(740, 100)">
-              <path d="M72,0 L104,0 L107,130 C142,155 168,195 168,245 L168,660 L8,660 L8,245 C8,195 34,155 69,130 Z" fill="url(#bottleDarkGreen)"/>
-              <g transform="rotate(10, 88, 195)">
-                <rect x="55" y="145" width="66" height="100" rx="2" fill="#E8C7C8"/>
-                <text x="88" y="195" font-family="'Shippori Mincho', serif" font-size="15" font-weight="700" fill="#5E2B2E" text-anchor="middle" writing-mode="tb">ひやおろし</text>
-              </g>
-              <rect x="18" y="290" width="140" height="295" rx="2" fill="url(#labelWashi)"/>
-              <text x="88" y="395" font-family="'Shippori Mincho', serif" font-size="72" font-weight="800" fill="#232220" text-anchor="middle" writing-mode="tb" letter-spacing="8">謙信</text>
-            </g>
-
-            <!-- 一升瓶 6 -->
-            <g transform="translate(930, 120)">
-              <path d="M70,0 L100,0 L103,120 C135,148 160,185 160,235 L160,640 L10,640 L10,235 C10,185 35,148 67,120 Z" fill="url(#bottleDarkGreen)"/>
-              <rect x="58" y="150" width="54" height="65" rx="2" fill="url(#labelWashi)"/>
-              <text x="85" y="190" font-family="'Shippori Mincho', serif" font-size="24" font-weight="700" fill="#2B2A27" text-anchor="middle">芳</text>
-              <rect x="20" y="265" width="130" height="285" rx="2" fill="url(#labelWashi)"/>
-              <text x="85" y="380" font-family="'Shippori Mincho', serif" font-size="52" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb" letter-spacing="6">離山</text>
-            </g>
-
-            <!-- 一升瓶 7 -->
-            <g transform="translate(1115, 95)">
-              <path d="M72,0 L104,0 L107,130 C142,155 168,195 168,245 L168,665 L8,665 L8,245 C8,195 34,155 69,130 Z" fill="url(#bottleDarkGreen)"/>
-              <rect x="18" y="275" width="140" height="310" rx="2" fill="#1D1C1A"/>
-              <text x="122" y="385" font-family="'Shippori Mincho', serif" font-size="18" font-weight="600" fill="#D4C79E" text-anchor="middle" writing-mode="tb" letter-spacing="3">純米大吟醸</text>
-              <text x="72" y="415" font-family="'Shippori Mincho', serif" font-size="42" font-weight="800" fill="#F5F2EB" text-anchor="middle" writing-mode="tb" letter-spacing="4">熟成蔵隠し</text>
-            </g>
-
-            <!-- 一升瓶 8 -->
-            <g transform="translate(1300, 135)">
-              <path d="M65,0 L95,0 L98,115 C128,140 152,175 152,220 L152,625 L8,625 L8,220 C8,175 32,140 62,115 Z" fill="url(#bottleBrown)"/>
-              <rect x="20" y="260" width="120" height="260" rx="2" fill="url(#labelWashi)"/>
-              <text x="80" y="380" font-family="'Shippori Mincho', serif" font-size="44" font-weight="800" fill="#2B2A27" text-anchor="middle" writing-mode="tb">特撰</text>
-            </g>
-          </svg>
-
-          <!-- 和紙半透明オーバーレイグラデーション -->
-          <div class="footer-washi-overlay absolute inset-0"></div>
-        </div>
-
-        <!-- ======================================================================
-             フッターメインコンテンツコンテナ
-             ====================================================================== -->
-        <div class="relative z-10 max-w-[760px] mx-auto px-4 sm:px-6 pt-10 pb-12 sm:pt-12 sm:pb-14 flex flex-col items-center">
-
-          <div class="guide-badge mb-4 px-3 py-1 rounded-full bg-[#E9DCCB] text-[#514039] text-[11px] font-jost">
-            SECTION 06 / FOOTER：ロゴ差し替えBOX ＋ SNS ＋ 黒電話予約 ＋ 姉妹店バナー画像BOX
-          </div>
-
-          <!-- 2. ブランドロゴエリア（別データ差し替えBOX） -->
-          <div class="w-full flex flex-col items-center mb-6 sm:mb-7">
-            <div
-              class="asset-box asset-box--contain w-[210px] h-[250px] sm:w-[240px] sm:h-[290px] rounded-2xl p-3"
-              data-slot-label="FOOTER LOGO"
-            >
-              <img src="" alt="居酒屋 神結 ロゴ・エンブレム" class="asset-img" />
-              <span class="asset-placeholder">
-                FOOTER LOGO BOX
-                <small>縦書きロゴ「神結」・キャッチ・<br />和モダンエンブレム画像枠</small>
-              </span>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-16 text-center">
+          <!-- フッターロゴ枠 -->
+          <div class="mx-auto w-44 sm:w-52">
+            <div class="asset-box aspect-[4/5] rounded-2xl bg-[#E9DCCB]/90 border border-dashed border-[#B99A63]" data-slot-label="FOOTER LOGO">
+              <img src="" alt="居酒屋 神結 ロゴ" class="asset-img" />
+              <span class="asset-placeholder">FOOTER LOGO BOX<small>ロゴ・エンブレム画像枠</small></span>
             </div>
           </div>
 
-          <!-- 3. SNSアイコン列（ロゴ下・中央揃え） -->
-          <nav class="flex items-center justify-center gap-[18px] mb-6 sm:mb-7" aria-label="公式SNSアカウント">
-            <!-- Instagram -->
-            <a
-              href="#instagram"
-              aria-label="居酒屋 神結 公式Instagram"
-              class="group flex items-center justify-center w-8 h-8 text-inkDark transition-all duration-200 hover:-translate-y-1 hover:opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold rounded-md"
-            >
-              <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5.5" ry="5.5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-              </svg>
-            </a>
-
-            <!-- X (旧Twitter) -->
-            <a
-              href="#x-twitter"
-              aria-label="居酒屋 神結 公式X（旧Twitter）"
-              class="group flex items-center justify-center w-8 h-8 text-inkDark transition-all duration-200 hover:-translate-y-1 hover:opacity-75 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold rounded-md"
-            >
-              <svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </a>
-
-            <!-- LINE -->
-            <a
-              href="#line"
-              aria-label="居酒屋 神結 公式LINE"
-              class="group flex items-center justify-center w-[24px] h-[24px] bg-lineGreen rounded-[5px] shadow-xs transition-all duration-200 hover:-translate-y-1 hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold"
-            >
-              <svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" fill="#FFFFFF"/>
-              </svg>
-            </a>
-          </nav>
-
-          <!-- 4. 区切り線（水平線 max-width: 680px） -->
-          <hr class="w-full max-w-[680px] border-0 border-t border-inkMuted mb-6 sm:mb-7" />
-
-          <!-- 5. 電話予約・お問い合わせエリア（中央） -->
-          <div class="w-full max-w-[540px] flex flex-col items-center mb-9 sm:mb-11">
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
-              <!-- 左側：レトロな黒電話イラストSVG -->
-              <div class="shrink-0 w-20 h-16 sm:w-24 sm:h-20 flex items-center justify-center" aria-hidden="true">
-                <svg class="w-full h-full drop-shadow-sm" viewBox="0 0 130 105" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M36 30 C18 32, 12 46, 22 50 C32 54, 10 60, 14 68 C18 76, 36 74, 42 66" stroke="#181818" stroke-width="3.6" stroke-linecap="round" fill="none"/>
-                  <path d="M40 42 C40 34, 48 30, 58 30 L88 30 C98 30, 106 34, 106 42 L112 78 C113 84, 108 88, 102 88 L44 88 C38 88, 33 84, 34 78 L40 42 Z" fill="#181818"/>
-                  <path d="M44 43 C44 37, 50 34, 58 34 L88 34 C96 34, 102 37, 102 43" stroke="#3D3D3D" stroke-width="2" stroke-linecap="round"/>
-                  <rect x="42" y="88" width="12" height="4" rx="1.5" fill="#0D0D0D"/>
-                  <rect x="92" y="88" width="12" height="4" rx="1.5" fill="#0D0D0D"/>
-                  <rect x="52" y="23" width="6" height="9" rx="2" fill="#262626"/>
-                  <rect x="88" y="23" width="6" height="9" rx="2" fill="#262626"/>
-                  <path d="M32 22 C32 13, 52 10, 73 10 C94 10, 114 13, 114 22 L116 29 C116 33, 109 35, 102 34 C96 33, 94 28, 94 24 C88 22, 58 22, 52 24 C52 28, 50 33, 44 34 C37 35, 30 33, 30 29 L32 22 Z" fill="#121212"/>
-                  <path d="M38 18 C48 14, 98 14, 108 18" stroke="#4A4A4A" stroke-width="2.2" stroke-linecap="round"/>
-                  <circle cx="73" cy="58" r="19" fill="#C9B37E" stroke="#333333" stroke-width="2"/>
-                  <circle cx="73" cy="58" r="15.5" fill="#1C1C1C"/>
-                  <circle cx="73" cy="46" r="2.1" fill="#F7F5EE"/>
-                  <circle cx="80" cy="48.5" r="2.1" fill="#F7F5EE"/>
-                  <circle cx="84.5" cy="54.5" r="2.1" fill="#F7F5EE"/>
-                  <circle cx="84.5" cy="61.5" r="2.1" fill="#F7F5EE"/>
-                  <circle cx="80" cy="67.5" r="2.1" fill="#F7F5EE"/>
-                  <circle cx="73" cy="70" r="2.1" fill="#F7F5EE"/>
-                  <circle cx="66" cy="67.5" r="2.1" fill="#F7F5EE"/>
-                  <circle cx="61.5" cy="61.5" r="2.1" fill="#F7F5EE"/>
-                  <circle cx="61.5" cy="54.5" r="2.1" fill="#F7F5EE"/>
-                  <path d="M84 65 L90 69" stroke="#D9C593" stroke-width="2.5" stroke-linecap="round"/>
-                  <circle cx="73" cy="58" r="7" fill="#F7F5EE" stroke="#C9B37E" stroke-width="1.5"/>
-                  <circle cx="73" cy="58" r="2" fill="#8C7A4B"/>
+          <!-- 公式SNS -->
+          <div class="mt-7">
+            <p class="font-mincho text-xs sm:text-sm font-semibold tracking-[0.22em] text-[#514039]/85 mb-3">
+              公式SNS
+            </p>
+            <div class="inline-flex items-center justify-center gap-4">
+              <!-- Instagram -->
+              <a
+                href="https://www.instagram.com/kami_musubi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="公式SNS Instagram"
+                class="w-10 h-10 rounded-full bg-[#FAF8F3] border border-[#B99A63]/60 flex items-center justify-center text-[#514039] hover:border-[#A65E50] hover:text-[#A65E50] transition shadow-xs"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
                 </svg>
-              </div>
+              </a>
 
-              <!-- 右側：テキスト・電話番号縦積みブロック -->
-              <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
-                <p class="font-mincho font-semibold text-xs sm:text-[13px] tracking-[0.14em] text-[#333333] mb-0.5">
-                  ご予約・お問い合わせ
-                </p>
+              <!-- X -->
+              <a
+                href="https://x.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="公式SNS X"
+                class="w-10 h-10 rounded-full bg-[#FAF8F3] border border-[#B99A63]/60 flex items-center justify-center text-[#514039] hover:border-[#A65E50] hover:text-[#A65E50] transition shadow-xs font-jost text-sm font-bold"
+              >
+                𝕏
+              </a>
 
-                <a
-                  href="tel:08068431212"
-                  class="font-gothic font-medium text-[1.75rem] sm:text-[2.55rem] leading-[1.1] tracking-[0.02em] text-[#3A3532] hover:text-kamimusubiDarkGold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold rounded"
-                >
-                  080-6843-1212
-                </a>
-              </div>
+              <!-- LINE -->
+              <a
+                href="https://line.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="公式SNS LINE"
+                class="w-10 h-10 rounded-full bg-[#FAF8F3] border border-[#B99A63]/60 flex items-center justify-center text-[#514039] hover:border-[#68785B] hover:text-[#68785B] transition shadow-xs font-sans text-[10px] font-bold tracking-tight"
+              >
+                LINE
+              </a>
             </div>
+          </div>
 
-            <p class="font-mincho font-medium text-xs sm:text-[13px] tracking-[0.08em] text-inkMuted mt-2 text-center">
-              HPを見たと伝えていただけるとスムーズです。
+          <hr class="my-8 border-[#514039]/15 max-w-xl mx-auto" />
+
+          <!-- ご予約・お問い合わせ -->
+          <div class="space-y-1.5">
+            <p class="font-mincho text-xs text-[#514039]/80 tracking-wider">
+              ご予約・お問い合わせ
+            </p>
+            <div>
+              <a
+                href="tel:08068431212"
+                class="font-jost text-2xl sm:text-3xl font-semibold text-[#514039] tracking-wide hover:text-[#A65E50] transition"
+              >
+                080-6843-1212
+              </a>
+            </div>
+            <p class="font-sans text-[11px] sm:text-xs text-[#514039]/75">
+              HPを見たと言っていただけるとスムーズです。
             </p>
           </div>
 
-          <!-- 6. 近隣姉妹店のご案内エリア（別画像バナー差し替えBOX） -->
-          <div class="flex flex-col items-center w-full">
-            <h3 class="font-mincho font-semibold text-xs sm:text-[13.5px] tracking-[0.14em] text-[#333333] mb-3">
+          <!-- 近隣姉妹店のご案内 -->
+          <div class="mt-8 flex flex-col items-center">
+            <p class="font-mincho text-xs text-[#514039]/80 tracking-wider mb-2.5">
               近隣姉妹店のご案内
-            </h3>
-
-            <!-- 姉妹店「Sorriso」バナー画像差し替えBOX -->
+            </p>
             <a
-              href="#sorriso"
-              aria-label="近隣姉妹店 ワイワイ入れるイタリアン厨房 Sorriso（ソリーゾ）のサイトへ"
-              class="group block w-full max-w-[276px] transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-kamimusubiGold"
+              href="http://www.sorriso-dogs.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-56 sm:w-64 bg-[#FAF8F3] p-1.5 rounded-xl border border-[#B99A63]/55 hover:opacity-90 transition"
             >
-              <div
-                class="asset-box asset-box--contain w-full aspect-[276/74] rounded-md bg-white shadow-[0_2px_10px_rgba(43,42,39,0.12)] group-hover:shadow-[0_6px_16px_rgba(43,42,39,0.18)]"
-                data-slot-label="SISTER BANNER"
-              >
-                <img src="" alt="近隣姉妹店 ワイワイ入れるイタリアン厨房 Sorriso（ソリーゾ）" class="asset-img" />
-                <span class="asset-placeholder">
-                  SISTER SHOP BANNER BOX
-                  <small>姉妹店「Sorriso」バナー画像（276×74比率）</small>
-                </span>
+              <div class="asset-box aspect-[276/74] rounded-lg" data-slot-label="SISTER SHOP">
+                <img src="" alt="姉妹店 Sorriso バナー" class="asset-img" />
+                <span class="asset-placeholder">SISTER SHOP BANNER<small>Sorriso バナー画像</small></span>
               </div>
             </a>
           </div>
 
-          <!-- 友だち共有ボタン -->
-          <div class="mt-7 flex flex-col items-center">
+          <!-- 友だちにさそう（共有リンクポップアップボタン） -->
+          <div class="mt-8">
             <button
               type="button"
-              onclick="copyInviteMessage()"
-              class="px-4 py-2 rounded-full bg-[#FAF8F3]/90 text-[#514039] border border-[#B99A63] text-xs font-medium hover:bg-[#E9DCCB]/70 transition shadow-2xs"
+              id="openInviteModalBtn"
+              class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#FAF8F3] border border-[#514039]/35 text-[#514039] font-mincho text-xs sm:text-sm font-semibold tracking-wider hover:bg-[#E9DCCB]/70 active:scale-[0.99] transition shadow-xs"
             >
-              友だちに誘う文面をコピー
+              <span>友だちにさそう</span>
             </button>
-            <p id="copyFeedback" class="text-center text-xs text-[#A65E50] font-medium mt-2 h-4"></p>
           </div>
 
-          <!-- 7. コピーライト表記 -->
-          <p class="mt-4 font-mincho text-[11px] tracking-[0.12em] text-inkMuted/80 text-center">
+          <!-- コピーライト -->
+          <p class="mt-9 font-sans text-[11px] text-[#514039]/65 tracking-wider">
             &copy; 居酒屋 神結 All Rights Reserved.
           </p>
         </div>
       </footer>
 
-    </div>
-  </main>
+      <!-- 友だちにさそう：共有リンクポップアップ -->
+      <div
+        id="inviteShareModal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-[#514039]/55 backdrop-blur-[2px] p-4"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="inviteModalTitle"
+      >
+        <div class="w-full max-w-md rounded-2xl bg-[#FAF8F3] border border-[#B99A63]/70 shadow-2xl p-5 sm:p-6 text-[#514039]">
+          <div class="flex items-center justify-between gap-2 pb-3 border-b border-[#514039]/15">
+            <h3 id="inviteModalTitle" class="font-mincho text-base sm:text-lg font-bold tracking-wider">
+              友だちにさそう
+            </h3>
+            <button
+              type="button"
+              id="closeInviteModalBtn"
+              aria-label="閉じる"
+              class="w-8 h-8 rounded-full border border-[#514039]/25 flex items-center justify-center text-sm text-[#514039]/80 hover:bg-[#E9DCCB]/60 transition"
+            >
+              ✕
+            </button>
+          </div>
+
+          <p class="font-sans text-xs text-[#514039]/80 mt-3.5 leading-relaxed">
+            お店HPの共有リンクを各SNSで送るか、メッセージをコピーしてそのまま貼り付けられます。
+          </p>
+
+          <!-- 各SNS共有リンク -->
+          <div class="grid grid-cols-3 gap-2.5 mt-4">
+            <a
+              id="shareFacebookLink"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="py-2.5 px-2 rounded-xl bg-[#E9DCCB]/80 border border-[#B99A63]/50 text-center font-sans text-xs font-semibold text-[#514039] hover:bg-[#E9DCCB] transition"
+            >
+              Facebookで共有
+            </a>
+            <a
+              id="shareXLink"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="py-2.5 px-2 rounded-xl bg-[#E9DCCB]/80 border border-[#B99A63]/50 text-center font-sans text-xs font-semibold text-[#514039] hover:bg-[#E9DCCB] transition"
+            >
+              Xで共有
+            </a>
+            <a
+              id="shareLineLink"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="py-2.5 px-2 rounded-xl bg-[#E9DCCB]/80 border border-[#B99A63]/50 text-center font-sans text-xs font-semibold text-[#514039] hover:bg-[#E9DCCB] transition"
+            >
+              LINEで共有
+            </a>
+          </div>
+
+          <!-- 共有メッセージ＆URLプレビュー＋コピー -->
+          <div class="mt-4">
+            <label for="inviteShareText" class="block font-sans text-[11px] text-[#514039]/75 mb-1.5">
+              共有メッセージ・HPリンク
+            </label>
+            <textarea
+              id="inviteShareText"
+              rows="3"
+              readonly
+              class="w-full rounded-xl bg-[#FAF8F3] border border-[#B99A63]/55 p-3 font-sans text-xs text-[#514039] leading-relaxed focus:outline-none"
+            ></textarea>
+            <div class="mt-2.5 flex items-center justify-between gap-2">
+              <span id="inviteCopyFeedback" class="font-sans text-xs text-[#68785B] font-semibold"></span>
+              <button
+                type="button"
+                id="copyInviteTextBtn"
+                class="px-4 py-2 rounded-xl bg-[#514039] text-[#FAF8F3] font-mincho text-xs font-semibold tracking-wider hover:opacity-95 transition"
+              >
+                リンクと文面をコピー
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          const openBtn = document.getElementById('openInviteModalBtn');
+          const closeBtn = document.getElementById('closeInviteModalBtn');
+          const modal = document.getElementById('inviteShareModal');
+          const textarea = document.getElementById('inviteShareText');
+          const copyBtn = document.getElementById('copyInviteTextBtn');
+          const feedback = document.getElementById('inviteCopyFeedback');
+          const fbLink = document.getElementById('shareFacebookLink');
+          const xLink = document.getElementById('shareXLink');
+          const lineLink = document.getElementById('shareLineLink');
+          if (!openBtn || !modal) return;
+
+          const shareUrl = 'http://kami-musubi.com/';
+          const messageBody = 'あれもある、これもある。お酒と料理、ごはんものまでいろいろ揃う鶴間の「神結」。';
+          const fullShareText = `${messageBody}\n${shareUrl}`;
+
+          if (textarea) textarea.value = fullShareText;
+          if (fbLink) {
+            fbLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+          }
+          if (xLink) {
+            xLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(messageBody)}&url=${encodeURIComponent(shareUrl)}`;
+          }
+          if (lineLink) {
+            lineLink.href = `https://line.me/R/msg/text/?${encodeURIComponent(fullShareText)}`;
+          }
+
+          function openModal() {
+            if (feedback) feedback.textContent = '';
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+          }
+
+          function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }
+
+          openBtn.addEventListener('click', openModal);
+          closeBtn && closeBtn.addEventListener('click', closeModal);
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+          });
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+          });
+
+          copyBtn && copyBtn.addEventListener('click', async () => {
+            try {
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(fullShareText);
+              } else if (textarea) {
+                textarea.select();
+                document.execCommand('copy');
+              }
+              if (feedback) feedback.textContent = 'コピーしました！';
+            } catch (_) {
+              if (feedback) feedback.textContent = '選択してコピーしてください';
+            }
+          });
+        })();
+      </script>
 
   <!-- =========================================================
        お品書きポップアップ（写真カルーセルモーダル・単価非掲載）
